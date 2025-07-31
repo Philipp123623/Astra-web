@@ -1,0 +1,23 @@
+<header class="astra-header">
+    <div class="astra-header-inner">
+        <a href="/index.php" class="astra-logo">
+            <img src="/public/favicon_transparent.png" alt="Astra Logo">
+            <span class="astra-logo-text">Astra <span>Bot</span></span>
+        </a>
+        <nav class="astra-navbar">
+            <ul>
+                <li><a href="/index.php" class="nav-link">Home</a></li>
+                <li><a href="/index.php#stats" class="nav-link">Stats</a></li>
+                <li><a href="/index.php#about" class="nav-link scrollto">About</a></li>
+                <li><a href="/index.php#features" class="nav-link scrollto">Features</a></li>
+                <li><a href="/index.php#faq" class="nav-link scrollto">FAQ</a></li>
+                <li><a href="/includes/commands.php" class="nav-link">Commands</a></li>
+                <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
+            </ul>
+            <div class="astra-nav-toggle" onclick="document.body.classList.toggle('nav-open')">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </div>
+    <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
+</header>
