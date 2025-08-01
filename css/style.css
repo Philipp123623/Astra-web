@@ -107,6 +107,42 @@ a:hover { color: #ffd799; }
     display: none;
 }
 
+/* 1. Standard: Hamburger-Icon verstecken (Desktop) */
+.astra-nav-toggle {
+    display: none;
+}
+
+/* 2. Standard: Menü als Liste horizontal (Desktop) */
+.astra-navbar ul {
+    display: flex;
+    gap: 32px;
+}
+
+/* 3. Mobil (max 900px breit): Menü verstecken, Hamburger zeigen */
+@media (max-width: 900px) {
+    .astra-nav-toggle {
+        display: flex;  /* Hamburger anzeigen */
+        cursor: pointer;
+    }
+    .astra-navbar ul {
+        display: none; /* Menü verstecken */
+        flex-direction: column;
+        gap: 10px;
+        background: #251f5b;  /* Beispiel Hintergrund */
+        position: fixed;
+        top: 68px;  /* Direkt unter Header */
+        right: 0;
+        width: 200px;
+        height: calc(100vh - 68px);
+        padding: 20px;
+        box-shadow: -4px 0 12px rgba(0,0,0,0.3);
+    }
+    /* Menü sichtbar wenn .nav-open auf body */
+    body.nav-open .astra-navbar ul {
+        display: flex;
+    }
+}
+
 /* ===================
       HERO SECTION
 =================== */
