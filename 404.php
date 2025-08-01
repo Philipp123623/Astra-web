@@ -53,22 +53,45 @@ http_response_code(404);
             width: 150px; height: 150px;
             top: -50px; left: -60px;
             background: #4cd9ee;
+            animation: blobFloat1 7.4s ease-in-out infinite;
         }
         .blob2 {
             width: 120px; height: 120px;
             bottom: 40px; right: -60px;
             background: #897bff;
+            animation: blobFloat2 9s ease-in-out infinite;
         }
         .blob3 {
             width: 80px; height: 80px;
             top: 60px; right: 80px;
             background: #65e6ce;
+            animation: blobFloat3 6.2s ease-in-out infinite;
         }
         .blob4 {
             width: 52px; height: 52px;
             bottom: 24px; left: 40px;
             background: #eafffd;
             opacity: 0.10;
+            animation: blobFloat4 8.1s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50%      { transform: translateY(-16px) scale(1.08); }
+        }
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50%      { transform: translateY(12px) scale(0.96); }
+        }
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25%      { transform: translate(-8px, 4px) scale(1.06);}
+            75%      { transform: translate(7px, -6px) scale(1.04);}
+        }
+        @keyframes blobFloat4 {
+            0%, 100% { transform: translate(0, 0) scale(1);}
+            40%      { transform: translate(3px, -10px) scale(1.10);}
+            70%      { transform: translate(-5px, 8px) scale(0.95);}
         }
 
         .notfound-icon {
@@ -76,6 +99,8 @@ http_response_code(404);
             margin-bottom: 18px;
             z-index: 1;
             opacity: 0.95;
+            filter: drop-shadow(0 0 12px #65e6ce55); /* sanftes Glow für die Rakete */
+            transition: filter 0.18s;
         }
         /* Optional: SVG Rocket im Astra-Style, damit es nicht nach Emoji aussieht */
         .notfound-icon svg {
@@ -120,14 +145,15 @@ http_response_code(404);
             border-radius: 22px;
             background: linear-gradient(90deg, #65e6ce, #a7c8fd);
             color: #223254;
-            box-shadow: 0 3px 14px #5de8ff5a;
+            box-shadow: 0 0 12px #5de8ff25, 0 3px 14px #60f0d433;
             text-decoration: none;
-            transition: filter 0.16s, box-shadow 0.16s;
+            transition: all 0.19s cubic-bezier(.6,1.7,.3,1.03);
             margin-top: 8px;
         }
         a.astra-btn.main:hover {
-            filter: brightness(1.09);
-            box-shadow: 0 6px 24px #60f0d499;
+            filter: brightness(1.10) saturate(1.15);
+            box-shadow: 0 0 16px 6px #65e6ce99, 0 6px 24px #60f0d488;
+            transform: scale(1.035);
         }
 
         @media (max-width: 700px) {
@@ -151,9 +177,8 @@ http_response_code(404);
     <div class="blob blob3"></div>
     <div class="blob blob4"></div>
 
-    <!-- Icon: Entweder Emoji, oder ein cooles SVG für "Astra" Vibe -->
+    <!-- Icon: Astra-Style Rakete als SVG mit sanftem Glow -->
     <div class="notfound-icon">
-        <!-- SVG Rocket Astra-Style -->
         <svg viewBox="0 0 48 48" fill="none">
             <circle cx="24" cy="24" r="22" fill="#2a2463" />
             <path d="M24 8 L30 26 L24 22 L18 26 Z" fill="#fa62a4"/>
