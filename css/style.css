@@ -588,7 +588,7 @@ a:hover { color: #ffd799; }
     margin-right: 15px;
 }
 
-/* Responsive Anpassung */
+/* Responsive Anpassungen */
 @media (max-width: 750px) {
     #commands-accordion { max-width: 99vw; }
     .accordion-toggle { font-size: 1.07em; padding: 15px 18px 15px 14px; }
@@ -599,4 +599,3 @@ a:hover { color: #ffd799; }
     .accordion-toggle { font-size: .96em; }
     .command-info { font-size: .97em; gap: 10px 8px;}
 }
-

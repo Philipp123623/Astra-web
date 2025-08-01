@@ -21,7 +21,7 @@
     <!-- Command Accordion Container -->
     <div id="commands-accordion">
 
-        <!-- Eine Kategorie (Beispiel: Moderation) -->
+        <!-- Kategorie Moderation -->
         <section class="command-section" data-category="moderation">
             <button class="accordion-toggle" type="button" aria-expanded="false">Moderation</button>
             <div class="accordion-panel">
@@ -44,7 +44,7 @@
             </div>
         </section>
 
-        <!-- Levelsystem -->
+        <!-- Kategorie Levelsystem -->
         <section class="command-section" data-category="levelsystem">
             <button class="accordion-toggle" type="button" aria-expanded="false">Levelsystem</button>
             <div class="accordion-panel">
@@ -65,7 +65,7 @@
             </div>
         </section>
 
-        <!-- Economy & Games -->
+        <!-- Kategorie Economy & Games -->
         <section class="command-section" data-category="economy">
             <button class="accordion-toggle" type="button" aria-expanded="false">Economy & Games</button>
             <div class="accordion-panel">
@@ -86,7 +86,7 @@
             </div>
         </section>
 
-        <!-- Tickets & Tools -->
+        <!-- Kategorie Tickets & Tools -->
         <section class="command-section" data-category="tickets">
             <button class="accordion-toggle" type="button" aria-expanded="false">Tickets & Tools</button>
             <div class="accordion-panel">
@@ -100,7 +100,7 @@
             </div>
         </section>
 
-        <!-- Fun -->
+        <!-- Kategorie Fun -->
         <section class="command-section" data-category="fun">
             <button class="accordion-toggle" type="button" aria-expanded="false">Fun</button>
             <div class="accordion-panel">
@@ -114,34 +114,31 @@
             </div>
         </section>
 
-        <!-- ... weitere Kategorien nach gleichem Muster ... -->
     </div>
 </main>
 
 <?php include 'includes/footer.php'; ?>
 
-<!-- Accordion + Suche -->
+<!-- Accordion + Suche Script -->
 <script>
-    // Accordion Funktion
+    // Accordion Funktion mit Animation
+    const toggleAccordion = (btn) => {
+        const panel = btn.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            // alle anderen schließen
+            document.querySelectorAll('.accordion-panel').forEach(p => p.style.maxHeight = null);
+            document.querySelectorAll('.accordion-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    };
+
     document.querySelectorAll('.accordion-toggle').forEach(btn => {
-        btn.addEventListener('click', function () {
-            // Schließe andere Panels
-            document.querySelectorAll('.accordion-panel').forEach(panel => {
-                if(panel !== btn.nextElementSibling) panel.style.display = 'none';
-            });
-            document.querySelectorAll('.accordion-toggle').forEach(b => {
-                if(b !== btn) b.setAttribute('aria-expanded', 'false');
-            });
-            // Toggle aktuelles
-            const panel = btn.nextElementSibling;
-            if(panel.style.display === "block") {
-                panel.style.display = "none";
-                btn.setAttribute('aria-expanded', 'false');
-            } else {
-                panel.style.display = "block";
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        });
+        btn.addEventListener('click', () => toggleAccordion(btn));
     });
 
     // Command Suche
@@ -154,10 +151,10 @@
                 entry.style.display = match ? '' : 'none';
                 if (match) visible = true;
             });
-            // Kategorie nur anzeigen, wenn darunter ein Eintrag matcht oder Suchfeld leer
+            // Kategorie nur anzeigen wenn Treffer oder Suche leer
             section.style.display = (visible || !val) ? '' : 'none';
-            // Optional: Panel öffnen, wenn Treffer in Kategorie, sonst zu
-            section.querySelector('.accordion-panel').style.display = (visible && val) ? 'block' : 'none';
+            // Panel öffnen wenn Treffer sonst zu
+            section.querySelector('.accordion-panel').style.maxHeight = (visible && val) ? section.querySelector('.accordion-panel').scrollHeight + "px" : null;
             section.querySelector('.accordion-toggle').setAttribute('aria-expanded', (visible && val) ? 'true' : 'false');
         });
     });

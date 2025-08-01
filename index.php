@@ -15,7 +15,7 @@
 <!-- HEADER -->
 <header class="astra-header">
     <div class="astra-header-inner">
-        <a href="/index.php" class="astra-logo">
+        <a href="https://astra-bot.de/" class="astra-logo">
             <img src="/public/favicon_transparent.png" alt="Astra Logo">
             <span class="astra-logo-text">Astra <span>Bot</span></span>
         </a>
@@ -119,7 +119,7 @@
                 <li>Tickets, ReactionRole, Joinrole</li>
                 <li>Willkommensnachrichten & Infos</li>
             </ul>
-            <a href="/commands.php" class="about-link">Alle Features entdecken</a>
+            <a href="https://astra-bot.de/commands" class="about-link">Alle Features entdecken</a>
         </div>
     </section>
 
