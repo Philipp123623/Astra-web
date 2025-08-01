@@ -6,7 +6,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding-top: env(safe-area-inset-top, 0px);
     background: linear-gradient(120deg, #221c50 0%, #2a2463 90%, #33ccd7 200%);
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
@@ -41,7 +41,7 @@ a:hover { color: #ffd799; }
 
 .astra-header {
     position: sticky;
-    top: 0;
+    top: env(safe-area-inset-top, 0px);
     width: 100%;
     z-index: 50;
     background: rgba(28, 18, 80, 0.87);
