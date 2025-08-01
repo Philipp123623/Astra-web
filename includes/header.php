@@ -6,11 +6,11 @@
         </a>
         <nav class="astra-navbar">
             <ul>
-                <li><a href="/index.php" class="nav-link">Home</a></li>
-                <li><a href="/index.php#stats" class="nav-link">Stats</a></li>
-                <li><a href="/index.php#about" class="nav-link scrollto">About</a></li>
-                <li><a href="/index.php#features" class="nav-link scrollto">Features</a></li>
-                <li><a href="/index.php#faq" class="nav-link scrollto">FAQ</a></li>
+                <li><a href="https://astra-bot.de/" class="nav-link">Home</a></li>
+                <li><a href="https://astra-bot.de/#stats" class="nav-link">Stats</a></li>
+                <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
+                <li><a href="https://astra-bot.de/#eatures" class="nav-link scrollto">Features</a></li>
+                <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
                 <li><a href="/commands.php" class="nav-link">Commands</a></li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>

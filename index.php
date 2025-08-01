@@ -21,11 +21,11 @@
         </a>
         <nav class="astra-navbar">
             <ul>
-                <li><a href="#hero" class="nav-link scrollto">Home</a></li>
-                <li><a href="#stats" class="nav-link scrollto">Stats</a></li>
-                <li><a href="#about" class="nav-link scrollto">About</a></li>
-                <li><a href="#features" class="nav-link scrollto">Features</a></li>
-                <li><a href="#faq" class="nav-link scrollto">FAQ</a></li>
+                <li><a href="https://astra-bot.de/#hero" class="nav-link scrollto">Home</a></li>
+                <li><a href="https://astra-bot.de/#stats" class="nav-link scrollto">Stats</a></li>
+                <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
+                <li><a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a></li>
+                <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
                 <li><a href="/commands.php" class="nav-link">Commands</a></li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
