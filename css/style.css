@@ -63,35 +63,107 @@ a:hover { color: #ffd799; }
 }
 .astra-logo-text span { color: #65e6ce; font-weight: 900; }
 
-.astra-navbar ul {
-    display: flex; gap: 32px; align-items: center;
-    margin: 0; padding: 0; list-style: none;
+/* =========================
+   HEADER STYLES
+   ========================= */
+
+.astra-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(28, 18, 80, 0.87);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 2px 24px #65e6ce23;
 }
+
+.astra-header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    padding: 0 38px;
+}
+
+.astra-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.astra-logo img {
+    height: 45px;
+    width: 45px;
+    border-radius: 12px;
+    background: #18103d;
+    box-shadow: 0 1px 12px #65e6ce33;
+}
+
+.astra-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.57em;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.astra-logo-text span {
+    color: #65e6ce;
+    font-weight: 900;
+}
+
+.astra-navbar ul {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .nav-link {
-    color: #e4eaff; text-decoration: none;
-    font-weight: 800; font-size: 1.13em; padding: 10px 0;
-    background: none; border: none;
+    color: #e4eaff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.13em;
+    padding: 10px 0;
+    background: none;
+    border: none;
     transition: color 0.14s;
     border-radius: 8px;
     position: relative;
 }
-.nav-link.active, .nav-link:focus, .nav-link:hover { color: #65e6ce; }
+
+.nav-link.active,
+.nav-link:focus,
+.nav-link:hover {
+    color: #65e6ce;
+}
+
 .nav-btn {
     background: linear-gradient(90deg, #65e6ce, #a7c8fd 80%);
-    color: #223254; font-weight: 900;
+    color: #223254;
+    font-weight: 900;
     font-size: 1.13em;
     padding: 10px 26px;
     border-radius: 15px;
     margin-left: 13px;
     text-decoration: none;
     box-shadow: 0 2px 14px #5de8ff33;
-    transition: filter .14s, box-shadow .14s;
-    border: none; outline: none;
+    transition: filter 0.14s, box-shadow 0.14s;
+    border: none;
+    outline: none;
 }
+
 .nav-btn:hover {
     filter: brightness(0.97);
     box-shadow: 0 6px 24px #65e6ce38;
 }
+
+/* Hamburger Icon (Standard versteckt) */
 .astra-nav-toggle {
     display: none;
     flex-direction: column;
@@ -99,39 +171,35 @@ a:hover { color: #ffd799; }
     margin-left: 22px;
     cursor: pointer;
 }
+
 .astra-nav-toggle span {
-    width: 28px; height: 4px; border-radius: 3px;
-    background: #65e6ce; display: block;
-    transition: all .22s cubic-bezier(.61,.04,.18,1.13);
+    width: 28px;
+    height: 4px;
+    border-radius: 3px;
+    background: #65e6ce;
+    display: block;
+    transition: all 0.22s cubic-bezier(0.61, 0.04, 0.18, 1.13);
 }
+
 .astra-nav-mobile-overlay {
     display: none;
 }
 
-/* 1. Standard: Hamburger-Icon verstecken (Desktop) */
-.astra-nav-toggle {
-    display: none;
-}
-
-/* 2. Standard: Menü als Liste horizontal (Desktop) */
-.astra-navbar ul {
-    display: flex;
-    gap: 32px;
-}
-
-/* 3. Mobil (max 900px breit): Menü verstecken, Hamburger zeigen */
+/* ========== Responsive Styles ========== */
 @media (max-width: 900px) {
-    /* Hamburger rechts fixieren */
+    /* Hamburger Icon anzeigen und fixieren rechts oben */
     .astra-nav-toggle {
+        display: flex;
         position: fixed;
         top: 16px;
         right: 16px;
         z-index: 101;
-        margin-left: 0; /* entfernt linken margin */
+        margin-left: 0; /* Linken Margin entfernen */
     }
 
     /* Navbar als Side-Drawer rechts */
     .astra-navbar ul {
+        display: none; /* Standard verstecken */
         position: fixed;
         top: 60px;
         right: 0;
@@ -141,9 +209,16 @@ a:hover { color: #ffd799; }
         padding: 20px;
         box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
         overflow-y: auto;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    /* Header-Inner flex Anpassung für entspannte mobile Ansicht */
+    /* Menü sichtbar, wenn body die Klasse .nav-open hat */
+    body.nav-open .astra-navbar ul {
+        display: flex;
+    }
+
+    /* Header-Inhalt flex anpassen für mobile */
     .astra-header-inner {
         padding: 0 12px;
         height: 56px;
@@ -161,12 +236,8 @@ a:hover { color: #ffd799; }
         font-weight: 700;
         padding: 12px 0;
     }
-
-    /* Menü sichtbar wenn .nav-open auf body */
-    body.nav-open .astra-navbar ul {
-        display: flex;
-    }
 }
+
 
 /* ===================
       HERO SECTION
