@@ -321,6 +321,29 @@ if (file_exists($historyFile)) {
             .stats-box-row { flex-direction: column; gap: 10px;}
             .stat-box { padding: 12px 2px 9px 2px; border-radius: 14px;}
         }
+        .uptime-tooltip-close {
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #8eead7;
+            font-size: 1.38em;
+            cursor: pointer;
+            z-index: 5;
+            font-family: inherit;
+            padding: 0;
+            line-height: 1;
+            opacity: 0.77;
+            transition: opacity 0.2s;
+        }
+        .uptime-tooltip-close:hover {
+            opacity: 1;
+            color: #ff7272;
+        }
+        @media (max-width:700px) {
+            .uptime-tooltip-close { display:block !important; }
+        }
     </style>
 </head>
 <body>
@@ -367,9 +390,9 @@ if (file_exists($historyFile)) {
         </div>
         <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = ~10min</div>
 
-        <!-- Tooltip Element (wird von JS gefüllt) -->
         <div id="uptime-tooltip" style="display:none;">
             <div class="uptime-tooltip-bubble">
+                <button type="button" class="uptime-tooltip-close" style="display:none;" aria-label="Schließen">&times;</button>
                 <div class="uptime-tooltip-content"></div>
                 <div class="uptime-tooltip-arrow"></div>
             </div>
@@ -402,6 +425,8 @@ if (file_exists($historyFile)) {
         const bars = document.querySelectorAll('.uptime-bar-row .uptime-bar');
         const tooltip = document.getElementById('uptime-tooltip');
         const tooltipContent = tooltip.querySelector('.uptime-tooltip-content');
+        const closeBtn = tooltip.querySelector('.uptime-tooltip-close');
+        let tooltipPermanent = false; // Merker ob mobil dauerhaft angezeigt
 
         function getUptimePercent(idx) {
             let count = 0, online = 0;
@@ -413,7 +438,7 @@ if (file_exists($historyFile)) {
             return count > 0 ? Math.round((online/count)*100) : 0;
         }
 
-        function showTooltip(bar, idx) {
+        function showTooltip(bar, idx, isPermanent=false) {
             const status = bar.dataset.status;
             const time = bar.dataset.time;
             const upPercent = getUptimePercent(idx);
@@ -425,46 +450,71 @@ if (file_exists($historyFile)) {
         `;
             tooltip.style.display = 'block';
 
-            // Positioniere die Sprechblase mittig über dem Balken, Arrow zeigt auf Balken
+            // Show close button only for touch
+            if(isPermanent) {
+                closeBtn.style.display = "block";
+                tooltipPermanent = true;
+            } else {
+                closeBtn.style.display = "none";
+                tooltipPermanent = false;
+            }
+
+            // Positioniere die Sprechblase mittig über dem Balken
             const rect = bar.getBoundingClientRect();
             const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
-            setTimeout(() => { // Wait for DOM paint
+            setTimeout(() => {
                 const bubbleRect = bubble.getBoundingClientRect();
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
                 const scrollX = window.scrollX || document.documentElement.scrollLeft;
-
-                // Tooltip mittig zum Balken, knapp drüber
                 let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
                 let top = rect.top + scrollY - bubbleRect.height - 13;
-
-                // Optional: Begrenzung am Rand
                 left = Math.max(7, Math.min(left, window.innerWidth - bubbleRect.width - 7));
-
                 tooltip.style.left = left + "px";
                 tooltip.style.top = top + "px";
             }, 1);
         }
 
         bars.forEach((bar, idx) => {
+            // Desktop Hover
             bar.addEventListener('mouseenter', function() {
-                showTooltip(bar, idx);
+                if(window.innerWidth > 700 && !tooltipPermanent) showTooltip(bar, idx);
             });
             bar.addEventListener('mouseleave', function() {
-                tooltip.style.display = 'none';
+                if(window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
+            });
+
+            // Mobile Touch
+            bar.addEventListener('touchstart', function(e) {
+                showTooltip(bar, idx, true); // Permanent anzeigen, Button sichtbar
+                e.preventDefault();
+                e.stopPropagation();
             });
         });
 
-        // Für Touch-Support (Mobile)
-        bars.forEach((bar, idx) => {
-            bar.addEventListener('touchstart', function(e) {
-                showTooltip(bar, idx);
-                e.preventDefault();
-            });
-            bar.addEventListener('touchend', function() {
+        // Schließen-Button
+        closeBtn.addEventListener('click', function(e) {
+            tooltip.style.display = 'none';
+            tooltipPermanent = false;
+            e.stopPropagation();
+        });
+
+        // Klick außerhalb des Tooltips (nur bei permanent/Touch)
+        document.addEventListener('touchstart', function(e) {
+            if(tooltipPermanent && !tooltip.contains(e.target)) {
                 tooltip.style.display = 'none';
-            });
+                tooltipPermanent = false;
+            }
+        });
+
+        // Klick außerhalb mit Maus (optional)
+        document.addEventListener('mousedown', function(e) {
+            if(tooltipPermanent && !tooltip.contains(e.target)) {
+                tooltip.style.display = 'none';
+                tooltipPermanent = false;
+            }
         });
     });
+
 </script>
 <script>
     const navToggle = document.querySelector('.astra-nav-toggle');
