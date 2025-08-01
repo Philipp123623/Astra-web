@@ -9,6 +9,7 @@
             <a href="https://astra-bot.de/features">Features</a>
             <a href="https://astra-bot.de/commands">Commands</a>
             <a href="https://astra-bot.de/#faq">FAQ</a>
+            <a href="https://astra-bot.de/status">Status</a>
             <a href="https://astra-bot.de/support">Support</a>
             <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
         </div>

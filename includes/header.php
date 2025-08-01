@@ -12,6 +12,7 @@
                 <li><a href="https://astra-bot.de/#eatures" class="nav-link scrollto">Features</a></li>
                 <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
                 <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
+                <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
             <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
