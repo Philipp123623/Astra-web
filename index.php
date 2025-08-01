@@ -229,7 +229,7 @@ if ($result->num_rows > 0) {
         <div class="footer-links">
             <a href="https://astra-bot.de/#about">Über Astra</a>
             <a href="https://astra-bot.de/#features">Features</a>
-            <a href="https://astra-bot.de/commands.php">Commands</a>
+            <a href="https://astra-bot.de/commands">Commands</a>
             <a href="https://astra-bot.de/#faq">FAQ</a>
             <a href="https://astra-bot.de/support">Support</a>
             <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
