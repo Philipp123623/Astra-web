@@ -172,7 +172,10 @@ a:hover { color: #ffd799; }
     }
 
     /* Fokus- und aktiver Zustand für Hamburger Linien */
-    .astra-nav-toggle:focus span,
+    .astra-nav-toggle:focus span {
+        background-color: #ffffff !important; /* Immer weiß */
+        outline: none;
+    },
     .astra-nav-toggle:active span {
         background-color: #65e6ce; /* Passender Türkis-Farbton */
     }
