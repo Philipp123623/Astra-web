@@ -350,12 +350,15 @@ a:hover { color: #ffd799; }
     transition: color 0.12s;
 }
 .faq-answer {
-    max-height: 0; opacity: 0; overflow: hidden;
-    transition: max-height .25s, opacity .15s;
-    padding: 0 25px; font-size: 1em; color: #e9fefd;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
+
 .faq-item.open .faq-answer {
-    max-height: 300px; opacity: 1; padding-bottom: 18px;
+    max-height: 200px; /* oder ein Wert, der die Antwort komplett zeigen kann */
+    opacity: 1;
 }
 
 /* MEDIA QUERIES */

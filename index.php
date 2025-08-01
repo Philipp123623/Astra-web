@@ -252,7 +252,17 @@ if ($result->num_rows > 0) {
 <script>
     document.querySelectorAll('.faq-question').forEach(q =>
         q.addEventListener('click', function() {
-            this.parentElement.classList.toggle('open');
+            const faqItem = this.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            if (faqItem.classList.contains('open')) {
+                // Zu machen
+                answer.style.maxHeight = null;
+                faqItem.classList.remove('open');
+            } else {
+                // Aufmachen
+                faqItem.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
         })
     );
 </script>
