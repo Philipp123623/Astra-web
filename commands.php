@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 <body>
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <main>
     <h1 class="headline">Astra Bot – Command Übersicht</h1>
@@ -118,7 +118,7 @@
     </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
 
 <!-- Accordion + Suche -->
 <script>

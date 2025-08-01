@@ -7,10 +7,10 @@
         <div class="footer-links">
             <a href="https://astra-bot.de/#about">Über Astra</a>
             <a href="https://astra-bot.de/features">Features</a>
-            <a href="/commands.php">Commands</a>
+            <a href="https://astra-bot.de/commands">Commands</a>
             <a href="https://astra-bot.de/#faq">FAQ</a>
-            <a href="/support.php">Support</a>
-            <a href="/invite.php" class="footer-btn">Bot einladen</a>
+            <a href="https://astra-bot.de/support">Support</a>
+            <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
         </div>
         <div class="footer-social">
             <a href="https://github.com/" target="_blank" title="GitHub"><img src="/public/github-icon.svg" alt="GitHub"></a>

@@ -26,8 +26,8 @@
                 <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
                 <li><a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a></li>
                 <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="/commands.php" class="nav-link">Commands</a></li>
-                <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
+                <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
+                <li><a href="https://astra-bot.de/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
             <div class="astra-nav-toggle" onclick="document.body.classList.toggle('nav-open')">
                 <span></span><span></span><span></span>
@@ -174,12 +174,12 @@
             <span>Astra <span>Bot</span></span>
         </div>
         <div class="footer-links">
-            <a href="/index.php#about">Über Astra</a>
-            <a href="/index.php#features">Features</a>
-            <a href="/commands.php">Commands</a>
-            <a href="/index.php#faq">FAQ</a>
-            <a href="/support.php">Support</a>
-            <a href="/invite.php" class="footer-btn">Bot einladen</a>
+            <a href="https://astra-bot.de/#about">Über Astra</a>
+            <a href="https://astra-bot.de/#features">Features</a>
+            <a href="https://astra-bot.de/commands.php">Commands</a>
+            <a href="https://astra-bot.de/#faq">FAQ</a>
+            <a href="https://astra-bot.de/support">Support</a>
+            <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
         </div>
         <div class="footer-social">
             <a href="https://github.com/" target="_blank" title="GitHub">
