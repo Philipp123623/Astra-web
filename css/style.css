@@ -169,7 +169,7 @@ a:hover { color: #ffd799; }
 
     /* Hover */
     .astra-nav-toggle:hover span {
-        background-color: #1b3447; /* dunkler/blau */
+        background-color: #65e6ce; /* türkis */
     }
 
     .astra-nav-toggle:focus {
