@@ -14,9 +14,7 @@
                 <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
-            <div class="astra-nav-toggle" onclick="document.body.classList.toggle('nav-open')">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
         </nav>
     </div>
     <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>

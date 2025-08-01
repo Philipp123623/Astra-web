@@ -82,9 +82,7 @@ if ($result->num_rows > 0) {
                 <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
                 <li><a href="https://astra-bot.de/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
-            <div class="astra-nav-toggle" onclick="document.body.classList.toggle('nav-open')">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
         </nav>
     </div>
     <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
@@ -247,6 +245,12 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 </footer>
+
+<script>
+    document.querySelector('.astra-nav-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+    });
+</script>
 
 <!-- FAQ Dropdown Script -->
 <script>

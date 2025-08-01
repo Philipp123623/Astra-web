@@ -243,6 +243,11 @@
         });
     });
 </script>
+<script>
+    document.querySelector('.astra-nav-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+    });
+</script>
 
 </body>
 </html>

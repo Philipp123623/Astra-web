@@ -12,6 +12,7 @@ html, body {
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 main {
@@ -120,23 +121,47 @@ a:hover { color: #ffd799; }
 
 /* 3. Mobil (max 900px breit): Menü verstecken, Hamburger zeigen */
 @media (max-width: 900px) {
+    /* Hamburger rechts fixieren */
     .astra-nav-toggle {
-        display: flex;  /* Hamburger anzeigen */
-        cursor: pointer;
-    }
-    .astra-navbar ul {
-        display: none; /* Menü verstecken */
-        flex-direction: column;
-        gap: 10px;
-        background: #251f5b;  /* Beispiel Hintergrund */
         position: fixed;
-        top: 68px;  /* Direkt unter Header */
-        right: 0;
-        width: 200px;
-        height: calc(100vh - 68px);
-        padding: 20px;
-        box-shadow: -4px 0 12px rgba(0,0,0,0.3);
+        top: 16px;
+        right: 16px;
+        z-index: 101;
+        margin-left: 0; /* entfernt linken margin */
     }
+
+    /* Navbar als Side-Drawer rechts */
+    .astra-navbar ul {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        height: calc(100vh - 60px);
+        background: #251f5b;
+        padding: 20px;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+    }
+
+    /* Header-Inner flex Anpassung für entspannte mobile Ansicht */
+    .astra-header-inner {
+        padding: 0 12px;
+        height: 56px;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    /* Menüitems größer und zentriert */
+    .astra-navbar ul li {
+        text-align: center;
+    }
+
+    .astra-navbar ul li a {
+        font-size: 1.2em;
+        font-weight: 700;
+        padding: 12px 0;
+    }
+
     /* Menü sichtbar wenn .nav-open auf body */
     body.nav-open .astra-navbar ul {
         display: flex;
