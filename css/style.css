@@ -162,14 +162,16 @@ a:hover { color: #ffd799; }
     .astra-nav-toggle span {
         display: block;
         height: 3px;
-        background-color: #ffffff;
+        background-color: #ffffff; /* Standard weiß */
         border-radius: 1.5px;
         transition: background-color 0.3s ease;
     }
 
+    /* Hover */
     .astra-nav-toggle:hover span {
-        background-color: #1b3447;
+        background-color: #1b3447; /* dunkler/blau */
     }
+
     .astra-nav-toggle:focus {
         outline: none; /* Um Fokusrahmen zu entfernen */
         background-color: transparent; /* Verhindert weiße Farbe */
@@ -182,8 +184,9 @@ a:hover { color: #ffd799; }
 
     /* Fokus- und aktiver Zustand für Hamburger Linien */
     .astra-nav-toggle:focus span,
+        /* Pressed (active Pseudo) */
     .astra-nav-toggle:active span {
-        background-color: #65e6ce; /* Passender Türkis-Farbton */
+        background-color: #65e6ce; /* türkis beim Drücken */
     }
 
     /* Navbar als Side-Drawer rechts */
