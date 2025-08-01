@@ -179,7 +179,7 @@
                 if (match) visible = true;
             });
 
-            // Sektion ausblenden, wenn kein Treffer und Suche nicht leer
+            // Sektion ein- oder ausblenden
             section.style.display = (visible || !val) ? '' : 'none';
 
             const panel = section.querySelector('.accordion-panel');
@@ -191,11 +191,13 @@
                 toggleBtn.setAttribute('aria-expanded', 'true');
                 toggleBtn.classList.add('open');
             } else if (!val) {
+                // Suche leer → alles zu
                 panel.style.display = 'none';
                 panel.style.maxHeight = null;
                 toggleBtn.setAttribute('aria-expanded', 'false');
                 toggleBtn.classList.remove('open');
             } else {
+                // Suche aktiv aber kein Treffer → alles zu
                 panel.style.display = 'none';
                 panel.style.maxHeight = null;
                 toggleBtn.setAttribute('aria-expanded', 'false');
@@ -220,17 +222,23 @@
                     section.style.display = 'none';
                 }
 
-                // Panel schließen beim Filterwechsel
+                // Panels schließen nur, wenn die Sektion nicht sichtbar ist
                 const panel = section.querySelector('.accordion-panel');
                 const toggleBtn = section.querySelector('.accordion-toggle');
-                panel.style.display = 'none';
-                panel.style.maxHeight = null;
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                toggleBtn.classList.remove('open');
+
+                if (section.style.display === 'none') {
+                    panel.style.display = 'none';
+                    panel.style.maxHeight = null;
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.classList.remove('open');
+                }
             });
 
             // Suche zurücksetzen bei Filter
-            document.getElementById('commandSearch').value = '';
+            const searchInput = document.getElementById('commandSearch');
+            if (searchInput.value) {
+                searchInput.value = '';
+            }
         });
     });
 </script>
