@@ -167,22 +167,22 @@ a:hover { color: #ffd799; }
 
 /* Hamburger Icon - mobil */
 @media (max-width: 900px) {
-    /* Hamburger rechts fixieren */
+    /* Hamburger-Button */
     .astra-nav-toggle {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        width: 36px;
-        height: 28px;
+        width: 40px;
+        height: 32px;
         background: linear-gradient(90deg, #65e6ce, #a7c8fd);
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(101, 230, 206, 0.6);
-        padding: 6px 0;
+        padding: 6px 8px;
         cursor: pointer;
         position: fixed;
         top: 16px;
         right: 16px;
-        z-index: 101;
+        z-index: 110;
         transition: background 0.3s ease;
     }
 
@@ -193,11 +193,15 @@ a:hover { color: #ffd799; }
 
     .astra-nav-toggle span {
         display: block;
-        height: 3.5px;
-        border-radius: 5px;
+        height: 4px;
+        border-radius: 4px;
         background-color: #223254;
-        margin: 0 8px;
+        margin: 0 0 6px 0;
         transition: background-color 0.3s ease;
+    }
+
+    .astra-nav-toggle span:last-child {
+        margin-bottom: 0;
     }
 
     .astra-nav-toggle:hover span {
