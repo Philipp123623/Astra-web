@@ -5,7 +5,7 @@
     <title>Astra | Commands</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=2.0">
+    <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 <body>
 <?php include 'header.php'; ?>

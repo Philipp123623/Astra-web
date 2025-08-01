@@ -16,7 +16,7 @@
 <header class="astra-header">
     <div class="astra-header-inner">
         <a href="/index.php" class="astra-logo">
-            <img src="/public/logo.png" alt="Astra Logo">
+            <img src="/public/favicon_transparent.png" alt="Astra Logo">
             <span class="astra-logo-text">Astra <span>Bot</span></span>
         </a>
         <nav class="astra-navbar">
@@ -26,7 +26,7 @@
                 <li><a href="#about" class="nav-link scrollto">About</a></li>
                 <li><a href="#features" class="nav-link scrollto">Features</a></li>
                 <li><a href="#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="/includes/commands.php" class="nav-link">Commands</a></li>
+                <li><a href="/commands.php" class="nav-link">Commands</a></li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
             <div class="astra-nav-toggle" onclick="document.body.classList.toggle('nav-open')">
@@ -176,7 +176,7 @@
         <div class="footer-links">
             <a href="/index.php#about">Über Astra</a>
             <a href="/index.php#features">Features</a>
-            <a href="/includes/commands.php">Commands</a>
+            <a href="/commands.php">Commands</a>
             <a href="/index.php#faq">FAQ</a>
             <a href="/support.php">Support</a>
             <a href="/invite.php" class="footer-btn">Bot einladen</a>

@@ -7,7 +7,7 @@
         <div class="footer-links">
             <a href="/index.php#about">Über Astra</a>
             <a href="/index.php#features">Features</a>
-            <a href="/includes/commands.php">Commands</a>
+            <a href="/commands.php">Commands</a>
             <a href="/index.php#faq">FAQ</a>
             <a href="/support.php">Support</a>
             <a href="/invite.php" class="footer-btn">Bot einladen</a>
