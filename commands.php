@@ -133,6 +133,8 @@
     </div>
 </main>
 
+<?php include 'includes/footer.php'; ?>
+
 <script>
     // Accordion Funktion mit Animation
     const toggleAccordion = (btn) => {
