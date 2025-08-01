@@ -37,7 +37,8 @@ a:hover { color: #ffd799; }
 ::-webkit-scrollbar-thumb { background: #362897; border-radius: 6px; }
 ::selection { background: #72ffe2; color: #2a2463; }
 
-/* HEADER */
+/* ========== HEADER & NAVBAR ========== */
+
 .astra-header {
     position: sticky;
     top: 0;
@@ -48,7 +49,6 @@ a:hover { color: #ffd799; }
     box-shadow: 0 2px 24px #65e6ce23;
 }
 
-/* ---- DESKTOP STYLES ---- */
 .astra-header-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -87,7 +87,7 @@ a:hover { color: #ffd799; }
     font-weight: 900;
 }
 
-/* --- Hauptnavbar Desktop --- */
+/* --- Navbar Desktop --- */
 .astra-navbar ul {
     display: flex;
     gap: 32px;
@@ -143,13 +143,13 @@ a:hover { color: #ffd799; }
     box-shadow: 0 6px 24px #65e6ce38;
 }
 
-/* Hamburger ausblenden auf Desktop */
+/* Hamburger und Overlay auf Desktop verstecken */
 .astra-nav-toggle,
 .astra-nav-mobile-overlay {
     display: none;
 }
 
-/* ---- MOBILE STYLES ---- */
+/* ========== MOBILE STYLES ========== */
 @media (max-width: 900px) {
     .astra-header-inner {
         padding: 0 16px;
@@ -157,6 +157,7 @@ a:hover { color: #ffd799; }
         gap: 0;
     }
 
+    /* Navbar als Drawer */
     .astra-navbar ul {
         display: none;
         position: fixed;
@@ -175,11 +176,11 @@ a:hover { color: #ffd799; }
         overflow-y: auto;
         margin: 0;
     }
-
     body.nav-open .astra-navbar ul {
         display: flex !important;
     }
 
+    /* Burger-Menü Button */
     .astra-nav-toggle {
         display: flex;
         flex-direction: column;
@@ -209,6 +210,8 @@ a:hover { color: #ffd799; }
     .astra-nav-toggle:focus-visible {
         outline: 2px solid #65e6ce;
     }
+
+    /* Overlay für Drawer */
     .astra-nav-mobile-overlay {
         display: block;
         position: fixed;
@@ -217,6 +220,8 @@ a:hover { color: #ffd799; }
         z-index: 110;
         transition: opacity .22s;
     }
+
+    /* Menüpunkt-Styles Mobile */
     .astra-navbar ul li {
         text-align: center;
     }
@@ -233,9 +238,6 @@ a:hover { color: #ffd799; }
         font-size: 1.08em;
     }
 }
-
-
-
 
 /* ===================
       HERO SECTION
