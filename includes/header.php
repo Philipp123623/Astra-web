@@ -22,5 +22,4 @@
             <span></span>
         </button>
     </div>
-    <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
 </header>
