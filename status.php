@@ -324,3 +324,12 @@ if (file_exists($historyFile)) {
 <?php include 'includes/footer.php'; ?>
 </body>
 </html>
+<script>
+    const navToggle = document.querySelector('.astra-nav-toggle');
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+        // aria-expanded toggle
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+    });
+</script>
