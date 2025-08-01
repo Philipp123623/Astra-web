@@ -2,7 +2,7 @@
     <div class="astra-footer-inner">
         <div class="footer-logo">
             <img src="/public/favicon_transparent.png" alt="Astra Logo">
-            <span>Astra <span>Bot</span></span>
+            <span>Astra <span>Bot</span>
         </div>
         <div class="footer-links">
             <a href="https://astra-bot.de/#about">Über Astra</a>
