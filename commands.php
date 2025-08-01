@@ -121,6 +121,8 @@
 
 <!-- Accordion + Suche Script -->
 <script>
+    console.log('Script läuft');
+    console.log('Buttons gefunden:', document.querySelectorAll('.accordion-toggle').length);
     // Accordion Funktion mit Animation
     const toggleAccordion = (btn) => {
         const panel = btn.nextElementSibling;
