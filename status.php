@@ -52,13 +52,27 @@ try {
     }
 } catch (Exception $e) {}
 
-function agoText($ts) {
-    if (!$ts) return "-";
-    $diff = time() - $ts;
-    if ($diff < 90) return "gerade eben";
-    if ($diff < 3600) return round($diff/60) . " Min.";
-    if ($diff < 86400) return round($diff/3600) . " Std.";
-    return date("d.m.Y H:i", $ts);
+// --------- Bot-Uptime-Chart-Logging ---------
+$historyFile = __DIR__ . '/status_history_bot.txt';
+$now = time();
+$bot_status_now = $bot_online ? "1" : "0";
+file_put_contents($historyFile, $now . ':' . $bot_status_now . "\n", FILE_APPEND | LOCK_EX);
+
+// Maximal 144 Einträge (alle 10min = 24h)
+$lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+if (count($lines) > 144) {
+    $lines = array_slice($lines, -144);
+    file_put_contents($historyFile, implode("\n", $lines));
+}
+// History für Anzeige (letzte 12h → 72 Einträge)
+$history = [];
+if (file_exists($historyFile)) {
+    $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $lines = array_slice($lines, -72); // 12h bei 10min Intervall
+    foreach ($lines as $line) {
+        list($ts, $st) = explode(":", $line);
+        $history[] = intval($st);
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -82,7 +96,7 @@ function agoText($ts) {
         }
         .astra-status-main {
             flex: 1;
-            min-height: 540px;
+            min-height: 560px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -97,33 +111,38 @@ function agoText($ts) {
         .astra-status-card {
             position: relative;
             z-index: 2;
-            max-width: 510px;
-            width: 97vw;
-            margin: 40px auto 36px auto;
-            padding: 38px 26px 30px 26px;
-            border-radius: 38px;
-            background: linear-gradient(135deg, #241d50 0%, #2e265a 78%, #3fd6dd 230%);
-            box-shadow: 0 8px 44px 0 #21303f22, 0 2px 20px 0 #65e6ce11;
+            max-width: 540px;
+            width: 98vw;
+            margin: 40px auto;
+            padding: 42px 24px 36px 24px;
+            border-radius: 36px;
+            background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
+            box-shadow: 0 8px 44px 0 #21303f2e, 0 2px 20px 0 #65e6ce12;
             text-align: center;
             overflow: hidden;
         }
         .astra-status-card h1 {
-            font-size: 2.13rem;
-            font-weight: 800;
+            font-size: 2.1rem;
+            font-weight: 900;
             color: #65e6ce;
-            margin-bottom: 22px;
-            text-shadow: 0 1px 16px #251f5b33;
+            margin-bottom: 17px;
+            text-shadow: 0 1px 18px #251f5b38;
             letter-spacing: 0.03em;
+        }
+        .status-list {
+            margin-bottom: 25px;
         }
         .status-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 0 0 19px 0;
-            padding: 0 5px;
-            font-size: 1.14rem;
+            margin: 0 0 14px 0;
+            padding: 0 7px;
+            font-size: 1.13rem;
             font-weight: 600;
+            border-bottom: 1.2px solid #30437055;
         }
+        .status-row:last-child { border: none; }
         .status-label {
             display: flex;
             align-items: center;
@@ -131,16 +150,16 @@ function agoText($ts) {
         }
         .status-badge {
             display: inline-block;
-            min-width: 92px;
+            min-width: 89px;
             font-weight: bold;
-            padding: 9px 0;
+            padding: 8px 0;
             border-radius: 18px;
-            font-size: 1.09rem;
+            font-size: 1.07rem;
             letter-spacing: 0.03em;
             box-shadow: 0 1px 12px 0 #42eaaf22;
             background: #292659;
             color: #d8ffef;
-            border: 2.3px solid #65e6ce38;
+            border: 2px solid #65e6ce38;
             transition: background .15s, color .17s, border .17s;
             position: relative;
         }
@@ -166,34 +185,64 @@ function agoText($ts) {
             box-shadow: 0 0 0 3px #ffe4792e;
         }
         .status-icon {
-            font-size: 1.24em;
-            margin-right: 7px;
+            font-size: 1.19em;
+            margin-right: 8px;
+        }
+        .uptime-chart-title {
+            font-size: 1.05rem;
+            margin: 25px 0 5px 0;
+            color: #90e3e7;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+        .uptime-bar-row {
+            display: flex;
+            gap: 2px;
+            justify-content: center;
+            align-items: end;
+            height: 20px;
+            margin-bottom: 8px;
+        }
+        .uptime-bar {
+            width: 7px;
+            height: 16px;
+            border-radius: 4px;
+            background: #3a5255;
+            opacity: 0.42;
+            transition: background .18s, opacity .18s;
+        }
+        .uptime-bar.online { background: #65e6ce; opacity: 1; }
+        .uptime-bar.offline { background: #ff7272; opacity: .85;}
+        .uptime-legend {
+            font-size: 0.89rem;
+            color: #b1cde3;
+            margin-bottom: 4px;
         }
         .stats-box-row {
             display: flex;
             justify-content: space-between;
-            gap: 18px;
-            margin: 27px 0 0 0;
+            gap: 19px;
+            margin: 25px 0 0 0;
         }
         .stat-box {
             flex: 1 1 25%;
             background: linear-gradient(127deg, #262364 0%, #23354b 100%);
-            border-radius: 18px;
-            padding: 16px 7px 13px 7px;
+            border-radius: 16px;
+            padding: 13px 4px 12px 4px;
             color: #c5fffd;
-            font-size: 1.02rem;
+            font-size: 1.01rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-shadow: 0 2px 13px 0 #3fd6dd0e;
         }
         .stat-head {
-            font-size: 0.96rem;
+            font-size: 0.97rem;
             color: #9cecff;
             margin-bottom: 2px;
         }
         .stat-num {
-            font-size: 1.43rem;
+            font-size: 1.35rem;
             color: #65e6ce;
             font-weight: 800;
             letter-spacing: 0.04em;
@@ -201,12 +250,12 @@ function agoText($ts) {
             margin-top: 4px;
         }
         @media (max-width: 700px) {
-            .astra-status-card { padding: 7vw 2vw 7vw 2vw; border-radius: 18px; }
+            .astra-status-card { padding: 7vw 2vw 7vw 2vw; border-radius: 17px; }
             .astra-status-card h1 { font-size: 1.13rem; }
             .status-row { font-size: 1.02rem; }
             .status-badge { min-width: 65px; font-size: 0.92rem; }
-            .stats-box-row { flex-direction: column; gap: 9px;}
-            .stat-box { padding: 13px 2px 10px 2px; border-radius: 14px;}
+            .stats-box-row { flex-direction: column; gap: 10px;}
+            .stat-box { padding: 12px 2px 9px 2px; border-radius: 14px;}
         }
     </style>
 </head>
@@ -224,19 +273,32 @@ function agoText($ts) {
     </div>
     <section class="astra-status-card">
         <h1>Service Status</h1>
-        <div class="status-row">
-            <span class="status-label"><span class="status-icon">🤖</span> Bot</span>
-            <span class="status-badge <?php echo $bot_online ? 'ok' : 'err'; ?>">
-                <?php echo $bot_online ? 'Online' : 'Offline'; ?>
-            </span>
+        <div class="status-list">
+            <div class="status-row">
+                <span class="status-label"><span class="status-icon">🤖</span> Bot</span>
+                <span class="status-badge <?php echo $bot_online ? 'ok' : 'err'; ?>">
+                    <?php echo $bot_online ? 'Online' : 'Offline'; ?>
+                </span>
+            </div>
+            <div class="status-row">
+                <span class="status-label"><span class="status-icon">🗄️</span> MySQL</span>
+                <span class="status-badge <?php echo $mysql_online ? 'ok' : 'err'; ?>">
+                    <?php echo $mysql_online ? 'Online' : 'Offline'; ?>
+                </span>
+            </div>
+            <!-- Weitere Dienste wie API, Webserver hier hinzufügen -->
         </div>
-        <div class="status-row">
-            <span class="status-label"><span class="status-icon">🗄️</span> MySQL</span>
-            <span class="status-badge <?php echo $mysql_online ? 'ok' : 'err'; ?>">
-                <?php echo $mysql_online ? 'Online' : 'Offline'; ?>
-            </span>
+
+        <div class="uptime-chart-title">Bot-Uptime Verlauf (letzte 12h)</div>
+        <div class="uptime-bar-row">
+            <?php
+            foreach ($history as $v) {
+                $class = $v ? 'online' : 'offline';
+                echo '<div class="uptime-bar '.$class.'"></div>';
+            }
+            ?>
         </div>
-        <!-- Weitere Checks wie API, Discord, Webserver... -->
+        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = ~10min</div>
 
         <div class="stats-box-row">
             <div class="stat-box">
