@@ -5,10 +5,10 @@
             <span>Astra <span>Bot</span></span>
         </div>
         <div class="footer-links">
-            <a href="/index.php#about">Über Astra</a>
-            <a href="/index.php#features">Features</a>
+            <a href="https://astra-bot.de/#about">Über Astra</a>
+            <a href="https://astra-bot.de/features">Features</a>
             <a href="/commands.php">Commands</a>
-            <a href="/index.php#faq">FAQ</a>
+            <a href="https://astra-bot.de/#faq">FAQ</a>
             <a href="/support.php">Support</a>
             <a href="/invite.php" class="footer-btn">Bot einladen</a>
         </div>
