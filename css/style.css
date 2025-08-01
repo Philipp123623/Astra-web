@@ -48,6 +48,7 @@ a:hover { color: #ffd799; }
     box-shadow: 0 2px 24px #65e6ce23;
 }
 
+/* ---- DESKTOP STYLES ---- */
 .astra-header-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -86,6 +87,7 @@ a:hover { color: #ffd799; }
     font-weight: 900;
 }
 
+/* --- Hauptnavbar Desktop --- */
 .astra-navbar ul {
     display: flex;
     gap: 32px;
@@ -93,6 +95,12 @@ a:hover { color: #ffd799; }
     margin: 0;
     padding: 0;
     list-style: none;
+    position: static;
+    background: none;
+    box-shadow: none;
+    height: auto;
+    width: auto;
+    flex-direction: row;
 }
 
 .nav-link {
@@ -127,6 +135,7 @@ a:hover { color: #ffd799; }
     transition: filter 0.14s, box-shadow 0.14s;
     border: none;
     outline: none;
+    display: inline-block;
 }
 
 .nav-btn:hover {
@@ -134,117 +143,98 @@ a:hover { color: #ffd799; }
     box-shadow: 0 6px 24px #65e6ce38;
 }
 
-/* Hamburger Icon - verstecken auf Desktop */
-.astra-nav-toggle {
+/* Hamburger ausblenden auf Desktop */
+.astra-nav-toggle,
+.astra-nav-mobile-overlay {
     display: none;
 }
 
-/* Desktop: Navbar immer sichtbar */
-@media (min-width: 901px) {
-    .astra-navbar ul {
-        display: flex !important;
-        position: static;
-        flex-direction: row;
-        height: auto;
-        width: auto;
-        background: transparent;
-        box-shadow: none;
-        padding: 0;
-        gap: 20px;
-    }
-}
-
-/* Hamburger Icon - mobil */
+/* ---- MOBILE STYLES ---- */
 @media (max-width: 900px) {
-    /* Hamburger Button */
+    .astra-header-inner {
+        padding: 0 16px;
+        height: 56px;
+        gap: 0;
+    }
+
+    .astra-navbar ul {
+        display: none;
+        position: fixed;
+        top: 56px;
+        right: 0;
+        width: 80vw;
+        max-width: 320px;
+        height: calc(100vh - 56px);
+        background: #251f5b;
+        box-shadow: -4px 0 14px #140b3666;
+        padding: 36px 18px 24px 18px;
+        flex-direction: column;
+        gap: 18px;
+        z-index: 120;
+        border-radius: 12px 0 0 12px;
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    body.nav-open .astra-navbar ul {
+        display: flex !important;
+    }
+
     .astra-nav-toggle {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 30px;
-        height: 22px;
-        cursor: pointer;
-        position: fixed;
-        top: 16px;
-        right: 16px;
-        z-index: 110;
-        background: transparent;
-        padding: 0;
+        width: 32px;
+        height: 23px;
+        background: none;
         border: none;
-        outline: none; /* Fokus-Rahmen entfernen */
+        position: fixed;
+        top: 13px;
+        right: 16px;
+        z-index: 150;
+        cursor: pointer;
+        padding: 0;
     }
-
     .astra-nav-toggle span {
         display: block;
         height: 3px;
-        background-color: #ffffff; /* Standard weiß */
-        border-radius: 1.5px;
-        transition: background-color 0.3s ease;
+        background: #fff;
+        border-radius: 2px;
+        width: 100%;
+        transition: background 0.2s;
     }
-
-    /* Hover (nur Desktop, auf Mobile meist irrelevant) */
     .astra-nav-toggle:hover span {
-        background-color: #65e6ce; /* türkis */
+        background: #65e6ce;
     }
-
-    .astra-nav-toggle:focus {
-        outline: none; /* Fokusrahmen entfernen */
-        background-color: transparent; /* Verhindert weiße Farbe */
-    }
-
     .astra-nav-toggle:focus-visible {
-        /* Optional sichtbarer Fokus für Tastaturnutzer */
-        outline: 2px solid #65e6ce; /* z.B. sichtbarer Fokusring */
+        outline: 2px solid #65e6ce;
     }
-
-    /* Fokus- und aktiver Zustand für Hamburger Linien */
-    .astra-nav-toggle:focus span,
-    .astra-nav-toggle:active span {
-        background-color: #ffffff !important; /* Weiß statt türkis */
+    .astra-nav-mobile-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: #1a124499;
+        z-index: 110;
+        transition: opacity .22s;
+    }
+    .astra-navbar ul li {
+        text-align: center;
+    }
+    .astra-navbar ul li a {
+        font-size: 1em;
+        font-weight: 700;
+        padding: 14px 0;
+        display: block;
+    }
+    .nav-btn {
+        margin: 22px auto 0 auto;
+        width: fit-content;
+        display: block;
+        font-size: 1.08em;
     }
 }
 
 
-    /* Navbar als Side-Drawer rechts */
-    .astra-navbar ul {
-        display: none;
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 280px; /* mehr Platz */
-        height: calc(100vh - 60px);
-        background: #251f5b;
-        padding: 30px 25px; /* mehr Padding für Luft */
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
-        overflow-y: auto;
-        flex-direction: column;
-        gap: 18px; /* mehr Abstand zwischen den Links */
-    }
-
-    /* Menü sichtbar wenn .nav-open auf body */
-    body.nav-open .astra-navbar ul {
-        display: flex;
-    }
-
-    /* Header-Inner flex Anpassung für entspannte mobile Ansicht */
-    .astra-header-inner {
-        padding: 0 16px;
-        height: 56px;
-        justify-content: flex-start;
-        gap: 0;
-    }
-
-    /* Menüitems */
-    .astra-navbar ul li {
-        text-align: center;
-    }
-
-    .astra-navbar ul li a {
-        font-size: 1em; /* etwas kleiner */
-        font-weight: 700;
-        padding: 14px 0; /* mehr vertikaler Abstand */
-        display: block;
-    }
 
 
 /* ===================
