@@ -316,15 +316,16 @@ if ($result->num_rows > 0) {
 <script>
     const navToggle = document.querySelector('.astra-nav-toggle');
 
-    navToggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
 
-        // aria-expanded toggle
+        body.classList.toggle('nav-open');
+
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !expanded);
+        navToggle.setAttribute('aria-expanded', String(!expanded));
 
-        // Fokus nach kurzer Verzögerung entfernen
-        setTimeout(() => navToggle.blur(), 100);
+        // Sofort Fokus entfernen, damit :focus oder :active nicht hängen bleiben
+        navToggle.blur();
     });
 </script>
 

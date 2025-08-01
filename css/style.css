@@ -183,10 +183,9 @@ a:hover { color: #ffd799; }
     }
 
     /* Fokus- und aktiver Zustand für Hamburger Linien */
-    .astra-nav-toggle:focus span,
-        /* Pressed (active Pseudo) */
+    ..astra-nav-toggle:focus span,
     .astra-nav-toggle:active span {
-        background-color: #65e6ce; /* türkis beim Drücken */
+        background-color: #ffffff !important; /* Weiß statt türkis */
     }
 
     /* Navbar als Side-Drawer rechts */
