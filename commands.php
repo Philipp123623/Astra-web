@@ -13,13 +13,29 @@
 <main>
     <h1 class="headline">Astra Bot – Command Übersicht</h1>
 
+    <!-- Erklärung oben -->
+    <section class="commands-intro">
+        <p>Entdecke alle Befehle von Astra, deinem vielseitigen Discord-Bot.
+            Nutze die Suche, um schnell den passenden Command zu finden!</p>
+    </section>
+
     <!-- Suchleiste -->
     <div class="command-searchbar">
         <input type="text" id="commandSearch" placeholder="🔍 Command suchen...">
     </div>
 
-    <!-- Command Accordion Container -->
+    <!-- Commands Container -->
     <div id="commands-accordion">
+
+        <!-- Kategorie Buttons -->
+        <div class="commands-category-buttons">
+            <button data-filter="all" class="active">Alle</button>
+            <button data-filter="moderation">Moderation</button>
+            <button data-filter="levelsystem">Level & XP</button>
+            <button data-filter="economy">Economy & Games</button>
+            <button data-filter="tickets">Tickets & Tools</button>
+            <button data-filter="fun">Fun</button>
+        </div>
 
         <!-- Kategorie Moderation -->
         <section class="command-section" data-category="moderation">

@@ -641,3 +641,161 @@ a:hover { color: #ffd799; }
     .accordion-toggle { font-size: .96em; }
     .command-info { font-size: .97em; gap: 10px 8px;}
 }
+
+/* === Commands Intro Text */
+.commands-intro {
+    max-width: 620px;
+    margin: 0 auto 28px auto;
+    padding: 16px 28px;
+    background: rgba(56, 65, 139, 0.42);
+    border-radius: 22px;
+    box-shadow: 0 6px 30px #5b65ff2a;
+    color: #b7f8f6;
+    font-size: 1.15em;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* === Kategorie Buttons (Filter) */
+.commands-category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.commands-category-buttons button {
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    color: #223254;
+    font-weight: 900;
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 3px 18px #5de8ff33;
+    transition: all 0.22s ease;
+    user-select: none;
+}
+.commands-category-buttons button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 26px #65e6ce88;
+}
+.commands-category-buttons button.active {
+    background: linear-gradient(90deg, #72ffe2, #7dfad7);
+    color: #1b3447;
+    box-shadow: 0 8px 30px #60e9cbbb;
+}
+
+/* === Accordion Buttons Anpassung */
+.accordion-toggle {
+    color: #72ffe2;
+    font-weight: 900;
+    padding: 20px 36px 20px 36px;
+    font-size: 1.35em;
+    border-radius: 22px 22px 0 0;
+    background: linear-gradient(90deg, #2d2f72, #362897);
+    box-shadow: 0 4px 18px #5b65ff22;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+    position: relative;
+}
+.accordion-toggle:hover {
+    background: linear-gradient(90deg, #3fd6dd, #65e6ce);
+    color: #223254;
+    box-shadow: 0 6px 28px #65e6ce88;
+}
+.accordion-toggle.open {
+    background: linear-gradient(90deg, #7dfad7, #60e9cb);
+    color: #223254;
+    box-shadow: 0 8px 36px #60e9cbdd;
+}
+.accordion-toggle::after {
+    content: "▼";
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    font-size: 1.1em;
+    color: #65e6ceaa;
+    transition: transform 0.3s ease;
+}
+.accordion-toggle.open::after {
+    transform: translateY(-50%) rotate(-180deg);
+    color: #2a2463;
+}
+
+/* === Accordion Panel */
+.accordion-panel {
+    background: rgba(41, 49, 101, 0.21);
+    border-radius: 0 0 22px 22px;
+    padding: 22px 48px 28px 48px;
+    box-shadow: inset 0 2px 16px #7dfad722;
+}
+
+/* === Command Entries */
+.command-entry {
+    padding: 18px 0 14px 0;
+    border-bottom: 1.5px solid #31468f66;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.command-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.command-name {
+    color: #a7c8fd;
+    font-size: 1.22em;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+}
+.command-info {
+    font-size: 1.03em;
+    color: #d7f3ff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    font-weight: 600;
+}
+.command-desc {
+    color: #72ffe2;
+    font-weight: 800;
+}
+
+/* === Responsive Anpassungen für Commands Section */
+@media (max-width: 850px) {
+    .commands-category-buttons {
+        max-width: 100%;
+        gap: 10px;
+        padding: 0 14px;
+    }
+    .accordion-toggle {
+        font-size: 1.2em;
+        padding: 16px 28px 16px 28px;
+    }
+    .accordion-panel {
+        padding: 18px 28px 24px 28px;
+    }
+    .command-info {
+        font-size: 0.95em;
+        gap: 12px 16px;
+    }
+}
+@media (max-width: 480px) {
+    .command-name {
+        font-size: 1.1em;
+    }
+    .command-info {
+        font-size: 0.9em;
+    }
+    .commands-category-buttons button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
