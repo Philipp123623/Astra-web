@@ -44,9 +44,10 @@ a:hover { color: #ffd799; }
     top: env(safe-area-inset-top, 0px);
     width: 100%;
     z-index: 50;
-    background: rgba(28, 18, 80, 0.87);
+    background: #1c1250; /* <--- Kräftige Farbe, KEIN rgba mehr */
     backdrop-filter: blur(14px);
     box-shadow: 0 2px 24px #65e6ce23;
+    transition: background 0.2s;
 }
 
 .astra-header-inner {
@@ -157,6 +158,12 @@ a:hover { color: #ffd799; }
         gap: 0;
     }
 
+    /* Optional: Header etwas niedriger am Handy */
+    .astra-header {
+        background: #1c1250 !important; /* Force kräftig, kein rgba */
+        height: 56px;
+    }
+
     /* Navbar als Drawer */
     .astra-navbar ul {
         display: none;
@@ -211,11 +218,14 @@ a:hover { color: #ffd799; }
         outline: 2px solid #65e6ce;
     }
 
-    /* Overlay für Drawer */
+    /* Overlay für Drawer – startet UNTER dem Header */
     .astra-nav-mobile-overlay {
         display: block;
         position: fixed;
-        inset: 0;
+        top: 56px; /* nicht 0! */
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: #1a124499;
         z-index: 110;
         transition: opacity .22s;
