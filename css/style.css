@@ -868,3 +868,68 @@ a:hover { color: #ffd799; }
         padding: 8px 16px;
     }
 }
+
+.commands-info-card {
+    max-width: 860px;
+    margin: 38px auto 36px auto;
+    padding: 32px 28px 18px 28px;
+    border-radius: 32px;
+    background: linear-gradient(128deg, #251f5b 0%, #312c6c 92%);
+    box-shadow: 0 4px 30px 0 rgba(54,75,172,0.10);
+    color: #e7f8fc;
+    text-align: center;
+    position: relative;
+}
+
+.commands-info-row {
+    margin-bottom: 18px;
+}
+.info-badge {
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 16px;
+    font-size: 1.04rem;
+    font-weight: 700;
+    margin-right: 7px;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+    background: #2b294e;
+    color: #7cebe7;
+    box-shadow: 0 2px 9px 0 rgba(91, 101, 255, 0.06);
+    border: 1.5px solid #222154;
+}
+.info-badge.cyan { background: #1d2b38; color: #65e6ce; border-color: #44e2d7; }
+.info-badge.green { background: #1d382a; color: #54fdbe; border-color: #44e2b0; }
+.info-badge.purple { background: #27284c; color: #b2a4ff; border-color: #8a76ff; }
+
+.commands-info-desc {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #b7f8f6;
+    margin-bottom: 18px;
+    line-height: 1.45;
+}
+
+.commands-label-row {
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.commands-label-row .astra-label {
+    display: inline-block;
+    font-size: 1.01rem;
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 14px;
+    margin: 0 5px 4px 0;
+    box-shadow: 0 1px 6px #232b5244;
+}
+.astra-label.green  { background: #65e6ce; color: #223254; }
+.astra-label.blue   { background: #9cbeff; color: #223254; }
+.astra-label.yellow { background: #fad59c; color: #503820; }
+.astra-label.purple { background: #c29cff; color: #332245; }
+.info-badge.red {
+    background: #491b22;
+    color: #ff6464;
+    border-color: #ff7272;
+}

@@ -12,13 +12,42 @@
 <?php include 'includes/header.php'; ?>
 
 <main>
-    <h1 class="headline">Astra Bot – Command Übersicht</h1>
+    <!-- Command Info-Card Astra-Style -->
+    <div class="commands-info-card">
+        <div class="commands-info-row">
+            <span class="info-badge cyan">Prefix: / (Slash Commands)</span>
+            <?php
+            $status = 'offline';
+            try {
+                $json = @file_get_contents('http://127.0.0.1:5000/status');
+                if ($json) {
+                    $data = json_decode($json, true);
+                    if ($data && isset($data['online']) && $data['online'] === true) {
+                        $status = 'online';
+                    }
+                }
+            } catch (Exception $e) {}
+            ?>
+            <span class="info-badge <?php
+            echo $status == 'online' ? 'green' : 'red';
+            ?>">
+            Bot <?php echo $status == 'online' ? 'online' : 'offline'; ?>
+        </span>
+            <span class="info-badge purple">Version: 1.4.2</span>
+        </div>
+        <div class="commands-info-desc">
+            <b>Entdecke alle Befehle von Astra, deinem vielseitigen Discord-Bot.</b>
+            <br>
+            Nutze die Suche, um schnell den passenden Command zu finden!
+        </div>
+        <div class="commands-label-row">
+            <span class="astra-label green">Level & XP</span>
+            <span class="astra-label blue">Moderation</span>
+            <span class="astra-label yellow">Economy & Games</span>
+            <span class="astra-label purple">Tickets & Tools</span>
+        </div>
+    </div>
 
-    <!-- Erklärung oben -->
-    <section class="commands-intro">
-        <p>Entdecke alle Befehle von Astra, deinem vielseitigen Discord-Bot.
-            Nutze die Suche, um schnell den passenden Command zu finden!</p>
-    </section>
 
     <!-- Suchleiste -->
     <div class="command-searchbar">
@@ -131,6 +160,7 @@
         </section>
     </div>
 </main>
+
 
 <?php include 'includes/footer.php'; ?>
 
