@@ -270,38 +270,48 @@ if (file_exists($historyFile)) {
             position: fixed;
             z-index: 10000;
             pointer-events: none;
+            left: 0; top: 0;
         }
         .uptime-tooltip-bubble {
             background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
             color: #d8ffef;
             padding: 10px 18px 11px 15px;
-            border-radius: 18px;
+            border-radius: 16px;
             font-size: 0.97rem;
             box-shadow: 0 3px 22px 0 #22325451;
             min-width: 155px;
-            max-width: 250px;
+            max-width: 260px;
             text-align: left;
             position: relative;
-            opacity: 0.96;
+            opacity: 0.97;
             font-weight: 500;
-            animation: fadeInTT .2s;
+            animation: fadeInTT .17s;
         }
+
         @keyframes fadeInTT { from { opacity: 0; transform: translateY(5px); } to { opacity: .96; transform: none; } }
         .uptime-tooltip-arrow {
             position: absolute;
-            bottom: -11px;
-            left: 32px;
-            width: 24px; height: 18px;
-            overflow: hidden;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 15px;
+            pointer-events: none;
+            overflow: visible;
         }
         .uptime-tooltip-arrow::after {
             content: "";
-            position: absolute;
-            top: 0; left: 6px;
-            width: 12px; height: 12px;
+            display: block;
+            width: 17px;
+            height: 17px;
+            margin: 0 auto;
             background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
             transform: rotate(45deg);
-            box-shadow: 0 1px 8px #23354b31;
+            box-shadow: 0 2px 10px #23354b3c;
+            position: absolute;
+            left: 50%;
+            top: 2px;
+            translate: -50% 0;
         }
         @media (max-width: 700px) {
             .astra-status-card { padding: 7vw 2vw 7vw 2vw; border-radius: 17px; }
@@ -360,8 +370,8 @@ if (file_exists($historyFile)) {
         <!-- Tooltip Element (wird von JS gefüllt) -->
         <div id="uptime-tooltip" style="display:none;">
             <div class="uptime-tooltip-bubble">
-                <div class="uptime-tooltip-arrow"></div>
                 <div class="uptime-tooltip-content"></div>
+                <div class="uptime-tooltip-arrow"></div>
             </div>
         </div>
 
@@ -393,7 +403,6 @@ if (file_exists($historyFile)) {
         const tooltip = document.getElementById('uptime-tooltip');
         const tooltipContent = tooltip.querySelector('.uptime-tooltip-content');
 
-        // Optional: Statistische Berechnung für Uptime in Prozent bis zum Balken
         function getUptimePercent(idx) {
             let count = 0, online = 0;
             bars.forEach((b, i) => {
@@ -404,49 +413,51 @@ if (file_exists($historyFile)) {
             return count > 0 ? Math.round((online/count)*100) : 0;
         }
 
-        bars.forEach((bar, idx) => {
-            bar.addEventListener('mouseenter', function(e) {
-                const status = bar.dataset.status;
-                const time = bar.dataset.time;
-                const upPercent = getUptimePercent(idx);
+        function showTooltip(bar, idx) {
+            const status = bar.dataset.status;
+            const time = bar.dataset.time;
+            const upPercent = getUptimePercent(idx);
 
-                tooltipContent.innerHTML = `
-                <b>${time}</b><br>
-                Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-                Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
-            `;
-                tooltip.style.display = 'block';
+            tooltipContent.innerHTML = `
+            <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
+            Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+            Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+        `;
+            tooltip.style.display = 'block';
 
-                // Positionierung
-                const rect = bar.getBoundingClientRect();
+            // Positioniere die Sprechblase mittig über dem Balken, Arrow zeigt auf Balken
+            const rect = bar.getBoundingClientRect();
+            const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
+            setTimeout(() => { // Wait for DOM paint
+                const bubbleRect = bubble.getBoundingClientRect();
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
-                tooltip.style.left = (rect.left + rect.width/2 - 70) + 'px';
-                tooltip.style.top = (rect.top + scrollY - 56) + 'px';
+                const scrollX = window.scrollX || document.documentElement.scrollLeft;
+
+                // Tooltip mittig zum Balken, knapp drüber
+                let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
+                let top = rect.top + scrollY - bubbleRect.height - 13;
+
+                // Optional: Begrenzung am Rand
+                left = Math.max(7, Math.min(left, window.innerWidth - bubbleRect.width - 7));
+
+                tooltip.style.left = left + "px";
+                tooltip.style.top = top + "px";
+            }, 1);
+        }
+
+        bars.forEach((bar, idx) => {
+            bar.addEventListener('mouseenter', function() {
+                showTooltip(bar, idx);
             });
             bar.addEventListener('mouseleave', function() {
                 tooltip.style.display = 'none';
             });
         });
 
-        // Optional: Für mobile Touch
+        // Für Touch-Support (Mobile)
         bars.forEach((bar, idx) => {
             bar.addEventListener('touchstart', function(e) {
-                const status = bar.dataset.status;
-                const time = bar.dataset.time;
-                const upPercent = getUptimePercent(idx);
-
-                tooltipContent.innerHTML = `
-                <b>${time}</b><br>
-                Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-                Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
-            `;
-                tooltip.style.display = 'block';
-
-                const rect = bar.getBoundingClientRect();
-                const scrollY = window.scrollY || document.documentElement.scrollTop;
-                tooltip.style.left = (rect.left + rect.width/2 - 70) + 'px';
-                tooltip.style.top = (rect.top + scrollY - 56) + 'px';
-
+                showTooltip(bar, idx);
                 e.preventDefault();
             });
             bar.addEventListener('touchend', function() {
