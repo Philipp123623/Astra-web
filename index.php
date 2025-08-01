@@ -84,6 +84,11 @@ if ($result->num_rows > 0) {
             </ul>
             <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
         </nav>
+        <button class="astra-nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
     <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
 </header>
