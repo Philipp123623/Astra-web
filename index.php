@@ -250,21 +250,27 @@ if ($result->num_rows > 0) {
 
 <!-- FAQ Dropdown Script -->
 <script>
-    document.querySelectorAll('.faq-question').forEach(q =>
+    document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', function() {
-            const faqItem = this.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            if (faqItem.classList.contains('open')) {
-                // Zu machen
+            const item = this.parentElement;
+            const answer = item.querySelector('.faq-answer');
+
+            if (item.classList.contains('open')) {
                 answer.style.maxHeight = null;
-                faqItem.classList.remove('open');
+                item.classList.remove('open');
             } else {
-                // Aufmachen
-                faqItem.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
+                // Alle anderen schließen
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // Dieses öffnen
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                item.classList.add('open');
             }
-        })
-    );
+        });
+    });
 </script>
 <!-- Counter Animation -->
 <script>
