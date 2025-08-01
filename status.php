@@ -56,24 +56,25 @@ try {
 $historyFile = __DIR__ . '/status_history_bot.txt';
 $now = time();
 $bot_status_now = $bot_online ? "1" : "0";
-file_put_contents($historyFile, $now . ':' . $bot_status_now . "\n", FILE_APPEND | LOCK_EX);
 
-// Maximal 144 Einträge (alle 10min = 24h)
-$lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-if (count($lines) > 144) {
-    $lines = array_slice($lines, -144);
-    file_put_contents($historyFile, implode("\n", $lines));
-}
-// History für Anzeige (letzte 12h → 72 Einträge)
-$history = [];
+$writeEntry = true;
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72); // 12h bei 10min Intervall
-    foreach ($lines as $line) {
-        list($ts, $st) = explode(":", $line);
-        $history[] = intval($st);
+    if (count($lines) > 0) {
+        $lastLine = $lines[count($lines) - 1];
+        list($lastTimestamp, $lastStatus) = explode(':', $lastLine);
+
+        // Schreibe nur, wenn mind. 600 Sekunden vergangen sind oder sich Status geändert hat
+        if (($now - intval($lastTimestamp)) < 600 && $bot_status_now === $lastStatus) {
+            $writeEntry = false;
+        }
     }
 }
+
+if ($writeEntry) {
+    file_put_contents($historyFile, $now . ':' . $bot_status_now . "\n", FILE_APPEND | LOCK_EX);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
