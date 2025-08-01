@@ -170,6 +170,15 @@ a:hover { color: #ffd799; }
     .astra-nav-toggle:hover span {
         background-color: #1b3447;
     }
+    .astra-nav-toggle:focus {
+        outline: none; /* Um Fokusrahmen zu entfernen */
+        background-color: transparent; /* Verhindert weiße Farbe */
+    }
+
+    .astra-nav-toggle:focus-visible {
+        /* Optional: Definiere hier sichtbaren Fokus für Tastaturnutzer */
+        outline: 2px solid #65e6ce; /* z.B. sichtbarer Fokusring */
+    }
 
     /* Fokus- und aktiver Zustand für Hamburger Linien */
     .astra-nav-toggle:focus span,
