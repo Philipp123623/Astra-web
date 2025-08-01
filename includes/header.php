@@ -1,6 +1,6 @@
 <header class="astra-header">
     <div class="astra-header-inner">
-        <a href="/index.php" class="astra-logo">
+        <a href="https://astra-bot.de/" class="astra-logo">
             <img src="/public/favicon_transparent.png" alt="Astra Logo">
             <span class="astra-logo-text">Astra <span>Bot</span></span>
         </a>
