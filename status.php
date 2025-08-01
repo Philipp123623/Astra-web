@@ -82,7 +82,10 @@ if (file_exists($historyFile)) {
     $lines = array_slice($lines, -72); // letzte 12h (bei 10 min Intervall)
     foreach ($lines as $line) {
         list($ts, $st) = explode(':', $line);
-        $history[] = intval($st);
+        $history[] = [
+            'timestamp' => intval($ts),
+            'status' => intval($st)
+        ];
     }
 }
 ?>
@@ -222,6 +225,7 @@ if (file_exists($historyFile)) {
             background: #3a5255;
             opacity: 0.42;
             transition: background .18s, opacity .18s;
+            cursor: pointer;
         }
         .uptime-bar.online { background: #65e6ce; opacity: 1; }
         .uptime-bar.offline { background: #ff7272; opacity: .85;}
@@ -260,6 +264,44 @@ if (file_exists($historyFile)) {
             letter-spacing: 0.04em;
             margin-bottom: 2px;
             margin-top: 4px;
+        }
+        /* --- Tooltip Styles --- */
+        #uptime-tooltip {
+            position: fixed;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        .uptime-tooltip-bubble {
+            background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
+            color: #d8ffef;
+            padding: 10px 18px 11px 15px;
+            border-radius: 18px;
+            font-size: 0.97rem;
+            box-shadow: 0 3px 22px 0 #22325451;
+            min-width: 155px;
+            max-width: 250px;
+            text-align: left;
+            position: relative;
+            opacity: 0.96;
+            font-weight: 500;
+            animation: fadeInTT .2s;
+        }
+        @keyframes fadeInTT { from { opacity: 0; transform: translateY(5px); } to { opacity: .96; transform: none; } }
+        .uptime-tooltip-arrow {
+            position: absolute;
+            bottom: -11px;
+            left: 32px;
+            width: 24px; height: 18px;
+            overflow: hidden;
+        }
+        .uptime-tooltip-arrow::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 6px;
+            width: 12px; height: 12px;
+            background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
+            transform: rotate(45deg);
+            box-shadow: 0 1px 8px #23354b31;
         }
         @media (max-width: 700px) {
             .astra-status-card { padding: 7vw 2vw 7vw 2vw; border-radius: 17px; }
@@ -302,15 +344,26 @@ if (file_exists($historyFile)) {
         </div>
 
         <div class="uptime-chart-title">Bot-Uptime Verlauf (letzte 12h)</div>
-        <div class="uptime-bar-row">
+        <div class="uptime-bar-row" id="uptimeBarRow">
             <?php
-            foreach ($history as $v) {
-                $class = $v ? 'online' : 'offline';
-                echo '<div class="uptime-bar '.$class.'"></div>';
+            foreach ($history as $idx => $entry) {
+                $class = $entry['status'] ? 'online' : 'offline';
+                $ts = $entry['timestamp'];
+                $statusStr = $entry['status'] ? 'Online' : 'Offline';
+                $dateStr = date("d.m. H:i", $ts); // oder "Y-m-d H:i"
+                echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'"></div>';
             }
             ?>
         </div>
         <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = ~10min</div>
+
+        <!-- Tooltip Element (wird von JS gefüllt) -->
+        <div id="uptime-tooltip" style="display:none;">
+            <div class="uptime-tooltip-bubble">
+                <div class="uptime-tooltip-arrow"></div>
+                <div class="uptime-tooltip-content"></div>
+            </div>
+        </div>
 
         <div class="stats-box-row">
             <div class="stat-box">
@@ -334,17 +387,84 @@ if (file_exists($historyFile)) {
 </main>
 
 <?php include 'includes/footer.php'; ?>
-</body>
-</html>
 <script>
-    const navToggle = document.querySelector('.astra-nav-toggle');
-    navToggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
+    document.addEventListener('DOMContentLoaded', function() {
+        const bars = document.querySelectorAll('.uptime-bar-row .uptime-bar');
+        const tooltip = document.getElementById('uptime-tooltip');
+        const tooltipContent = tooltip.querySelector('.uptime-tooltip-content');
 
-        // aria-expanded toggle
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !expanded);
+        // Optional: Statistische Berechnung für Uptime in Prozent bis zum Balken
+        function getUptimePercent(idx) {
+            let count = 0, online = 0;
+            bars.forEach((b, i) => {
+                if(i > idx) return;
+                count++;
+                if(b.classList.contains('online')) online++;
+            });
+            return count > 0 ? Math.round((online/count)*100) : 0;
+        }
 
-        navToggle.blur(); // Fokus direkt entfernen
+        bars.forEach((bar, idx) => {
+            bar.addEventListener('mouseenter', function(e) {
+                const status = bar.dataset.status;
+                const time = bar.dataset.time;
+                const upPercent = getUptimePercent(idx);
+
+                tooltipContent.innerHTML = `
+                <b>${time}</b><br>
+                Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+                Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+            `;
+                tooltip.style.display = 'block';
+
+                // Positionierung
+                const rect = bar.getBoundingClientRect();
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                tooltip.style.left = (rect.left + rect.width/2 - 70) + 'px';
+                tooltip.style.top = (rect.top + scrollY - 56) + 'px';
+            });
+            bar.addEventListener('mouseleave', function() {
+                tooltip.style.display = 'none';
+            });
+        });
+
+        // Optional: Für mobile Touch
+        bars.forEach((bar, idx) => {
+            bar.addEventListener('touchstart', function(e) {
+                const status = bar.dataset.status;
+                const time = bar.dataset.time;
+                const upPercent = getUptimePercent(idx);
+
+                tooltipContent.innerHTML = `
+                <b>${time}</b><br>
+                Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+                Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+            `;
+                tooltip.style.display = 'block';
+
+                const rect = bar.getBoundingClientRect();
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                tooltip.style.left = (rect.left + rect.width/2 - 70) + 'px';
+                tooltip.style.top = (rect.top + scrollY - 56) + 'px';
+
+                e.preventDefault();
+            });
+            bar.addEventListener('touchend', function() {
+                tooltip.style.display = 'none';
+            });
+        });
     });
 </script>
+<script>
+    const navToggle = document.querySelector('.astra-nav-toggle');
+    if(navToggle){
+        navToggle.addEventListener('click', () => {
+            document.body.classList.toggle('nav-open');
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+            navToggle.blur();
+        });
+    }
+</script>
+</body>
+</html>
