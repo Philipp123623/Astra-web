@@ -12,165 +12,165 @@ http_response_code(404);
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css?v=2.0" />
     <style>
-        /* 404 Hero Styling */
-        main {
-            min-height: 80vh;
+        body, html {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(120deg, #221c50 0%, #2a2463 90%, #33ccd7 200%);
+            font-family: 'Montserrat', sans-serif;
+            color: #e7f8fc;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+        main {
+            flex: 1;
+            min-height: 440px;
+            max-width: 620px;
+            margin: 60px auto 60px auto;
+            padding: 54px 38px 64px 38px;
+            background: linear-gradient(135deg, #251f5b 0%, #312c6c 100%);
+            border-radius: 42px;
+            box-shadow: 0 8px 32px rgba(91, 101, 255, 0.13);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 40px 20px;
-            max-width: 980px;
-            margin: 0 auto;
-            background: linear-gradient(115deg, #251f5b 0%, #362897 65%, #3fd6dd 160%);
-            border-radius: 38px;
-            box-shadow: 0 12px 48px #5b65ff2a;
-            color: #f4faff;
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Leicht animiertes Hintergrund-Overlay */
-        main::before {
-            content: "";
+        /* Bubbles wie Astra Landingpage */
+        .blob {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(101, 230, 206, 0.2), transparent 70%);
-            animation: pulseGlow 8s ease-in-out infinite;
-            pointer-events: none;
+            border-radius: 50%;
+            opacity: 0.18;
             z-index: 0;
+            filter: blur(1.5px);
+            pointer-events: none;
+            transition: opacity 0.25s;
         }
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.4; }
-            50% { transform: scale(1.1) translate(10%, 10%); opacity: 0.7; }
+        .blob1 {
+            width: 150px; height: 150px;
+            top: -50px; left: -60px;
+            background: #4cd9ee;
+        }
+        .blob2 {
+            width: 120px; height: 120px;
+            bottom: 40px; right: -60px;
+            background: #897bff;
+        }
+        .blob3 {
+            width: 80px; height: 80px;
+            top: 60px; right: 80px;
+            background: #65e6ce;
+        }
+        .blob4 {
+            width: 52px; height: 52px;
+            bottom: 24px; left: 40px;
+            background: #eafffd;
+            opacity: 0.10;
         }
 
-        /* Inhalte vor Overlay */
-        main > * {
-            position: relative;
+        .notfound-icon {
+            font-size: 3.2rem;
+            margin-bottom: 18px;
+            z-index: 1;
+            opacity: 0.95;
+        }
+        /* Optional: SVG Rocket im Astra-Style, damit es nicht nach Emoji aussieht */
+        .notfound-icon svg {
+            width: 52px;
+            height: 52px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .notfound-404 {
+            font-weight: 700;
+            font-size: 4.2rem;
+            color: #7cebe7;
+            margin: 0 0 10px 0;
+            letter-spacing: 0.04em;
+            text-shadow: 0 1px 10px #251f5b2e;
             z-index: 1;
         }
-
-        main h1 {
-            font-size: 9rem;
-            font-weight: 900;
-            color: #65e6ce;
-            text-shadow: 0 2px 12px #60e9cbaa;
-            margin: 0 0 20px 0;
-            animation: flicker 3s infinite alternate;
-        }
-        @keyframes flicker {
-            0%, 100% { opacity: 1; text-shadow: 0 2px 12px #60e9cbaa, 0 0 30px #65e6ceaa; }
-            50% { opacity: 0.85; text-shadow: 0 2px 5px #60e9cb88; }
-        }
-
-        main h2 {
-            font-size: 2.8rem;
+        .notfound-headline {
             font-weight: 700;
-            margin-bottom: 24px;
+            font-size: 1.7rem;
             color: #d7f3ff;
-            letter-spacing: 1.2px;
-            text-shadow: 0 1px 6px #251f5bbb;
+            margin: 0 0 18px 0;
+            letter-spacing: 0.04em;
+            z-index: 1;
         }
-        main p {
-            max-width: 520px;
-            font-size: 1.3rem;
+        .notfound-desc {
+            font-weight: 500;
+            font-size: 1.13rem;
+            max-width: 440px;
+            line-height: 1.4;
             color: #b7f8f6;
-            line-height: 1.5;
-            margin-bottom: 36px;
-            text-shadow: 0 1px 6px #251f5b99;
+            margin-bottom: 46px;
+            z-index: 1;
         }
-
-        main a.astra-btn.main {
-            font-size: 1.3em;
+        a.astra-btn.main {
+            position: relative;
+            z-index: 1;
+            font-weight: 900;
+            font-size: 1.15rem;
             padding: 16px 46px;
             border-radius: 22px;
-            font-weight: 900;
-            box-shadow: 0 4px 30px #5de8ff80;
-            text-decoration: none;
+            background: linear-gradient(90deg, #65e6ce, #a7c8fd);
             color: #223254;
-            background: linear-gradient(90deg, #60e9cb, #a7c8fd);
-            position: relative;
-            overflow: hidden;
-            transition: filter 0.16s ease, box-shadow 0.16s ease;
+            box-shadow: 0 3px 14px #5de8ff5a;
+            text-decoration: none;
+            transition: filter 0.16s, box-shadow 0.16s;
+            margin-top: 8px;
         }
-        main a.astra-btn.main:hover {
-            filter: brightness(1.15);
-            box-shadow: 0 10px 38px #60f0d4cc;
-        }
-        /* Glanz-Highlight-Animation auf Button */
-        main a.astra-btn.main::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -75%;
-            width: 50%;
-            height: 200%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-            transform: skewX(-20deg);
-            transition: none;
-            animation: shine 2.5s infinite;
-            pointer-events: none;
-            z-index: 2;
-        }
-        main a.astra-btn.main:hover::before {
-            animation-play-state: paused;
-            opacity: 0;
-        }
-        @keyframes shine {
-            0% { left: -75%; }
-            100% { left: 125%; }
+        a.astra-btn.main:hover {
+            filter: brightness(1.09);
+            box-shadow: 0 6px 24px #60f0d499;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            main {
-                border-radius: 24px;
-                padding: 30px 16px;
-                min-height: 65vh;
-            }
-            main h1 {
-                font-size: 6rem;
-            }
-            main h2 {
-                font-size: 2rem;
-                margin-bottom: 18px;
-            }
-            main p {
-                font-size: 1.1rem;
-                max-width: 90vw;
-                margin-bottom: 28px;
-            }
-            main a.astra-btn.main {
-                font-size: 1.15em;
-                padding: 14px 38px;
-                border-radius: 18px;
-            }
-            main a.astra-btn.main::before {
-                display: none; /* Kein Glanzeffekt mobil */
-            }
+        @media (max-width: 700px) {
+            main { max-width: 97vw; padding: 12vw 5vw 12vw 5vw; border-radius: 18px; }
+            .notfound-404 { font-size: 2.5rem; }
+            .notfound-headline { font-size: 1.07rem; }
+            .blob1 { width: 70px; height: 70px; left: -20px; top: -20px; }
+            .blob2 { width: 52px; height: 52px; right: -18px; bottom: 18px; }
+            .blob3 { width: 40px; height: 40px; right: 24px; top: 34px; }
+            .blob4 { width: 22px; height: 22px; left: 20px; bottom: 20px; }
         }
     </style>
 </head>
 <body>
-
 <?php include 'includes/header.php'; ?>
 
 <main>
-    <h1>404</h1>
-    <h2>Seite nicht gefunden</h2>
-    <p>
-        Die angeforderte Seite existiert leider nicht oder wurde verschoben.<br>
-        Überprüfe die URL oder kehre zur Startseite zurück.
-    </p>
+    <!-- Blobs wie Astra Landingpage -->
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+
+    <!-- Icon: Entweder Emoji, oder ein cooles SVG für "Astra" Vibe -->
+    <div class="notfound-icon">
+        <!-- SVG Rocket Astra-Style -->
+        <svg viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="22" fill="#2a2463" />
+            <path d="M24 8 L30 26 L24 22 L18 26 Z" fill="#fa62a4"/>
+            <rect x="22" y="22" width="4" height="11" rx="2" fill="#66eff6"/>
+            <ellipse cx="24" cy="33" rx="3" ry="2" fill="#b7f8f6"/>
+            <circle cx="24" cy="18" r="2" fill="#fff"/>
+        </svg>
+    </div>
+    <div class="notfound-404">404</div>
+    <div class="notfound-headline">Seite nicht gefunden</div>
+    <div class="notfound-desc">
+        Die angeforderte Seite existiert nicht oder wurde verschoben.<br>
+        Überprüfe die URL oder gehe zur Startseite zurück.
+    </div>
     <a href="/" class="astra-btn main">Zur Startseite</a>
 </main>
 
 <?php include 'includes/footer.php'; ?>
-
 </body>
 </html>
