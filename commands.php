@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Astra | Commands</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=2.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css?v=2.0" />
 </head>
 <body>
 <?php include 'includes/header.php'; ?>
@@ -21,7 +21,7 @@
 
     <!-- Suchleiste -->
     <div class="command-searchbar">
-        <input type="text" id="commandSearch" placeholder="🔍 Command suchen...">
+        <input type="text" id="commandSearch" placeholder="🔍 Command suchen..." />
     </div>
 
     <!-- Kategorie Buttons -->
@@ -36,7 +36,6 @@
 
     <!-- Commands Container -->
     <div id="commands-accordion" style="max-width: 950px; margin: 0 auto;">
-
         <!-- Kategorie Moderation -->
         <section class="command-section" data-category="moderation">
             <button class="accordion-toggle" type="button" aria-expanded="false">Moderation</button>
@@ -129,7 +128,6 @@
                 </div>
             </div>
         </section>
-
     </div>
 </main>
 
@@ -139,9 +137,11 @@
     // Accordion Funktion mit Animation
     const toggleAccordion = (btn) => {
         const panel = btn.nextElementSibling;
-        if (panel.style.maxHeight) {
+        const isOpen = btn.classList.contains('open');
+
+        if (isOpen) {
             panel.style.maxHeight = null;
-            panel.style.display = 'none';  // verstecken
+            panel.style.display = 'none';
             btn.setAttribute('aria-expanded', 'false');
             btn.classList.remove('open');
         } else {
@@ -155,7 +155,7 @@
                 b.classList.remove('open');
             });
 
-            panel.style.display = 'block'; // anzeigen
+            panel.style.display = 'block';
             panel.style.maxHeight = panel.scrollHeight + "px";
             btn.setAttribute('aria-expanded', 'true');
             btn.classList.add('open');
@@ -169,22 +169,37 @@
     // Command Suche
     document.getElementById('commandSearch').addEventListener('input', function () {
         const val = this.value.toLowerCase();
+
         document.querySelectorAll('.command-section').forEach(section => {
             let visible = false;
+
             section.querySelectorAll('.command-entry').forEach(entry => {
                 const match = entry.innerText.toLowerCase().includes(val);
                 entry.style.display = match ? '' : 'none';
                 if (match) visible = true;
             });
-            // Kategorie nur anzeigen wenn Treffer oder Suche leer
+
+            // Sektion ausblenden, wenn kein Treffer und Suche nicht leer
             section.style.display = (visible || !val) ? '' : 'none';
-            // Panel öffnen wenn Treffer sonst zu
-            section.querySelector('.accordion-panel').style.maxHeight = (visible && val) ? section.querySelector('.accordion-panel').scrollHeight + "px" : null;
-            section.querySelector('.accordion-toggle').setAttribute('aria-expanded', (visible && val) ? 'true' : 'false');
+
+            const panel = section.querySelector('.accordion-panel');
+            const toggleBtn = section.querySelector('.accordion-toggle');
+
             if (visible && val) {
-                section.querySelector('.accordion-toggle').classList.add('open');
+                panel.style.display = 'block';
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                toggleBtn.setAttribute('aria-expanded', 'true');
+                toggleBtn.classList.add('open');
+            } else if (!val) {
+                panel.style.display = 'none';
+                panel.style.maxHeight = null;
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.classList.remove('open');
             } else {
-                section.querySelector('.accordion-toggle').classList.remove('open');
+                panel.style.display = 'none';
+                panel.style.maxHeight = null;
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.classList.remove('open');
             }
         });
     });
@@ -195,9 +210,27 @@
             document.querySelectorAll('.commands-category-buttons button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.getAttribute('data-filter');
+
             document.querySelectorAll('.command-section').forEach(section => {
-                section.style.display = (filter === 'all' || section.getAttribute('data-category') === filter) ? '' : 'none';
+                const cat = section.getAttribute('data-category');
+
+                if (filter === 'all' || filter === cat) {
+                    section.style.display = '';
+                } else {
+                    section.style.display = 'none';
+                }
+
+                // Panel schließen beim Filterwechsel
+                const panel = section.querySelector('.accordion-panel');
+                const toggleBtn = section.querySelector('.accordion-toggle');
+                panel.style.display = 'none';
+                panel.style.maxHeight = null;
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                toggleBtn.classList.remove('open');
             });
+
+            // Suche zurücksetzen bei Filter
+            document.getElementById('commandSearch').value = '';
         });
     });
 </script>
