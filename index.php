@@ -315,6 +315,7 @@ if ($result->num_rows > 0) {
 </script>
 <script>
     const navToggle = document.querySelector('.astra-nav-toggle');
+
     navToggle.addEventListener('click', () => {
         document.body.classList.toggle('nav-open');
 
@@ -322,7 +323,8 @@ if ($result->num_rows > 0) {
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !expanded);
 
-        navToggle.blur(); // Fokus direkt entfernen
+        // Fokus nach kurzer Verzögerung entfernen
+        setTimeout(() => navToggle.blur(), 100);
     });
 </script>
 
