@@ -139,6 +139,21 @@ a:hover { color: #ffd799; }
     display: none;
 }
 
+/* Desktop: Navbar immer sichtbar */
+@media (min-width: 901px) {
+    .astra-navbar ul {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 20px;
+    }
+}
+
 /* Hamburger Icon - mobil */
 @media (max-width: 900px) {
     /* Hamburger Button */
