@@ -128,12 +128,17 @@
         const panel = btn.nextElementSibling;
         if (panel.style.maxHeight) {
             panel.style.maxHeight = null;
+            panel.style.display = 'none';  // verstecken
             btn.setAttribute('aria-expanded', 'false');
         } else {
-            // alle anderen schließen
-            document.querySelectorAll('.accordion-panel').forEach(p => p.style.maxHeight = null);
+            // Alle anderen schließen
+            document.querySelectorAll('.accordion-panel').forEach(p => {
+                p.style.maxHeight = null;
+                p.style.display = 'none';
+            });
             document.querySelectorAll('.accordion-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
 
+            panel.style.display = 'block'; // anzeigen
             panel.style.maxHeight = panel.scrollHeight + "px";
             btn.setAttribute('aria-expanded', 'true');
         }
