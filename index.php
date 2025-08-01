@@ -107,7 +107,7 @@
     <!-- ABOUT -->
     <section id="about" class="astra-about-card">
         <div class="about-img-wrap">
-            <img src="/public/Profile_2.png" alt="Astra About" class="about-img">
+            <img src="/public/favicon_transparent.png" alt="Astra About" class="about-img">
         </div>
         <div>
             <h2>Über Astra</h2>
