@@ -24,18 +24,18 @@
         <input type="text" id="commandSearch" placeholder="🔍 Command suchen...">
     </div>
 
-    <!-- Commands Container -->
-    <div id="commands-accordion">
+    <!-- Kategorie Buttons -->
+    <div class="commands-category-buttons" style="max-width: 950px; margin: 0 auto 25px auto; text-align:center;">
+        <button data-filter="all" class="active">Alle</button>
+        <button data-filter="moderation">Moderation</button>
+        <button data-filter="levelsystem">Level & XP</button>
+        <button data-filter="economy">Economy & Games</button>
+        <button data-filter="tickets">Tickets & Tools</button>
+        <button data-filter="fun">Fun</button>
+    </div>
 
-        <!-- Kategorie Buttons -->
-        <div class="commands-category-buttons">
-            <button data-filter="all" class="active">Alle</button>
-            <button data-filter="moderation">Moderation</button>
-            <button data-filter="levelsystem">Level & XP</button>
-            <button data-filter="economy">Economy & Games</button>
-            <button data-filter="tickets">Tickets & Tools</button>
-            <button data-filter="fun">Fun</button>
-        </div>
+    <!-- Commands Container -->
+    <div id="commands-accordion" style="max-width: 950px; margin: 0 auto;">
 
         <!-- Kategorie Moderation -->
         <section class="command-section" data-category="moderation">
@@ -133,12 +133,7 @@
     </div>
 </main>
 
-<?php include 'includes/footer.php'; ?>
-
-<!-- Accordion + Suche Script -->
 <script>
-    console.log('Script läuft');
-    console.log('Buttons gefunden:', document.querySelectorAll('.accordion-toggle').length);
     // Accordion Funktion mit Animation
     const toggleAccordion = (btn) => {
         const panel = btn.nextElementSibling;
@@ -146,17 +141,22 @@
             panel.style.maxHeight = null;
             panel.style.display = 'none';  // verstecken
             btn.setAttribute('aria-expanded', 'false');
+            btn.classList.remove('open');
         } else {
             // Alle anderen schließen
             document.querySelectorAll('.accordion-panel').forEach(p => {
                 p.style.maxHeight = null;
                 p.style.display = 'none';
             });
-            document.querySelectorAll('.accordion-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
+            document.querySelectorAll('.accordion-toggle').forEach(b => {
+                b.setAttribute('aria-expanded', 'false');
+                b.classList.remove('open');
+            });
 
             panel.style.display = 'block'; // anzeigen
             panel.style.maxHeight = panel.scrollHeight + "px";
             btn.setAttribute('aria-expanded', 'true');
+            btn.classList.add('open');
         }
     };
 
@@ -179,8 +179,26 @@
             // Panel öffnen wenn Treffer sonst zu
             section.querySelector('.accordion-panel').style.maxHeight = (visible && val) ? section.querySelector('.accordion-panel').scrollHeight + "px" : null;
             section.querySelector('.accordion-toggle').setAttribute('aria-expanded', (visible && val) ? 'true' : 'false');
+            if (visible && val) {
+                section.querySelector('.accordion-toggle').classList.add('open');
+            } else {
+                section.querySelector('.accordion-toggle').classList.remove('open');
+            }
+        });
+    });
+
+    // Kategorie Buttons filter
+    document.querySelectorAll('.commands-category-buttons button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.commands-category-buttons button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            document.querySelectorAll('.command-section').forEach(section => {
+                section.style.display = (filter === 'all' || section.getAttribute('data-category') === filter) ? '' : 'none';
+            });
         });
     });
 </script>
+
 </body>
 </html>
