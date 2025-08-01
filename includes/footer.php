@@ -13,7 +13,7 @@
             <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
         </div>
         <div class="footer-social">
-            <a href="https://github.com/" target="_blank" title="GitHub"><img src="/public/github-icon.svg" alt="GitHub"></a>
+            <a href="https://github.com/" target="_blank" title="GitHub"><img src="/public/github.svg" alt="GitHub"></a>
             <a href="https://discord.gg/" target="_blank" title="Discord"><img src="/public/discord-icon.svg" alt="Discord"></a>
         </div>
         <div class="footer-meta">
