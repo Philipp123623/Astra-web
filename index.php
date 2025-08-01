@@ -313,6 +313,18 @@ if ($result->num_rows > 0) {
         });
     });
 </script>
+<script>
+    const navToggle = document.querySelector('.astra-nav-toggle');
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+
+        // aria-expanded toggle
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+
+        navToggle.blur(); // Fokus direkt entfernen
+    });
+</script>
 
 
 </body>
