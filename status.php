@@ -75,7 +75,18 @@ if ($writeEntry) {
     file_put_contents($historyFile, $now . ':' . $bot_status_now . "\n", FILE_APPEND | LOCK_EX);
 }
 
+// --- Hier die History einlesen und in $history speichern ---
+$history = [];
+if (file_exists($historyFile)) {
+    $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $lines = array_slice($lines, -72); // letzte 12h (bei 10 min Intervall)
+    foreach ($lines as $line) {
+        list($ts, $st) = explode(':', $line);
+        $history[] = intval($st);
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
