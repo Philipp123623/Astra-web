@@ -171,34 +171,37 @@ a:hover { color: #ffd799; }
     .astra-nav-toggle {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        justify-content: space-around;
+        width: 36px;
+        height: 28px;
+        background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(101, 230, 206, 0.6);
+        padding: 6px 0;
+        cursor: pointer;
         position: fixed;
         top: 16px;
         right: 16px;
         z-index: 101;
-        width: 36px;
-        height: 28px;
-        padding: 2px 6px;
-        border-radius: 6px;
-        background: #251f5b;
-        box-shadow: 0 0 8px #65e6ce99;
-        cursor: pointer;
-        margin-left: 0;
         transition: background 0.3s ease;
     }
 
     .astra-nav-toggle:hover {
-        background: #3fd6dd;
-        box-shadow: 0 0 12px #65e6cecc;
+        background: linear-gradient(90deg, #7dfad7, #91f4e3);
+        box-shadow: 0 6px 16px rgba(125, 250, 215, 0.8);
     }
 
     .astra-nav-toggle span {
-        width: 24px;
-        height: 3px;
-        border-radius: 3px;
-        background: #65e6ce;
         display: block;
-        transition: all 0.22s cubic-bezier(0.61, 0.04, 0.18, 1.13);
+        height: 3.5px;
+        border-radius: 5px;
+        background-color: #223254;
+        margin: 0 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .astra-nav-toggle:hover span {
+        background-color: #1b3447;
     }
 
     /* Navbar als Side-Drawer rechts */
