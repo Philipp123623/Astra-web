@@ -1,3 +1,56 @@
+<?php
+// Funktion um .env zu laden
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        die(".env Datei nicht gefunden!");
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $env = [];
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue; // Kommentare überspringen
+        list($key, $value) = explode('=', $line, 2);
+        $env[trim($key)] = trim($value);
+    }
+    return $env;
+}
+
+// Lade die .env (Pfad anpassen falls nötig)
+$env = loadEnv(__DIR__ . '/.env');
+
+// Benutze die geladenen Variablen
+$servername = $env['DB_SERVER'];
+$username = $env['DB_USER'];
+$password = $env['DB_PASS'];
+$dbname = $env['DB_NAME'];
+
+// Verbindung herstellen
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verbindung prüfen
+if ($conn->connect_error) {
+    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+}
+
+// Beispiel-Abfrage
+$sql = "SELECT id, servercount, usercount, commandCount, channelCount FROM website_stats";
+$result = $conn->query($sql);
+
+// Daten auslesen
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $servercount = $row['servercount'];
+        $usercount = $row['usercount'];
+        $commandCount = $row['commandCount'];
+        $channelCount = $row['channelCount'];
+    }
+} else {
+    $servercount = 0;
+    $usercount = 0;
+    $commandCount = 0;
+    $channelCount = 0;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
