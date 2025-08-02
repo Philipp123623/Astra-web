@@ -191,10 +191,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
-
-<?php include "includes/header.php";?>
-
 <body>
+<?php include "includes/header.php"; ?>
+
 <div class="astra-card">
     <h1>Problem melden</h1>
     <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
@@ -222,6 +221,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="msg-success" id="report-success">Danke, deine Meldung wurde gesendet! ✨</div>
     <div class="msg-error" id="report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
 </div>
+
+<?php include "includes/footer.php"; ?>
+
 <script>
     // Chip-Auswahl: Meldungstyp
     document.querySelectorAll('.problem-chip').forEach(chip => {
@@ -263,5 +265,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     };
 </script>
 </body>
-<?php include "includes/footer.php";?>
 </html>
