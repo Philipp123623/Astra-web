@@ -979,32 +979,44 @@ a:hover { color: #ffd799; }
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 24px 0; /* sorgt für Abstand zum Rand des Viewports */
 }
 .status-bubbles-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
     z-index: 0;
     pointer-events: none;
+    border-radius: inherit;
+    overflow: hidden;
+    /* Optional: mach die Bubbles kleiner/weiter nach innen */
+}
+.astra-status-card > *:not(.status-bubbles-bg) {
+    position: relative;
+    z-index: 2;
 }
 
 .astra-status-card {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 900px;      /* Ggf. noch größer: 1100px, wie du willst */
-    min-height: 540px;     /* Mindestens so hoch wie die Bubbles! */
+    max-width: 900px;
+    min-height: 540px;
     margin: 40px auto;
-    padding: 0;            /* Padding in den Content-Boxen machen, nicht außen */
-    border-radius: 36px;
+    padding: 36px 32px 28px 32px; /* Innenabstand! */
+    border-radius: 32px;
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 8px 44px 0 #21303f2e, 0 2px 20px 0 #65e6ce12;
-    overflow: hidden;      /* Damit Bubbles mitrunden Ecken geschnitten werden */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
+}
+.stats-box-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 19px;
+    margin: 35px 0 0 0;
 }
 
 .astra-status-card h1 {
@@ -1109,11 +1121,13 @@ a:hover { color: #ffd799; }
     gap: 19px;
     margin: 25px 0 0 0;
 }
+/* Card-Ecken und Abstand Stats */
 .stat-box {
     flex: 1 1 25%;
     background: linear-gradient(127deg, #262364 0%, #23354b 100%);
-    border-radius: 16px;
-    padding: 13px 4px 12px 4px;
+    border-radius: 15px;
+    padding: 18px 0 13px 0;
+    margin: 0 2px;
     color: #c5fffd;
     font-size: 1.01rem;
     display: flex;
@@ -1361,6 +1375,22 @@ body.report-page {
 @media (max-width: 700px) {
     .astra-form-wrap { padding: 18px 3vw 20px 3vw; }
 }
+/* Responsives Padding und Card-Radius für Mobilgeräte */
+@media (max-width: 700px) {
+    .astra-status-card {
+        padding: 6vw 3vw 6vw 3vw;
+        border-radius: 18px;
+    }
+    .stats-box-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .stat-box {
+        border-radius: 11px;
+        padding: 14px 0 10px 0;
+    }
+}
+
 
 /* === Fertig! === */
 
