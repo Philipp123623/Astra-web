@@ -94,155 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" href="/public/favicon_transparent.png">
     <link rel="stylesheet" href="/css/style.css?v=2.0" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
-    <style>
-        body {
-            min-height: 100vh;
-            background: radial-gradient(ellipse at 40% 40%, #252159 65%, #14103a 100%);
-            background-attachment: fixed;
-        }
-        .astra-form-wrap {
-            max-width: 520px;
-            margin: 62px auto 48px auto;
-            background: radial-gradient(ellipse at 60% 40%, #22235d 90%, #1a153b 120%);
-            border-radius: 34px;
-            box-shadow: 0 12px 64px #05e6fc44, 0 2px 12px #221c504a;
-            padding: 42px 40px 32px 40px;
-            color: #f4faff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        .astra-form-wrap h1 {
-            color: #67e8fa;
-            font-size: 2.15em;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.28em;
-            text-align: center;
-            text-shadow: 0 3px 18px #33baff2c;
-        }
-        .astra-form-wrap p {
-            color: #c0e9fa;
-            font-size: 1.13em;
-            font-weight: 500;
-            margin-bottom: 28px;
-            text-align: center;
-            text-shadow: 0 2px 9px #21f4c522;
-        }
-        .astra-problem-types {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 34px;
-            justify-content: center;
-        }
-        .astra-problem-chip {
-            min-width: 108px;
-            padding: 0.56em 1.5em;
-            background: #322c6c;
-            color: #9cf7ff;
-            font-weight: 900;
-            font-size: 1.07em;
-            border-radius: 30px;
-            cursor: pointer;
-            border: 3px solid transparent;
-            box-shadow: 0 2px 18px #5ce4ff2d, 0 0px 7px #4a40c017;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            user-select: none;
-            transition: all .20s cubic-bezier(.45,.14,.21,.92);
-            opacity: 0.82;
-            filter: blur(0);
-        }
-        .astra-problem-chip.selected, .astra-problem-chip:focus, .astra-problem-chip:hover {
-            background: linear-gradient(90deg,#3ad3f8 25%,#59f5e7 100%);
-            color: #2a1b48;
-            border: 3px solid #66f7e7;
-            box-shadow: 0 5px 34px #70ffe72a, 0 0px 13px #4a40c037;
-            opacity: 1;
-            filter: brightness(1.13) blur(0);
-            transform: scale(1.09);
-            outline: none;
-        }
-        .astra-problem-chip.selected[data-type="Nutzer"] { background: linear-gradient(90deg,#6f48e3 15%,#59f5e7 100%);}
-        .astra-problem-chip.selected[data-type="Webseite"] { background: linear-gradient(90deg,#3ad3f8 25%,#5ef6ff 100%);}
-        .astra-problem-chip.selected[data-type="Discord"] { background: linear-gradient(90deg,#ff6c94 18%,#62d7e3 100%);}
-        .astra-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            margin-top: 0;
-        }
-        .astra-form label {
-            font-weight: 800;
-            color: #98e6fa;
-            margin-bottom: 6px;
-            margin-top: 14px;
-            font-size: 1.12em;
-        }
-        .astra-form textarea, .astra-form input[type="text"], .astra-form input[type="email"] {
-            background: #231e4d;
-            border: 1.7px solid #3ef0e7;
-            color: #e0f7ff;
-            font-size: 1.13em;
-            border-radius: 14px;
-            padding: 13px;
-            margin-bottom: 16px;
-            margin-top: 5px;
-            transition: border .15s;
-            resize: vertical;
-        }
-        .astra-form textarea:focus, .astra-form input:focus {
-            border-color: #70e6ff;
-            outline: none;
-        }
-        .astra-form textarea {
-            min-height: 74px;
-        }
-        .astra-form button[type="submit"] {
-            margin-top: 14px;
-            padding: 13px 0;
-            font-size: 1.19em;
-            font-weight: 900;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            background: linear-gradient(90deg,#52ebf6 15%,#7356f7 80%);
-            color: #19143d;
-            box-shadow: 0 2px 18px #51e3fe3b;
-            transition: filter .13s, background .13s;
-            letter-spacing: .2px;
-        }
-        .astra-form button[type="submit"]:hover {
-            filter: brightness(0.93);
-            background: linear-gradient(90deg,#45d3ec 20%,#9a9fff 90%);
-        }
-        .astra-msg-success, .astra-msg-error {
-            font-size: 1.15em;
-            font-weight: 800;
-            padding: 15px 0;
-            margin: 29px 0 0 0;
-            border-radius: 13px;
-            display: none;
-            text-align: center;
-            transition: all 0.25s cubic-bezier(.34,.95,.56,.99);
-            letter-spacing: .05em;
-        }
-        .astra-msg-success {
-            color: #15e592;
-            background: #063837d6;
-        }
-        .astra-msg-error {
-            color: #ff7a7a;
-            background: #5b1c2f6e;
-        }
-        @media (max-width: 700px) {
-            .astra-form-wrap { padding: 18px 3vw 20px 3vw; }
-        }
-    </style>
 </head>
-<body>
+<body class="report-page">
 <?php include "includes/header.php"; ?>
 
 <main>
@@ -284,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     });
 
-    // Standardmäßig Webseite vorauswählen (wie in deinem Screenshot)
+    // Standardmäßig Webseite vorauswählen
     window.addEventListener('DOMContentLoaded', function() {
         let def = document.querySelector('.astra-problem-chip[data-type="Webseite"]');
         if(def) {
@@ -321,18 +174,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     };
 
-    // Chips bleiben nach Senden auswählbar: Meldung zurücksetzen wenn wieder Chips angeklickt werden (optional!)
+    // Chips bleiben nach Senden auswählbar
     document.querySelectorAll('.astra-problem-chip').forEach(chip => {
         chip.addEventListener('click', () => {
-            // Wenn das Formular schon ausgeblendet ist, kann man wieder einen neuen Typ auswählen und Formular anzeigen
             let form = document.getElementById('astra-report-form');
             let succ = document.getElementById('astra-report-success');
             if (form.style.display === 'none') {
-                // Reset
                 form.reset();
                 form.style.display = 'flex';
                 succ.style.display = 'none';
-                // Typ setzen
                 document.getElementById('astra-report-type').value = chip.getAttribute('data-type');
             }
         });
