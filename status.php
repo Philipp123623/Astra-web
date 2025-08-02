@@ -527,33 +527,5 @@ if (file_exists($historyFile)) {
         });
     }
 </script>
-<script>
-    function isTouchDevice() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    }
-    document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
-        const toggle = drop.querySelector('.dropdown-toggle');
-        // Nur Mobile: Dropdown per Klick/tap
-        if (window.innerWidth < 900 || isTouchDevice()) {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                drop.classList.toggle('open');
-                // Nur ein Dropdown offen:
-                document.querySelectorAll('.nav-dropdown').forEach(function(other) {
-                    if (other !== drop) other.classList.remove('open');
-                });
-            });
-            // Schließen wenn außerhalb geklickt:
-            document.addEventListener('click', function(e) {
-                if (!drop.contains(e.target)) {
-                    drop.classList.remove('open');
-                }
-            });
-        }
-        // PC: Kein JS nötig, CSS :hover regelt!
-    });
-</script>
-
-
 </body>
 </html>
