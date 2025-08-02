@@ -104,15 +104,15 @@ if (file_exists($historyFile)) {
 <?php include 'includes/header.php'; ?>
 
 <main class="astra-status-main">
-    <div class="status-bubbles-bg">
-        <svg width="100%" height="100%">
-            <circle cx="12%" cy="18%" r="43" fill="#65e6ce33"/>
-            <circle cx="98%" cy="18%" r="58" fill="#a7c8fd22"/>
-            <circle cx="50%" cy="95%" r="32" fill="#7c41ee22"/>
-            <circle cx="6%" cy="89%" r="41" fill="#60e9cb22"/>
-        </svg>
-    </div>
     <section class="astra-status-card">
+        <div class="status-bubbles-bg">
+            <svg width="100%" height="100%">
+                <circle cx="12%" cy="18%" r="43" fill="#65e6ce33"/>
+                <circle cx="98%" cy="18%" r="58" fill="#a7c8fd22"/>
+                <circle cx="50%" cy="95%" r="32" fill="#7c41ee22"/>
+                <circle cx="6%" cy="89%" r="41" fill="#60e9cb22"/>
+            </svg>
+        </div>
         <h1>Service Status</h1>
         <div class="status-list">
             <div class="status-row">

@@ -983,22 +983,30 @@ a:hover { color: #ffd799; }
 .status-bubbles-bg {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
 }
+
 .astra-status-card {
     position: relative;
     z-index: 2;
-    max-width: 540px;
-    width: 98vw;
+    width: 100%;
+    max-width: 900px;      /* Ggf. noch größer: 1100px, wie du willst */
+    min-height: 540px;     /* Mindestens so hoch wie die Bubbles! */
     margin: 40px auto;
-    padding: 42px 24px 36px 24px;
+    padding: 0;            /* Padding in den Content-Boxen machen, nicht außen */
     border-radius: 36px;
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 8px 44px 0 #21303f2e, 0 2px 20px 0 #65e6ce12;
-    text-align: center;
-    overflow: hidden;
+    overflow: hidden;      /* Damit Bubbles mitrunden Ecken geschnitten werden */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
 }
+
 .astra-status-card h1 {
     font-size: 2.1rem;
     font-weight: 900;
