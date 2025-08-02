@@ -65,33 +65,7 @@ if ($result->num_rows > 0) {
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="astra-header">
-    <div class="astra-header-inner">
-        <a href="https://astra-bot.de/" class="astra-logo">
-            <img src="/public/favicon_transparent.png" alt="Astra Logo">
-            <span class="astra-logo-text">Astra <span>Bot</span></span>
-        </a>
-        <nav class="astra-navbar">
-            <ul>
-                <li><a href="https://astra-bot.de/#hero" class="nav-link scrollto">Home</a></li>
-                <li><a href="https://astra-bot.de/#stats" class="nav-link scrollto">Stats</a></li>
-                <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
-                <li><a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a></li>
-                <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
-                <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
-                <li><a href="https://astra-bot.de/invite.php" class="nav-btn">Bot einladen</a></li>
-            </ul>
-            <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
-        </nav>
-        <button class="astra-nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
+<?php include "includes/header.php"; ?>
 
 <main>
     <!-- HERO -->
@@ -223,35 +197,7 @@ if ($result->num_rows > 0) {
     </section>
 </main>
 
-<footer class="astra-footer">
-    <div class="astra-footer-inner">
-        <div class="footer-logo">
-            <img src="/public/favicon_transparent.png" alt="Astra Logo">
-            <span>Astra <span>Bot</span></span>
-        </div>
-        <div class="footer-links">
-            <a href="https://astra-bot.de/#about">Über Astra</a>
-            <a href="https://astra-bot.de/#features">Features</a>
-            <a href="https://astra-bot.de/commands">Commands</a>
-            <a href="https://astra-bot.de/#faq">FAQ</a>
-            <a href="https://astra-bot.de/status">Status</a>
-            <a href="https://astra-bot.de/support">Support</a>
-            <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
-        </div>
-        <div class="footer-social">
-            <a href="https://github.com/" target="_blank" title="GitHub">
-                <img src="/public/github.svg" alt="GitHub">
-            </a>
-            <a href="https://discord.gg/" target="_blank" title="Discord">
-                <img src="/public/discord-icon.svg" alt="Discord">
-            </a>
-        </div>
-        <div class="footer-meta">
-            &copy; <?php echo date('Y'); ?> Astra Bot. Made with <span style="color:#7dfad7;">&#10084;</span> | <a href="/impressum.php">Impressum</a>
-        </div>
-    </div>
-</footer>
-
+<?php include "includes/footer.php";?>
 <script>
     const navToggle = document.querySelector('.astra-nav-toggle');
     navToggle.addEventListener('click', () => {
@@ -329,20 +275,32 @@ if ($result->num_rows > 0) {
     });
 </script>
 <script>
-    document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
-        var toggle = dropdown.querySelector('.dropdown-toggle');
-        var menu = dropdown.querySelector('.dropdown-menu');
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-        });
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
-        });
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
+        const toggle = drop.querySelector('.dropdown-toggle');
+        // Nur Mobile: Dropdown per Klick/tap
+        if (window.innerWidth < 900 || isTouchDevice()) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                drop.classList.toggle('open');
+                // Nur ein Dropdown offen:
+                document.querySelectorAll('.nav-dropdown').forEach(function(other) {
+                    if (other !== drop) other.classList.remove('open');
+                });
+            });
+            // Schließen wenn außerhalb geklickt:
+            document.addEventListener('click', function(e) {
+                if (!drop.contains(e.target)) {
+                    drop.classList.remove('open');
+                }
+            });
+        }
+        // PC: Kein JS nötig, CSS :hover regelt!
     });
 </script>
+
 
 
 </body>

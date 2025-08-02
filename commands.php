@@ -269,20 +269,32 @@
     });
 </script>
 <script>
-    document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
-        var toggle = dropdown.querySelector('.dropdown-toggle');
-        var menu = dropdown.querySelector('.dropdown-menu');
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-        });
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
-        });
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
+        const toggle = drop.querySelector('.dropdown-toggle');
+        // Nur Mobile: Dropdown per Klick/tap
+        if (window.innerWidth < 900 || isTouchDevice()) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                drop.classList.toggle('open');
+                // Nur ein Dropdown offen:
+                document.querySelectorAll('.nav-dropdown').forEach(function(other) {
+                    if (other !== drop) other.classList.remove('open');
+                });
+            });
+            // Schließen wenn außerhalb geklickt:
+            document.addEventListener('click', function(e) {
+                if (!drop.contains(e.target)) {
+                    drop.classList.remove('open');
+                }
+            });
+        }
+        // PC: Kein JS nötig, CSS :hover regelt!
     });
 </script>
+
 
 </body>
 </html>
