@@ -16,9 +16,9 @@ html, body {
 }
 
 main {
-    max-width: 1120px;
-    margin: 0 auto 0 auto;
-    padding: 56px 18px 0 18px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 38px 0 38px;
 }
 
 h1, h2, h3, h4 {
