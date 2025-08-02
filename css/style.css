@@ -1033,7 +1033,7 @@ a:hover { color: #ffd799; }
     align-items: center;
     justify-content: space-between;
     margin: 0 0 14px 0;
-    padding: 0 7px;
+    padding: 0 20px;
     font-size: 1.13rem;
     font-weight: 600;
     border-bottom: 1.2px solid #30437055;
@@ -1047,8 +1047,14 @@ a:hover { color: #ffd799; }
 .status-badge {
     display: inline-block;
     min-width: 89px;
+    max-width: 100%;
     font-weight: bold;
-    padding: 8px 0;
+    padding: 8px 18px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     border-radius: 18px;
     font-size: 1.07rem;
     letter-spacing: 0.03em;
@@ -1059,6 +1065,7 @@ a:hover { color: #ffd799; }
     transition: background .15s, color .17s, border .17s;
     position: relative;
 }
+
 .status-badge.ok {
     background: linear-gradient(93deg,#65e6ce 0%, #54fdbe 110%);
     color: #223254;
@@ -1388,6 +1395,19 @@ body.report-page {
     .stat-box {
         border-radius: 11px;
         padding: 14px 0 10px 0;
+    }
+}
+@media (max-width: 500px) {
+    .status-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 6px;
+    }
+    .status-badge {
+        width: 100%;
+        min-width: 0;
+        margin-top: 6px;
+        text-align: center;
     }
 }
 
