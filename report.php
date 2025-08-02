@@ -189,6 +189,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 border-radius: 19px;
             }
         }
+        /* Optional kleine Styles für Main-Nav/Main-Footer, wenn du willst */
+        .main-nav {
+            margin: 0 auto 24px auto;
+            max-width: 1100px;
+            padding: 22px 0 8px 0;
+            font-size: 1.07em;
+        }
+        .main-footer {
+            margin: 56px auto 8px auto;
+            color: #7de3fa;
+            font-size: 0.98em;
+        }
     </style>
 </head>
 <body>
