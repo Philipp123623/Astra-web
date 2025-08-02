@@ -191,6 +191,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+
+<?php include "includes/header.php";?>
+
 <body>
 <div class="astra-card">
     <h1>Problem melden</h1>
@@ -260,4 +263,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     };
 </script>
 </body>
+<?php include "includes/footer.php";?>
 </html>
