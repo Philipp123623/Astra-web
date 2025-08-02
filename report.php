@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="/public/favicon_transparent.png">
     <link rel="stylesheet" href="/css/style.css?v=2.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="report-page">
 <?php include "includes/header.php"; ?>
