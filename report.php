@@ -2,30 +2,25 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // =============== PHP HANDLING ===============
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // --- Config: Deine Discord Webhook URL ---
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['desc']) && isset($_POST['type'])
+) {
     $webhook_url = "https://discord.com/api/webhooks/1400866398799925280/J30DU8hDmaMbH2eCYz5dn_Se-Z4sEBRleJj-jRYe9AJSVQBRaDjMU4bYK4RE67O_iQ-t";
-
-    // --- Eingaben abholen und prüfen ---
     $type    = $_POST['type'] ?? 'Unbekannt';
     $desc    = trim($_POST['desc'] ?? '');
     $discord = trim($_POST['discord'] ?? '');
     $email   = trim($_POST['email'] ?? '');
-
     if (!$desc) {
         http_response_code(400);
         echo json_encode(['success'=>false, 'msg'=>'Bitte beschreibe das Problem.']);
         exit;
     }
-
-    // --- Nachricht bauen ---
     $content = "**Meldungstyp:** $type\n";
     $content .= "**Beschreibung:**\n$desc\n";
     if ($discord) $content .= "**Discord:** $discord\n";
     if ($email)   $content .= "**E-Mail:** $email\n";
     $content .= "*Gesendet am " . date("d.m.Y H:i") . "*";
-
-    // --- Senden an Discord Webhook ---
     $payload = json_encode(['content' => $content]);
     $ch = curl_init($webhook_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -35,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $res = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-
     if ($http_code == 204) {
         echo json_encode(['success'=>true]);
     } else {
@@ -48,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Problem melden | Astra Bot</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Montserrat Font -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="/public/favicon_transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
         body {
@@ -61,39 +55,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0;
             padding: 0;
         }
-        .astra-card {
+        .astra-form-wrap * { box-sizing: border-box; }
+        .astra-form-wrap {
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
             max-width: 480px;
-            margin: 72px auto 0 auto;
-            padding: 36px 38px 24px 38px;
+            margin: 60px auto 40px auto;
             background: linear-gradient(115deg, #241c4d 0%, #202a64 95%);
-            border-radius: 36px;
+            border-radius: 34px;
             box-shadow: 0 8px 48px #09e6fc36, 0 2px 12px #221c504a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 36px 38px 24px 38px;
+            color: #f4faff;
         }
-        .astra-card h1 {
+        .astra-form-wrap h1 {
             color: #72e6ff;
-            font-size: 2.15em;
+            font-size: 2em;
             font-weight: 900;
-            margin-bottom: 0.32em;
+            margin-bottom: 0.18em;
             letter-spacing: -0.5px;
-        }
-        .astra-card p {
-            color: #c0e9fa;
-            font-size: 1.07em;
-            font-weight: 500;
-            margin-bottom: 26px;
             text-align: center;
         }
-        .problem-types {
+        .astra-form-wrap p {
+            color: #c0e9fa;
+            font-size: 1.04em;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .astra-problem-types {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 13px;
+            margin-bottom: 26px;
             justify-content: center;
         }
-        .problem-chip {
-            padding: 0.45em 1.2em;
+        .astra-problem-chip {
+            padding: 0.43em 1em;
             background: #2e2d86;
             color: #70e6ff;
             font-weight: 700;
@@ -108,50 +103,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             gap: 7px;
             user-select: none;
         }
-        .problem-chip.selected,
-        .problem-chip:hover {
+        .astra-problem-chip.selected,
+        .astra-problem-chip:hover {
             background: linear-gradient(93deg,#31c6e8 65%,#7557f7 130%);
             color: #fff;
             border: 2px solid #3ef0e7;
             transform: translateY(-2px) scale(1.05);
         }
-        form {
+        .astra-form {
             width: 100%;
             display: flex;
             flex-direction: column;
         }
-        label {
+        .astra-form label {
             font-weight: 700;
             color: #95e2fd;
             margin-bottom: 6px;
             margin-top: 10px;
             font-size: 1.09em;
         }
-        textarea, input[type="text"], input[type="email"] {
+        .astra-form textarea, .astra-form input[type="text"], .astra-form input[type="email"] {
             background: #231e4d;
             border: 1.3px solid #3ef0e7;
             color: #e0f7ff;
             font-size: 1.07em;
             border-radius: 12px;
-            padding: 11px;
-            margin-bottom: 13px;
+            padding: 10px;
+            margin-bottom: 12px;
             margin-top: 4px;
             transition: border .17s;
             resize: vertical;
         }
-        textarea:focus, input:focus {
+        .astra-form textarea:focus, .astra-form input:focus {
             border-color: #70e6ff;
             outline: none;
         }
-        textarea {
-            min-height: 70px;
+        .astra-form textarea {
+            min-height: 66px;
         }
-        button[type="submit"] {
-            margin-top: 8px;
-            padding: 11px 0;
-            font-size: 1.18em;
+        .astra-form button[type="submit"] {
+            margin-top: 7px;
+            padding: 10px 0;
+            font-size: 1.13em;
             font-weight: 800;
-            border-radius: 14px;
+            border-radius: 13px;
             border: none;
             cursor: pointer;
             background: linear-gradient(90deg,#52ebf6 15%,#7356f7 80%);
@@ -159,101 +154,86 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             box-shadow: 0 2px 18px #51e3fe3b;
             transition: filter .13s, background .13s;
         }
-        button[type="submit"]:hover {
+        .astra-form button[type="submit"]:hover {
             filter: brightness(0.93);
             background: linear-gradient(90deg,#45d3ec 20%,#9a9fff 90%);
         }
-        .msg-success {
+        .astra-msg-success {
             color: #23ffc7;
             background: #1d463a70;
             font-weight: 700;
-            padding: 11px 0;
-            margin: 23px 0 0 0;
-            border-radius: 11px;
+            padding: 10px 0;
+            margin: 20px 0 0 0;
+            border-radius: 10px;
             display: none;
             text-align: center;
         }
-        .msg-error {
+        .astra-msg-error {
             color: #ff7a7a;
             background: #5b1c2f6e;
             font-weight: 700;
-            padding: 11px 0;
-            margin: 23px 0 0 0;
-            border-radius: 11px;
+            padding: 10px 0;
+            margin: 20px 0 0 0;
+            border-radius: 10px;
             display: none;
             text-align: center;
         }
         @media (max-width: 650px) {
-            .astra-card {
-                padding: 17px 7vw 18px 7vw;
-                border-radius: 19px;
-            }
-        }
-        /* Optional kleine Styles für Main-Nav/Main-Footer, wenn du willst */
-        .main-nav {
-            margin: 0 auto 24px auto;
-            max-width: 1100px;
-            padding: 22px 0 8px 0;
-            font-size: 1.07em;
-        }
-        .main-footer {
-            margin: 56px auto 8px auto;
-            color: #7de3fa;
-            font-size: 0.98em;
+            .astra-form-wrap { padding: 17px 5vw 18px 5vw; border-radius: 19px; }
         }
     </style>
 </head>
 <body>
 <?php include "includes/header.php"; ?>
 
-<div class="astra-card">
+<div class="astra-form-wrap">
     <h1>Problem melden</h1>
     <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
-    <div class="problem-types">
-        <div class="problem-chip" data-type="Nutzer" title="Problem mit einem Nutzer">
+    <div class="astra-problem-types">
+        <div class="astra-problem-chip" data-type="Nutzer" title="Problem mit einem Nutzer">
             👤 Nutzer
         </div>
-        <div class="problem-chip" data-type="Webseite" title="Fehler auf der Webseite">
+        <div class="astra-problem-chip" data-type="Webseite" title="Fehler auf der Webseite">
             💻 Webseite
         </div>
-        <div class="problem-chip" data-type="Discord" title="Fehler auf Discord">
+        <div class="astra-problem-chip" data-type="Discord" title="Fehler auf Discord">
             🐞 Discord
         </div>
     </div>
-    <form id="report-form" autocomplete="off" method="POST">
-        <input type="hidden" name="type" id="report-type" required value="">
-        <label for="desc">Beschreibung des Problems*:</label>
-        <textarea name="desc" id="desc" required placeholder="Beschreibe das Problem möglichst genau..."></textarea>
-        <label for="discord">Dein Discord-Name (optional):</label>
-        <input type="text" name="discord" id="discord" maxlength="32" placeholder="z.B. User#1234">
-        <label for="email">E-Mail (optional, falls Rückfrage):</label>
-        <input type="email" name="email" id="email" maxlength="60" placeholder="Optional">
+    <form id="astra-report-form" class="astra-form" autocomplete="off" method="POST">
+        <input type="hidden" name="type" id="astra-report-type" required value="">
+        <label for="astra-desc">Beschreibung des Problems*:</label>
+        <textarea name="desc" id="astra-desc" required placeholder="Beschreibe das Problem möglichst genau..."></textarea>
+        <label for="astra-discord">Dein Discord-Name (optional):</label>
+        <input type="text" name="discord" id="astra-discord" maxlength="32" placeholder="z.B. User#1234">
+        <label for="astra-email">E-Mail (optional, falls Rückfrage):</label>
+        <input type="email" name="email" id="astra-email" maxlength="60" placeholder="Optional">
         <button type="submit">Absenden</button>
     </form>
-    <div class="msg-success" id="report-success">Danke, deine Meldung wurde gesendet! ✨</div>
-    <div class="msg-error" id="report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
+    <div class="astra-msg-success" id="astra-report-success">Danke, deine Meldung wurde gesendet! ✨</div>
+    <div class="astra-msg-error" id="astra-report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
 </div>
 
 <?php include "includes/footer.php"; ?>
 
 <script>
     // Chip-Auswahl: Meldungstyp
-    document.querySelectorAll('.problem-chip').forEach(chip => {
+    document.querySelectorAll('.astra-problem-chip').forEach(chip => {
         chip.onclick = () => {
-            document.querySelectorAll('.problem-chip').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.astra-problem-chip').forEach(c => c.classList.remove('selected'));
             chip.classList.add('selected');
-            document.getElementById('report-type').value = chip.getAttribute('data-type');
-            document.getElementById('report-error').style.display = 'none';
+            document.getElementById('astra-report-type').value = chip.getAttribute('data-type');
+            document.getElementById('astra-report-error').style.display = 'none';
         }
     });
 
     // Absenden mit Fehler-Handling & UX
-    document.getElementById('report-form').onsubmit = async function(e) {
+    document.getElementById('astra-report-form').onsubmit = async function(e) {
         e.preventDefault();
-        const type = document.getElementById('report-type').value;
+        const type = document.getElementById('astra-report-type').value;
         if (!type) {
-            document.getElementById('report-error').innerText = "Bitte wähle einen Meldungstyp aus.";
-            document.getElementById('report-error').style.display = 'block';
+            document.getElementById('astra-report-error').innerText = "Bitte wähle einen Meldungstyp aus.";
+            document.getElementById('astra-report-error').style.display = 'block';
             return;
         }
         const formData = new FormData(this);
@@ -262,17 +242,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const result = await res.json();
             if (result.success) {
                 this.style.display = 'none';
-                document.getElementById('report-success').style.display = 'block';
-                document.getElementById('report-error').style.display = 'none';
+                document.getElementById('astra-report-success').style.display = 'block';
+                document.getElementById('astra-report-error').style.display = 'none';
             } else {
-                document.getElementById('report-success').style.display = 'none';
-                document.getElementById('report-error').innerText = result.msg || "Fehler beim Senden. Bitte später erneut versuchen.";
-                document.getElementById('report-error').style.display = 'block';
+                document.getElementById('astra-report-success').style.display = 'none';
+                document.getElementById('astra-report-error').innerText = result.msg || "Fehler beim Senden. Bitte später erneut versuchen.";
+                document.getElementById('astra-report-error').style.display = 'block';
             }
         } catch (err) {
-            document.getElementById('report-success').style.display = 'none';
-            document.getElementById('report-error').innerText = "Verbindung fehlgeschlagen. Bitte später erneut versuchen.";
-            document.getElementById('report-error').style.display = 'block';
+            document.getElementById('astra-report-success').style.display = 'none';
+            document.getElementById('astra-report-error').innerText = "Verbindung fehlgeschlagen. Bitte später erneut versuchen.";
+            document.getElementById('astra-report-error').style.display = 'block';
         }
     };
 </script>
