@@ -67,6 +67,7 @@ a:hover { color: #ffd799; }
     align-items: center;
     gap: 10px;
     text-decoration: none;
+    margin-right: 32px;   /* <--- DAS hinzufügen */
 }
 
 .astra-logo img {
