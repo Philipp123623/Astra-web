@@ -1,11 +1,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 // =============== PHP HANDLING ===============
-if (
-    $_SERVER['REQUEST_METHOD'] === 'POST'
-    && isset($_POST['desc']) && isset($_POST['type'])
-) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $webhook_url = "https://discord.com/api/webhooks/1400866398799925280/J30DU8hDmaMbH2eCYz5dn_Se-Z4sEBRleJj-jRYe9AJSVQBRaDjMU4bYK4RE67O_iQ-t";
     $type    = $_POST['type'] ?? 'Unbekannt';
     $desc    = trim($_POST['desc'] ?? '');
@@ -46,20 +44,14 @@ if (
     <title>Problem melden | Astra Bot</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="/public/favicon_transparent.png">
+    <link rel="stylesheet" href="/css/style.css?v=2.0" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
-        body {
-            background: linear-gradient(120deg, #19143d 0%, #23215a 100%);
-            color: #f4faff;
-            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        /* SCOPED NUR fürs Formular, überschreibt nichts global */
         .astra-form-wrap * { box-sizing: border-box; }
         .astra-form-wrap {
-            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
             max-width: 480px;
-            margin: 60px auto 40px auto;
+            margin: 48px auto 40px auto;
             background: linear-gradient(115deg, #241c4d 0%, #202a64 95%);
             border-radius: 34px;
             box-shadow: 0 8px 48px #09e6fc36, 0 2px 12px #221c504a;
@@ -186,33 +178,29 @@ if (
 <body>
 <?php include "includes/header.php"; ?>
 
-<div class="astra-form-wrap">
-    <h1>Problem melden</h1>
-    <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
-    <div class="astra-problem-types">
-        <div class="astra-problem-chip" data-type="Nutzer" title="Problem mit einem Nutzer">
-            👤 Nutzer
+<main>
+    <div class="astra-form-wrap">
+        <h1>Problem melden</h1>
+        <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
+        <div class="astra-problem-types">
+            <div class="astra-problem-chip" data-type="Nutzer" title="Problem mit einem Nutzer">👤 Nutzer</div>
+            <div class="astra-problem-chip" data-type="Webseite" title="Fehler auf der Webseite">💻 Webseite</div>
+            <div class="astra-problem-chip" data-type="Discord" title="Fehler auf Discord">🐞 Discord</div>
         </div>
-        <div class="astra-problem-chip" data-type="Webseite" title="Fehler auf der Webseite">
-            💻 Webseite
-        </div>
-        <div class="astra-problem-chip" data-type="Discord" title="Fehler auf Discord">
-            🐞 Discord
-        </div>
+        <form id="astra-report-form" class="astra-form" autocomplete="off" method="POST">
+            <input type="hidden" name="type" id="astra-report-type" required value="">
+            <label for="astra-desc">Beschreibung des Problems*:</label>
+            <textarea name="desc" id="astra-desc" required placeholder="Beschreibe das Problem möglichst genau..."></textarea>
+            <label for="astra-discord">Dein Discord-Name (optional):</label>
+            <input type="text" name="discord" id="astra-discord" maxlength="32" placeholder="z.B. User#1234">
+            <label for="astra-email">E-Mail (optional, falls Rückfrage):</label>
+            <input type="email" name="email" id="astra-email" maxlength="60" placeholder="Optional">
+            <button type="submit">Absenden</button>
+        </form>
+        <div class="astra-msg-success" id="astra-report-success">Danke, deine Meldung wurde gesendet! ✨</div>
+        <div class="astra-msg-error" id="astra-report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
     </div>
-    <form id="astra-report-form" class="astra-form" autocomplete="off" method="POST">
-        <input type="hidden" name="type" id="astra-report-type" required value="">
-        <label for="astra-desc">Beschreibung des Problems*:</label>
-        <textarea name="desc" id="astra-desc" required placeholder="Beschreibe das Problem möglichst genau..."></textarea>
-        <label for="astra-discord">Dein Discord-Name (optional):</label>
-        <input type="text" name="discord" id="astra-discord" maxlength="32" placeholder="z.B. User#1234">
-        <label for="astra-email">E-Mail (optional, falls Rückfrage):</label>
-        <input type="email" name="email" id="astra-email" maxlength="60" placeholder="Optional">
-        <button type="submit">Absenden</button>
-    </form>
-    <div class="astra-msg-success" id="astra-report-success">Danke, deine Meldung wurde gesendet! ✨</div>
-    <div class="astra-msg-error" id="astra-report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
-</div>
+</main>
 
 <?php include "includes/footer.php"; ?>
 
