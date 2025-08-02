@@ -11,12 +11,22 @@
                 <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
                 <li><a href="https://astra-bot.de/#eatures" class="nav-link scrollto">Features</a></li>
                 <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
-                <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
+
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Mehr <span style="font-size:.9em;">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/commands" class="nav-link">Commands</a></li>
+                        <li><a href="/status" class="nav-link">Status</a></li>
+                        <li><a href="/report" class="nav-link">Report</a></li>
+                    </ul>
+                </li>
                 <li><a href="/invite.php" class="nav-btn">Bot einladen</a></li>
             </ul>
+
             <div class="astra-nav-mobile-overlay" onclick="document.body.classList.remove('nav-open')"></div>
+
         </nav>
+
         <button class="astra-nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
             <span></span>

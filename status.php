@@ -527,5 +527,21 @@ if (file_exists($historyFile)) {
         });
     }
 </script>
+<script>
+    document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+        var toggle = dropdown.querySelector('.dropdown-toggle');
+        var menu = dropdown.querySelector('.dropdown-menu');
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
