@@ -79,13 +79,34 @@ if ($writeEntry) {
 $history = [];
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72); // letzte 12h (bei 10 min Intervall)
+    // $lines = array_slice($lines, -72); // bisher: letzte 12h (bei 10 min Intervall)
     foreach ($lines as $line) {
         list($ts, $st) = explode(':', $line);
         $history[] = [
             'timestamp' => intval($ts),
             'status' => intval($st)
         ];
+    }
+}
+
+// ----------- HIER: Stündliche History generieren -----------
+$hourlyHistory = [];
+$nowHour = floor(time() / 3600); // aktuelle Stunde als int
+$historyByHour = [];
+
+foreach ($history as $entry) {
+    $h = floor($entry['timestamp'] / 3600);
+    $historyByHour[$h] = $entry; // überschreibt pro Stunde mit letztem Wert
+}
+
+for ($i = 11; $i >= 0; $i--) {
+    $h = $nowHour - $i;
+    if (isset($historyByHour[$h])) {
+        $hourlyHistory[] = $historyByHour[$h];
+    } else {
+        // Falls kein Wert für diese Stunde: letzten bekannten Status verwenden oder als offline
+        $last = end($hourlyHistory);
+        $hourlyHistory[] = $last ?: ['timestamp' => $h*3600, 'status' => 0];
     }
 }
 ?>
@@ -133,7 +154,7 @@ if (file_exists($historyFile)) {
         <div class="uptime-chart-title">Bot-Uptime Verlauf (letzte 12h)</div>
         <div class="uptime-bar-row" id="uptimeBarRow">
             <?php
-            foreach ($history as $idx => $entry) {
+            foreach ($hourlyHistory as $idx => $entry) {
                 $class = $entry['status'] ? 'online' : 'offline';
                 $ts = $entry['timestamp'];
                 $statusStr = $entry['status'] ? 'Online' : 'Offline';
@@ -142,7 +163,7 @@ if (file_exists($historyFile)) {
             }
             ?>
         </div>
-        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = ~10min</div>
+        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = 1 Stunde</div>
 
         <div id="uptime-tooltip" style="display:none;">
             <div class="uptime-tooltip-bubble">
