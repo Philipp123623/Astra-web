@@ -1,4 +1,7 @@
 <?php
+// --------- ZEITZONE setzen (ganz oben!) ---------
+date_default_timezone_set('Europe/Berlin');
+
 // --------- .env laden ---------
 function loadEnv($path) {
     if (!file_exists($path)) {
