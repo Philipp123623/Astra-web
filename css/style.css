@@ -1413,9 +1413,10 @@ body.report-page {
 /* Tabs für Statusseite */
 .status-tabs-row {
     display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    margin-top: 13px;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0 15px;
 }
 .status-tab-btn {
     padding: 8px 23px;
@@ -1438,11 +1439,12 @@ body.report-page {
 /* 30-Tage Balkenanzeige */
 .uptime-bar-row-day {
     display: flex;
+    flex-wrap: wrap; /* neu: Balken umbrechen */
     gap: 3px;
     justify-content: center;
-    align-items: end;
-    height: 27px;
+    align-items: flex-end;
     margin-bottom: 7px;
+    height: auto; /* neu: automatisch wachsen */
 }
 .uptime-bar-day {
     width: 17px;
@@ -1494,6 +1496,34 @@ body.report-page {
 .uptime-bar-day:hover .uptime-day-label,
 .uptime-bar-day:focus .uptime-day-label {
     display: block;
+}
+
+/* 📱 Mobile Optimierungen */
+@media (max-width: 600px) {
+    .uptime-bar-day {
+        width: 11px;
+        height: 18px;
+        border-radius: 4px;
+    }
+
+    .uptime-bar-day .uptime-day-label {
+        font-size: 0.84em;
+        padding: 3px 9px;
+    }
+
+    .status-tab-btn {
+        padding: 6px 12px;
+        font-size: 0.95em;
+    }
+
+    .uptime-chart-title {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .uptime-bar-row-day {
+        gap: 4px;
+    }
 }
 
 /* === Fertig! === */
