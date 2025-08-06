@@ -55,28 +55,8 @@ try {
     }
 } catch (Exception $e) {}
 
-// --------- Bot-Uptime-Chart-Logging ---------
+// --------- Bot-Uptime-Chart NUR LESEN ---------
 $historyFile = __DIR__ . '/status_history_bot.txt';
-$now = time();
-$bot_status_now = $bot_online ? "1" : "0";
-
-$writeEntry = true;
-if (file_exists($historyFile)) {
-    $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    if (count($lines) > 0) {
-        $lastLine = $lines[count($lines) - 1];
-        list($lastTimestamp, $lastStatus) = explode(':', $lastLine);
-
-        // Schreibe nur, wenn mind. 600 Sekunden vergangen sind oder sich Status geändert hat
-        if (($now - intval($lastTimestamp)) < 600 && $bot_status_now === $lastStatus) {
-            $writeEntry = false;
-        }
-    }
-}
-
-if ($writeEntry) {
-    file_put_contents($historyFile, $now . ':' . $bot_status_now . "\n", FILE_APPEND | LOCK_EX);
-}
 
 // --- Hier die History einlesen und in $history speichern ---
 $history = [];
