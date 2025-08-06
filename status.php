@@ -106,47 +106,6 @@ if (file_exists($historyFile)) {
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=2.1" />
-    <style>
-        .status-tabs-row {
-            display: flex; gap: 15px; margin-bottom: 20px; margin-top: 13px;
-        }
-        .status-tab-btn {
-            padding: 8px 23px; border-radius: 15px; font-weight: 700; font-size: 1.09em;
-            background: #282f4e; color: #b7f8f6; border: none; cursor: pointer;
-            transition: background .16s, color .16s, box-shadow .16s;
-            outline: none;
-        }
-        .status-tab-btn.active, .status-tab-btn:focus {
-            background: linear-gradient(90deg, #65e6ce, #a7c8fd 110%);
-            color: #222f48;
-            box-shadow: 0 4px 18px #65e6ce22;
-        }
-        .uptime-bar-row-day { display: flex; gap: 3px; justify-content: center; align-items: end; height: 27px; margin-bottom: 7px;}
-        .uptime-bar-day {
-            width: 17px; height: 22px; border-radius: 6px; background: #3a5255; opacity: .55; position: relative; cursor: pointer;
-            transition: background .16s, opacity .17s, box-shadow .19s;
-            border: 2px solid #1a2633;
-        }
-        .uptime-bar-day.perfect { background: #65e6ce; opacity: 1; border-color: #54fdbe; }
-        .uptime-bar-day.good { background: #b5f7de; opacity: 1; border-color: #65e6ce; }
-        .uptime-bar-day.warn { background: #ffe479; opacity: 1; color: #6a5c1e; border-color: #ffe479; }
-        .uptime-bar-day.bad { background: #ff7272; opacity: .9; border-color: #ff7272;}
-        .uptime-bar-day .uptime-day-label {
-            display: none; position: absolute; left: 50%; bottom: 27px; transform: translateX(-50%);
-            background: #191d36; color: #a7c8fd; padding: 4px 13px; border-radius: 10px;
-            font-size: 0.96em; white-space: nowrap; box-shadow: 0 3px 14px #1e1b2f61; z-index: 10;
-        }
-        .uptime-bar-day:hover .uptime-day-label,
-        .uptime-bar-day:focus .uptime-day-label {
-            display: block;
-        }
-        .uptime-bar-day .uptime-day-dot {
-            position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; border-radius: 50%;
-        }
-        .uptime-bar-day.perfect .uptime-day-dot { background: #fff; }
-        .uptime-bar-day.warn .uptime-day-dot { background: #ffd299; }
-        .uptime-bar-day.bad .uptime-day-dot { background: #ff7272; }
-    </style>
 </head>
 <body class="status-page">
 <?php include 'includes/header.php'; ?>

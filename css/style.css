@@ -1411,6 +1411,89 @@ body.report-page {
     }
 }
 
+/* ====== STATUS TABS (für /status.php) ====== */
+.status-tabs-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 13px;
+}
+.status-tab-btn {
+    padding: 8px 23px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.09em;
+    background: #282f4e;
+    color: #b7f8f6;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.status-tab-btn:hover {
+    background: #3fd6dd33;
+    color: #72ffe2;
+    transform: translateY(-1px);
+}
+.status-tab-btn.active {
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    color: #223254;
+    font-weight: 900;
+    box-shadow: 0 2px 14px #65e6ce66;
+}
+
+/* ====== TAGESBALKEN (Daily Uptime View) ====== */
+.daily-uptime-bars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 25px 0 15px 0;
+    justify-content: flex-start;
+}
+.daily-uptime-bar {
+    height: 26px;
+    min-width: 28px;
+    border-radius: 9px;
+    background: #3a4c60;
+    box-shadow: 0 1px 7px #3fd6dd11;
+    position: relative;
+    transition: background .2s;
+}
+.daily-uptime-bar:hover {
+    box-shadow: 0 2px 12px #3fd6dd55;
+    cursor: pointer;
+}
+.daily-uptime-bar.good    { background: linear-gradient(90deg, #65e6ce, #54fdbe); }
+.daily-uptime-bar.medium  { background: linear-gradient(90deg, #ffe479, #ffbd34); }
+.daily-uptime-bar.bad     { background: linear-gradient(90deg, #ff7272, #ffb3b3); }
+
+.daily-uptime-bar::after {
+    content: attr(data-day);
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #c6f7f2;
+    opacity: 0.75;
+    white-space: nowrap;
+}
+.daily-uptime-bar[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #292659;
+    color: #e7fffc;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    box-shadow: 0 3px 14px #5de8ff2f;
+    z-index: 10;
+}
+
+
 
 /* === Fertig! === */
 
