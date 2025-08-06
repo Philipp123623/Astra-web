@@ -58,21 +58,45 @@ try {
 // --------- Bot-Uptime-Chart NUR LESEN ---------
 $historyFile = __DIR__ . '/status_history_bot.txt';
 
-// --- Hier die History einlesen und in $history speichern ---
-$history = [];
+// --- Letzte 12h (Detailansicht) ---
+$history_12h = [];
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72); // letzte 12h bei 10min Intervall = 72 Einträge
+    $lines = array_slice($lines, -72); // 12h bei 10min Intervall = 72 Einträge
     foreach ($lines as $line) {
         list($ts, $st) = explode(':', $line);
-        $history[] = [
+        $history_12h[] = [
             'timestamp' => intval($ts),
             'status' => intval($st)
         ];
     }
 }
-?>
 
+// --- Letzte 30 Tage (Tages-Uptime) ---
+$history_30d = [];
+$daily = [];
+if (file_exists($historyFile)) {
+    $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        list($ts, $st) = explode(':', $line);
+        $tag = date("Y-m-d", intval($ts));
+        if (!isset($daily[$tag])) $daily[$tag] = ['total'=>0, 'online'=>0];
+        $daily[$tag]['total']++;
+        if (intval($st) === 1) $daily[$tag]['online']++;
+    }
+    // Nur die letzten 30 Tage nehmen
+    $daily = array_slice($daily, -30, 30, true);
+    foreach ($daily as $tag => $data) {
+        $percent = ($data['total'] > 0) ? ($data['online'] / $data['total'] * 100) : 0;
+        $history_30d[] = [
+            'date' => $tag,
+            'percent' => $percent,
+            'online' => $data['online'],
+            'total' => $data['total'],
+        ];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -81,11 +105,51 @@ if (file_exists($historyFile)) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=2.0" />
+    <link rel="stylesheet" href="/css/style.css?v=2.1" />
+    <style>
+        .status-tabs-row {
+            display: flex; gap: 15px; margin-bottom: 20px; margin-top: 13px;
+        }
+        .status-tab-btn {
+            padding: 8px 23px; border-radius: 15px; font-weight: 700; font-size: 1.09em;
+            background: #282f4e; color: #b7f8f6; border: none; cursor: pointer;
+            transition: background .16s, color .16s, box-shadow .16s;
+            outline: none;
+        }
+        .status-tab-btn.active, .status-tab-btn:focus {
+            background: linear-gradient(90deg, #65e6ce, #a7c8fd 110%);
+            color: #222f48;
+            box-shadow: 0 4px 18px #65e6ce22;
+        }
+        .uptime-bar-row-day { display: flex; gap: 3px; justify-content: center; align-items: end; height: 27px; margin-bottom: 7px;}
+        .uptime-bar-day {
+            width: 17px; height: 22px; border-radius: 6px; background: #3a5255; opacity: .55; position: relative; cursor: pointer;
+            transition: background .16s, opacity .17s, box-shadow .19s;
+            border: 2px solid #1a2633;
+        }
+        .uptime-bar-day.perfect { background: #65e6ce; opacity: 1; border-color: #54fdbe; }
+        .uptime-bar-day.good { background: #b5f7de; opacity: 1; border-color: #65e6ce; }
+        .uptime-bar-day.warn { background: #ffe479; opacity: 1; color: #6a5c1e; border-color: #ffe479; }
+        .uptime-bar-day.bad { background: #ff7272; opacity: .9; border-color: #ff7272;}
+        .uptime-bar-day .uptime-day-label {
+            display: none; position: absolute; left: 50%; bottom: 27px; transform: translateX(-50%);
+            background: #191d36; color: #a7c8fd; padding: 4px 13px; border-radius: 10px;
+            font-size: 0.96em; white-space: nowrap; box-shadow: 0 3px 14px #1e1b2f61; z-index: 10;
+        }
+        .uptime-bar-day:hover .uptime-day-label,
+        .uptime-bar-day:focus .uptime-day-label {
+            display: block;
+        }
+        .uptime-bar-day .uptime-day-dot {
+            position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; border-radius: 50%;
+        }
+        .uptime-bar-day.perfect .uptime-day-dot { background: #fff; }
+        .uptime-bar-day.warn .uptime-day-dot { background: #ffd299; }
+        .uptime-bar-day.bad .uptime-day-dot { background: #ff7272; }
+    </style>
 </head>
 <body class="status-page">
 <?php include 'includes/header.php'; ?>
-
 <main class="astra-status-main">
     <section class="astra-status-card">
         <div class="status-bubbles-bg">
@@ -110,23 +174,40 @@ if (file_exists($historyFile)) {
                     <?php echo $mysql_online ? 'Online' : 'Offline'; ?>
                 </span>
             </div>
-            <!-- Weitere Dienste wie API, Webserver hier hinzufügen -->
         </div>
-
-        <div class="uptime-chart-title">Bot-Uptime Verlauf (letzte 12h)</div>
-        <div class="uptime-bar-row" id="uptimeBarRow">
-            <?php
-            foreach ($history as $idx => $entry) {
+        <div class="status-tabs-row">
+            <button class="status-tab-btn active" id="tab-btn-detail" onclick="switchTab('detail')">Letzte 12h</button>
+            <button class="status-tab-btn" id="tab-btn-tage" onclick="switchTab('tage')">Letzte 30 Tage</button>
+        </div>
+        <!-- Detailansicht (letzte 12h) -->
+        <div class="uptime-chart-title" id="uptime-title-detail">Bot-Uptime Verlauf (letzte 12h)</div>
+        <div class="uptime-bar-row" id="uptimeBarRowDetail">
+            <?php foreach ($history_12h as $idx => $entry):
                 $class = $entry['status'] ? 'online' : 'offline';
                 $ts = $entry['timestamp'];
                 $statusStr = $entry['status'] ? 'Online' : 'Offline';
                 $dateStr = date("d.m. H:i", $ts);
                 echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'"></div>';
-            }
-            ?>
+            endforeach; ?>
         </div>
-        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten</div>
-
+        <!-- Tagesansicht (letzte 30 Tage) -->
+        <div class="uptime-chart-title" id="uptime-title-tage" style="display:none;">Tages-Uptime (letzte 30 Tage)</div>
+        <div class="uptime-bar-row-day" id="uptimeBarRowTage" style="display:none;">
+            <?php foreach ($history_30d as $idx => $entry):
+                $p = $entry['percent'];
+                $dateStr = date("d.m.", strtotime($entry['date']));
+                // Farben nach Uptime:
+                if ($p >= 99.95) $class = 'perfect';
+                elseif ($p >= 98.0) $class = 'good';
+                elseif ($p >= 90.0) $class = 'warn';
+                else $class = 'bad';
+                $tooltip = "{$dateStr} <br>Uptime: ".round($p,2)."%<br>($entry[online]/$entry[total])";
+                echo '<div class="uptime-bar-day '.$class.'" tabindex="0">';
+                echo '<div class="uptime-day-label">'.$tooltip.'</div>';
+                echo '</div>';
+            endforeach; ?>
+        </div>
+        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten &mdash; oder 1 Tag.</div>
         <div id="uptime-tooltip" style="display:none;">
             <div class="uptime-tooltip-bubble">
                 <button type="button" class="uptime-tooltip-close" style="display:none;" aria-label="Schließen">&times;</button>
@@ -134,7 +215,6 @@ if (file_exists($historyFile)) {
                 <div class="uptime-tooltip-arrow"></div>
             </div>
         </div>
-
         <div class="stats-box-row">
             <div class="stat-box">
                 <div class="stat-head">Server</div>
@@ -155,15 +235,26 @@ if (file_exists($historyFile)) {
         </div>
     </section>
 </main>
-
 <?php include 'includes/footer.php'; ?>
 <script>
+    function switchTab(tab) {
+        // Tabs umschalten
+        document.getElementById('tab-btn-detail').classList.toggle('active', tab==='detail');
+        document.getElementById('tab-btn-tage').classList.toggle('active', tab==='tage');
+        document.getElementById('uptimeBarRowDetail').style.display = (tab==='detail') ? 'flex':'none';
+        document.getElementById('uptime-title-detail').style.display = (tab==='detail') ? 'block':'none';
+        document.getElementById('uptimeBarRowTage').style.display = (tab==='tage') ? 'flex':'none';
+        document.getElementById('uptime-title-tage').style.display = (tab==='tage') ? 'block':'none';
+    }
+
+    // Tooltip für Detailansicht (wie bisher)
     document.addEventListener('DOMContentLoaded', function() {
+        // Für Balken in Detailansicht (letzte 12h)
         const bars = document.querySelectorAll('.uptime-bar-row .uptime-bar');
         const tooltip = document.getElementById('uptime-tooltip');
         const tooltipContent = tooltip.querySelector('.uptime-tooltip-content');
         const closeBtn = tooltip.querySelector('.uptime-tooltip-close');
-        let tooltipPermanent = false; // Merker ob mobil dauerhaft angezeigt
+        let tooltipPermanent = false;
 
         function getUptimePercent(idx) {
             let count = 0, online = 0;
@@ -181,13 +272,12 @@ if (file_exists($historyFile)) {
             const upPercent = getUptimePercent(idx);
 
             tooltipContent.innerHTML = `
-            <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
-            Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-            Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+        <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
+        Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+        Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
         `;
             tooltip.style.display = 'block';
 
-            // Show close button only for touch
             if(isPermanent) {
                 closeBtn.style.display = "block";
                 tooltipPermanent = true;
@@ -196,7 +286,6 @@ if (file_exists($historyFile)) {
                 tooltipPermanent = false;
             }
 
-            // Positioniere die Sprechblase mittig über dem Balken
             const rect = bar.getBoundingClientRect();
             const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
             setTimeout(() => {
@@ -212,44 +301,39 @@ if (file_exists($historyFile)) {
         }
 
         bars.forEach((bar, idx) => {
-            // Desktop Hover
             bar.addEventListener('mouseenter', function() {
                 if(window.innerWidth > 700 && !tooltipPermanent) showTooltip(bar, idx);
             });
             bar.addEventListener('mouseleave', function() {
                 if(window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
             });
-
-            // Mobile Touch
             bar.addEventListener('touchstart', function(e) {
-                showTooltip(bar, idx, true); // Permanent anzeigen, Button sichtbar
+                showTooltip(bar, idx, true);
                 e.preventDefault();
                 e.stopPropagation();
             });
         });
 
-        // Schließen-Button
         closeBtn.addEventListener('click', function(e) {
             tooltip.style.display = 'none';
             tooltipPermanent = false;
             e.stopPropagation();
         });
-
-        // Klick außerhalb des Tooltips (nur bei permanent/Touch)
         document.addEventListener('touchstart', function(e) {
             if(tooltipPermanent && !tooltip.contains(e.target)) {
                 tooltip.style.display = 'none';
                 tooltipPermanent = false;
             }
         });
-
-        // Klick außerhalb mit Maus (optional)
         document.addEventListener('mousedown', function(e) {
             if(tooltipPermanent && !tooltip.contains(e.target)) {
                 tooltip.style.display = 'none';
                 tooltipPermanent = false;
             }
         });
+
+        // Initialtab
+        switchTab('detail');
     });
 </script>
 <script>
