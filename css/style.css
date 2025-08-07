@@ -1051,11 +1051,11 @@ a:hover { color: #ffd799; }
 }
 .status-badge {
     display: flex;
-    min-width: 89px;
+    min-width: 80px;
     font-weight: bold;
-    padding: 8px 18px;
-    border-radius: 18px;
-    font-size: 1.07rem;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 0.95rem;
     letter-spacing: 0.03em;
     background: #292659;
     color: #d8ffef;
@@ -1068,7 +1068,7 @@ a:hover { color: #ffd799; }
     white-space: nowrap;
     justify-content: center;    /* horizontal mittig */
     align-items: center;        /* vertikal mittig */
-    min-height: 40px;
+    min-height: 32px;
 }
 .status-badge.ok {
     background: linear-gradient(93deg,#65e6ce 0%, #54fdbe 110%);
