@@ -975,11 +975,9 @@ a:hover { color: #ffd799; }
 .astra-status-main {
     flex: 1;
     min-height: 560px;
-    display: block;
-    align-items: center;
-    justify-content: center;
+    display: block;              /* kein vertikales Zentrieren */
     position: relative;
-    padding: 72px 0 24px; /* Weniger Top-Abstand */
+    padding: 64px 0 24px;        /* Platz unterm Header, aber nicht riesig */
 }
 
 /* ==== Background Bubbles ==== */
@@ -999,19 +997,17 @@ a:hover { color: #ffd799; }
     width: 100%;
     max-width: 900px;
     min-height: 540px;
-    margin: 24px auto;
-    padding: 32px 28px 26px 28px;
-    border-radius: 28px;
+    margin: 28px auto;
+    padding: 30px 26px 24px 26px;
+    border-radius: 26px;
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 8px 44px 0 #21303f2e, 0 2px 20px 0 #65e6ce12;
     display: flex;
     flex-direction: column;
     align-items: stretch;
 }
-.astra-status-card > *:not(.status-bubbles-bg) {
-    position: relative;
-    z-index: 2;
-}
+.astra-status-card > *:not(.status-bubbles-bg) { position: relative; z-index: 2; }
+
 .astra-status-card h1 {
     font-size: 2.1rem;
     font-weight: 900;
@@ -1022,47 +1018,40 @@ a:hover { color: #ffd799; }
 }
 
 /* ==== Status Rows ==== */
-.status-list {
-    margin-bottom: 25px;
-}
+.status-list { margin-bottom: 22px; }
+
 .status-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    font-size: 1.13rem;
+    padding: 10px 14px;                 /* symmetrisch -> Linie wirkt sauber */
+    border-bottom: 1px solid #30437055;
+    font-size: 1.12rem;
     font-weight: 600;
-    border-bottom: 1.2px solid #30437055;
     margin: 0;
 }
-.status-row:last-child {
-    border: none;
-}
-.status-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.status-icon {
-    font-size: 1.19em;
-    margin-right: 8px;
-}
+.status-row:last-child { border-bottom: none; }
+
+.status-label { display: flex; align-items: center; gap: 8px; }
+.status-icon  { font-size: 1.18em; margin-right: 8px; }
+
+/* ==== Badges ==== */
 .status-badge {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 32px;
-    min-width: 88px;
-    font-weight: bold;
-    padding: 0 14px;
+    height: 30px;                 /* kompakt */
+    min-width: 84px;
+    padding: 0 12px;
     border-radius: 16px;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
+    font-size: .95rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+
     background: #292659;
     color: #d8ffef;
     border: 2px solid #65e6ce38;
     box-shadow: 0 1px 12px 0 #42eaaf22;
-    transition: background .15s, color .17s, border .17s;
     white-space: nowrap;
 }
 .status-badge.ok {
@@ -1070,295 +1059,126 @@ a:hover { color: #ffd799; }
     color: #223254;
     border-color: #60e9cb77;
     box-shadow: 0 0 0 3px #54fdbe11;
-    font-weight: 800;
 }
 .status-badge.err {
     background: linear-gradient(93deg, #ff7272 0%, #ffb3b3 110%);
     color: #481d24;
     border-color: #ff727266;
-    font-weight: 800;
     box-shadow: 0 0 0 3px #ff72721d;
 }
 .status-badge.warn {
     background: linear-gradient(93deg, #ffe479 0%, #ffbd34 110%);
     color: #553a10;
     border-color: #ffe47966;
-    font-weight: 800;
     box-shadow: 0 0 0 3px #ffe4792e;
 }
 
 /* ==== Tabs ==== */
 .status-tabs-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
     margin: 10px 0 15px;
 }
 .status-tab-btn {
-    padding: 8px 23px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1.09em;
-    background: #282f4e;
-    color: #b7f8f6;
-    border: none;
-    cursor: pointer;
+    padding: 8px 23px; border-radius: 15px; font-weight: 700; font-size: 1.06em;
+    background: #282f4e; color: #b7f8f6; border: none; cursor: pointer;
     transition: background .16s, color .16s, box-shadow .16s;
-    outline: none;
 }
-.status-tab-btn.active,
-.status-tab-btn:focus {
+.status-tab-btn.active, .status-tab-btn:focus {
     background: linear-gradient(90deg, #65e6ce, #a7c8fd 110%);
-    color: #222f48;
-    box-shadow: 0 4px 18px #65e6ce22;
+    color: #222f48; box-shadow: 0 4px 18px #65e6ce22;
 }
 
-/* ==== Uptime Balken (12h) ==== */
+/* ==== Uptime (12h) ==== */
 .uptime-chart-title {
-    font-size: 1.05rem;
-    margin: 25px 0 5px 0;
-    color: #90e3e7;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+    font-size: 1.03rem; margin: 22px 0 6px; color: #90e3e7; font-weight: 600;
 }
 .uptime-bar-row {
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    align-items: end;
-    height: 20px;
-    margin-bottom: 8px;
+    display: flex; gap: 2px; justify-content: center; align-items: flex-end;
+    height: 20px; margin-bottom: 8px;
 }
 .uptime-bar {
-    width: 7px;
-    height: 16px;
-    border-radius: 4px;
-    background: #3a5255;
-    opacity: 0.42;
-    transition: background .18s, opacity .18s;
+    width: 7px; height: 16px; border-radius: 4px;
+    background: #3a5255; opacity: .42; transition: background .18s, opacity .18s;
     cursor: pointer;
-    position: relative;
 }
-.uptime-bar::before {
-    content: "";
-    position: absolute;
-    left: -8px;
-    top: -6px;
-    width: 24px;
-    height: 28px; /* größere Klickfläche */
-}
-.uptime-bar.online {
-    background: #65e6ce;
-    opacity: 1;
-}
-.uptime-bar.offline {
-    background: #ff7272;
-    opacity: .85;
-}
-.uptime-legend {
-    font-size: 0.89rem;
-    color: #b1cde3;
-    margin-bottom: 4px;
-}
+.uptime-bar.online  { background: #65e6ce; opacity: 1; }
+.uptime-bar.offline { background: #ff7272; opacity: .9; }
 
-/* ==== Uptime Balken (30 Tage) ==== */
+.uptime-legend { font-size: .9rem; color: #b1cde3; margin-bottom: 4px; }
+
+/* ==== Uptime (30 Tage) ==== */
 .uptime-bar-row-day {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    justify-content: center;
-    align-items: flex-end;
+    display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; align-items: flex-end;
     margin-bottom: 7px;
-    height: auto;
 }
 .uptime-bar-day {
-    width: 17px;
-    height: 22px;
-    border-radius: 6px;
-    background: #3a5255;
-    opacity: .55;
-    position: relative;
-    cursor: pointer;
+    width: 17px; height: 22px; border-radius: 6px; background: #3a5255;
+    opacity: .55; position: relative; cursor: pointer; border: 2px solid #1a2633;
     transition: background .16s, opacity .17s, box-shadow .19s;
-    border: 2px solid #1a2633;
 }
-.uptime-bar-day.perfect {
-    background: #65e6ce;
-    opacity: 1;
-    border-color: #54fdbe;
-}
-.uptime-bar-day.good {
-    background: #b5f7de;
-    opacity: 1;
-    border-color: #65e6ce;
-}
-.uptime-bar-day.warn {
-    background: #ffe479;
-    opacity: 1;
-    color: #6a5c1e;
-    border-color: #ffe479;
-}
-.uptime-bar-day.bad {
-    background: #ff7272;
-    opacity: .9;
-    border-color: #ff7272;
-}
+.uptime-bar-day.perfect { background: #65e6ce; opacity: 1; border-color: #54fdbe; }
+.uptime-bar-day.good    { background: #b5f7de; opacity: 1; border-color: #65e6ce; }
+.uptime-bar-day.warn    { background: #ffe479; opacity: 1; border-color: #ffe479; color:#6a5c1e; }
+.uptime-bar-day.bad     { background: #ff7272; opacity: .9; border-color: #ff7272; }
+
 .uptime-bar-day .uptime-day-label {
-    display: none;
-    position: absolute;
-    left: 50%;
-    bottom: 27px;
-    transform: translateX(-50%);
-    background: #191d36;
-    color: #a7c8fd;
-    padding: 4px 13px;
-    border-radius: 10px;
-    font-size: 0.96em;
-    white-space: nowrap;
-    box-shadow: 0 3px 14px #1e1b2f61;
-    z-index: 10;
+    display: none; position: absolute; left: 50%; bottom: 27px; transform: translateX(-50%);
+    background: #191d36; color: #a7c8fd; padding: 4px 13px; border-radius: 10px; font-size: .96em;
+    white-space: nowrap; box-shadow: 0 3px 14px #1e1b2f61; z-index: 10;
 }
 .uptime-bar-day:hover .uptime-day-label,
-.uptime-bar-day:focus .uptime-day-label {
-    display: block;
-}
+.uptime-bar-day:focus .uptime-day-label { display: block; }
 
-/* ==== Tooltip ==== */
-#uptime-tooltip {
-    position: fixed;
-    z-index: 10000;
-    pointer-events: none;
-    left: 0;
-    top: 0;
-}
-#uptime-tooltip.mobile {
-    left: 50% !important;
-    bottom: 16px;
-    top: auto !important;
-    transform: translateX(-50%);
-}
-#uptime-tooltip.mobile .uptime-tooltip-bubble {
-    max-width: 92vw;
-    min-width: 0;
-    font-size: 1rem;
-    padding: 14px 16px 16px;
-}
-#uptime-tooltip.mobile .uptime-tooltip-arrow { display: none; }
-#uptime-tooltip.mobile .uptime-tooltip-close { display: block !important; }
+/* ==== Tooltip (Standard, kein „Modal“ am Handy) ==== */
+#uptime-tooltip { position: fixed; z-index: 10000; pointer-events: none; left: 0; top: 0; }
 .uptime-tooltip-bubble {
     background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
-    color: #d8ffef;
-    padding: 10px 18px 11px 15px;
-    border-radius: 16px;
-    font-size: 0.97rem;
-    box-shadow: 0 3px 22px 0 #22325451;
-    min-width: 155px;
-    max-width: 260px;
-    text-align: left;
-    position: relative;
-    opacity: 0.97;
-    font-weight: 500;
-    animation: fadeInTT .17s;
-}
-@keyframes fadeInTT {
-    from { opacity: 0; transform: translateY(5px); }
-    to   { opacity: .96; transform: none; }
+    color: #d8ffef; padding: 10px 18px 11px 15px; border-radius: 16px; font-size: .97rem;
+    box-shadow: 0 3px 22px 0 #22325451; min-width: 155px; max-width: 260px; text-align: left;
+    position: relative; opacity: .97; font-weight: 500;
 }
 .uptime-tooltip-arrow {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    width: 26px;
-    height: 15px;
-    pointer-events: none;
+    position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+    width: 26px; height: 15px; pointer-events: none;
 }
 .uptime-tooltip-arrow::after {
-    content: "";
-    display: block;
-    width: 17px;
-    height: 17px;
-    margin: 0 auto;
+    content: ""; display: block; width: 17px; height: 17px; margin: 0 auto;
     background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
-    transform: rotate(45deg);
-    box-shadow: 0 2px 10px #23354b3c;
-    position: absolute;
-    left: 50%;
-    top: 2px;
-    translate: -50% 0;
+    transform: rotate(45deg); box-shadow: 0 2px 10px #23354b3c; position: absolute; left: 50%; top: 2px; translate: -50% 0;
 }
 .uptime-tooltip-close {
-    position: absolute;
-    top: 7px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: #8eead7;
-    font-size: 1.38em;
-    cursor: pointer;
-    z-index: 5;
-    font-family: inherit;
-    padding: 0;
-    line-height: 1;
-    opacity: 0.77;
-    transition: opacity 0.2s;
+    position: absolute; top: 7px; right: 10px; background: none; border: none; color: #8eead7;
+    font-size: 1.38em; cursor: pointer; z-index: 5; font-family: inherit; padding: 0; line-height: 1;
+    opacity: .77; transition: opacity .2s; display:none; /* standardmäßig aus */
 }
-.uptime-tooltip-close:hover {
-    opacity: 1;
-    color: #ff7272;
-}
+.uptime-tooltip-close:hover { opacity: 1; color: #ff7272; }
 
 /* ==== Stats ==== */
 .stats-box-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 19px;
-    margin: 25px 0 0 0;
+    display: flex; justify-content: space-between; gap: 19px; margin: 22px 0 0 0;
 }
 .stat-box {
-    flex: 1 1 25%;
-    background: linear-gradient(127deg, #262364 0%, #23354b 100%);
-    border-radius: 15px;
-    padding: 18px 0 13px 0;
-    color: #c5fffd;
-    font-size: 1.01rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 2px 13px 0 #3fd6dd0e;
+    flex: 1 1 25%; background: linear-gradient(127deg, #262364 0%, #23354b 100%);
+    border-radius: 15px; padding: 16px 0 12px; color: #c5fffd; font-size: 1.01rem;
+    display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 13px 0 #3fd6dd0e;
 }
-.stat-head {
-    font-size: 0.97rem;
-    color: #9cecff;
-    margin-bottom: 2px;
-}
-.stat-num {
-    font-size: 1.35rem;
-    color: #65e6ce;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-}
+.stat-head { font-size: .97rem; color: #9cecff; margin-bottom: 2px; }
+.stat-num  { font-size: 1.35rem; color: #65e6ce; font-weight: 800; letter-spacing: .04em; }
 
-/* ==== Mobile Optimierungen ==== */
+/* ==== Mobile ==== */
 @media (max-width: 700px) {
-    .astra-status-card { padding: 20px 16px; border-radius: 20px; }
-    .astra-status-card h1 { font-size: 1.13rem; }
+    .astra-status-card { padding: 18px 14px; border-radius: 18px; }
+    .astra-status-card h1 { font-size: 1.2rem; }
     .status-row { font-size: 1.02rem; }
-    .status-badge { min-width: 70px; font-size: 0.9rem; height: 30px; }
+    .status-badge { height: 28px; min-width: 78px; font-size: .9rem; }
+    .uptime-bar-row { gap: 3px; height: 22px; }
+    .uptime-bar { width: 8px; height: 20px; } /* leicht größer statt Fake-Hitbox */
     .stats-box-row { flex-direction: column; gap: 10px; }
     .stat-box { padding: 12px 2px 9px 2px; border-radius: 14px; }
 }
-@media (max-width: 600px) {
-    .uptime-bar-day { width: 11px; height: 18px; border-radius: 4px; }
-    .uptime-bar-day .uptime-day-label { font-size: 0.84em; padding: 3px 9px; }
-    .status-tab-btn { padding: 6px 12px; font-size: 0.95em; }
-    .uptime-chart-title { font-size: 1em; text-align: center; }
-    .uptime-bar-row-day { gap: 4px; }
-}
 @media (max-width: 500px) {
     .status-row { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
-    .status-badge { width: auto; min-width: 86px; margin-top: 0; }
+    .status-badge { width: auto; min-width: 86px; }
 }
 
 /* =========================
