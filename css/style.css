@@ -1387,76 +1387,82 @@ a:hover { color: #ffd799; }
     }
 }
 /* =========================
-   REPORT PAGE STYLES
+   REPORT PAGE - Modern Card Style
    ========================= */
 
 .report-page main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 40px 16px;
 }
 
 .astra-form-wrap {
-    background: rgba(42, 50, 111, 0.45);
-    border-radius: 25px;
+    background: linear-gradient(135deg, rgba(36,29,80,0.92) 0%, rgba(46,38,90,0.92) 80%);
+    border-radius: 26px;
     padding: 32px;
     max-width: 640px;
     width: 100%;
-    box-shadow: 0 8px 40px #5b65ff12;
+    box-shadow: 0 8px 44px rgba(33,48,63,0.18), 0 2px 20px rgba(101,230,206,0.07);
 }
 
+/* Titel und Beschreibung */
 .astra-form-wrap h1 {
     font-size: 2em;
     font-weight: 900;
-    color: #7dfad7;
+    color: #65e6ce;
     margin-bottom: 8px;
 }
-
 .astra-form-wrap p {
     font-size: 1.05em;
     color: #d7f3ff;
     margin-bottom: 24px;
 }
 
-/* Problem-Typ Auswahl */
+/* Problemtypen-Auswahl */
 .astra-problem-types {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
-
 .astra-problem-chip {
-    background: rgba(56,65,139,0.36);
-    padding: 10px 18px;
+    flex: 1 1 auto;
+    padding: 12px 20px;
     border-radius: 14px;
     font-weight: 700;
-    color: #e4eaff;
+    color: #fff;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: center;
 }
 .astra-problem-chip:hover {
-    background: rgba(101,230,206,0.16);
     transform: translateY(-2px);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
 }
 .astra-problem-chip.selected {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
-    color: #223254;
+    filter: brightness(1.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
-/* Formular */
+/* Individuelle Farben pro Typ */
+.astra-problem-chip[data-type="Nutzer"] {
+    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
+}
+.astra-problem-chip[data-type="Webseite"] {
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+}
+.astra-problem-chip[data-type="Discord"] {
+    background: linear-gradient(90deg, #a77bff, #c29cff);
+}
+
+/* Formularfelder */
 .astra-form label {
     display: block;
     font-weight: 700;
     margin-bottom: 6px;
     color: #a7c8fd;
 }
-
 .astra-form textarea,
 .astra-form input[type="text"],
 .astra-form input[type="email"] {
@@ -1469,15 +1475,15 @@ a:hover { color: #ffd799; }
     color: #f4faff;
     font-size: 1em;
     font-family: inherit;
-    box-shadow: 0 2px 12px #5de8ff19;
+    box-shadow: 0 2px 12px rgba(93,232,255,0.1);
     margin-bottom: 16px;
 }
-
 .astra-form textarea {
     min-height: 120px;
     resize: vertical;
 }
 
+/* Absenden-Button */
 .astra-form button {
     background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
@@ -1487,12 +1493,12 @@ a:hover { color: #ffd799; }
     border: none;
     cursor: pointer;
     font-size: 1.05em;
-    box-shadow: 0 2px 14px #5de8ff33;
+    box-shadow: 0 2px 14px rgba(93,232,255,0.2);
     transition: filter 0.14s, box-shadow 0.14s;
 }
 .astra-form button:hover {
     filter: brightness(0.97);
-    box-shadow: 0 6px 24px #65e6ce38;
+    box-shadow: 0 6px 24px rgba(101,230,206,0.25);
 }
 
 /* Meldungen */
@@ -1504,7 +1510,6 @@ a:hover { color: #ffd799; }
     border-radius: 12px;
     font-weight: 700;
 }
-
 .astra-msg-success {
     background: rgba(101,230,206,0.16);
     color: #65e6ce;
@@ -1520,12 +1525,8 @@ a:hover { color: #ffd799; }
         padding: 20px;
         border-radius: 18px;
     }
-    .astra-problem-types {
-        gap: 8px;
-    }
     .astra-problem-chip {
         flex: 1 1 100%;
-        justify-content: center;
     }
 }
 

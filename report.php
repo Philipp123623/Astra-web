@@ -2,10 +2,21 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// ======= ENV LADEN =======
+$envPath = __DIR__ . '/.env';
+if (file_exists($envPath)) {
+    $env = parse_ini_file($envPath);
+    if (isset($env['DISCORD_WEBHOOK'])) {
+        $webhook_url = trim($env['DISCORD_WEBHOOK']);
+    } else {
+        die('DISCORD_WEBHOOK nicht in .env gefunden.');
+    }
+} else {
+    die('.env Datei nicht gefunden.');
+}
+
 // ======= PHP HANDLING =======
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // --- Discord Webhook ---
-    $webhook_url = "https://discord.com/api/webhooks/1400866398799925280/J30DU8hDmaMbH2eCYz5dn_Se-Z4sEBRleJj-jRYe9AJSVQBRaDjMU4bYK4RE67O_iQ-t";
 
     // --- Daten aus POST holen ---
     $type    = $_POST['type'] ?? 'Unbekannt';
