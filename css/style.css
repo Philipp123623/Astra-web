@@ -975,11 +975,11 @@ a:hover { color: #ffd799; }
 .astra-status-main {
     flex: 1;
     min-height: 560px;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 24px 0;
+    padding: 100px 0 24px;;
 }
 
 /* ==== Background Bubbles ==== */
@@ -1050,7 +1050,7 @@ a:hover { color: #ffd799; }
     margin-right: 8px;
 }
 .status-badge {
-    display: inline-block;
+    display: flex;
     min-width: 89px;
     font-weight: bold;
     padding: 8px 18px;
@@ -1066,6 +1066,9 @@ a:hover { color: #ffd799; }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    justify-content: center;    /* horizontal mittig */
+    align-items: center;        /* vertikal mittig */
+    min-height: 40px;
 }
 .status-badge.ok {
     background: linear-gradient(93deg,#65e6ce 0%, #54fdbe 110%);
