@@ -979,7 +979,7 @@ a:hover { color: #ffd799; }
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 100px 0 24px;;
+    padding: 72px 0 24px; /* Weniger Top-Abstand */
 }
 
 /* ==== Background Bubbles ==== */
@@ -999,16 +999,14 @@ a:hover { color: #ffd799; }
     width: 100%;
     max-width: 900px;
     min-height: 540px;
-    margin: 40px auto;
-    padding: 36px 32px 28px 32px;
-    border-radius: 32px;
+    margin: 24px auto;
+    padding: 32px 28px 26px 28px;
+    border-radius: 28px;
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 8px 44px 0 #21303f2e, 0 2px 20px 0 #65e6ce12;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
 }
 .astra-status-card > *:not(.status-bubbles-bg) {
     position: relative;
@@ -1018,7 +1016,7 @@ a:hover { color: #ffd799; }
     font-size: 2.1rem;
     font-weight: 900;
     color: #65e6ce;
-    margin-bottom: 17px;
+    margin-bottom: 12px;
     text-shadow: 0 1px 18px #251f5b38;
     letter-spacing: 0.03em;
 }
@@ -1031,11 +1029,11 @@ a:hover { color: #ffd799; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 14px 0;
-    padding: 0 20px;
+    padding: 12px 16px;
     font-size: 1.13rem;
     font-weight: 600;
     border-bottom: 1.2px solid #30437055;
+    margin: 0;
 }
 .status-row:last-child {
     border: none;
@@ -1051,9 +1049,12 @@ a:hover { color: #ffd799; }
 }
 .status-badge {
     display: flex;
-    min-width: 80px;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    min-width: 88px;
     font-weight: bold;
-    padding: 6px 14px;
+    padding: 0 14px;
     border-radius: 16px;
     font-size: 0.95rem;
     letter-spacing: 0.03em;
@@ -1062,13 +1063,7 @@ a:hover { color: #ffd799; }
     border: 2px solid #65e6ce38;
     box-shadow: 0 1px 12px 0 #42eaaf22;
     transition: background .15s, color .17s, border .17s;
-    position: relative;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
-    justify-content: center;    /* horizontal mittig */
-    align-items: center;        /* vertikal mittig */
-    min-height: 32px;
 }
 .status-badge.ok {
     background: linear-gradient(93deg,#65e6ce 0%, #54fdbe 110%);
@@ -1129,7 +1124,7 @@ a:hover { color: #ffd799; }
 }
 .uptime-bar-row {
     display: flex;
-    gap: 2px;
+    gap: 3px;
     justify-content: center;
     align-items: end;
     height: 20px;
@@ -1143,6 +1138,15 @@ a:hover { color: #ffd799; }
     opacity: 0.42;
     transition: background .18s, opacity .18s;
     cursor: pointer;
+    position: relative;
+}
+.uptime-bar::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: -6px;
+    width: 24px;
+    height: 28px; /* größere Klickfläche */
 }
 .uptime-bar.online {
     background: #65e6ce;
@@ -1228,6 +1232,20 @@ a:hover { color: #ffd799; }
     left: 0;
     top: 0;
 }
+#uptime-tooltip.mobile {
+    left: 50% !important;
+    bottom: 16px;
+    top: auto !important;
+    transform: translateX(-50%);
+}
+#uptime-tooltip.mobile .uptime-tooltip-bubble {
+    max-width: 92vw;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 14px 16px 16px;
+}
+#uptime-tooltip.mobile .uptime-tooltip-arrow { display: none; }
+#uptime-tooltip.mobile .uptime-tooltip-close { display: block !important; }
 .uptime-tooltip-bubble {
     background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
     color: #d8ffef;
@@ -1255,7 +1273,6 @@ a:hover { color: #ffd799; }
     width: 26px;
     height: 15px;
     pointer-events: none;
-    overflow: visible;
 }
 .uptime-tooltip-arrow::after {
     content: "";
@@ -1304,7 +1321,6 @@ a:hover { color: #ffd799; }
     background: linear-gradient(127deg, #262364 0%, #23354b 100%);
     border-radius: 15px;
     padding: 18px 0 13px 0;
-    margin: 0 2px;
     color: #c5fffd;
     font-size: 1.01rem;
     display: flex;
@@ -1322,73 +1338,29 @@ a:hover { color: #ffd799; }
     color: #65e6ce;
     font-weight: 800;
     letter-spacing: 0.04em;
-    margin-bottom: 2px;
-    margin-top: 4px;
 }
 
 /* ==== Mobile Optimierungen ==== */
 @media (max-width: 700px) {
-    .astra-status-card {
-        padding: 7vw 2vw 7vw 2vw;
-        border-radius: 17px;
-    }
-    .astra-status-card h1 {
-        font-size: 1.13rem;
-    }
-    .status-row {
-        font-size: 1.02rem;
-    }
-    .status-badge {
-        min-width: 65px;
-        font-size: 0.92rem;
-    }
-    .stats-box-row {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .stat-box {
-        padding: 12px 2px 9px 2px;
-        border-radius: 14px;
-    }
-    .uptime-tooltip-close {
-        display:block !important;
-    }
+    .astra-status-card { padding: 20px 16px; border-radius: 20px; }
+    .astra-status-card h1 { font-size: 1.13rem; }
+    .status-row { font-size: 1.02rem; }
+    .status-badge { min-width: 70px; font-size: 0.9rem; height: 30px; }
+    .stats-box-row { flex-direction: column; gap: 10px; }
+    .stat-box { padding: 12px 2px 9px 2px; border-radius: 14px; }
 }
 @media (max-width: 600px) {
-    .uptime-bar-day {
-        width: 11px;
-        height: 18px;
-        border-radius: 4px;
-    }
-    .uptime-bar-day .uptime-day-label {
-        font-size: 0.84em;
-        padding: 3px 9px;
-    }
-    .status-tab-btn {
-        padding: 6px 12px;
-        font-size: 0.95em;
-    }
-    .uptime-chart-title {
-        font-size: 1em;
-        text-align: center;
-    }
-    .uptime-bar-row-day {
-        gap: 4px;
-    }
+    .uptime-bar-day { width: 11px; height: 18px; border-radius: 4px; }
+    .uptime-bar-day .uptime-day-label { font-size: 0.84em; padding: 3px 9px; }
+    .status-tab-btn { padding: 6px 12px; font-size: 0.95em; }
+    .uptime-chart-title { font-size: 1em; text-align: center; }
+    .uptime-bar-row-day { gap: 4px; }
 }
 @media (max-width: 500px) {
-    .status-row {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 0 6px;
-    }
-    .status-badge {
-        width: 100%;
-        min-width: 0;
-        margin-top: 6px;
-        text-align: center;
-    }
+    .status-row { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+    .status-badge { width: auto; min-width: 86px; margin-top: 0; }
 }
+
 /* =========================
    REPORT PAGE - Improved Card Style
    ========================= */

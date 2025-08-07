@@ -98,6 +98,32 @@ if (file_exists($historyFile)) {
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=2.1" />
+
+    <!-- Small overrides to fix mobile spacing/badges/tooltip and tap targets -->
+    <style>
+        .astra-status-main{display:block;padding:72px 0 24px;}
+        .astra-status-card{margin:24px auto;padding:32px 28px 26px;border-radius:28px}
+        .astra-status-card h1{margin-bottom:12px}
+        .status-row{padding:12px 16px;margin:0;border-bottom:1.2px solid #30437055}
+        .status-row:last-child{border-bottom:0}
+        .status-badge{display:flex;align-items:center;justify-content:center;height:32px;min-width:88px;padding:0 14px;border-radius:16px;font-size:.95rem;white-space:nowrap}
+        .uptime-bar-row{gap:3px}
+        .uptime-bar{position:relative;width:7px;height:16px}
+        .uptime-bar::before{content:"";position:absolute;left:-8px;top:-6px;width:24px;height:28px}
+        #uptime-tooltip.mobile{left:50% !important;bottom:16px;top:auto !important;transform:translateX(-50%)}
+        #uptime-tooltip.mobile .uptime-tooltip-bubble{max-width:92vw;min-width:0;font-size:1rem;padding:14px 16px 16px}
+        #uptime-tooltip.mobile .uptime-tooltip-arrow{display:none}
+        #uptime-tooltip.mobile .uptime-tooltip-close{display:block !important}
+        @media (max-width:700px){
+            .astra-status-card{padding:20px 16px;border-radius:20px}
+            .status-badge{min-width:70px;height:30px;font-size:.9rem}
+            .stats-box-row{flex-direction:column;gap:10px}
+        }
+        @media (max-width:500px){
+            .status-row{flex-wrap:wrap;gap:8px;padding:10px 12px}
+            .status-badge{width:auto;min-width:86px}
+        }
+    </style>
 </head>
 <body class="status-page">
 <?php include 'includes/header.php'; ?>
@@ -210,14 +236,21 @@ if (file_exists($historyFile)) {
             `;
             tooltip.style.display = 'block';
 
+            // Mobile-Karte vs. Desktop-Popover
+            const isMobile = window.innerWidth <= 700;
+            tooltip.classList.toggle('mobile', isMobile);
+
             if(isPermanent) {
                 closeBtn.style.display = "block";
                 tooltipPermanent = true;
             } else {
-                closeBtn.style.display = "none";
-                tooltipPermanent = false;
+                closeBtn.style.display = isMobile ? "block" : "none";
+                tooltipPermanent = isMobile; // mobil immer mit X schließen
             }
 
+            if (isMobile) return; // Position via CSS unten mittig
+
+            // Desktop: Popover nahe Balken positionieren
             const rect = bar.getBoundingClientRect();
             const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
             setTimeout(() => {
