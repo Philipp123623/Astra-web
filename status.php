@@ -8,18 +8,20 @@ function loadEnv($path) {
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $env = [];
     foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
-        list($key, $value) = explode('=', $line, 2);
+        $trim = trim($line);
+        if ($trim === '' || $trim[0] === '#') continue;
+        if (strpos($trim, '=') === false) continue;
+        list($key, $value) = explode('=', $trim, 2);
         $env[trim($key)] = trim($value);
     }
     return $env;
 }
 $env = loadEnv(__DIR__ . '/.env');
 
-$servername = $env['DB_SERVER'];
-$username   = $env['DB_USER'];
-$password   = $env['DB_PASS'];
-$dbname     = $env['DB_NAME'];
+$servername = $env['DB_SERVER'] ?? '';
+$username   = $env['DB_USER'] ?? '';
+$password   = $env['DB_PASS'] ?? '';
+$dbname     = $env['DB_NAME'] ?? '';
 
 $conn = @new mysqli($servername, $username, $password, $dbname);
 $mysql_online = ($conn && !$conn->connect_error);
@@ -27,13 +29,15 @@ $mysql_online = ($conn && !$conn->connect_error);
 $servercount = $usercount = $commandCount = $channelCount = "-";
 if ($mysql_online) {
     $sql = "SELECT servercount, usercount, commandCount, channelCount FROM website_stats LIMIT 1";
-    $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $servercount  = $row['servercount'] ?? "-";
-        $usercount    = $row['usercount'] ?? "-";
-        $commandCount = $row['commandCount'] ?? "-";
-        $channelCount = $row['channelCount'] ?? "-";
+    if ($result = $conn->query($sql)) {
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $servercount  = $row['servercount'] ?? "-";
+            $usercount    = $row['usercount'] ?? "-";
+            $commandCount = $row['commandCount'] ?? "-";
+            $channelCount = $row['channelCount'] ?? "-";
+        }
+        $result->free();
     }
     @$conn->close();
 }
@@ -43,7 +47,7 @@ try {
     $json = @file_get_contents('http://127.0.0.1:5000/status');
     if ($json) {
         $data = json_decode($json, true);
-        if ($data && isset($data['online']) && $data['online'] === true) {
+        if (!empty($data['online'])) {
             $bot_online = true;
         }
     }
@@ -57,34 +61,36 @@ if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $lines = array_slice($lines, -72);
     foreach ($lines as $line) {
-        list($ts, $st) = explode(':', $line);
+        if (strpos($line, ':') === false) continue;
+        list($ts, $st) = explode(':', $line, 2);
         $history_12h[] = [
-            'timestamp' => intval($ts),
-            'status' => intval($st)
+            'timestamp' => (int)$ts,
+            'status'    => (int)$st
         ];
     }
 }
 
 // Letzte 30 Tage
 $history_30d = [];
-$daily = [];
 if (file_exists($historyFile)) {
+    $daily = [];
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
-        list($ts, $st) = explode(':', $line);
-        $tag = date("Y-m-d", intval($ts));
+        if (strpos($line, ':') === false) continue;
+        list($ts, $st) = explode(':', $line, 2);
+        $tag = date("Y-m-d", (int)$ts);
         if (!isset($daily[$tag])) $daily[$tag] = ['total'=>0, 'online'=>0];
         $daily[$tag]['total']++;
-        if (intval($st) === 1) $daily[$tag]['online']++;
+        if ((int)$st === 1) $daily[$tag]['online']++;
     }
     $daily = array_slice($daily, -30, 30, true);
     foreach ($daily as $tag => $data) {
         $percent = ($data['total'] > 0) ? ($data['online'] / $data['total'] * 100) : 0;
         $history_30d[] = [
-            'date' => $tag,
+            'date'    => $tag,
             'percent' => $percent,
-            'online' => $data['online'],
-            'total' => $data['total'],
+            'online'  => $data['online'],
+            'total'   => $data['total'],
         ];
     }
 }
@@ -98,32 +104,6 @@ if (file_exists($historyFile)) {
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=2.1" />
-
-    <!-- Small overrides to fix mobile spacing/badges/tooltip and tap targets -->
-    <style>
-        .astra-status-main{display:block;padding:72px 0 24px;}
-        .astra-status-card{margin:24px auto;padding:32px 28px 26px;border-radius:28px}
-        .astra-status-card h1{margin-bottom:12px}
-        .status-row{padding:12px 16px;margin:0;border-bottom:1.2px solid #30437055}
-        .status-row:last-child{border-bottom:0}
-        .status-badge{display:flex;align-items:center;justify-content:center;height:32px;min-width:88px;padding:0 14px;border-radius:16px;font-size:.95rem;white-space:nowrap}
-        .uptime-bar-row{gap:3px}
-        .uptime-bar{position:relative;width:7px;height:16px}
-        .uptime-bar::before{content:"";position:absolute;left:-8px;top:-6px;width:24px;height:28px}
-        #uptime-tooltip.mobile{left:50% !important;bottom:16px;top:auto !important;transform:translateX(-50%)}
-        #uptime-tooltip.mobile .uptime-tooltip-bubble{max-width:92vw;min-width:0;font-size:1rem;padding:14px 16px 16px}
-        #uptime-tooltip.mobile .uptime-tooltip-arrow{display:none}
-        #uptime-tooltip.mobile .uptime-tooltip-close{display:block !important}
-        @media (max-width:700px){
-            .astra-status-card{padding:20px 16px;border-radius:20px}
-            .status-badge{min-width:70px;height:30px;font-size:.9rem}
-            .stats-box-row{flex-direction:column;gap:10px}
-        }
-        @media (max-width:500px){
-            .status-row{flex-wrap:wrap;gap:8px;padding:10px 12px}
-            .status-badge{width:auto;min-width:86px}
-        }
-    </style>
 </head>
 <body class="status-page">
 <?php include 'includes/header.php'; ?>
@@ -152,10 +132,12 @@ if (file_exists($historyFile)) {
                 </span>
             </div>
         </div>
+
         <div class="status-tabs-row">
             <button class="status-tab-btn active" id="tab-btn-detail" onclick="switchTab('detail')">Letzte 12h</button>
             <button class="status-tab-btn" id="tab-btn-tage" onclick="switchTab('tage')">Letzte 30 Tage</button>
         </div>
+
         <div class="uptime-chart-title" id="uptime-title-detail">Bot-Uptime Verlauf (letzte 12h)</div>
         <div class="uptime-bar-row" id="uptimeBarRowDetail">
             <?php foreach ($history_12h as $idx => $entry):
@@ -166,22 +148,23 @@ if (file_exists($historyFile)) {
                 echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'"></div>';
             endforeach; ?>
         </div>
+
         <div class="uptime-chart-title" id="uptime-title-tage" style="display:none;">Tages-Uptime (letzte 30 Tage)</div>
         <div class="uptime-bar-row-day" id="uptimeBarRowTage" style="display:none;">
-            <?php foreach ($history_30d as $idx => $entry):
+            <?php foreach ($history_30d as $entry):
                 $p = $entry['percent'];
                 $dateStr = date("d.m.", strtotime($entry['date']));
                 if ($p >= 99.95) $class = 'perfect';
                 elseif ($p >= 98.0) $class = 'good';
                 elseif ($p >= 90.0) $class = 'warn';
                 else $class = 'bad';
-                $tooltip = "{$dateStr} <br>Uptime: ".round($p,2)."%<br>($entry[online]/$entry[total])";
-                echo '<div class="uptime-bar-day '.$class.'" tabindex="0">';
-                echo '<div class="uptime-day-label">'.$tooltip.'</div>';
-                echo '</div>';
+                $tooltip = "{$dateStr} <br>Uptime: ".round($p,2)."%<br>({$entry['online']}/{$entry['total']})";
+                echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'"></div>';
             endforeach; ?>
         </div>
-        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten &mdash; oder 1 Tag.</div>
+
+        <div class="uptime-legend">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten — oder 1 Tag.</div>
+
         <div id="uptime-tooltip" style="display:none;">
             <div class="uptime-tooltip-bubble">
                 <button type="button" class="uptime-tooltip-close" style="display:none;" aria-label="Schließen">&times;</button>
@@ -189,6 +172,7 @@ if (file_exists($historyFile)) {
                 <div class="uptime-tooltip-arrow"></div>
             </div>
         </div>
+
         <div class="stats-box-row">
             <div class="stat-box"><div class="stat-head">Server</div><div class="stat-num"><?php echo $servercount; ?></div></div>
             <div class="stat-box"><div class="stat-head">User</div><div class="stat-num"><?php echo $usercount; ?></div></div>
@@ -198,7 +182,9 @@ if (file_exists($historyFile)) {
     </section>
 </main>
 <?php include 'includes/footer.php'; ?>
+
 <script>
+    // Tab Switch
     function switchTab(tab) {
         document.getElementById('tab-btn-detail').classList.toggle('active', tab==='detail');
         document.getElementById('tab-btn-tage').classList.toggle('active', tab==='tage');
@@ -230,13 +216,12 @@ if (file_exists($historyFile)) {
             const time = bar.dataset.time;
             const upPercent = getUptimePercent(idx);
             tooltipContent.innerHTML = `
-                <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
-                Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-                Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
-            `;
+            <b>${time}</b><br>
+            Status: <span style="color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+            Uptime bis hier: ${upPercent}%
+        `;
             tooltip.style.display = 'block';
 
-            // Mobile-Karte vs. Desktop-Popover
             const isMobile = window.innerWidth <= 700;
             tooltip.classList.toggle('mobile', isMobile);
 
@@ -245,35 +230,29 @@ if (file_exists($historyFile)) {
                 tooltipPermanent = true;
             } else {
                 closeBtn.style.display = isMobile ? "block" : "none";
-                tooltipPermanent = isMobile; // mobil immer mit X schließen
+                tooltipPermanent = isMobile;
             }
 
-            if (isMobile) return; // Position via CSS unten mittig
+            if (!isMobile) {
+                const rect = bar.getBoundingClientRect();
+                const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
+                setTimeout(() => {
+                    const bubbleRect = bubble.getBoundingClientRect();
+                    const scrollY = window.scrollY;
+                    const scrollX = window.scrollX;
+                    let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
+                    let top = rect.top + scrollY - bubbleRect.height - 13;
 
-            // Desktop: Popover nahe Balken positionieren
-            const rect = bar.getBoundingClientRect();
-            const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
-            setTimeout(() => {
-                const bubbleRect = bubble.getBoundingClientRect();
-                const scrollY = window.scrollY || document.documentElement.scrollTop;
-                const scrollX = window.scrollX || document.documentElement.scrollLeft;
-                let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
-                let top = rect.top + scrollY - bubbleRect.height - 13;
-
-                left = Math.max(7, Math.min(left, document.documentElement.scrollWidth - bubbleRect.width - 7));
-
-                if (top < scrollY + 5) {
-                    top = rect.bottom + scrollY + 13;
-                    tooltip.querySelector('.uptime-tooltip-arrow').style.top = '-7px';
-                    tooltip.querySelector('.uptime-tooltip-arrow').style.transform = 'rotate(180deg)';
-                } else {
-                    tooltip.querySelector('.uptime-tooltip-arrow').style.top = '';
-                    tooltip.querySelector('.uptime-tooltip-arrow').style.transform = '';
-                }
-
-                tooltip.style.left = left + "px";
-                tooltip.style.top = top + "px";
-            }, 1);
+                    if (top < scrollY + 5) {
+                        top = rect.bottom + scrollY + 13;
+                        tooltip.querySelector('.uptime-tooltip-arrow').style.transform = 'rotate(180deg)';
+                    } else {
+                        tooltip.querySelector('.uptime-tooltip-arrow').style.transform = '';
+                    }
+                    tooltip.style.left = left + "px";
+                    tooltip.style.top = top + "px";
+                }, 1);
+            }
         }
 
         bars.forEach((bar, idx) => {
@@ -285,18 +264,12 @@ if (file_exists($historyFile)) {
             });
         });
 
-        closeBtn.addEventListener('click', function(e) {
+        closeBtn.addEventListener('click', () => {
             tooltip.style.display = 'none';
             tooltipPermanent = false;
-            e.stopPropagation();
         });
-        document.addEventListener('touchstart', function(e) {
-            if(tooltipPermanent && !tooltip.contains(e.target)) {
-                tooltip.style.display = 'none';
-                tooltipPermanent = false;
-            }
-        });
-        document.addEventListener('mousedown', function(e) {
+
+        document.addEventListener('mousedown', e => {
             if(tooltipPermanent && !tooltip.contains(e.target)) {
                 tooltip.style.display = 'none';
                 tooltipPermanent = false;
@@ -305,17 +278,6 @@ if (file_exists($historyFile)) {
 
         switchTab('detail');
     });
-</script>
-<script>
-    const navToggle = document.querySelector('.astra-nav-toggle');
-    if(navToggle){
-        navToggle.addEventListener('click', () => {
-            document.body.classList.toggle('nav-open');
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !expanded);
-            navToggle.blur();
-        });
-    }
 </script>
 </body>
 </html>
