@@ -215,45 +215,50 @@ if (file_exists($historyFile)) {
             const status = bar.dataset.status;
             const time = bar.dataset.time;
             const upPercent = getUptimePercent(idx);
+
             tooltipContent.innerHTML = `
-            <b>${time}</b><br>
-            Status: <span style="color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-            Uptime bis hier: ${upPercent}%
-        `;
+        <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
+        Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
+        Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+    `;
+
             tooltip.style.display = 'block';
+            tooltip.classList.remove('mobile');
 
-            const isMobile = window.innerWidth <= 700;
-            tooltip.classList.toggle('mobile', isMobile);
+            closeBtn.style.display = (isPermanent || window.innerWidth <= 700) ? "block" : "none";
+            tooltipPermanent = isPermanent || window.innerWidth <= 700;
 
-            if(isPermanent) {
-                closeBtn.style.display = "block";
-                tooltipPermanent = true;
-            } else {
-                closeBtn.style.display = isMobile ? "block" : "none";
-                tooltipPermanent = isMobile;
-            }
+            const rect = bar.getBoundingClientRect();
+            const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
+            const arrow = tooltip.querySelector('.uptime-tooltip-arrow');
 
-            if (!isMobile) {
-                const rect = bar.getBoundingClientRect();
-                const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
-                setTimeout(() => {
-                    const bubbleRect = bubble.getBoundingClientRect();
-                    const scrollY = window.scrollY;
-                    const scrollX = window.scrollX;
-                    let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
-                    let top = rect.top + scrollY - bubbleRect.height - 13;
+            setTimeout(() => {
+                const bubbleRect = bubble.getBoundingClientRect();
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const scrollX = window.scrollX || document.documentElement.scrollLeft;
 
-                    if (top < scrollY + 5) {
-                        top = rect.bottom + scrollY + 13;
-                        tooltip.querySelector('.uptime-tooltip-arrow').style.transform = 'rotate(180deg)';
-                    } else {
-                        tooltip.querySelector('.uptime-tooltip-arrow').style.transform = '';
-                    }
-                    tooltip.style.left = left + "px";
-                    tooltip.style.top = top + "px";
-                }, 1);
-            }
+                // X mittig über Balken
+                let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
+                // Standard: oben anzeigen
+                let top = rect.top + scrollY - bubbleRect.height - 10;
+
+                // Pfeil zentrieren
+                arrow.style.left = (bubbleRect.width / 2 - 6) + "px";
+                arrow.style.top = '';
+                arrow.style.transform = '';
+
+                // Falls kein Platz oben → unten anzeigen
+                if (top < scrollY) {
+                    top = rect.bottom + scrollY + 10;
+                    arrow.style.top = "-6px";
+                    arrow.style.transform = "rotate(180deg)";
+                }
+
+                tooltip.style.left = left + "px";
+                tooltip.style.top = top + "px";
+            }, 1);
         }
+
 
         bars.forEach((bar, idx) => {
             bar.addEventListener('mouseenter', () => { if(window.innerWidth > 700 && !tooltipPermanent) showTooltip(bar, idx); });
