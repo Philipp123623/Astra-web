@@ -18,20 +18,17 @@ if (file_exists($envPath)) {
 // ======= PHP HANDLING =======
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // --- Daten aus POST holen ---
     $type    = $_POST['type'] ?? 'Unbekannt';
     $desc    = trim($_POST['desc'] ?? '');
     $discord = trim($_POST['discord'] ?? '');
     $email   = trim($_POST['email'] ?? '');
 
-    // Validierung
     if (!$desc) {
         http_response_code(400);
         echo json_encode(['success'=>false, 'msg'=>'Bitte beschreibe das Problem.']);
         exit;
     }
 
-    // --- Discord Embed Daten je nach Typ ---
     $embed_config = [
         "Nutzer" => [
             "color" => 0x8858fa,
@@ -56,28 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
     $embed = $embed_config[$type] ?? $embed_config["Unbekannt"];
 
-    $fields = [
-        [
-            "name" => "Beschreibung",
-            "value" => $desc
-        ]
-    ];
+    $fields = [["name" => "Beschreibung", "value" => $desc]];
     if ($discord) $fields[] = ["name"=>"Discord", "value"=>$discord];
     if ($email)   $fields[] = ["name"=>"E-Mail", "value"=>$email];
 
-    // --- Embed Payload bauen ---
     $payload = json_encode([
         "embeds" => [[
             "title"      => "{$embed['icon']} {$embed['title']}",
             "fields"     => $fields,
             "color"      => $embed["color"],
-            "footer"     => [
-                "text" => "Gesendet am " . date("d.m.Y H:i")
-            ]
+            "footer"     => ["text" => "Gesendet am " . date("d.m.Y H:i")]
         ]]
     ]);
 
-    // --- Curl senden ---
     $ch = curl_init($webhook_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -126,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="discord" id="astra-discord" maxlength="32" placeholder="z.B. User#1234">
             <label for="astra-email">E-Mail (optional, falls Rückfrage):</label>
             <input type="email" name="email" id="astra-email" maxlength="60" placeholder="Optional">
-            <button type="submit">Absenden</button>
+            <button type="submit" id="astra-submit-btn">Absenden</button>
         </form>
         <div class="astra-msg-success" id="astra-report-success">Danke, deine Meldung wurde gesendet! ✨</div>
         <div class="astra-msg-error" id="astra-report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
@@ -136,24 +124,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include "includes/footer.php"; ?>
 
 <script>
-    // Chip-Auswahl
     let lastChipType = '';
+    const submitBtn = document.getElementById('astra-submit-btn');
+
     document.querySelectorAll('.astra-problem-chip').forEach(chip => {
         chip.onclick = () => {
             document.querySelectorAll('.astra-problem-chip').forEach(c => c.classList.remove('selected'));
             chip.classList.add('selected');
-            document.getElementById('astra-report-type').value = chip.getAttribute('data-type');
-            lastChipType = chip.getAttribute('data-type');
+            const type = chip.getAttribute('data-type');
+            document.getElementById('astra-report-type').value = type;
+            lastChipType = type;
             document.getElementById('astra-report-error').style.display = 'none';
+
+            // Button-Farbe anpassen
+            submitBtn.className = '';
+            submitBtn.id = 'astra-submit-btn';
+            submitBtn.classList.add(type.toLowerCase());
         }
     });
 
     // Standardmäßig Webseite vorauswählen
     window.addEventListener('DOMContentLoaded', function() {
         let def = document.querySelector('.astra-problem-chip[data-type="Webseite"]');
-        if(def) {
-            def.click();
-        }
+        if(def) def.click();
     });
 
     // Absenden mit Fehler-Handling & UX
@@ -192,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             let succ = document.getElementById('astra-report-success');
             if (form.style.display === 'none') {
                 form.reset();
-                form.style.display = 'flex';
+                form.style.display = 'block'; // FIX: war vorher flex
                 succ.style.display = 'none';
                 document.getElementById('astra-report-type').value = chip.getAttribute('data-type');
             }

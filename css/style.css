@@ -1387,7 +1387,7 @@ a:hover { color: #ffd799; }
     }
 }
 /* =========================
-   REPORT PAGE - Modern Card Style
+   REPORT PAGE - Improved Card Style
    ========================= */
 
 .report-page main {
@@ -1398,12 +1398,12 @@ a:hover { color: #ffd799; }
 }
 
 .astra-form-wrap {
-    background: linear-gradient(135deg, rgba(36,29,80,0.92) 0%, rgba(46,38,90,0.92) 80%);
+    background: linear-gradient(135deg, rgba(36,29,80,0.95) 0%, rgba(46,38,90,0.95) 80%);
     border-radius: 26px;
     padding: 32px;
     max-width: 640px;
     width: 100%;
-    box-shadow: 0 8px 44px rgba(33,48,63,0.18), 0 2px 20px rgba(101,230,206,0.07);
+    box-shadow: 0 8px 44px rgba(33,48,63,0.25), 0 2px 20px rgba(101,230,206,0.07);
 }
 
 /* Titel und Beschreibung */
@@ -1431,29 +1431,38 @@ a:hover { color: #ffd799; }
     padding: 12px 20px;
     border-radius: 14px;
     font-weight: 700;
-    color: #fff;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
     text-align: center;
-}
-.astra-problem-chip:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
-}
-.astra-problem-chip.selected {
-    filter: brightness(1.1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 /* Individuelle Farben pro Typ */
 .astra-problem-chip[data-type="Nutzer"] {
     background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
+    color: #3d0b21;
 }
 .astra-problem-chip[data-type="Webseite"] {
     background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    color: #0b2a26;
 }
 .astra-problem-chip[data-type="Discord"] {
     background: linear-gradient(90deg, #a77bff, #c29cff);
+    color: #250b3d;
+}
+
+/* Hover-Effekt */
+.astra-problem-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+}
+
+/* Ausgewählt */
+.astra-problem-chip.selected {
+    transform: scale(1.05);
+    border: 2px solid #fff;
+    box-shadow: 0 4px 22px rgba(255,255,255,0.25);
 }
 
 /* Formularfelder */
@@ -1483,22 +1492,34 @@ a:hover { color: #ffd799; }
     resize: vertical;
 }
 
-/* Absenden-Button */
+/* Absenden-Button (Standardfarbe) */
 .astra-form button {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
     font-weight: 900;
     padding: 12px 28px;
     border-radius: 15px;
     border: none;
     cursor: pointer;
     font-size: 1.05em;
-    box-shadow: 0 2px 14px rgba(93,232,255,0.2);
     transition: filter 0.14s, box-shadow 0.14s;
 }
+
+/* Button-Farbvarianten */
+.astra-form button.nutzer {
+    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
+    color: #3d0b21;
+}
+.astra-form button.webseite {
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    color: #0b2a26;
+}
+.astra-form button.discord {
+    background: linear-gradient(90deg, #a77bff, #c29cff);
+    color: #250b3d;
+}
+
 .astra-form button:hover {
-    filter: brightness(0.97);
-    box-shadow: 0 6px 24px rgba(101,230,206,0.25);
+    filter: brightness(0.95);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
 }
 
 /* Meldungen */
