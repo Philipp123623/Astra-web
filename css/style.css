@@ -1,8 +1,8 @@
-/* ==============================
-   Globales Layout & Typografie
-   ============================== */
+/* =========================
+   Astra Discord Bot Style
+   ========================= */
 
-/* Body & html: flex column, damit Footer immer unten bleibt */
+/* ==== Base Layout ==== */
 html, body {
     height: 100%;
     margin: 0;
@@ -14,105 +14,48 @@ html, body {
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 
+    /* sorgt dafür, dass Footer unten klebt */
     display: flex;
     flex-direction: column;
 }
 
-/* Main: zentrale Content-Spalte mit Padding und max-width */
+
 main {
-    flex: 1; /* wichtig: Footer bleibt unten */
+    flex: 1;
     max-width: 1180px;
     width: 100%;
     margin: 0 auto;
-    padding: 68px 38px 80px 38px; /* Oben | Rechts | Unten | Links */
+    padding: 68px 38px 80px 38px; /* letzter Wert = Abstand unten */
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 
-/* Padding für kleine Bildschirme */
 @media (max-width: 900px) {
     main {
-        padding: 56px 16px 70px 16px;
+        padding: 56px 16px 70px 16px; /* Abstand unten für Mobile */
     }
 }
 
-/* Überschriften global */
+/* Globale Regel: Sections unten keinen eigenen Abstand geben */
+main section {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 h1, h2, h3, h4 {
     font-weight: 900;
     letter-spacing: 1px;
     color: #f4faff;
     margin-bottom: 10px;
 }
-h1 {
-    font-size: 2.9em;
-    line-height: 1.13;
-}
-h2 {
-    font-size: 2.1em;
-}
+h1 { font-size: 2.9em; line-height: 1.13; }
+h2 { font-size: 2.1em; }
+ul { padding-left: 23px; }
+a { color: #7dfad7; transition: color 0.16s; }
+a:hover { color: #ffd799; }
 
-/* Sections im main bekommen unten keinen extra Abstand */
-main section {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* Listen & Links */
-ul {
-    padding-left: 23px;
-}
-
-a {
-    color: #7dfad7;
-    transition: color 0.16s;
-}
-
-a:hover {
-    color: #ffd799;
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 10px;
-    background: #2a2463;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #362897;
-    border-radius: 6px;
-}
-
-/* Textauswahl */
-::selection {
-    background: #72ffe2;
-    color: #2a2463;
-}
-
-/* Mobile Anpassungen für Überschriften */
-@media (max-width: 500px) {
-    h1 {
-        font-size: 1.7em;
-    }
-    h2 {
-        font-size: 1.17em;
-    }
-}
-
-/* =========================
-   Beispiel für form container
-   ========================= */
-
-/* Formular-Container */
-.astra-form-wrap {
-    background: linear-gradient(135deg, rgba(36,29,80,0.95) 0%, rgba(46,38,90,0.95) 80%);
-    border-radius: 26px;
-    padding: 32px;
-    max-width: 640px;
-    width: 100%;
-    box-shadow: 0 8px 44px rgba(33,48,63,0.25), 0 2px 20px rgba(101,230,206,0.07);
-}
+::-webkit-scrollbar { width: 10px; background: #2a2463; }
+::-webkit-scrollbar-thumb { background: #362897; border-radius: 6px; }
+::selection { background: #72ffe2; color: #2a2463; }
 
 /* ========== HEADER & NAVBAR ========== */
 
@@ -1047,6 +990,14 @@ a:hover {
    ASTRA STATUS PAGE STYLES
    ========================= */
 
+.astra-status-main {
+    flex: 1;
+    min-height: 560px;
+    display: block;
+    position: relative;
+    padding: 64px 0 24px;
+}
+
 /* ==== Background Bubbles ==== */
 .status-bubbles-bg {
     position: absolute;
@@ -1272,6 +1223,35 @@ a:hover {
 /* =========================
    REPORT PAGE - Improved Card Style
    ========================= */
+
+.report-page main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: calc(68px + 20px); /* Desktop: 20px extra Luft */
+}
+@media (max-width: 900px) {
+    .report-page main {
+        padding-top: calc(56px + 20px); /* Mobile: ebenfalls 20px extra */
+    }
+}
+
+.astra-form-wrap {
+    background: linear-gradient(135deg, rgba(36,29,80,0.95) 0%, rgba(46,38,90,0.95) 80%);
+    border-radius: 26px;
+    padding: 32px;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 8px 44px rgba(33,48,63,0.25), 0 2px 20px rgba(101,230,206,0.07);
+}
+
+/* Titel und Beschreibung */
+.astra-form-wrap h1 {
+    font-size: 2em;
+    font-weight: 900;
+    color: #65e6ce;
+    margin-bottom: 8px;
+}
 .astra-form-wrap p {
     font-size: 1.05em;
     color: #d7f3ff;

@@ -106,10 +106,8 @@ if (file_exists($historyFile)) {
     <link rel="stylesheet" href="/css/style.css?v=2.3" />
 </head>
 <body class="status-page">
-
 <?php include 'includes/header.php'; ?>
-
-<main>
+<main class="astra-status-main">
     <section class="astra-status-card">
         <div class="status-bubbles-bg">
             <svg width="100%" height="100%">
@@ -183,7 +181,6 @@ if (file_exists($historyFile)) {
         </div>
     </section>
 </main>
-
 <?php include 'includes/footer.php'; ?>
 
 <script>
@@ -340,6 +337,5 @@ if (file_exists($historyFile)) {
         navToggle.blur(); // Fokus direkt entfernen
     });
 </script>
-
 </body>
 </html>

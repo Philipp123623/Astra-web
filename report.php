@@ -91,14 +91,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Problem melden | Astra Bot</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="/public/favicon_transparent.png">
-    <link rel="stylesheet" href="/css/style.css?v=2.3" />
+    <link rel="stylesheet" href="/css/style.css?v=2.0" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-
+<body class="report-page">
 <?php include "includes/header.php"; ?>
 
-<main>
+<main class="report-page main">
     <div class="astra-form-wrap">
         <h1>Problem melden</h1>
         <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
@@ -191,18 +190,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 document.getElementById('astra-report-type').value = chip.getAttribute('data-type');
             }
         });
-    });
-</script>
-<script>
-    const navToggle = document.querySelector('.astra-nav-toggle');
-    navToggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-
-        // aria-expanded toggle
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !expanded);
-
-        navToggle.blur(); // Fokus direkt entfernen
     });
 </script>
 </body>
