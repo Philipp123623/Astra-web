@@ -284,20 +284,24 @@ if (file_exists($historyFile)) {
 
         // Events für 30 Tage Balken
         bars30d.forEach((bar) => {
+            // Original-Tooltip sichern
+            bar.dataset.tooltip = bar.getAttribute('title') || '';
+            bar.removeAttribute('title');
+
+            function getTooltipHTML(b) {
+                return (b.dataset.tooltip || '').replace(/\n/g, '<br>');
+            }
+
             bar.addEventListener('mouseenter', () => {
                 if (window.innerWidth > 700 && !tooltipPermanent) {
-                    const html = bar.getAttribute('title').replace(/\n/g, '<br>');
-                    bar.removeAttribute('title');
-                    showTooltipHTML(bar, html);
+                    showTooltipHTML(bar, getTooltipHTML(bar));
                 }
             });
             bar.addEventListener('mouseleave', () => {
                 if (window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
             });
             bar.addEventListener('touchstart', (e) => {
-                const html = bar.getAttribute('title') ? bar.getAttribute('title').replace(/\n/g, '<br>') : '';
-                bar.removeAttribute('title');
-                showTooltipHTML(bar, html, true);
+                showTooltipHTML(bar, getTooltipHTML(bar), true);
                 e.preventDefault();
                 e.stopPropagation();
             });
@@ -320,6 +324,7 @@ if (file_exists($historyFile)) {
         switchTab('detail');
     });
 </script>
+
 <script>
     const navToggle = document.querySelector('.astra-nav-toggle');
     navToggle.addEventListener('click', () => {
