@@ -186,68 +186,49 @@ if (file_exists($historyFile)) {
 <script>
     // Tab Switch
     function switchTab(tab) {
-        document.getElementById('tab-btn-detail').classList.toggle('active', tab==='detail');
-        document.getElementById('tab-btn-tage').classList.toggle('active', tab==='tage');
-        document.getElementById('uptimeBarRowDetail').style.display = (tab==='detail') ? 'flex':'none';
-        document.getElementById('uptime-title-detail').style.display = (tab==='detail') ? 'block':'none';
-        document.getElementById('uptimeBarRowTage').style.display = (tab==='tage') ? 'flex':'none';
-        document.getElementById('uptime-title-tage').style.display = (tab==='tage') ? 'block':'none';
+        document.getElementById('tab-btn-detail').classList.toggle('active', tab === 'detail');
+        document.getElementById('tab-btn-tage').classList.toggle('active', tab === 'tage');
+        document.getElementById('uptimeBarRowDetail').style.display = (tab === 'detail') ? 'flex' : 'none';
+        document.getElementById('uptime-title-detail').style.display = (tab === 'detail') ? 'block' : 'none';
+        document.getElementById('uptimeBarRowTage').style.display = (tab === 'tage') ? 'flex' : 'none';
+        document.getElementById('uptime-title-tage').style.display = (tab === 'tage') ? 'block' : 'none';
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const bars = document.querySelectorAll('.uptime-bar-row .uptime-bar');
+    document.addEventListener('DOMContentLoaded', function () {
+        const bars12h = document.querySelectorAll('.uptime-bar-row .uptime-bar');
+        const bars30d = document.querySelectorAll('.uptime-bar-row-day .uptime-bar-day');
         const tooltip = document.getElementById('uptime-tooltip');
         const tooltipContent = tooltip.querySelector('.uptime-tooltip-content');
         const closeBtn = tooltip.querySelector('.uptime-tooltip-close');
+        const arrow = tooltip.querySelector('.uptime-tooltip-arrow');
         let tooltipPermanent = false;
 
         function getUptimePercent(idx) {
             let count = 0, online = 0;
-            bars.forEach((b, i) => {
-                if(i > idx) return;
+            bars12h.forEach((b, i) => {
+                if (i > idx) return;
                 count++;
-                if(b.classList.contains('online')) online++;
+                if (b.classList.contains('online')) online++;
             });
-            return count > 0 ? Math.round((online/count)*100) : 0;
+            return count > 0 ? Math.round((online / count) * 100) : 0;
         }
 
-        function showTooltip(bar, idx, isPermanent=false) {
-            const status = bar.dataset.status;
-            const time = bar.dataset.time;
-            const upPercent = getUptimePercent(idx);
-
-            tooltipContent.innerHTML = `
-        <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
-        Status: <span style="font-weight:700;color:${status==='Online' ? '#65e6ce':'#ff7272'}">${status}</span><br>
-        Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
-    `;
-
-            tooltip.style.display = 'block';
-            tooltip.classList.remove('mobile');
-
-            closeBtn.style.display = (isPermanent || window.innerWidth <= 700) ? "block" : "none";
-            tooltipPermanent = isPermanent || window.innerWidth <= 700;
-
+        function positionTooltip(bar) {
             const rect = bar.getBoundingClientRect();
             const bubble = tooltip.querySelector('.uptime-tooltip-bubble');
-            const arrow = tooltip.querySelector('.uptime-tooltip-arrow');
 
             setTimeout(() => {
                 const bubbleRect = bubble.getBoundingClientRect();
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
                 const scrollX = window.scrollX || document.documentElement.scrollLeft;
 
-                // X mittig über Balken
                 let left = rect.left + rect.width / 2 - bubbleRect.width / 2 + scrollX;
-                // Standard: oben anzeigen
                 let top = rect.top + scrollY - bubbleRect.height - 10;
 
-                // Pfeil zentrieren
                 arrow.style.left = (bubbleRect.width / 2 - 6) + "px";
                 arrow.style.top = '';
                 arrow.style.transform = '';
 
-                // Falls kein Platz oben → unten anzeigen
                 if (top < scrollY) {
                     top = rect.bottom + scrollY + 10;
                     arrow.style.top = "-6px";
@@ -259,29 +240,96 @@ if (file_exists($historyFile)) {
             }, 1);
         }
 
+        function showTooltipHTML(bar, html, isPermanent = false) {
+            tooltipContent.innerHTML = html;
+            tooltip.style.display = 'block';
+            closeBtn.style.display = (isPermanent || window.innerWidth <= 700) ? "block" : "none";
+            tooltipPermanent = isPermanent || window.innerWidth <= 700;
+            positionTooltip(bar);
+        }
 
-        bars.forEach((bar, idx) => {
-            bar.addEventListener('mouseenter', () => { if(window.innerWidth > 700 && !tooltipPermanent) showTooltip(bar, idx); });
-            bar.addEventListener('mouseleave', () => { if(window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none'; });
-            bar.addEventListener('touchstart', function(e) {
-                showTooltip(bar, idx, true);
-                e.preventDefault(); e.stopPropagation();
+        // Events für 12h Balken
+        bars12h.forEach((bar, idx) => {
+            bar.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 700 && !tooltipPermanent) {
+                    const status = bar.dataset.status;
+                    const time = bar.dataset.time;
+                    const upPercent = getUptimePercent(idx);
+
+                    showTooltipHTML(bar, `
+                        <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
+                        Status: <span style="font-weight:700;color:${status === 'Online' ? '#65e6ce' : '#ff7272'}">${status}</span><br>
+                        Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+                    `);
+                }
+            });
+            bar.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
+            });
+            bar.addEventListener('touchstart', (e) => {
+                const status = bar.dataset.status;
+                const time = bar.dataset.time;
+                const upPercent = getUptimePercent(idx);
+
+                showTooltipHTML(bar, `
+                    <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
+                    Status: <span style="font-weight:700;color:${status === 'Online' ? '#65e6ce' : '#ff7272'}">${status}</span><br>
+                    Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+                `, true);
+
+                e.preventDefault();
+                e.stopPropagation();
             });
         });
 
+        // Events für 30 Tage Balken
+        bars30d.forEach((bar) => {
+            bar.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 700 && !tooltipPermanent) {
+                    const html = bar.getAttribute('title').replace(/\n/g, '<br>');
+                    bar.removeAttribute('title');
+                    showTooltipHTML(bar, html);
+                }
+            });
+            bar.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
+            });
+            bar.addEventListener('touchstart', (e) => {
+                const html = bar.getAttribute('title') ? bar.getAttribute('title').replace(/\n/g, '<br>') : '';
+                bar.removeAttribute('title');
+                showTooltipHTML(bar, html, true);
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        // Tooltip schließen
         closeBtn.addEventListener('click', () => {
             tooltip.style.display = 'none';
             tooltipPermanent = false;
         });
 
+        // Klick außerhalb schließt Tooltip
         document.addEventListener('mousedown', e => {
-            if(tooltipPermanent && !tooltip.contains(e.target)) {
+            if (tooltipPermanent && !tooltip.contains(e.target)) {
                 tooltip.style.display = 'none';
                 tooltipPermanent = false;
             }
         });
 
         switchTab('detail');
+    });
+</script>
+<script>
+    const navToggle = document.querySelector('.astra-nav-toggle');
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+
+        // aria-expanded toggle
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+
+        navToggle.blur(); // Fokus direkt entfernen
     });
 </script>
 </body>
