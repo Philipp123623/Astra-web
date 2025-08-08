@@ -990,17 +990,19 @@ a:hover { color: #ffd799; }
    ASTRA STATUS PAGE STYLES
    ========================= */
 
+/* Main Container */
 .astra-status-main {
     flex: 1;
     min-height: 560px;
     display: block;
     position: relative;
-    padding: 64px 0 24px;
+    padding: 64px 16px 24px; /* mehr Padding links und rechts */
 }
+
 @media (max-width: 700px) {
     .astra-status-main {
         min-height: auto !important;
-        padding-bottom: 80px; /* Damit Footer nicht überlappt */
+        padding: 48px 16px 80px; /* oben etwas weniger, unten wegen Footer, links/rechts 16px */
     }
 }
 
@@ -1014,7 +1016,7 @@ a:hover { color: #ffd799; }
     overflow: hidden;
 }
 
-/* ==== Card ==== */
+/* Card */
 .astra-status-card {
     position: relative;
     z-index: 2;
@@ -1022,7 +1024,7 @@ a:hover { color: #ffd799; }
     max-width: 900px;
     min-height: 540px;
     margin: 28px auto;
-    padding: 30px 26px 24px 26px;
+    padding: 30px 20px 24px 20px; /* weniger padding für mehr Platz auf kleinen Bildschirmen */
     border-radius: 26px;
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 8px 44px #21303f2e, 0 2px 20px #65e6ce12;
@@ -1030,6 +1032,14 @@ a:hover { color: #ffd799; }
     flex-direction: column;
     align-items: stretch;
 }
+
+@media (max-width: 700px) {
+    .astra-status-card {
+        padding: 24px 16px 24px 16px;
+        min-height: auto;
+    }
+}
+
 .astra-status-card > *:not(.status-bubbles-bg) { position: relative; z-index: 2; }
 
 .astra-status-card h1 {
