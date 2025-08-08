@@ -181,6 +181,7 @@ if (file_exists($historyFile)) {
         </div>
     </section>
 </main>
+
 <?php include 'includes/footer.php'; ?>
 
 <script>
