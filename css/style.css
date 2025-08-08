@@ -13,29 +13,24 @@ html, body {
     background: linear-gradient(120deg, #221c50 0%, #2a2463 90%, #33ccd7 200%);
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+
+    /* sorgt dafür, dass main den Platz füllt und footer unten ist */
     display: flex;
     flex-direction: column;
-
 }
 
-/* Standardwerte für Header-Höhe */
-:root {
-    --header-height-desktop: 68px;
-    --header-height-mobile: 56px;
-    --page-spacing: 68px; /* Abstand unten & oben (zusätzlich zur Headerhöhe oben) */
-}
-
-/* Hauptbereich */
 main {
+    flex: 1; /* nimmt alles zwischen Header & Footer ein */
     max-width: 1180px;
+    width: 100%;
     margin: 0 auto;
-    /* oben: headerhöhe + page-spacing | unten: page-spacing */
-    padding: calc(var(--header-height-desktop) + var(--page-spacing)) 38px var(--page-spacing) 38px;
+    padding: 68px 38px; /* oben/unten gleich groß */
+    box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
     main {
-        padding: calc(var(--header-height-mobile) + var(--page-spacing)) 16px var(--page-spacing) 16px;
+        padding: 56px 16px; /* oben/unten gleich groß auf Mobile */
     }
 }
 
