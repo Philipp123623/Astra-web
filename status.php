@@ -1,10 +1,12 @@
 <?php
-// PHP-Teil bleibt im Grunde gleich, nur ein paar kleine Anpassungen für Sauberkeit
+// Zeitzone setzen
 date_default_timezone_set('Europe/Berlin');
 
-// Funktion zum Laden der Umgebungsvariablen (wie gehabt)
-function loadEnv($path) {
-    if (!file_exists($path)) die(".env Datei nicht gefunden!");
+// Funktion zum Laden der .env-Datei
+function loadEnv(string $path): array {
+    if (!file_exists($path)) {
+        die(".env Datei nicht gefunden!");
+    }
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $env = [];
     foreach ($lines as $line) {
@@ -15,9 +17,10 @@ function loadEnv($path) {
     }
     return $env;
 }
+
 $env = loadEnv(__DIR__ . '/.env');
 
-// DB-Verbindung
+// Datenbank-Verbindung herstellen
 $conn = @new mysqli(
     $env['DB_SERVER'] ?? '',
     $env['DB_USER'] ?? '',
@@ -26,14 +29,19 @@ $conn = @new mysqli(
 );
 $mysql_online = ($conn && !$conn->connect_error);
 
-// Statistiken aus DB laden
-$stats = ['servercount' => '-', 'usercount' => '-', 'commandCount' => '-', 'channelCount' => '-'];
+// Statistiken aus der Datenbank laden
+$stats = [
+    'servercount' => '-',
+    'usercount' => '-',
+    'commandCount' => '-',
+    'channelCount' => '-'
+];
 if ($mysql_online) {
     $result = $conn->query("SELECT servercount, usercount, commandCount, channelCount FROM website_stats LIMIT 1");
     if ($result && $result->num_rows > 0) {
         $stats = $result->fetch_assoc();
     }
-    @$conn->close();
+    $conn->close();
 }
 
 // Bot Status prüfen
@@ -42,17 +50,19 @@ try {
     $json = @file_get_contents('http://127.0.0.1:5000/status');
     if ($json) {
         $data = json_decode($json, true);
-        $bot_online = !empty($data['online']);
+        $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
     }
-} catch (Exception $e) {}
+} catch (Exception $e) {
+    // Fehler ignorieren, $bot_online bleibt false
+}
 
-// Status Historie laden (12h und 30 Tage)
+// Status Historie laden (letzte 12h und 30 Tage)
 $historyFile = __DIR__ . '/status_history_bot.txt';
 
 $history_12h = [];
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72);
+    $lines = array_slice($lines, -72); // Letzte 12 Stunden (12*6 = 72 * 10min Intervalle)
     foreach ($lines as $line) {
         if (strpos($line, ':') === false) continue;
         list($ts, $st) = explode(':', $line, 2);
@@ -68,14 +78,20 @@ if (file_exists($historyFile)) {
         if (strpos($line, ':') === false) continue;
         list($ts, $st) = explode(':', $line, 2);
         $tag = date("Y-m-d", (int)$ts);
-        if (!isset($daily[$tag])) $daily[$tag] = ['total'=>0, 'online'=>0];
+        if (!isset($daily[$tag])) $daily[$tag] = ['total' => 0, 'online' => 0];
         $daily[$tag]['total']++;
         if ((int)$st === 1) $daily[$tag]['online']++;
     }
+    // Nur letzte 30 Tage behalten
     $daily = array_slice($daily, -30, 30, true);
     foreach ($daily as $tag => $data) {
         $percent = ($data['total'] > 0) ? ($data['online'] / $data['total'] * 100) : 0;
-        $history_30d[] = ['date' => $tag, 'percent' => $percent, 'online' => $data['online'], 'total' => $data['total']];
+        $history_30d[] = [
+            'date' => $tag,
+            'percent' => $percent,
+            'online' => $data['online'],
+            'total' => $data['total']
+        ];
     }
 }
 ?>
@@ -87,7 +103,7 @@ if (file_exists($historyFile)) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=2.4" />
+    <link rel="stylesheet" href="css/style.css?v=2.5" />
 </head>
 <body class="status-page">
 
@@ -96,7 +112,7 @@ if (file_exists($historyFile)) {
 <main class="astra-status-main" role="main" aria-label="Service Status Übersicht">
     <section class="astra-status-card" aria-labelledby="service-status-title">
         <div class="status-bubbles-bg" aria-hidden="true">
-            <svg width="100%" height="100%" role="img" focusable="false">
+            <svg width="100%" height="100%" role="img" focusable="false" aria-hidden="true">
                 <circle cx="12%" cy="18%" r="43" fill="#65e6ce33" />
                 <circle cx="98%" cy="18%" r="58" fill="#a7c8fd22" />
                 <circle cx="50%" cy="95%" r="32" fill="#7c41ee22" />
@@ -122,8 +138,8 @@ if (file_exists($historyFile)) {
         </ul>
 
         <div class="status-tabs-row" role="tablist" aria-label="Status Zeitraum auswählen">
-            <button role="tab" aria-selected="true" aria-controls="uptimeBarRowDetail" id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">Letzte 12h</button>
-            <button role="tab" aria-selected="false" aria-controls="uptimeBarRowTage" id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">Letzte 30 Tage</button>
+            <button role="tab" aria-selected="true" aria-controls="uptime-detail" id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">Letzte 12h</button>
+            <button role="tab" aria-selected="false" aria-controls="uptime-tage" id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">Letzte 30 Tage</button>
         </div>
 
         <div class="uptime-chart" role="tabpanel" id="uptime-detail" aria-labelledby="tab-btn-detail">
@@ -193,10 +209,8 @@ if (file_exists($historyFile)) {
     function switchTab(tab) {
         document.getElementById('tab-btn-detail').classList.toggle('active', tab === 'detail');
         document.getElementById('tab-btn-tage').classList.toggle('active', tab === 'tage');
-        document.getElementById('uptimeBarRowDetail').style.display = (tab === 'detail') ? 'flex' : 'none';
-        document.getElementById('uptime-title-detail').style.display = (tab === 'detail') ? 'block' : 'none';
-        document.getElementById('uptimeBarRowTage').style.display = (tab === 'tage') ? 'flex' : 'none';
-        document.getElementById('uptime-title-tage').style.display = (tab === 'tage') ? 'block' : 'none';
+        document.getElementById('uptime-detail').style.display = (tab === 'detail') ? 'block' : 'none';
+        document.getElementById('uptime-tage').style.display = (tab === 'tage') ? 'block' : 'none';
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -326,21 +340,21 @@ if (file_exists($historyFile)) {
             }
         });
 
+        // Initialer Tab
         switchTab('detail');
     });
 </script>
 
 <script>
+    // Mobile Navigation Toggle
     const navToggle = document.querySelector('.astra-nav-toggle');
     navToggle.addEventListener('click', () => {
         document.body.classList.toggle('nav-open');
-
-        // aria-expanded toggle
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !expanded);
-
-        navToggle.blur(); // Fokus direkt entfernen
+        navToggle.blur();
     });
 </script>
+
 </body>
 </html>
