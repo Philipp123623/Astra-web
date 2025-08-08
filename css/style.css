@@ -990,6 +990,11 @@ a:hover { color: #ffd799; }
    ASTRA STATUS PAGE STYLES
    ========================= */
 
+/* Box Sizing global */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Main Container */
 .astra-status-main {
     flex: 1;
@@ -1023,10 +1028,10 @@ a:hover { color: #ffd799; }
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 900px;
+    max-width: 1100px; /* Breiter als vorher, für mehr Platz */
     min-height: 560px;
     margin: 28px auto;
-    padding: 40px 32px 36px 32px; /* mehr Polsterung innen */
+    padding: 50px 40px 40px 40px; /* Etwas mehr Innenabstand */
     border-radius: 30px; /* runder */
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
     box-shadow: 0 10px 50px #21303f40, 0 4px 24px #65e6ce22;
@@ -1042,13 +1047,17 @@ a:hover { color: #ffd799; }
 
 @media (max-width: 700px) {
     .astra-status-card {
-        padding: 28px 20px 28px 20px;
+        padding: 28px 24px 28px 24px;
         min-height: auto;
         border-radius: 20px;
+        max-width: 100%; /* Mobil volle Breite */
     }
 }
 
-.astra-status-card > *:not(.status-bubbles-bg) { position: relative; z-index: 2; }
+.astra-status-card > *:not(.status-bubbles-bg) {
+    position: relative;
+    z-index: 2;
+}
 
 .astra-status-card h1 {
     font-size: 2.4rem;
@@ -1120,6 +1129,7 @@ a:hover { color: #ffd799; }
     box-shadow: 0 2px 14px #42eaaf33;
     white-space: nowrap;
     transition: background 0.3s ease, color 0.3s ease;
+    word-break: break-word; /* für lange Inhalte */
 }
 
 .status-badge.ok {
@@ -1190,6 +1200,8 @@ a:hover { color: #ffd799; }
     align-items: flex-end;
     height: 24px;
     margin-bottom: 12px;
+    flex-wrap: nowrap; /* Kein Umbrechen */
+    overflow-x: auto; /* Horizontal Scroll falls nötig */
 }
 
 .uptime-bar {
@@ -1200,6 +1212,7 @@ a:hover { color: #ffd799; }
     opacity: 0.35;
     transition: background 0.18s, opacity 0.18s;
     cursor: pointer;
+    flex-shrink: 0; /* Nicht schrumpfen */
 }
 
 .uptime-bar.online {
@@ -1220,6 +1233,7 @@ a:hover { color: #ffd799; }
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 12px;
+    overflow-x: auto; /* Scroll falls zu breit */
 }
 
 .uptime-bar-day {
@@ -1232,6 +1246,7 @@ a:hover { color: #ffd799; }
     cursor: pointer;
     border: 2px solid #1a2633;
     transition: background 0.16s, opacity 0.17s, box-shadow 0.19s;
+    flex-shrink: 0; /* Nicht schrumpfen */
 }
 
 .uptime-bar-day.perfect {
@@ -1406,6 +1421,7 @@ a:hover { color: #ffd799; }
         gap: 5px;
         height: 24px;
         margin-bottom: 14px;
+        overflow-x: auto;
     }
 
     .uptime-bar {
@@ -1417,6 +1433,7 @@ a:hover { color: #ffd799; }
     .uptime-bar-row-day {
         gap: 6px;
         margin-bottom: 14px;
+        overflow-x: auto;
     }
 
     .uptime-bar-day {
@@ -1460,7 +1477,6 @@ a:hover { color: #ffd799; }
         min-width: 90px;
     }
 }
-
 
 /* =========================
    REPORT PAGE - Improved Card Style
