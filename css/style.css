@@ -991,11 +991,20 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .astra-status-main {
-    flex: 1;
-    min-height: 560px;
-    display: block;
+    flex: 1; /* Footer bleibt unten */
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 68px 38px 80px 38px; /* gleich wie global */
+    box-sizing: border-box;
     position: relative;
-    padding: 64px 0 24px;
+    min-height: 560px; /* falls Inhalt zu kurz ist */
+}
+
+@media (max-width: 900px) {
+    .astra-status-main {
+        padding: 56px 16px 70px 16px; /* gleich wie global mobile */
+    }
 }
 
 /* ==== Background Bubbles ==== */
@@ -1225,17 +1234,24 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .report-page main {
+    flex: 1; /* Footer bleibt unten */
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 68px 38px 80px 38px; /* gleich wie global main */
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: calc(68px + 20px); /* Desktop: 20px extra Luft */
 }
+
 @media (max-width: 900px) {
     .report-page main {
-        padding-top: calc(56px + 20px); /* Mobile: ebenfalls 20px extra */
+        padding: 56px 16px 70px 16px; /* gleich wie global mobile */
     }
 }
 
+/* Rest deiner Report-Styles unverändert ↓ */
 .astra-form-wrap {
     background: linear-gradient(135deg, rgba(36,29,80,0.95) 0%, rgba(46,38,90,0.95) 80%);
     border-radius: 26px;
