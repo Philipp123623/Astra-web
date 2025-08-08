@@ -18,17 +18,27 @@ html, body {
 
 }
 
+/* Standardwerte für Header-Höhe */
+:root {
+    --header-height-desktop: 68px;
+    --header-height-mobile: 56px;
+    --page-spacing: 68px; /* Abstand unten & oben (zusätzlich zur Headerhöhe oben) */
+}
+
+/* Hauptbereich */
 main {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 68px 38px 68px 38px; /* oben & unten gleich groß */
+    /* oben: headerhöhe + page-spacing | unten: page-spacing */
+    padding: calc(var(--header-height-desktop) + var(--page-spacing)) 38px var(--page-spacing) 38px;
 }
 
 @media (max-width: 900px) {
     main {
-        padding: 56px 16px 56px 16px; /* oben & unten gleich groß auf Mobile */
+        padding: calc(var(--header-height-mobile) + var(--page-spacing)) 16px var(--page-spacing) 16px;
     }
 }
+
 
 h1, h2, h3, h4 {
     font-weight: 900;
