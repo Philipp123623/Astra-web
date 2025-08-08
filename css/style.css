@@ -14,23 +14,26 @@ html, body {
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 
-    /* sorgt dafür, dass main den Platz füllt und footer unten ist */
+    /* sorgt dafür, dass Footer unten klebt */
     display: flex;
     flex-direction: column;
 }
 
+
 main {
-    flex: 1; /* nimmt alles zwischen Header & Footer ein */
+    flex: 1; /* füllt alles zwischen Header & Footer */
     max-width: 1180px;
     width: 100%;
     margin: 0 auto;
-    padding: 68px 38px; /* oben/unten gleich groß */
+
+    /* oben: Headerhöhe + extra Abstand, unten: fester Abstand */
+    padding: calc(68px + 20px) 38px 40px 38px;
     box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
     main {
-        padding: 56px 16px; /* oben/unten gleich groß auf Mobile */
+        padding: calc(56px + 20px) 16px 40px 16px;
     }
 }
 
@@ -518,7 +521,7 @@ a:hover { color: #ffd799; }
 .astra-footer {
     background: linear-gradient(90deg, #221c50 0%, #312a77 80%, #33ccd7 200%);
     padding: 35px 0 22px 0;
-    margin-top: 64px;
+    margin-top: auto; /* drückt Footer nach unten */
     border-radius: 32px 32px 0 0;
     box-shadow: 0 -4px 40px #60e9cb22;
     color: #c7f3ff;
