@@ -1217,7 +1217,12 @@ a:hover { color: #ffd799; }
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 16px;
+    padding-top: calc(68px + 20px); /* Desktop: 20px extra Luft */
+}
+@media (max-width: 900px) {
+    .report-page main {
+        padding-top: calc(56px + 20px); /* Mobile: ebenfalls 20px extra */
+    }
 }
 
 .astra-form-wrap {
