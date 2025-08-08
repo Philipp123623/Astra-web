@@ -21,22 +21,25 @@ html, body {
 
 
 main {
-    flex: 1; /* füllt alles zwischen Header & Footer */
+    flex: 1;
     max-width: 1180px;
     width: 100%;
     margin: 0 auto;
-
-    /* oben: Headerhöhe + extra Abstand, unten: fester Abstand */
-    padding: calc(68px + 20px) 38px 40px 38px;
+    padding: 68px 38px 80px 38px; /* letzter Wert = Abstand unten */
     box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
     main {
-        padding: calc(56px + 20px) 16px 40px 16px;
+        padding: 56px 16px 70px 16px; /* Abstand unten für Mobile */
     }
 }
 
+/* Globale Regel: Sections unten keinen eigenen Abstand geben */
+main section {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
 h1, h2, h3, h4 {
     font-weight: 900;
@@ -518,10 +521,10 @@ a:hover { color: #ffd799; }
     h2 { font-size: 1.17em; }
 }
 
+/* Footer-Abstand nur durch main regeln – margin-top raus */
 .astra-footer {
     background: linear-gradient(90deg, #221c50 0%, #312a77 80%, #33ccd7 200%);
     padding: 35px 0 22px 0;
-    margin-top: auto; /* drückt Footer nach unten */
     border-radius: 32px 32px 0 0;
     box-shadow: 0 -4px 40px #60e9cb22;
     color: #c7f3ff;
