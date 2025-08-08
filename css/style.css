@@ -21,12 +21,12 @@ html, body {
 main {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 68px 38px 0 38px; /* Platz für fixierten Header auf Desktop (68px Höhe) */
+    padding: 68px 38px 68px 38px; /* oben & unten gleich groß */
 }
 
 @media (max-width: 900px) {
     main {
-        padding: 56px 16px 0 16px; /* Platz für fixierten Header auf Mobile (56px Höhe) */
+        padding: 56px 16px 56px 16px; /* oben & unten gleich groß auf Mobile */
     }
 }
 
