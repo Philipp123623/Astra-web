@@ -993,18 +993,17 @@ a:hover { color: #ffd799; }
 /* Main Container */
 .astra-status-main {
     flex: 1;
-    min-height: 600px;
+    min-height: 560px;
     display: block;
     position: relative;
-    padding: 80px 24px 40px; /* großzügigeres Padding links und rechts */
-    background: linear-gradient(180deg, #1f1645 0%, #2d2a52 100%);
+    padding: 64px 24px 32px; /* Mehr horizontalen Abstand für Luft */
+    background: radial-gradient(circle at center, #1b173b 0%, #121136 100%); /* subtiler Hintergrund für Tiefe */
 }
 
-/* Responsive Padding und min-height */
 @media (max-width: 700px) {
     .astra-status-main {
         min-height: auto !important;
-        padding: 60px 20px 100px; /* oben etwas weniger, unten wegen Footer, etwas mehr Platz links/rechts */
+        padding: 48px 16px 100px; /* mehr Bottom wegen Footer */
     }
 }
 
@@ -1016,6 +1015,7 @@ a:hover { color: #ffd799; }
     pointer-events: none;
     border-radius: inherit;
     overflow: hidden;
+    filter: blur(14px); /* leichte Unschärfe für weicheres Aussehen */
 }
 
 /* Card */
@@ -1024,12 +1024,12 @@ a:hover { color: #ffd799; }
     z-index: 2;
     width: 100%;
     max-width: 900px;
-    min-height: 580px;
-    margin: 40px auto;
-    padding: 40px 30px 36px 30px; /* mehr padding für Luft */
-    border-radius: 28px;
+    min-height: 560px;
+    margin: 28px auto;
+    padding: 40px 32px 36px 32px; /* mehr Polsterung innen */
+    border-radius: 30px; /* runder */
     background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
-    box-shadow: 0 12px 48px rgba(33, 48, 63, 0.3), 0 4px 28px rgba(101, 230, 206, 0.18);
+    box-shadow: 0 10px 50px #21303f40, 0 4px 24px #65e6ce22;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -1037,48 +1037,49 @@ a:hover { color: #ffd799; }
 }
 
 .astra-status-card:hover {
-    box-shadow: 0 16px 60px rgba(33, 48, 63, 0.4), 0 6px 36px rgba(101, 230, 206, 0.25);
+    box-shadow: 0 15px 70px #65e6ce80, 0 6px 30px #54fdbe44;
 }
 
 @media (max-width: 700px) {
     .astra-status-card {
-        padding: 30px 22px 30px 22px;
+        padding: 28px 20px 28px 20px;
         min-height: auto;
-        margin: 20px auto;
+        border-radius: 20px;
     }
 }
 
 .astra-status-card > *:not(.status-bubbles-bg) { position: relative; z-index: 2; }
 
 .astra-status-card h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     font-weight: 900;
     color: #65e6ce;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
     text-shadow: 0 2px 22px #251f5b50;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-align: center;
 }
 
 /* ==== Status Rows ==== */
 .status-list {
-    margin-bottom: 32px;
-    list-style: none;
-    padding: 0;
+    margin-bottom: 28px;
+    border-radius: 18px;
+    background: #1e2043cc;
+    padding: 12px 24px;
+    box-shadow: inset 0 0 20px #3fd6dd44;
 }
 
 .status-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 22px;
-    border-bottom: 1px solid #30437055;
-    font-size: 1.25rem;
+    padding: 12px 16px;
+    border-bottom: 1px solid #30437066;
+    font-size: 1.18rem;
     font-weight: 700;
     margin: 0;
-    transition: background-color 0.2s ease;
-    border-radius: 12px;
-    background-color: #1f1b44;
+    transition: background 0.2s ease;
+    border-radius: 14px;
 }
 
 .status-row:last-child {
@@ -1086,19 +1087,19 @@ a:hover { color: #ffd799; }
 }
 
 .status-row:hover {
-    background-color: #283065;
+    background: #3fd6dd20;
 }
 
 .status-label {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #b7f9f5;
+    font-weight: 700;
 }
 
 .status-icon {
-    font-size: 1.5em;
-    margin-right: 6px;
+    font-size: 1.3em;
+    margin-right: 12px;
 }
 
 /* ==== Badges ==== */
@@ -1107,104 +1108,97 @@ a:hover { color: #ffd799; }
     justify-content: center;
     align-items: center;
     height: 36px;
-    min-width: 96px;
-    padding: 0 16px;
+    min-width: 90px;
+    padding: 0 18px;
     border-radius: 18px;
     font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: 0.04em;
+    font-weight: 800;
+    letter-spacing: 0.03em;
     background: #292659;
     color: #d8ffef;
-    border: 2px solid #65e6ce88;
-    box-shadow: 0 2px 18px #42eaaf44;
+    border: 2px solid #65e6ce66;
+    box-shadow: 0 2px 14px #42eaaf33;
     white-space: nowrap;
-    transition: all 0.3s ease;
-    user-select: none;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .status-badge.ok {
     background: linear-gradient(93deg, #65e6ce 0%, #54fdbe 110%);
     color: #223254;
     border-color: #60e9cbaa;
-    box-shadow: 0 0 8px 4px #54fdbe55;
+    box-shadow: 0 0 8px 4px #54fdbe44;
 }
 
 .status-badge.err {
     background: linear-gradient(93deg, #ff7272 0%, #ffb3b3 110%);
     color: #481d24;
     border-color: #ff7272aa;
-    box-shadow: 0 0 8px 4px #ff727255;
+    box-shadow: 0 0 8px 4px #ff727244;
 }
 
 .status-badge.warn {
     background: linear-gradient(93deg, #ffe479 0%, #ffbd34 110%);
     color: #553a10;
     border-color: #ffe479aa;
-    box-shadow: 0 0 8px 4px #ffe47955;
+    box-shadow: 0 0 8px 4px #ffe47944;
 }
 
 /* ==== Tabs ==== */
 .status-tabs-row {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 20px 0 28px;
+    margin: 14px 0 20px;
 }
 
 .status-tab-btn {
-    padding: 12px 32px;
+    padding: 10px 30px;
     border-radius: 20px;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.15em;
     background: #282f4e;
     color: #b7f8f6;
     border: none;
     cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 2px 8px #1e2849;
-    user-select: none;
-}
-
-.status-tab-btn:hover:not(.active) {
-    background: #3f5678;
-    color: #d1faff;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px #00000055;
 }
 
 .status-tab-btn.active,
 .status-tab-btn:focus {
     background: linear-gradient(90deg, #65e6ce, #a7c8fd 110%);
     color: #222f48;
-    box-shadow: 0 6px 20px #65e6ce88;
-    outline: none;
+    box-shadow: 0 5px 20px #65e6ce66;
 }
 
 /* ==== Uptime (12h) ==== */
 .uptime-chart-title {
     font-size: 1.1rem;
-    margin: 28px 0 10px;
+    margin: 26px 0 10px;
     color: #90e3e7;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
+    letter-spacing: 0.02em;
 }
 
 .uptime-bar-row {
-    position: relative; /* Tooltip bezieht sich hierauf */
+    position: relative;
     display: flex;
-    gap: 4px;
+    gap: 5px;
     justify-content: center;
     align-items: flex-end;
     height: 24px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .uptime-bar {
-    width: 9px;
-    height: 18px;
-    border-radius: 6px;
+    width: 10px;
+    height: 20px;
+    border-radius: 8px;
     background: #3a5255;
-    opacity: 0.42;
-    transition: background 0.25s ease, opacity 0.25s ease;
+    opacity: 0.35;
+    transition: background 0.18s, opacity 0.18s;
     cursor: pointer;
 }
 
@@ -1215,7 +1209,7 @@ a:hover { color: #ffd799; }
 
 .uptime-bar.offline {
     background: #ff7272;
-    opacity: 0.95;
+    opacity: 0.5;
 }
 
 /* ==== Uptime (30 Tage) ==== */
@@ -1225,26 +1219,25 @@ a:hover { color: #ffd799; }
     gap: 6px;
     justify-content: center;
     align-items: flex-end;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .uptime-bar-day {
-    width: 22px;
-    height: 28px;
+    width: 20px;
+    height: 26px;
     border-radius: 8px;
     background: #3a5255;
-    opacity: 0.55;
+    opacity: 0.6;
     position: relative;
     cursor: pointer;
     border: 2px solid #1a2633;
-    transition: background 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.16s, opacity 0.17s, box-shadow 0.19s;
 }
 
 .uptime-bar-day.perfect {
     background: #65e6ce;
     opacity: 1;
     border-color: #54fdbe;
-    box-shadow: 0 0 8px #54fdbe88;
 }
 
 .uptime-bar-day.good {
@@ -1262,7 +1255,7 @@ a:hover { color: #ffd799; }
 
 .uptime-bar-day.bad {
     background: #ff7272;
-    opacity: 0.95;
+    opacity: 0.7;
     border-color: #ff7272;
 }
 
@@ -1270,15 +1263,15 @@ a:hover { color: #ffd799; }
     display: none;
     position: absolute;
     left: 50%;
-    bottom: 34px;
+    bottom: 31px;
     transform: translateX(-50%);
     background: #191d36;
     color: #a7c8fd;
-    padding: 6px 16px;
+    padding: 6px 14px;
     border-radius: 12px;
     font-size: 1rem;
     white-space: nowrap;
-    box-shadow: 0 4px 18px #1e1b2f80;
+    box-shadow: 0 3px 18px #1e1b2f80;
     z-index: 10;
 }
 
@@ -1289,8 +1282,8 @@ a:hover { color: #ffd799; }
 
 /* ==== Tooltip als Sprechblase über dem Balken ==== */
 #uptime-tooltip {
-    position: fixed; /* statt absolute */
-    z-index: 1100;
+    position: fixed;
+    z-index: 1000;
     pointer-events: none;
     display: none;
 }
@@ -1298,12 +1291,12 @@ a:hover { color: #ffd799; }
 .uptime-tooltip-bubble {
     position: relative;
     background: rgba(28, 18, 80, 0.95);
-    padding: 14px 18px;
+    padding: 14px 16px;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    max-width: 280px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
     font-size: 1rem;
-    color: #c4f7f4;
+    line-height: 1.3;
+    max-width: 260px;
 }
 
 .uptime-tooltip-arrow {
@@ -1322,7 +1315,7 @@ a:hover { color: #ffd799; }
     height: 16px;
     background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
     transform: rotate(45deg);
-    box-shadow: 0 3px 9px rgba(35, 53, 75, 0.45);
+    box-shadow: 0 2px 8px rgba(35,53,75,0.4);
 }
 
 .uptime-tooltip-close {
@@ -1335,12 +1328,12 @@ a:hover { color: #ffd799; }
     font-size: 1.3em;
     line-height: 1;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.85;
     pointer-events: auto;
-    transition: color 0.3s ease;
 }
 
 .uptime-tooltip-close:hover {
+    opacity: 1;
     color: #ff7272;
 }
 
@@ -1348,111 +1341,110 @@ a:hover { color: #ffd799; }
 .stats-box-row {
     display: flex;
     justify-content: space-between;
-    gap: 28px;
-    margin: 32px 0 0;
-    flex-wrap: wrap;
+    gap: 24px;
+    margin: 28px 0 0;
 }
 
 .stat-box {
     flex: 1 1 22%;
     background: linear-gradient(127deg, #262364 0%, #23354b 100%);
     border-radius: 20px;
-    padding: 24px 0 18px;
+    padding: 20px 0 16px;
     color: #c5fffd;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 22px #3fd6dd22;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
+    box-shadow: 0 2px 16px #3fd6dd20;
+    transition: transform 0.3s ease;
 }
 
 .stat-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 32px #3fd6dd44;
+    transform: translateY(-6px);
+    box-shadow: 0 6px 30px #3fd6dd40;
 }
 
 .stat-head {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #9cecff;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .stat-num {
-    font-size: 2.1rem;
+    font-size: 1.6rem;
     color: #65e6ce;
-    font-weight: 900;
-    letter-spacing: 0.06em;
+    font-weight: 800;
+    letter-spacing: 0.05em;
 }
 
 /* ==== Mobile ==== */
 @media (max-width: 700px) {
     .astra-status-card {
-        padding: 28px 20px 28px 20px;
-        border-radius: 20px;
+        padding: 24px 18px 24px 18px;
+        min-height: auto;
+        border-radius: 18px;
     }
 
     .astra-status-card h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 16px;
     }
 
     .status-row {
-        font-size: 1.1rem;
-        padding: 12px 18px;
-        border-radius: 12px;
+        font-size: 1.12rem;
+        padding: 12px 14px;
     }
 
     .status-badge {
-        height: 32px;
+        height: 34px;
         min-width: 80px;
-        font-size: 0.95rem;
         padding: 0 14px;
-        border-radius: 16px;
+        font-size: 1rem;
     }
 
     .uptime-bar-row {
-        gap: 4px;
-        height: 26px;
+        gap: 5px;
+        height: 24px;
+        margin-bottom: 14px;
     }
 
     .uptime-bar {
-        width: 10px;
-        height: 22px;
-        border-radius: 6px;
+        width: 12px;
+        height: 24px;
+        border-radius: 10px;
     }
 
     .uptime-bar-row-day {
-        gap: 5px;
-        margin-bottom: 18px;
+        gap: 6px;
+        margin-bottom: 14px;
     }
 
     .uptime-bar-day {
-        width: 20px;
-        height: 26px;
-        border-radius: 7px;
+        width: 24px;
+        height: 30px;
+        border-radius: 10px;
     }
 
     .stats-box-row {
         flex-direction: column;
-        gap: 18px;
-        margin-top: 28px;
+        gap: 16px;
+        margin-top: 30px;
     }
 
     .stat-box {
-        padding: 18px 0 14px;
+        flex: none;
+        width: 100%;
+        padding: 16px 0 14px;
         border-radius: 16px;
         font-size: 1.1rem;
-        flex-basis: auto;
     }
 
     .stat-head {
-        font-size: 1rem;
-        margin-bottom: 6px;
+        font-size: 1.1rem;
     }
 
     .stat-num {
-        font-size: 1.75rem;
+        font-size: 1.8rem;
     }
 }
 
@@ -1460,13 +1452,12 @@ a:hover { color: #ffd799; }
     .status-row {
         flex-wrap: wrap;
         gap: 10px;
-        padding: 10px 14px;
+        padding: 12px 14px;
     }
 
     .status-badge {
         width: auto;
-        min-width: 86px;
-        padding: 0 16px;
+        min-width: 90px;
     }
 }
 
