@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
     <meta name="theme-color" content="#251f5b">
     <link rel="icon" href="/public/favicon_transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=2.3"/>
+    <link rel="stylesheet" href="css/style.css?v=2.4"/>
 </head>
 <body>
 
