@@ -1135,9 +1135,9 @@ a:hover { color: #ffd799; }
 
 /* ==== Tooltip als Sprechblase über dem Balken ==== */
 #uptime-tooltip {
-    position: absolute;          /* relativ zu .uptime-bar-row */
+    position: fixed; /* statt absolute */
     z-index: 1000;
-    pointer-events: none;        /* Bubble selbst aktiviert Pointer */
+    pointer-events: none;
     display: none;
 }
 .uptime-tooltip-bubble {
