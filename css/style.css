@@ -536,182 +536,200 @@ a:hover { color: #ffd799; }
 
 
 /* =========================
-   ASTRA COMMANDS PAGE
+   COMMANDS – MODERN UI
    ========================= */
 
-/* =========================
-   COMMANDS – MINI HERO
-   ========================= */
+.commands-main {
+    padding: 60px 20px 120px;
+}
 
-.commands-hero-mini {
+/* HERO */
+.commands-hero {
     position: relative;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 40px 44px;
-    border-radius: 34px;
+    max-width: 1100px;
+    margin: 0 auto 70px;
+    padding: 60px 40px;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #2a2670, #3a37a6);
+    box-shadow: 0 30px 90px #00000055;
     overflow: hidden;
-
-    background: linear-gradient(120deg, #251f5b 0%, #362897 65%);
-    box-shadow:
-            0 10px 36px rgba(91,101,255,0.28),
-            0 0 42px rgba(96,233,203,0.22);
 }
 
 .commands-bubbles-bg {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
 }
 
-.commands-hero-content {
+.commands-hero-inner {
     position: relative;
-    z-index: 2;
-}
-
-/* Abstand zwischen Hero & Content */
-.commands-separator {
-    height: 60px;
-}
-
-/* =========================
-   INFO CARD
-   ========================= */
-
-.commands-info-card {
     text-align: center;
-    color: #e7f8fc;
+    color: #eaffff;
 }
 
-.commands-info-row {
-    margin-bottom: 14px;
+.commands-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
 }
 
-.info-badge {
-    display: inline-block;
-    padding: 7px 20px;
-    border-radius: 16px;
-    font-weight: 700;
-    background: #2b294e;
-    color: #7cebe7;
-    border: 1.5px solid #222154;
-    margin: 0 6px 6px;
-}
-
-.commands-info-desc {
-    font-size: 1.15rem;
-    margin-bottom: 16px;
-}
-
-.commands-label-row .astra-label {
-    display: inline-block;
-    padding: 7px 18px;
-    border-radius: 14px;
-    font-weight: 700;
-    margin: 4px;
-}
-
-.astra-label.green { background:#65e6ce; color:#223254; }
-.astra-label.blue { background:#9cbeff; color:#223254; }
-.astra-label.yellow { background:#fad59c; color:#503820; }
-.astra-label.purple { background:#c29cff; color:#332245; }
-
-/* =========================
-   COMMANDS CONTENT
-   ========================= */
-
-.commands-content {
-    max-width: 950px;
-    margin: 0 auto;
-}
-
-.command-searchbar {
-    max-width: 520px;
-    margin: 0 auto 26px;
-}
-
-.command-searchbar input {
-    width: 100%;
-    padding: 15px 20px;
+.badge {
+    padding: 6px 16px;
     border-radius: 18px;
-    border: none;
-    background: rgba(41,49,101,0.18);
-    color: #eafffa;
-    box-shadow: 0 2px 14px rgba(91,101,255,0.18);
-    font-size: 1.1em;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+.badge.mint { background:#65e6ce; color:#223254; }
+.badge.violet { background:#9b8cff; color:#2a2463; }
+.badge.dark { background:#1f2149; color:#a7c8fd; }
+
+.commands-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    margin-bottom: 10px;
 }
 
-/* =========================
-   FILTER BUTTONS
-   ========================= */
+.commands-hero p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+}
 
-.commands-category-buttons {
+/* TAGS */
+.commands-tags {
+    margin-top: 26px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 32px;
+    gap: 10px;
 }
 
-.commands-category-buttons button {
-    padding: 10px 22px;
-    border-radius: 30px;
+.tag {
+    padding: 8px 18px;
+    border-radius: 18px;
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+.tag.green { background:#65e6ce; color:#223254; }
+.tag.blue { background:#9cbeff; color:#223254; }
+.tag.yellow { background:#fad59c; color:#503820; }
+.tag.purple { background:#c29cff; color:#332245; }
+.tag.cyan { background:#72ffe2; color:#223254; }
+
+/* CARD */
+.commands-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 40px 60px;
+    background: rgba(30,34,90,0.75);
+    border-radius: 36px;
+    box-shadow: 0 30px 90px #00000044;
+}
+
+/* SEARCH */
+.commands-search input {
+    width: 100%;
+    padding: 18px 22px;
+    border-radius: 20px;
     border: none;
-    font-weight: 900;
+    background: #1f235a;
+    color: #eaffff;
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+}
+
+/* FILTERS */
+.commands-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.commands-filters button {
+    padding: 10px 22px;
+    border-radius: 22px;
+    border: none;
+    background: #2b2f78;
+    color: #cdefff;
+    font-weight: 800;
     cursor: pointer;
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+}
+.commands-filters button.active {
+    background: #65e6ce;
     color: #223254;
 }
 
-.commands-category-buttons button.active {
-    background: linear-gradient(90deg, #72ffe2, #7dfad7);
-}
-
-/* =========================
-   ACCORDION
-   ========================= */
-
+/* ACCORDION */
 .command-section {
-    background: rgba(46,53,110,0.22);
-    border-radius: 22px;
     margin-bottom: 18px;
+    border-radius: 22px;
+    background: #24286a;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(91,101,255,0.14);
 }
 
 .accordion-toggle {
     width: 100%;
-    padding: 18px 28px;
-    font-size: 1.3em;
-    font-weight: 900;
-    color: #72ffe2;
-    background: linear-gradient(90deg, #2d2f72, #362897);
-    border: none;
     text-align: left;
+    padding: 20px 26px;
+    background: none;
+    border: none;
+    color: #72ffe2;
+    font-size: 1.25rem;
+    font-weight: 900;
     cursor: pointer;
 }
 
 .accordion-panel {
     display: none;
-    padding: 22px 30px;
-    background: rgba(41,49,101,0.22);
+    padding: 24px 28px 28px;
 }
 
+/* COMMAND ENTRY */
 .command-entry {
-    border-bottom: 1px solid #31468f66;
-    padding-bottom: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #ffffff22;
+}
+.command-entry:last-child {
+    border-bottom: none;
 }
 
-.command-name {
-    font-size: 1.2em;
-    font-weight: 900;
+.command-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.command-entry strong {
+    font-size: 1.1rem;
     color: #a7c8fd;
 }
 
-.command-desc {
-    color: #72ffe2;
-    font-weight: 700;
+.command-entry span {
+    display: block;
+    margin: 6px 0;
+    color: #d7f3ff;
 }
+
+.command-entry code {
+    display: inline-block;
+    background: #1b1f4a;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #72ffe2;
+}
+
+/* BADGES */
+.command-badge {
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+.command-badge.red { background:#ff6b6b; color:#3a1d1d; }
+.command-badge.green { background:#65e6ce; color:#223254; }
+.command-badge.yellow { background:#fad59c; color:#503820; }
+
 
 
 /* =========================
