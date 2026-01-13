@@ -1322,21 +1322,27 @@ a:hover { color: #ffd799; }
 }
 
 /* =========================
-   ASTRA FOOTER (ISOLATED)
+   ASTRA FOOTER – FINAL
    ========================= */
 
+/* Footer als stabiles Flex-Item */
 .astra-footer {
+    flex-shrink: 0;
     width: 100%;
-    background: linear-gradient(135deg, #221c50, #2a2463);
-    color: #eef4ff;
     margin-top: 80px;
+    background: linear-gradient(135deg, #221c50 0%, #2a2463 100%);
+    color: #eef4ff;
+    border-top: 1px solid rgba(125,250,215,0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    overflow: hidden;
 }
 
+/* Footer-Reset (nur intern) */
 .astra-footer * {
     box-sizing: border-box;
 }
 
-/* GRID */
+/* === GRID === */
 .astra-footer-wrap {
     max-width: 1180px;
     margin: 0 auto;
@@ -1344,46 +1350,60 @@ a:hover { color: #ffd799; }
     display: grid;
     grid-template-columns: 1.6fr 1fr 1fr;
     gap: 48px;
+    align-items: flex-start;
 }
 
-/* BRAND */
+/* === BRAND === */
 .astra-footer-logo {
     display: flex;
     align-items: center;
     gap: 14px;
     font-size: 1.35em;
     font-weight: 800;
+    line-height: 1.2;
 }
 
+/* LOGO – HART BEGRENZT (SVG-SAFE) */
 .astra-footer-logo img {
-    width: 42px;
-    height: 42px;
+    width: 42px !important;
+    height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    min-width: 42px;
+    min-height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
     border-radius: 12px;
-    box-shadow: 0 4px 18px #00000033;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
 }
 
 .astra-footer-logo strong {
     color: #65e6ce;
 }
 
+/* Beschreibung */
 .astra-footer-text {
     margin-top: 14px;
     max-width: 360px;
+    font-size: 1.05em;
     line-height: 1.55;
     color: #d7f3ff;
 }
 
+/* Copyright */
 .astra-footer-copy {
     margin-top: 16px;
-    font-size: .9em;
+    font-size: 0.9em;
     color: #b7cfff;
+    line-height: 1.4;
 }
 
-/* LINKS */
+/* === LINK-SPALTEN === */
 .astra-footer-links h4 {
     font-size: 1.05em;
-    margin-bottom: 14px;
     font-weight: 800;
+    margin-bottom: 14px;
+    color: #f4faff;
 }
 
 .astra-footer-links a {
@@ -1392,7 +1412,7 @@ a:hover { color: #ffd799; }
     color: #d6e2ff;
     text-decoration: none;
     font-weight: 600;
-    transition: color .15s, transform .15s;
+    transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .astra-footer-links a:hover {
@@ -1400,7 +1420,7 @@ a:hover { color: #ffd799; }
     transform: translateX(4px);
 }
 
-/* MOBILE */
+/* === MOBILE === */
 @media (max-width: 900px) {
     .astra-footer-wrap {
         grid-template-columns: 1fr;
@@ -1408,7 +1428,6 @@ a:hover { color: #ffd799; }
         gap: 32px;
     }
 }
-
 
 
 /* === Fertig! === */
