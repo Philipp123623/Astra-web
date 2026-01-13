@@ -62,7 +62,7 @@
                 <p class="astra-desc">
                     Alle verfügbaren Commands von Astra – übersichtlich,
                     durchsuchbar und ständig erweitert.
-                </p>
+                </div>
 
                 <div class="astra-badges-row">
                     <span class="astra-badge mint">Moderation</span>
@@ -105,19 +105,19 @@
                 </button>
                 <div class="command-category-body">
                     <div class="command-item">
-                        <strong>/kick</strong>
-                        <p>Kickt einen User vom Server</p>
-                        <code>/kick [User] [Grund]</code>
+                        <div class="cmd-name">/kick</div>
+                        <div class="cmd-desc">Kickt einen User vom Server</div>
+                        <div class="cmd-usage">/kick [User] [Grund]</div>
                     </div>
                     <div class="command-item">
-                        <strong>/ban</strong>
-                        <p>Bannt einen User dauerhaft</p>
-                        <code>/ban [User] [Grund]</code>
+                        <div class="cmd-name">/ban</div>
+                        <div class="cmd-desc">Bannt einen User dauerhaft</div>
+                        <div class="cmd-usage">/ban [User] [Grund]</div>
                     </div>
                     <div class="command-item">
-                        <strong>/clear</strong>
-                        <p>Löscht Nachrichten im Channel</p>
-                        <code>/clear [Anzahl]</code>
+                        <div class="cmd-name">/clear</div>
+                        <div class="cmd-desc">Löscht Nachrichten im Channel</div>
+                        <div class="cmd-usage">/clear [Anzahl]</div>
                     </div>
                 </div>
             </div>
@@ -130,14 +130,14 @@
                 </button>
                 <div class="command-category-body">
                     <div class="command-item">
-                        <strong>/level</strong>
-                        <p>Zeigt dein aktuelles Level</p>
-                        <code>/level</code>
+                        <div class="cmd-name">/level</div>
+                        <div class="cmd-desc">Zeigt dein aktuelles Level</div>
+                        <div class="cmd-usage">/level</div>
                     </div>
                     <div class="command-item">
-                        <strong>/top</strong>
-                        <p>Server Rangliste</p>
-                        <code>/top</code>
+                        <div class="cmd-name">/top</div>
+                        <div class="cmd-desc">Server Rangliste</div>
+                        <div class="cmd-usage">/top</div>
                     </div>
                 </div>
             </div>
@@ -150,14 +150,14 @@
                 </button>
                 <div class="command-category-body">
                     <div class="command-item">
-                        <strong>/meme</strong>
-                        <p>Zufälliges Meme</p>
-                        <code>/meme</code>
+                        <div class="cmd-name">/meme</div>
+                        <div class="cmd-desc">Zufälliges Meme</div>
+                        <div class="cmd-usage">/meme</div>
                     </div>
                     <div class="command-item">
-                        <strong>/wanted</strong>
-                        <p>Wanted-Poster erstellen</p>
-                        <code>/wanted</code>
+                        <div class="cmd-name">/wanted</div>
+                        <div class="cmd-desc">Wanted-Poster erstellen</div>
+                        <div class="cmd-usage">/wanted</div>
                     </div>
                 </div>
             </div>
@@ -170,10 +170,18 @@
 <?php include 'includes/footer.php'; ?>
 
 <script>
-    /* Accordion */
+    /* ACCORDION – SINGLE OPEN */
     document.querySelectorAll('.command-category-header').forEach(btn => {
         btn.addEventListener('click', () => {
-            btn.parentElement.classList.toggle('open');
+            const current = btn.parentElement;
+
+            document.querySelectorAll('.command-category').forEach(cat => {
+                if (cat !== current) {
+                    cat.classList.remove('open');
+                }
+            });
+
+            current.classList.toggle('open');
         });
     });
 

@@ -748,13 +748,26 @@ main.commands-main {
    ACCORDION
    ========================= */
 
+/* =========================
+   ACCORDION – CLEAN (NO WEIRD OUTLINES)
+   ========================= */
+
 .command-category {
-    background: rgba(46,53,110,.33);
+    background: linear-gradient(
+            180deg,
+            rgba(46,53,110,.35),
+            rgba(40,45,95,.30)
+    );
     border-radius: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     overflow: hidden;
+
+    border: none;
+    box-shadow:
+            0 10px 36px rgba(0,0,0,0.25);
 }
 
+/* Header */
 .command-category-header {
     width: 100%;
     padding: 22px 28px;
@@ -763,12 +776,22 @@ main.commands-main {
     font-weight: 900;
     color: #65e6ce;
 
-    background: none;
+    background: transparent;
     border: none;
+    outline: none;
+
     cursor: pointer;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    box-shadow: none;
+}
+
+/* Remove focus outline completely */
+.command-category-header:focus {
+    outline: none;
 }
 
 .command-category-body {
@@ -785,10 +808,76 @@ main.commands-main {
    COMMAND ITEM
    ========================= */
 
+/* =========================
+   COMMAND ITEM – GRID LAYOUT
+   ========================= */
+
 .command-item {
-    padding: 20px 28px;
-    border-top: 1px solid rgba(255,255,255,.12);
+    display: grid;
+    grid-template-columns:
+        180px
+        1fr
+        260px;
+
+    gap: 18px;
+    align-items: center;
+
+    padding: 22px 28px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    color: #eafcff;
 }
+
+/* First item no border */
+.command-item:first-child {
+    border-top: none;
+}
+
+/* COMMAND NAME */
+.cmd-name {
+    font-weight: 900;
+    color: #8bb7ff;
+    font-size: 1.05em;
+    white-space: nowrap;
+}
+
+/* DESCRIPTION – wraps clean */
+.cmd-desc {
+    font-size: 1em;
+    line-height: 1.45;
+    color: #d7f3ff;
+
+    word-break: break-word;
+}
+
+/* USAGE CHIP */
+.cmd-usage {
+    justify-self: end;
+
+    background: rgba(0,0,0,0.35);
+    color: #65e6ce;
+
+    padding: 6px 14px;
+    border-radius: 999px;
+
+    font-family: monospace;
+    font-size: 0.95em;
+
+    white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .command-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .cmd-usage {
+        justify-self: start;
+    }
+}
+
 
 .command-item strong {
     color: #a7c8fd;
