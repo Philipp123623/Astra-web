@@ -95,7 +95,7 @@ if ($result->num_rows > 0) {
                     Level, XP, Economy, Moderation, Tools & Fun – individuell, zuverlässig, blitzschnell.
                 </div>
                 <div class="astra-btn-row">
-                    <a href="/invite.php" class="astra-btn main">🤖 Bot einladen</a>
+                    <a href="/invite.php" class="astra-btn main">Bot einladen</a>
                     <a href="/support.php" class="astra-btn outline">Support-Server</a>
                 </div>
                 <div class="astra-badges-row">
