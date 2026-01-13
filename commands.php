@@ -2,11 +2,11 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
-    <title>Astra | Commands</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="/public/favicon_transparent.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/commands.css?v=4.0"/>
+    <title>Commands | Astra Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/public/favicon_transparent.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css?v=2.5" />
 </head>
 <body>
 
