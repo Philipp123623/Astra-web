@@ -1430,6 +1430,11 @@ a:hover { color: #ffd799; }
 }
 
 
+
+
+body {
+    outline: 10px solid red !important;
+}
 /* === Fertig! === */
 
 
