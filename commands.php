@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="/public/favicon_transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=3.2"/>
+    <link rel="stylesheet" href="css/style.css?v=3.3"/>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 <main class="commands-main">
 
     <!-- =========================
-         HERO / INFO BEREICH
+         HERO / INFO
          ========================= -->
     <section class="commands-hero">
 
@@ -100,7 +100,7 @@
                 </div>
             </section>
 
-            <!-- LEVELSYSTEM -->
+            <!-- LEVEL -->
             <section class="command-section" data-category="levelsystem">
                 <button class="accordion-toggle">Level & XP</button>
                 <div class="accordion-panel">
@@ -136,7 +136,7 @@
                             <strong>/balance</strong>
                             <span class="command-badge yellow">Coins</span>
                         </div>
-                        <span>Zeigt dein Guthaben.</span>
+                        <span>Zeigt dein aktuelles Guthaben.</span>
                         <code>/balance</code>
                     </div>
 
@@ -151,7 +151,7 @@
 <?php include 'includes/footer.php'; ?>
 
 <!-- =========================
-     JAVASCRIPT (UNVERKÜRZT)
+     JAVASCRIPT (VOLLSTÄNDIG)
      ========================= -->
 <script>
     const toggleAccordion = (btn) => {
@@ -159,20 +159,18 @@
         const isOpen = btn.classList.contains('open');
 
         if (isOpen) {
-            panel.style.maxHeight = null;
             panel.style.display = 'none';
+            panel.style.maxHeight = null;
             btn.classList.remove('open');
         } else {
             document.querySelectorAll('.accordion-panel').forEach(p => {
-                p.style.maxHeight = null;
                 p.style.display = 'none';
+                p.style.maxHeight = null;
             });
-            document.querySelectorAll('.accordion-toggle').forEach(b => {
-                b.classList.remove('open');
-            });
+            document.querySelectorAll('.accordion-toggle').forEach(b => b.classList.remove('open'));
 
             panel.style.display = 'block';
-            panel.style.maxHeight = panel.scrollHeight + "px";
+            panel.style.maxHeight = panel.scrollHeight + 'px';
             btn.classList.add('open');
         }
     };
@@ -181,7 +179,6 @@
         btn.addEventListener('click', () => toggleAccordion(btn));
     });
 
-    // Suche
     document.getElementById('commandSearch').addEventListener('input', function () {
         const val = this.value.toLowerCase();
 
@@ -211,7 +208,6 @@
         });
     });
 
-    // Filter
     document.querySelectorAll('.commands-category-buttons button').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.commands-category-buttons button').forEach(b => b.classList.remove('active'));
