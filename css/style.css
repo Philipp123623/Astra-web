@@ -1228,7 +1228,7 @@ a:hover { color: #ffd799; }
     flex: 1;
     display: flex;
     justify-content: center;
-    padding: 0 24px;   /* NUR horizontal */
+    padding: 0 16px;   /* NUR horizontal */
 }
 
 /* HERO CARD */
