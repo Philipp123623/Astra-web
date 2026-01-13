@@ -543,28 +543,40 @@ main.commands-main {
     max-width: 1180px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .commands-hero-card {
     position: relative;
     background: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
     border-radius: 38px;
-    box-shadow: 0 14px 54px rgba(91,101,255,.28);
     overflow: hidden;
     margin-bottom: 54px;
+    box-shadow:
+            0 14px 54px rgba(91,101,255,.28),
+            0 0 120px rgba(96,233,203,.25);
+}
+
+.commands-hero-glow {
+    position: absolute;
+    inset: -40%;
+    background:
+            radial-gradient(circle at 30% 25%, #65e6ce55, transparent 60%),
+            radial-gradient(circle at 70% 75%, #7c41ee55, transparent 65%);
+    filter: blur(120px);
+    animation: heroGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    from { opacity: .45; }
+    to { opacity: .75; }
 }
 
 .commands-hero-content {
-    padding: 64px 7vw 46px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    padding: 64px 7vw 46px;
 }
 
-.commands-hero-card h1 {
-    font-size: 2.6em;
-    margin-bottom: 10px;
-}
-
-/* PANEL */
+/* ================= PANEL ================= */
 .commands-panel-card {
     background: rgba(42,50,111,.45);
     border-radius: 30px;
@@ -572,19 +584,35 @@ main.commands-main {
     box-shadow: 0 8px 40px rgba(91,101,255,.12);
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
+.commands-search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
 .commands-search {
     width: 100%;
+    max-width: 760px;
     padding: 18px 22px;
-    border-radius: 18px;
-    border: none;
+    border-radius: 20px;
+    border: 2px solid rgba(101,230,206,.25);
     background: rgba(255,255,255,.12);
     color: #fff;
     font-size: 1.05em;
-    margin-bottom: 30px;
+    transition: all .25s ease;
 }
 
-/* FILTERS */
+.commands-search:focus {
+    outline: none;
+    border-color: #65e6ce;
+    box-shadow:
+            0 0 0 4px rgba(101,230,206,.25),
+            0 12px 30px rgba(0,0,0,.45);
+    transform: scale(1.01);
+}
+
+/* ================= FILTERS ================= */
 .commands-filters {
     display: flex;
     flex-wrap: wrap;
@@ -609,7 +637,7 @@ main.commands-main {
     box-shadow: 0 6px 22px rgba(101,230,206,.35);
 }
 
-/* ACCORDION */
+/* ================= CATEGORY ================= */
 .command-category {
     background: rgba(46,53,110,.33);
     border-radius: 22px;
@@ -630,6 +658,7 @@ main.commands-main {
     justify-content: space-between;
 }
 
+/* ACCORDION */
 .command-category-body {
     max-height: 0;
     overflow: hidden;
@@ -637,39 +666,43 @@ main.commands-main {
 }
 
 .command-category.open .command-category-body {
-    max-height: 600px;
+    max-height: 1000px;
 }
 
-/* COMMAND ITEM */
-.command-item {
-    padding: 20px 28px;
+/* ================= COMMAND ROW ================= */
+.command-row {
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 18px 28px;
     border-top: 1px solid rgba(255,255,255,.12);
 }
 
-.command-item strong {
+.cmd-name {
+    font-weight: 900;
     color: #a7c8fd;
-    font-size: 1.05em;
 }
 
-.command-item p {
-    margin: 6px 0 8px;
+.cmd-desc {
     color: #d7f3ff;
+    font-size: .95em;
 }
 
-.command-item code {
+.cmd-usage {
     background: rgba(0,0,0,.35);
     padding: 6px 14px;
     border-radius: 12px;
     color: #65e6ce;
+    font-size: .85em;
+    white-space: nowrap;
 }
 
-/* MOBILE */
-@media (max-width: 700px) {
-    .commands-panel-card {
-        padding: 28px 18px 36px;
-    }
-    .commands-hero-content {
-        padding: 42px 6vw 34px;
+/* ================= MOBILE ================= */
+@media (max-width: 800px) {
+    .command-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 }
 

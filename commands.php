@@ -5,8 +5,8 @@
     <title>Commands | Astra Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css?v=2.5" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/commands.css?v=3.0" />
 </head>
 <body>
 
@@ -14,40 +14,44 @@
 
 <main class="commands-main">
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
     <section class="commands-hero-card">
+        <div class="commands-hero-glow"></div>
         <div class="bubbles-bg"></div>
 
         <div class="commands-hero-content">
-            <div class="commands-hero-text">
-                <div class="astra-label-row">
-                    <span class="astra-label green">Slash Commands</span>
-                    <span class="astra-label blue">Live System</span>
-                    <span class="astra-label yellow">v2.0</span>
-                </div>
+            <div class="astra-label-row">
+                <span class="astra-label green">Slash Commands</span>
+                <span class="astra-label blue">Live System</span>
+                <span class="astra-label yellow">v2.0</span>
+            </div>
 
-                <h1>Astra Commands</h1>
-                <p class="astra-desc">
-                    Alle verfügbaren Commands von Astra – übersichtlich,
-                    durchsuchbar und ständig erweitert.
-                </p>
+            <h1>Astra Commands</h1>
+            <p class="astra-desc">
+                Alle verfügbaren Commands von Astra – übersichtlich, durchsuchbar und ständig erweitert.
+            </p>
 
-                <div class="astra-badges-row">
-                    <span class="astra-badge mint">Moderation</span>
-                    <span class="astra-badge blue">Level & XP</span>
-                    <span class="astra-badge violet">Economy</span>
-                    <span class="astra-badge yellow">Fun</span>
-                </div>
+            <div class="astra-badges-row">
+                <span class="astra-badge mint">Moderation</span>
+                <span class="astra-badge blue">Level & XP</span>
+                <span class="astra-badge violet">Economy</span>
+                <span class="astra-badge yellow">Fun</span>
             </div>
         </div>
     </section>
 
-    <!-- COMMANDS PANEL -->
+    <!-- ================= PANEL ================= -->
     <section class="commands-panel-card">
 
         <!-- SEARCH -->
-        <input id="commandSearch" class="commands-search"
-               placeholder="🔍 Suche nach einem Command oder Feature …">
+        <div class="commands-search-wrapper">
+            <input
+                    type="text"
+                    id="commandSearch"
+                    class="commands-search"
+                    placeholder="🔍 Suche nach einem Command oder Feature …"
+            />
+        </div>
 
         <!-- FILTERS -->
         <div class="commands-filters">
@@ -58,107 +62,142 @@
             <button data-filter="fun">Fun</button>
         </div>
 
-        <!-- ACCORDION -->
-        <div class="commands-accordion">
+        <!-- ================= MODERATION ================= -->
+        <div class="command-category" data-category="mod">
+            <button class="command-category-header">
+                🛡️ Moderation
+                <span>3 Commands</span>
+            </button>
 
-            <!-- MODERATION -->
-            <div class="command-category" data-category="mod">
-                <button class="command-category-header">
-                    🛡️ Moderation
-                    <span>3 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <strong>/kick</strong>
-                        <p>Kickt einen User vom Server</p>
-                        <code>/kick [User] [Grund]</code>
-                    </div>
-                    <div class="command-item">
-                        <strong>/ban</strong>
-                        <p>Bannt einen User dauerhaft</p>
-                        <code>/ban [User] [Grund]</code>
-                    </div>
-                    <div class="command-item">
-                        <strong>/clear</strong>
-                        <p>Löscht Nachrichten im Channel</p>
-                        <code>/clear [Anzahl]</code>
-                    </div>
+            <div class="command-category-body">
+                <div class="command-row">
+                    <div class="cmd-name">/kick</div>
+                    <div class="cmd-desc">Kickt einen User vom Server</div>
+                    <div class="cmd-usage">/kick [User] [Grund]</div>
+                </div>
+
+                <div class="command-row">
+                    <div class="cmd-name">/ban</div>
+                    <div class="cmd-desc">Bannt einen User dauerhaft</div>
+                    <div class="cmd-usage">/ban [User] [Grund]</div>
+                </div>
+
+                <div class="command-row">
+                    <div class="cmd-name">/clear</div>
+                    <div class="cmd-desc">Löscht Nachrichten im Channel</div>
+                    <div class="cmd-usage">/clear [Anzahl]</div>
                 </div>
             </div>
-
-            <!-- LEVEL -->
-            <div class="command-category" data-category="level">
-                <button class="command-category-header">
-                    📈 Level & XP
-                    <span>2 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <strong>/level</strong>
-                        <p>Zeigt dein aktuelles Level</p>
-                        <code>/level</code>
-                    </div>
-                    <div class="command-item">
-                        <strong>/top</strong>
-                        <p>Server Rangliste</p>
-                        <code>/top</code>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FUN -->
-            <div class="command-category" data-category="fun">
-                <button class="command-category-header">
-                    🎉 Fun
-                    <span>2 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <strong>/meme</strong>
-                        <p>Zufälliges Meme</p>
-                        <code>/meme</code>
-                    </div>
-                    <div class="command-item">
-                        <strong>/wanted</strong>
-                        <p>Wanted-Poster erstellen</p>
-                        <code>/wanted</code>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
+        <!-- ================= LEVEL ================= -->
+        <div class="command-category" data-category="level">
+            <button class="command-category-header">
+                📈 Level & XP
+                <span>2 Commands</span>
+            </button>
+
+            <div class="command-category-body">
+                <div class="command-row">
+                    <div class="cmd-name">/level</div>
+                    <div class="cmd-desc">Zeigt dein aktuelles Level</div>
+                    <div class="cmd-usage">/level</div>
+                </div>
+
+                <div class="command-row">
+                    <div class="cmd-name">/top</div>
+                    <div class="cmd-desc">Server Rangliste</div>
+                    <div class="cmd-usage">/top</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FUN ================= -->
+        <div class="command-category" data-category="fun">
+            <button class="command-category-header">
+                🎉 Fun
+                <span>2 Commands</span>
+            </button>
+
+            <div class="command-category-body">
+                <div class="command-row">
+                    <div class="cmd-name">/meme</div>
+                    <div class="cmd-desc">Zufälliges Meme</div>
+                    <div class="cmd-usage">/meme</div>
+                </div>
+
+                <div class="command-row">
+                    <div class="cmd-name">/wanted</div>
+                    <div class="cmd-desc">Wanted-Poster erstellen</div>
+                    <div class="cmd-usage">/wanted</div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
 </main>
 
 <?php include 'includes/footer.php'; ?>
 
+<!-- ================= FULL JAVASCRIPT ================= -->
 <script>
-    /* Accordion */
-    document.querySelectorAll('.command-category-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.parentElement.classList.toggle('open');
-        });
-    });
+    document.addEventListener('DOMContentLoaded', () => {
 
-    /* Filter */
-    document.querySelectorAll('.commands-filters button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.commands-filters button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        const searchInput = document.getElementById('commandSearch');
+        const filterButtons = document.querySelectorAll('.commands-filters button');
+        const categories = document.querySelectorAll('.command-category');
 
-            const f = btn.dataset.filter;
-            document.querySelectorAll('.command-category').forEach(cat => {
-                cat.style.display = (f === 'all' || cat.dataset.category === f) ? '' : 'none';
+        let activeFilter = 'all';
+
+        /* ACCORDION */
+        document.querySelectorAll('.command-category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('open');
             });
         });
-    });
 
-    /* Search */
-    document.getElementById('commandSearch').addEventListener('input', e => {
-        const val = e.target.value.toLowerCase();
-        document.querySelectorAll('.command-item').forEach(cmd => {
-            cmd.style.display = cmd.innerText.toLowerCase().includes(val) ? '' : 'none';
+        /* FILTER */
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.filter;
+                applyFilters();
+            });
         });
+
+        /* SEARCH */
+        searchInput.addEventListener('input', applyFilters);
+
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase();
+
+            categories.forEach(category => {
+                const type = category.dataset.category;
+                let visible = false;
+
+                if (activeFilter !== 'all' && type !== activeFilter) {
+                    category.style.display = 'none';
+                    return;
+                }
+
+                category.style.display = '';
+
+                category.querySelectorAll('.command-row').forEach(row => {
+                    const match = row.innerText.toLowerCase().includes(query);
+                    row.style.display = match ? 'grid' : 'none';
+                    if (match) visible = true;
+                });
+
+                if (!visible && query !== '') {
+                    category.style.display = 'none';
+                }
+            });
+        }
+
     });
 </script>
+
+</body>
+</html>
