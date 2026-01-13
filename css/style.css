@@ -536,27 +536,34 @@ a:hover { color: #ffd799; }
 
 
 /* =========================
-   COMMANDS PAGE – ASTRA STYLE
+   COMMANDS PAGE – ASTRA STYLE (FIXED)
    ========================= */
 
+/* Commands-Main NICHT doppelt begrenzen */
 main.commands-main {
-    max-width: 1180px;
+    max-width: unset;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .commands-hero-card {
     position: relative;
     background: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
     border-radius: 38px;
     box-shadow: 0 14px 54px rgba(91,101,255,.28);
     overflow: hidden;
+
+    /* 🔑 WICHTIG: eigener Abstand zum Header */
+    margin-top: 32px;
     margin-bottom: 54px;
 }
 
 .commands-hero-content {
-    padding: 64px 7vw 46px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
+    /* 🔑 angeglichen an Home / Status Hero */
+    padding: 48px 7vw 44px;
 }
 
 .commands-hero-card h1 {
@@ -564,7 +571,8 @@ main.commands-main {
     margin-bottom: 10px;
 }
 
-/* PANEL */
+/* ================= PANEL ================= */
+
 .commands-panel-card {
     background: rgba(42,50,111,.45);
     border-radius: 30px;
@@ -572,7 +580,8 @@ main.commands-main {
     box-shadow: 0 8px 40px rgba(91,101,255,.12);
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
+
 .commands-search {
     width: 100%;
     padding: 18px 22px;
@@ -584,7 +593,8 @@ main.commands-main {
     margin-bottom: 30px;
 }
 
-/* FILTERS */
+/* ================= FILTERS ================= */
+
 .commands-filters {
     display: flex;
     flex-wrap: wrap;
@@ -609,7 +619,8 @@ main.commands-main {
     box-shadow: 0 6px 22px rgba(101,230,206,.35);
 }
 
-/* ACCORDION */
+/* ================= ACCORDION ================= */
+
 .command-category {
     background: rgba(46,53,110,.33);
     border-radius: 22px;
@@ -640,7 +651,8 @@ main.commands-main {
     max-height: 600px;
 }
 
-/* COMMAND ITEM */
+/* ================= COMMAND ITEM ================= */
+
 .command-item {
     padding: 20px 28px;
     border-top: 1px solid rgba(255,255,255,.12);
@@ -663,16 +675,23 @@ main.commands-main {
     color: #65e6ce;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
+
 @media (max-width: 700px) {
+
+    .commands-hero-card {
+        margin-top: 18px;
+        margin-bottom: 36px;
+    }
+
+    .commands-hero-content {
+        padding: 36px 6vw 32px;
+    }
+
     .commands-panel-card {
         padding: 28px 18px 36px;
     }
-    .commands-hero-content {
-        padding: 42px 6vw 34px;
-    }
 }
-
 
 /* =========================
    ASTRA STATUS PAGE STYLES (CLEAN / HERO CONSISTENT)
