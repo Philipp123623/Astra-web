@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="/public/favicon_transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=3.3"/>
+    <link rel="stylesheet" href="css/commands.css?v=4.0"/>
 </head>
 <body>
 
@@ -14,22 +14,14 @@
 
 <main class="commands-main">
 
-    <!-- =========================
-         HERO / INFO
-         ========================= -->
+    <!-- ================= HERO ================= -->
     <section class="commands-hero">
-
-        <div class="commands-bubbles-bg">
-            <svg width="100%" height="100%">
-                <circle cx="14%" cy="22%" r="48" fill="#65e6ce22"/>
-                <circle cx="82%" cy="18%" r="64" fill="#a7c8fd22"/>
-                <circle cx="50%" cy="82%" r="56" fill="#7c41ee22"/>
-                <circle cx="92%" cy="70%" r="32" fill="#60e9cb22"/>
-            </svg>
+        <div class="hero-bg">
+            <span></span><span></span><span></span>
         </div>
 
-        <div class="commands-hero-inner">
-            <div class="commands-badges">
+        <div class="hero-content">
+            <div class="hero-badges">
                 <span class="badge mint">Prefix: / Slash Commands</span>
                 <span class="badge violet">Version 2.0</span>
                 <span class="badge dark">Live System</span>
@@ -37,11 +29,11 @@
 
             <h1>Alle Astra Commands</h1>
             <p>
-                Entdecke alle Funktionen von Astra – übersichtlich sortiert,
+                Entdecke alle Funktionen von Astra – modern, übersichtlich,
                 durchsuchbar und ständig erweitert.
             </p>
 
-            <div class="commands-tags">
+            <div class="hero-tags">
                 <span class="tag green">Level & XP</span>
                 <span class="tag blue">Moderation</span>
                 <span class="tag yellow">Economy & Games</span>
@@ -51,17 +43,15 @@
         </div>
     </section>
 
-    <!-- =========================
-         COMMANDS CARD
-         ========================= -->
-    <section class="commands-card">
+    <!-- ================= COMMANDS ================= -->
+    <section class="commands-wrapper">
 
-        <!-- Suche -->
+        <!-- SEARCH -->
         <div class="commands-search">
             <input type="text" id="commandSearch" placeholder="🔍 Command suchen…" />
         </div>
 
-        <!-- Filter -->
+        <!-- FILTER -->
         <div class="commands-filters commands-category-buttons">
             <button data-filter="all" class="active">Alle</button>
             <button data-filter="moderation">Moderation</button>
@@ -71,12 +61,15 @@
             <button data-filter="fun">Fun</button>
         </div>
 
-        <!-- Accordion -->
+        <!-- ACCORDION -->
         <div class="commands-accordion" id="commands-accordion">
 
             <!-- MODERATION -->
             <section class="command-section" data-category="moderation">
-                <button class="accordion-toggle">Moderation</button>
+                <button class="accordion-toggle">
+                    Moderation
+                    <span class="chevron"></span>
+                </button>
                 <div class="accordion-panel">
 
                     <div class="command-entry">
@@ -84,7 +77,7 @@
                             <strong>/kick</strong>
                             <span class="command-badge red">Mod</span>
                         </div>
-                        <span>Kickt einen User vom Server.</span>
+                        <p>Kickt einen User vom Server.</p>
                         <code>/kick [User] [Grund]</code>
                     </div>
 
@@ -93,7 +86,7 @@
                             <strong>/ban</strong>
                             <span class="command-badge red">Mod</span>
                         </div>
-                        <span>Bannt einen User dauerhaft.</span>
+                        <p>Bannt einen User dauerhaft.</p>
                         <code>/ban [User] [Grund]</code>
                     </div>
 
@@ -102,7 +95,10 @@
 
             <!-- LEVEL -->
             <section class="command-section" data-category="levelsystem">
-                <button class="accordion-toggle">Level & XP</button>
+                <button class="accordion-toggle">
+                    Level & XP
+                    <span class="chevron"></span>
+                </button>
                 <div class="accordion-panel">
 
                     <div class="command-entry">
@@ -110,7 +106,7 @@
                             <strong>/level</strong>
                             <span class="command-badge green">XP</span>
                         </div>
-                        <span>Zeigt deinen aktuellen Level & XP.</span>
+                        <p>Zeigt deinen aktuellen Level & XP.</p>
                         <code>/level</code>
                     </div>
 
@@ -119,7 +115,7 @@
                             <strong>/top</strong>
                             <span class="command-badge green">XP</span>
                         </div>
-                        <span>Leaderboard des Servers.</span>
+                        <p>Leaderboard des Servers.</p>
                         <code>/top</code>
                     </div>
 
@@ -128,7 +124,10 @@
 
             <!-- ECONOMY -->
             <section class="command-section" data-category="economy">
-                <button class="accordion-toggle">Economy</button>
+                <button class="accordion-toggle">
+                    Economy
+                    <span class="chevron"></span>
+                </button>
                 <div class="accordion-panel">
 
                     <div class="command-entry">
@@ -136,7 +135,7 @@
                             <strong>/balance</strong>
                             <span class="command-badge yellow">Coins</span>
                         </div>
-                        <span>Zeigt dein aktuelles Guthaben.</span>
+                        <p>Zeigt dein aktuelles Guthaben.</p>
                         <code>/balance</code>
                     </div>
 
@@ -150,27 +149,23 @@
 
 <?php include 'includes/footer.php'; ?>
 
-<!-- =========================
-     JAVASCRIPT (VOLLSTÄNDIG)
-     ========================= -->
+<!-- ================= JS ================= -->
 <script>
     const toggleAccordion = (btn) => {
         const panel = btn.nextElementSibling;
         const isOpen = btn.classList.contains('open');
 
-        if (isOpen) {
-            panel.style.display = 'none';
-            panel.style.maxHeight = null;
-            btn.classList.remove('open');
-        } else {
-            document.querySelectorAll('.accordion-panel').forEach(p => {
-                p.style.display = 'none';
-                p.style.maxHeight = null;
-            });
-            document.querySelectorAll('.accordion-toggle').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.accordion-panel').forEach(p => {
+            p.style.maxHeight = null;
+            p.style.opacity = 0;
+        });
+        document.querySelectorAll('.accordion-toggle').forEach(b => {
+            b.classList.remove('open');
+        });
 
-            panel.style.display = 'block';
-            panel.style.maxHeight = panel.scrollHeight + 'px';
+        if (!isOpen) {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            panel.style.opacity = 1;
             btn.classList.add('open');
         }
     };
@@ -184,61 +179,31 @@
 
         document.querySelectorAll('.command-section').forEach(section => {
             let visible = false;
-
             section.querySelectorAll('.command-entry').forEach(entry => {
                 const match = entry.innerText.toLowerCase().includes(val);
                 entry.style.display = match ? '' : 'none';
                 if (match) visible = true;
             });
-
-            section.style.display = (visible || !val) ? '' : 'none';
-
-            const panel = section.querySelector('.accordion-panel');
-            const toggleBtn = section.querySelector('.accordion-toggle');
-
-            if (visible && val) {
-                panel.style.display = 'block';
-                panel.style.maxHeight = panel.scrollHeight + 'px';
-                toggleBtn.classList.add('open');
-            } else {
-                panel.style.display = 'none';
-                panel.style.maxHeight = null;
-                toggleBtn.classList.remove('open');
-            }
+            section.style.display = visible || !val ? '' : 'none';
         });
     });
 
     document.querySelectorAll('.commands-category-buttons button').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.commands-category-buttons button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.commands-category-buttons button')
+                .forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const filter = btn.getAttribute('data-filter');
-
+            const filter = btn.dataset.filter;
             document.querySelectorAll('.command-section').forEach(section => {
-                const cat = section.getAttribute('data-category');
-                section.style.display = (filter === 'all' || filter === cat) ? '' : 'none';
-
-                const panel = section.querySelector('.accordion-panel');
-                const toggleBtn = section.querySelector('.accordion-toggle');
-
-                panel.style.display = 'none';
-                panel.style.maxHeight = null;
-                toggleBtn.classList.remove('open');
+                section.style.display =
+                    filter === 'all' || section.dataset.category === filter
+                        ? ''
+                        : 'none';
             });
 
             document.getElementById('commandSearch').value = '';
         });
-    });
-</script>
-
-<script>
-    const navToggle = document.querySelector('.astra-nav-toggle');
-    navToggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !expanded);
-        navToggle.blur();
     });
 </script>
 
