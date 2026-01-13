@@ -17,7 +17,9 @@
     <!-- ================= HERO ================= -->
     <section class="commands-hero-card">
         <div class="commands-hero-glow"></div>
-        <div class="bubbles-bg"></div>
+        <div class="bubbles-bg">
+            <?php include 'includes/bubbles.svg'; ?>
+        </div>
 
         <div class="commands-hero-content">
             <div class="astra-label-row">

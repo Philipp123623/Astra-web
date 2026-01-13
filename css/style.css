@@ -540,7 +540,9 @@ a:hover { color: #ffd799; }
    ========================= */
 
 main.commands-main {
+    width: 100%;
     max-width: 1180px;
+    margin: 0 auto;
 }
 
 
@@ -706,6 +708,38 @@ main.commands-main {
         gap: 8px;
     }
 }
+
+/* =========================
+   COMMANDS HERO – BUBBLES (CSS ONLY)
+   ========================= */
+
+.commands-hero-card .bubbles-bg::before,
+.commands-hero-card .bubbles-bg::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(101,230,206,0.35), transparent 60%),
+            radial-gradient(circle at 70% 20%, rgba(124,65,238,0.35), transparent 65%),
+            radial-gradient(circle at 80% 80%, rgba(63,214,221,0.28), transparent 70%);
+    filter: blur(90px);
+    animation: commandsBubbles 18s ease-in-out infinite alternate;
+}
+
+.commands-hero-card .bubbles-bg::after {
+    animation-duration: 26s;
+    opacity: 0.75;
+}
+
+@keyframes commandsBubbles {
+    from {
+        transform: translateY(-20px) scale(1);
+    }
+    to {
+        transform: translateY(30px) scale(1.1);
+    }
+}
+
 
 
 /* =========================
