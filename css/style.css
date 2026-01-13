@@ -3,7 +3,7 @@
    ========================= */
 
 :root {
-    --header-height-desktop: 68px;
+    --header-height: 68px;   /* Desktop Header */
     --header-height-mobile: 56px;
 }
 
@@ -30,11 +30,11 @@ main {
     width: 100%;
     margin: 0 auto;
 
-    /* EINHEITLICHER ABSTAND */
-    padding-top: 40px;     /* Abstand unter Header */
-    padding-bottom: 96px;  /* Abstand vor Footer */
+    /* ⬇️ DAS IST ENTSCHEIDEND */
+    padding-top: calc(var(--header-height) + 32px);
     padding-left: 38px;
     padding-right: 38px;
+    padding-bottom: 80px;
 
     box-sizing: border-box;
 }
@@ -42,10 +42,10 @@ main {
 
 @media (max-width: 900px) {
     main {
-        padding-top: 32px;
-        padding-bottom: 88px;
+        padding-top: calc(var(--header-height) + 24px);
         padding-left: 16px;
         padding-right: 16px;
+        padding-bottom: 70px;
     }
 }
 
@@ -1228,7 +1228,7 @@ a:hover { color: #ffd799; }
     flex: 1;
     display: flex;
     justify-content: center;
-    padding: 0 16px;   /* NUR horizontal */
+    padding: 0 24px;
 }
 
 /* HERO CARD */
