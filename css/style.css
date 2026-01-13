@@ -304,12 +304,8 @@ a:hover { color: #ffd799; }
     min-height: 370px;
 }
 .bubbles-bg {
-    position: absolute;
-    inset: -20%;
-    z-index: 1;
-    pointer-events: none;
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
 }
-
 .astra-hero-content {
     display: flex;
     flex-wrap: wrap;
@@ -544,47 +540,31 @@ a:hover { color: #ffd799; }
    ========================= */
 
 main.commands-main {
-    width: 100%;
     max-width: 1180px;
-    margin: 0 auto;
 }
 
-
-/* ================= HERO ================= */
+/* HERO */
 .commands-hero-card {
     position: relative;
     background: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
     border-radius: 38px;
+    box-shadow: 0 14px 54px rgba(91,101,255,.28);
     overflow: hidden;
     margin-bottom: 54px;
-    box-shadow:
-            0 14px 54px rgba(91,101,255,.28),
-            0 0 120px rgba(96,233,203,.25);
-}
-
-.commands-hero-glow {
-    position: absolute;
-    inset: -40%;
-    z-index: 2;
-    background:
-            radial-gradient(circle at 30% 25%, #65e6ce55, transparent 60%),
-            radial-gradient(circle at 70% 75%, #7c41ee55, transparent 65%);
-    filter: blur(120px);
-    animation: heroGlow 10s ease-in-out infinite alternate;
-}
-
-
-@keyframes heroGlow {
-    from { opacity: .45; }
-    to { opacity: .75; }
 }
 
 .commands-hero-content {
+    padding: 64px 7vw 46px;
     position: relative;
-    z-index: 3;
+    z-index: 1;
 }
 
-/* ================= PANEL ================= */
+.commands-hero-card h1 {
+    font-size: 2.6em;
+    margin-bottom: 10px;
+}
+
+/* PANEL */
 .commands-panel-card {
     background: rgba(42,50,111,.45);
     border-radius: 30px;
@@ -592,35 +572,19 @@ main.commands-main {
     box-shadow: 0 8px 40px rgba(91,101,255,.12);
 }
 
-/* ================= SEARCH ================= */
-.commands-search-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 32px;
-}
-
+/* SEARCH */
 .commands-search {
     width: 100%;
-    max-width: 760px;
     padding: 18px 22px;
-    border-radius: 20px;
-    border: 2px solid rgba(101,230,206,.25);
+    border-radius: 18px;
+    border: none;
     background: rgba(255,255,255,.12);
     color: #fff;
     font-size: 1.05em;
-    transition: all .25s ease;
+    margin-bottom: 30px;
 }
 
-.commands-search:focus {
-    outline: none;
-    border-color: #65e6ce;
-    box-shadow:
-            0 0 0 4px rgba(101,230,206,.25),
-            0 12px 30px rgba(0,0,0,.45);
-    transform: scale(1.01);
-}
-
-/* ================= FILTERS ================= */
+/* FILTERS */
 .commands-filters {
     display: flex;
     flex-wrap: wrap;
@@ -645,7 +609,7 @@ main.commands-main {
     box-shadow: 0 6px 22px rgba(101,230,206,.35);
 }
 
-/* ================= CATEGORY ================= */
+/* ACCORDION */
 .command-category {
     background: rgba(46,53,110,.33);
     border-radius: 22px;
@@ -666,7 +630,6 @@ main.commands-main {
     justify-content: space-between;
 }
 
-/* ACCORDION */
 .command-category-body {
     max-height: 0;
     overflow: hidden;
@@ -674,77 +637,41 @@ main.commands-main {
 }
 
 .command-category.open .command-category-body {
-    max-height: 1000px;
+    max-height: 600px;
 }
 
-/* ================= COMMAND ROW ================= */
-.command-row {
-    display: grid;
-    grid-template-columns: 160px 1fr auto;
-    gap: 18px;
-    align-items: center;
-    padding: 18px 28px;
+/* COMMAND ITEM */
+.command-item {
+    padding: 20px 28px;
     border-top: 1px solid rgba(255,255,255,.12);
 }
 
-.cmd-name {
-    font-weight: 900;
+.command-item strong {
     color: #a7c8fd;
+    font-size: 1.05em;
 }
 
-.cmd-desc {
+.command-item p {
+    margin: 6px 0 8px;
     color: #d7f3ff;
-    font-size: .95em;
 }
 
-.cmd-usage {
+.command-item code {
     background: rgba(0,0,0,.35);
     padding: 6px 14px;
     border-radius: 12px;
     color: #65e6ce;
-    font-size: .85em;
-    white-space: nowrap;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 800px) {
-    .command-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
+/* MOBILE */
+@media (max-width: 700px) {
+    .commands-panel-card {
+        padding: 28px 18px 36px;
+    }
+    .commands-hero-content {
+        padding: 42px 6vw 34px;
     }
 }
-
-/* =========================
-   COMMANDS HERO – BUBBLES (CSS ONLY)
-   ========================= */
-
-.commands-hero-card .bubbles-bg::before,
-.commands-hero-card .bubbles-bg::after {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    background:
-            radial-gradient(circle at 20% 30%, rgba(101,230,206,0.35), transparent 60%),
-            radial-gradient(circle at 70% 20%, rgba(124,65,238,0.35), transparent 65%),
-            radial-gradient(circle at 80% 80%, rgba(63,214,221,0.28), transparent 70%);
-    filter: blur(90px);
-    animation: commandsBubbles 18s ease-in-out infinite alternate;
-}
-
-.commands-hero-card .bubbles-bg::after {
-    animation-duration: 26s;
-    opacity: 0.75;
-}
-
-@keyframes commandsBubbles {
-    from {
-        transform: translateY(-20px) scale(1);
-    }
-    to {
-        transform: translateY(30px) scale(1.1);
-    }
-}
-
 
 
 /* =========================
