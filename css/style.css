@@ -1415,10 +1415,19 @@ footer.astra-footer {
 }
 
 
-footer.astra-footer {
-    outline: 5px solid red;
+footer.astra-footer::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(125,250,215,0.55),
+            transparent
+    );
+    box-shadow: 0 0 14px rgba(125,250,215,0.35);
 }
-
 
 /* === Fertig! === */
 
