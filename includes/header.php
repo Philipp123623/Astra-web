@@ -11,7 +11,7 @@
                 <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
                 <li><a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a></li>
                 <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="https://astra-bot.de/#commands" class="nav-link">Commands</a></li>
+                <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
                 <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
                 <li><a href="https://astra-bot.de/report" class="nav-link">Report</a></li>
                 <li><a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a></li>

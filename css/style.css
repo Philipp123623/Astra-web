@@ -886,21 +886,26 @@ a:hover { color: #ffd799; }
     color: #ff6464;
     border-color: #ff7272;
 }
+
+
 /* =========================
-   ASTRA STATUS PAGE STYLES
+   ASTRA STATUS PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
 
+/* ==== Main Wrapper ==== */
 .astra-status-main {
     flex: 1;
     min-height: 560px;
-    display: block;
     position: relative;
-    padding: 64px 0 24px;
+    padding: 72px 16px 96px;
+    display: flex;
+    justify-content: center;
 }
+
 @media (max-width: 700px) {
     .astra-status-main {
         min-height: auto !important;
-        padding-bottom: 80px; /* Damit Footer nicht überlappt */
+        padding: 56px 16px 96px;
     }
 }
 
@@ -912,414 +917,502 @@ a:hover { color: #ffd799; }
     pointer-events: none;
     border-radius: inherit;
     overflow: hidden;
+    opacity: 0.9;
 }
 
 /* ==== Card ==== */
-/* Main Container */
-.astra-status-main {
-    flex: 1;
-    min-height: 560px;
-    display: block;
-    position: relative;
-    padding: 64px 16px 24px; /* mehr Padding links und rechts */
-}
-
-@media (max-width: 700px) {
-    .astra-status-main {
-        min-height: auto !important;
-        padding: 48px 16px 80px; /* oben etwas weniger, unten wegen Footer, links/rechts 16px */
-    }
-}
-
-/* Card */
 .astra-status-card {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 900px;
+    max-width: 920px;
     min-height: 540px;
-    margin: 28px auto;
-    padding: 30px 20px 24px 20px; /* weniger padding für mehr Platz auf kleinen Bildschirmen */
-    border-radius: 26px;
-    background: linear-gradient(135deg, #241d50 0%, #2e265a 70%, #3fd6dd 230%);
-    box-shadow: 0 8px 44px #21303f2e, 0 2px 20px #65e6ce12;
+    margin: 0 auto;
+    padding: 44px 40px 36px;
+    border-radius: 34px;
+
+    background: linear-gradient(
+            115deg,
+            #251f5b 0%,
+            #362897 65%,
+            #3fd6dd 160%
+    );
+
+    box-shadow:
+            0 14px 54px rgba(91,101,255,0.28),
+            0 0 90px rgba(96,233,203,0.22),
+            inset 0 0 0 1px rgba(255,255,255,0.05);
+
     display: flex;
     flex-direction: column;
-    align-items: stretch;
 }
 
 @media (max-width: 700px) {
     .astra-status-card {
-        padding: 24px 16px 24px 16px;
+        padding: 28px 18px;
         min-height: auto;
+        border-radius: 22px;
     }
 }
 
-.astra-status-card > *:not(.status-bubbles-bg) { position: relative; z-index: 2; }
+.astra-status-card > *:not(.status-bubbles-bg) {
+    position: relative;
+    z-index: 2;
+}
 
+/* ==== Title ==== */
 .astra-status-card h1 {
-    font-size: 2.1rem;
+    font-size: 2.35rem;
     font-weight: 900;
     color: #65e6ce;
-    margin-bottom: 12px;
-    text-shadow: 0 1px 18px #251f5b38;
-    letter-spacing: .03em;
+    margin-bottom: 18px;
+    letter-spacing: .04em;
+    text-shadow: 0 0 22px rgba(101,230,206,0.45);
 }
 
 /* ==== Status Rows ==== */
-.status-list { margin-bottom: 22px; }
+.status-list {
+    margin-bottom: 26px;
+}
+
 .status-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 14px;
-    border-bottom: 1px solid #30437055;
-    font-size: 1.12rem;
-    font-weight: 600;
-    margin: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 1.08rem;
+    font-weight: 700;
 }
-.status-row:last-child { border-bottom: 0; }
-.status-label { display: flex; align-items: center; gap: 8px; }
-.status-icon { font-size: 1.18em; margin-right: 8px; }
+
+.status-row:last-child {
+    border-bottom: 0;
+}
+
+.status-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-icon {
+    font-size: 1.15em;
+}
 
 /* ==== Badges ==== */
 .status-badge {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     height: 30px;
-    min-width: 84px;
-    padding: 0 12px;
-    border-radius: 16px;
+    min-width: 86px;
+    padding: 0 16px;
+    border-radius: 999px;
     font-size: .95rem;
-    font-weight: 800;
-    letter-spacing: .02em;
-    background: #292659;
-    color: #d8ffef;
-    border: 2px solid #65e6ce38;
-    box-shadow: 0 1px 12px #42eaaf22;
-    white-space: nowrap;
+    font-weight: 900;
+    letter-spacing: .04em;
+    background: rgba(255,255,255,0.12);
+    color: #eafcff;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
 }
+
 .status-badge.ok {
-    background: linear-gradient(93deg,#65e6ce 0%, #54fdbe 110%);
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #223254;
-    border-color: #60e9cb77;
-    box-shadow: 0 0 0 3px #54fdbe11;
+    box-shadow: 0 0 0 4px rgba(101,230,206,0.22);
 }
+
 .status-badge.err {
-    background: linear-gradient(93deg, #ff7272 0%, #ffb3b3 110%);
-    color: #481d24;
-    border-color: #ff727266;
-    box-shadow: 0 0 0 3px #ff72721d;
+    background: linear-gradient(90deg,#ff7272,#ffb3b3);
+    color: #4a1515;
 }
+
 .status-badge.warn {
-    background: linear-gradient(93deg, #ffe479 0%, #ffbd34 110%);
-    color: #553a10;
-    border-color: #ffe47966;
-    box-shadow: 0 0 0 3px #ffe4792e;
+    background: linear-gradient(90deg,#ffe479,#ffbd34);
+    color: #4a320c;
 }
 
 /* ==== Tabs ==== */
 .status-tabs-row {
-    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-    margin: 10px 0 15px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin: 22px 0 26px;
+    flex-wrap: wrap;
 }
+
 .status-tab-btn {
-    padding: 8px 23px; border-radius: 15px; font-weight: 700; font-size: 1.06em;
-    background: #282f4e; color: #b7f8f6; border: none; cursor: pointer;
-    transition: background .16s, color .16s, box-shadow .16s;
+    padding: 10px 26px;
+    border-radius: 18px;
+    font-weight: 800;
+    font-size: 1.05em;
+    background: rgba(255,255,255,0.08);
+    color: #cfefff;
+    border: none;
+    cursor: pointer;
+    transition: all .16s ease;
 }
-.status-tab-btn.active, .status-tab-btn:focus {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd 110%);
-    color: #222f48; box-shadow: 0 4px 18px #65e6ce22;
+
+.status-tab-btn.active,
+.status-tab-btn:focus {
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    color: #223254;
+    box-shadow: 0 6px 22px rgba(101,230,206,0.35);
 }
 
 /* ==== Uptime (12h) ==== */
 .uptime-chart-title {
-    font-size: 1.03rem; margin: 22px 0 6px; color: #90e3e7; font-weight: 600;
+    font-size: 1.05rem;
+    margin: 24px 0 8px;
+    color: #9cecff;
+    font-weight: 700;
 }
-.uptime-bar-row {
-    position: relative;          /* Tooltip bezieht sich hierauf */
-    display: flex; gap: 2px; justify-content: center; align-items: flex-end;
-    height: 20px; margin-bottom: 8px;
-}
-.uptime-bar {
-    width: 7px; height: 16px; border-radius: 4px;
-    background: #3a5255; opacity: .42; transition: background .18s, opacity .18s;
-    cursor: pointer;
-}
-.uptime-bar.online  { background: #65e6ce; opacity: 1; }
-.uptime-bar.offline { background: #ff7272; opacity: .9; }
 
-.uptime-legend { font-size: .9rem; color: #b1cde3; margin-bottom: 4px; }
+.uptime-bar-row {
+    position: relative;
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 22px;
+    margin-bottom: 8px;
+}
+
+.uptime-bar {
+    width: 8px;
+    height: 18px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.22);
+    transition: opacity .15s;
+}
+
+.uptime-bar.online {
+    background: #65e6ce;
+    box-shadow: 0 0 12px rgba(101,230,206,0.55);
+}
+
+.uptime-bar.offline {
+    background: #ff7272;
+}
+
+.uptime-legend {
+    font-size: .9rem;
+    color: #b7dafb;
+    margin-bottom: 4px;
+}
 
 /* ==== Uptime (30 Tage) ==== */
 .uptime-bar-row-day {
-    display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; align-items: flex-end;
-    margin-bottom: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    margin-bottom: 10px;
 }
-.uptime-bar-day {
-    width: 17px; height: 22px; border-radius: 6px; background: #3a5255;
-    opacity: .55; position: relative; cursor: pointer; border: 2px solid #1a2633;
-    transition: background .16s, opacity .17s, box-shadow .19s;
-}
-.uptime-bar-day.perfect { background: #65e6ce; opacity: 1; border-color: #54fdbe; }
-.uptime-bar-day.good    { background: #b5f7de; opacity: 1; border-color: #65e6ce; }
-.uptime-bar-day.warn    { background: #ffe479; opacity: 1; border-color: #ffe479; color:#6a5c1e; }
-.uptime-bar-day.bad     { background: #ff7272; opacity: .9; border-color: #ff7272; }
-.uptime-bar-day .uptime-day-label {
-    display: none; position: absolute; left: 50%; bottom: 27px; transform: translateX(-50%);
-    background: #191d36; color: #a7c8fd; padding: 4px 13px; border-radius: 10px; font-size: .96em;
-    white-space: nowrap; box-shadow: 0 3px 14px #1e1b2f61; z-index: 10;
-}
-.uptime-bar-day:hover .uptime-day-label,
-.uptime-bar-day:focus .uptime-day-label { display: block; }
 
-/* ==== Tooltip als Sprechblase über dem Balken ==== */
+.uptime-bar-day {
+    width: 18px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.18);
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.uptime-bar-day.perfect { background: #65e6ce; }
+.uptime-bar-day.good    { background: #b5f7de; }
+.uptime-bar-day.warn    { background: #ffe479; }
+.uptime-bar-day.bad     { background: #ff7272; }
+
+/* Tooltip Label */
+.uptime-bar-day .uptime-day-label {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    background: rgba(28,18,80,0.95);
+    color: #a7c8fd;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: .95em;
+    white-space: nowrap;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    z-index: 10;
+}
+
+.uptime-bar-day:hover .uptime-day-label {
+    display: block;
+}
+
+/* ==== Tooltip Bubble ==== */
 #uptime-tooltip {
-    position: fixed; /* statt absolute */
+    position: fixed;
     z-index: 1000;
     pointer-events: none;
     display: none;
 }
-.uptime-tooltip-bubble {
-    position: relative;
-    background: rgba(28, 18, 80, 0.95);
-    padding: 12px 14px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.uptime-tooltip-arrow {
-    position: absolute;
-    bottom: -6px;
-    width: 12px;
-    height: 12px;
-    background: inherit;
-    transform: rotate(45deg);
-}
-
-.uptime-tooltip-arrow::after {
-    content: "";
-    display: block;
-    width: 14px;
-    height: 14px;
-    background: linear-gradient(120deg, #292659 60%, #2e265a 120%);
-    transform: rotate(45deg);
-    box-shadow: 0 2px 6px rgba(35,53,75,.3);
-}
-.uptime-tooltip-close {
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    background: none;
-    border: none;
-    color: #8eead7;
-    font-size: 1.2em;
-    line-height: 1;
-    cursor: pointer;
-    opacity: .8;
-    pointer-events: auto;
-}
-.uptime-tooltip-close:hover { opacity: 1; color: #ff7272; }
 
 /* ==== Stats ==== */
 .stats-box-row {
-    display: flex; justify-content: space-between; gap: 19px; margin: 22px 0 0;
+    display: flex;
+    gap: 18px;
+    margin-top: 32px;
 }
+
 .stat-box {
-    flex: 1 1 25%; background: linear-gradient(127deg, #262364 0%, #23354b 100%);
-    border-radius: 15px; padding: 16px 0 12px; color: #c5fffd; font-size: 1.01rem;
-    display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 13px #3fd6dd0e;
+    flex: 1;
+    background: rgba(0,0,0,0.25);
+    border-radius: 18px;
+    padding: 18px 0 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.stat-head { font-size: .97rem; color: #9cecff; margin-bottom: 2px; }
-.stat-num  { font-size: 1.35rem; color: #65e6ce; font-weight: 800; letter-spacing: .04em; }
+
+.stat-head {
+    font-size: .95rem;
+    color: #a7c8fd;
+    margin-bottom: 4px;
+}
+
+.stat-num {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #65e6ce;
+    letter-spacing: .04em;
+}
 
 /* ==== Mobile ==== */
 @media (max-width: 700px) {
-    .astra-status-card { padding: 18px 14px; border-radius: 18px; }
-    .astra-status-card h1 { font-size: 1.2rem; }
-    .status-row { font-size: 1.02rem; }
-    .status-badge { height: 28px; min-width: 78px; font-size: .9rem; }
-    .uptime-bar-row { gap: 3px; height: 22px; }
-    .uptime-bar { width: 8px; height: 20px; }  /* etwas größer für Touch */
-    .stats-box-row { flex-direction: column; gap: 10px; }
-    .stat-box { padding: 12px 2px 9px; border-radius: 14px; }
+    .status-row {
+        font-size: 1.02rem;
+        padding: 12px 0;
+    }
+    .stats-box-row {
+        flex-direction: column;
+        gap: 12px;
+    }
 }
 @media (max-width: 500px) {
-    .status-row { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
-    .status-badge { width: auto; min-width: 86px; }
+    .status-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .status-badge {
+        min-width: 88px;
+    }
 }
 
+
 /* =========================
-   REPORT PAGE - Improved Card Style
+   REPORT PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
 
+/* ==== Main Layout ==== */
 .report-page main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: calc(68px + 20px); /* Desktop: 20px extra Luft */
+    padding: 80px 20px 120px;
 }
+
 @media (max-width: 900px) {
     .report-page main {
-        padding-top: calc(56px + 20px); /* Mobile: ebenfalls 20px extra */
+        padding: 64px 16px 120px;
     }
 }
 
+/* ==== Card ==== */
 .astra-form-wrap {
-    background: linear-gradient(135deg, rgba(36,29,80,0.95) 0%, rgba(46,38,90,0.95) 80%);
-    border-radius: 26px;
-    padding: 32px;
-    max-width: 640px;
     width: 100%;
-    box-shadow: 0 8px 44px rgba(33,48,63,0.25), 0 2px 20px rgba(101,230,206,0.07);
+    max-width: 680px;
+    padding: 44px 40px;
+    border-radius: 34px;
+
+    background: linear-gradient(
+            115deg,
+            #251f5b 0%,
+            #362897 65%,
+            #3fd6dd 160%
+    );
+
+    box-shadow:
+            0 14px 54px rgba(91,101,255,0.28),
+            0 0 80px rgba(96,233,203,0.22),
+            inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-/* Titel und Beschreibung */
+/* ==== Title & Description ==== */
 .astra-form-wrap h1 {
-    font-size: 2em;
+    font-size: 2.35rem;
     font-weight: 900;
     color: #65e6ce;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    letter-spacing: .04em;
+    text-shadow: 0 0 22px rgba(101,230,206,0.45);
 }
+
 .astra-form-wrap p {
     font-size: 1.05em;
     color: #d7f3ff;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    line-height: 1.5;
 }
 
-/* Problemtypen-Auswahl */
+/* ==== Problem Type Selection ==== */
 .astra-problem-types {
     display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 14px;
+    margin-bottom: 26px;
     flex-wrap: wrap;
 }
+
 .astra-problem-chip {
     flex: 1 1 auto;
-    padding: 12px 20px;
-    border-radius: 14px;
-    font-weight: 700;
+    padding: 14px 22px;
+    border-radius: 18px;
+    font-weight: 800;
     cursor: pointer;
     text-align: center;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.12);
+    color: #eafcff;
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
 
-/* Individuelle Farben pro Typ */
+/* Color Variants */
 .astra-problem-chip[data-type="Nutzer"] {
-    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
+    background: linear-gradient(90deg,#ff7aa2,#ffb3c6);
     color: #3d0b21;
 }
 .astra-problem-chip[data-type="Webseite"] {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #0b2a26;
 }
 .astra-problem-chip[data-type="Discord"] {
-    background: linear-gradient(90deg, #a77bff, #c29cff);
+    background: linear-gradient(90deg,#a77bff,#c29cff);
     color: #250b3d;
 }
 
-/* Hover-Effekt */
+/* Hover */
 .astra-problem-chip:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.25);
 }
 
-/* Ausgewählt */
+/* Selected */
 .astra-problem-chip.selected {
-    transform: scale(1.05);
-    border: 2px solid #fff;
-    box-shadow: 0 4px 22px rgba(255,255,255,0.25);
+    transform: scale(1.06);
+    box-shadow: 0 0 26px rgba(255,255,255,0.35);
+    border-color: rgba(255,255,255,0.8);
 }
 
-/* Formularfelder */
+/* ==== Form Fields ==== */
 .astra-form label {
     display: block;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 6px;
     color: #a7c8fd;
 }
+
 .astra-form textarea,
 .astra-form input[type="text"],
 .astra-form input[type="email"] {
     width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
     border: none;
     outline: none;
-    background: rgba(41,49,101,0.23);
+    background: rgba(255,255,255,0.12);
     color: #f4faff;
     font-size: 1em;
     font-family: inherit;
-    box-shadow: 0 2px 12px rgba(93,232,255,0.1);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,0.06),
+            0 2px 12px rgba(93,232,255,0.12);
 }
+
 .astra-form textarea {
-    min-height: 120px;
+    min-height: 130px;
     resize: vertical;
 }
 
-/* Absenden-Button (Standardfarbe) */
+.astra-form textarea:focus,
+.astra-form input:focus {
+    box-shadow:
+            0 0 0 2px rgba(101,230,206,0.55),
+            inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* ==== Submit Button ==== */
 .astra-form button {
     font-weight: 900;
-    padding: 12px 28px;
-    border-radius: 15px;
+    padding: 14px 34px;
+    border-radius: 18px;
     border: none;
     cursor: pointer;
     font-size: 1.05em;
-    transition: filter 0.14s, box-shadow 0.14s;
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    color: #223254;
+    transition: filter .14s, box-shadow .14s;
+
+    box-shadow: 0 6px 26px rgba(101,230,206,0.45);
 }
 
-/* Button-Farbvarianten */
 .astra-form button.nutzer {
-    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
+    background: linear-gradient(90deg,#ff7aa2,#ffb3c6);
     color: #3d0b21;
 }
 .astra-form button.webseite {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #0b2a26;
 }
 .astra-form button.discord {
-    background: linear-gradient(90deg, #a77bff, #c29cff);
+    background: linear-gradient(90deg,#a77bff,#c29cff);
     color: #250b3d;
 }
 
 .astra-form button:hover {
-    filter: brightness(0.95);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    filter: brightness(1.05);
+    box-shadow: 0 10px 34px rgba(0,0,0,0.35);
 }
 
-/* Meldungen */
+/* ==== Messages ==== */
 .astra-msg-success,
 .astra-msg-error {
     display: none;
-    margin-top: 14px;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-weight: 700;
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 800;
 }
+
 .astra-msg-success {
-    background: rgba(101,230,206,0.16);
+    background: rgba(101,230,206,0.18);
     color: #65e6ce;
 }
+
 .astra-msg-error {
-    background: rgba(255, 114, 114, 0.16);
+    background: rgba(255,114,114,0.18);
     color: #ff7272;
 }
 
-/* Mobile Optimierung */
+/* ==== Mobile ==== */
 @media (max-width: 600px) {
     .astra-form-wrap {
-        padding: 20px;
-        border-radius: 18px;
+        padding: 28px 22px;
+        border-radius: 26px;
     }
+
     .astra-problem-chip {
         flex: 1 1 100%;
     }
 }
+
 
 /* =========================
    404 ERROR PAGE – HERO STYLE
