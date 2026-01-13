@@ -540,7 +540,9 @@ a:hover { color: #ffd799; }
 
 .commands-hero-card {
     position: relative;
-    margin-top: 0; /* oder 16–24px rein optisch */
+    outline: 10px solid red;
+    margin-top: 36px;
+    padding-top: 80px;;
     border-radius: 38px;
     overflow: hidden;
 
