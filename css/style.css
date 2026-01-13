@@ -1321,9 +1321,8 @@ a:hover { color: #ffd799; }
     }
 }
 
-
 /* =========================
-   404 ERROR – FINAL DESIGN
+   404 ERROR PAGE – HERO STYLE
    ========================= */
 
 .error-page {
@@ -1331,25 +1330,29 @@ a:hover { color: #ffd799; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 80px 24px;
 }
 
-/* CARD */
+/* HERO CARD */
 .error-hero-card {
     position: relative;
     width: 100%;
     max-width: 980px;
-    background: linear-gradient(
-            135deg,
-            rgba(36,28,92,0.92),
-            rgba(42,32,110,0.92)
-    );
-    border-radius: 26px;
-    padding: 80px 60px;
+    padding: 80px 64px;
+    border-radius: 38px;
     overflow: hidden;
+
+    background: linear-gradient(
+            115deg,
+            #251f5b 0%,
+            #362897 65%,
+            #3fd6dd 160%
+    );
+
     box-shadow:
-            0 30px 80px rgba(0,0,0,0.45),
-            inset 0 0 0 1px rgba(255,255,255,0.06);
+            0 12px 48px #5b65ff2a,
+            0 0 90px rgba(96,233,203,0.25),
+            inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 /* BUBBLES */
@@ -1357,7 +1360,7 @@ a:hover { color: #ffd799; }
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .error-bubbles-bg svg {
@@ -1373,30 +1376,35 @@ a:hover { color: #ffd799; }
     color: #eafcff;
 }
 
+/* 404 TEXT */
 .error-code {
-    display: inline-block;
-    font-size: 5.6rem;
+    font-size: 5.8rem;
     font-weight: 900;
     letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+
     background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    text-shadow:
+            0 0 18px rgba(101,230,206,0.55),
+            0 0 38px rgba(124,65,238,0.35);
 }
 
 .error-hero-content h1 {
     font-size: 2.1rem;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .error-hero-content p {
     font-size: 1.1rem;
     color: #cfe7ff;
     line-height: 1.6;
-    margin-bottom: 34px;
+    margin-bottom: 36px;
 }
 
-/* ACTIONS */
+/* BUTTONS */
 .error-actions {
     display: flex;
     justify-content: center;
@@ -1407,18 +1415,21 @@ a:hover { color: #ffd799; }
 /* MOBILE */
 @media (max-width: 768px) {
     .error-hero-card {
-        padding: 56px 26px;
-        border-radius: 22px;
+        padding: 56px 28px;
+        border-radius: 28px;
     }
 
     .error-code {
-        font-size: 4.2rem;
+        font-size: 4.4rem;
     }
 
     .error-hero-content h1 {
         font-size: 1.7rem;
     }
 }
+
+
+
 /* =========================
    HEADER FIX – 404 PAGE
    ========================= */
