@@ -2,11 +2,16 @@
    Astra Discord Bot Style
    ========================= */
 
+:root {
+    --header-height-desktop: 68px;
+    --header-height-mobile: 56px;
+}
+
+
 /* ==== Base Layout ==== */
 html, body {
     height: 100%;
     margin: 0;
-    padding-top: env(safe-area-inset-top, 0px);
     min-height: 100vh;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -14,7 +19,6 @@ html, body {
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 
-    /* sorgt dafür, dass Footer unten klebt */
     display: flex;
     flex-direction: column;
 }
@@ -25,13 +29,23 @@ main {
     max-width: 1180px;
     width: 100%;
     margin: 0 auto;
-    padding: 68px 38px 80px 38px; /* letzter Wert = Abstand unten */
+
+    /* EINHEITLICHER ABSTAND */
+    padding-top: 40px;     /* Abstand unter Header */
+    padding-bottom: 96px;  /* Abstand vor Footer */
+    padding-left: 38px;
+    padding-right: 38px;
+
     box-sizing: border-box;
 }
 
+
 @media (max-width: 900px) {
     main {
-        padding: 56px 16px 70px 16px; /* Abstand unten für Mobile */
+        padding-top: 32px;
+        padding-bottom: 88px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 
@@ -1514,7 +1528,7 @@ footer.astra-footer {
     width: 100%;
     background: linear-gradient(180deg, #1e1b4f, #251f5b);
     color: #eafcff;
-    margin-top: 80px;
+    margin-top: 0;
     padding: 0;
 }
 
