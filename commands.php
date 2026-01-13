@@ -14,17 +14,17 @@
 
 <main class="commands-main">
 
-    <!-- ================= HERO ================= -->
+    <!-- =========================
+         HERO
+         ========================= -->
     <section class="commands-hero">
-        <div class="hero-bg">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="hero-glow"></div>
 
-        <div class="hero-content">
+        <div class="commands-hero-inner">
             <div class="hero-badges">
-                <span class="badge mint">Prefix: / Slash Commands</span>
-                <span class="badge violet">Version 2.0</span>
-                <span class="badge dark">Live System</span>
+                <span class="hero-badge mint">Prefix: / Slash Commands</span>
+                <span class="hero-badge violet">Version 2.0</span>
+                <span class="hero-badge dark">Live System</span>
             </div>
 
             <h1>Alle Astra Commands</h1>
@@ -34,111 +34,130 @@
             </p>
 
             <div class="hero-tags">
-                <span class="tag green">Level & XP</span>
-                <span class="tag blue">Moderation</span>
-                <span class="tag yellow">Economy & Games</span>
-                <span class="tag purple">Tickets & Tools</span>
+                <span class="tag green">Moderation</span>
+                <span class="tag blue">Level & XP</span>
+                <span class="tag yellow">Economy</span>
+                <span class="tag purple">Tickets</span>
                 <span class="tag cyan">Fun</span>
             </div>
         </div>
     </section>
 
-    <!-- ================= COMMANDS ================= -->
-    <section class="commands-wrapper">
+    <!-- =========================
+         COMMANDS PANEL
+         ========================= -->
+    <section class="commands-panel">
 
         <!-- SEARCH -->
-        <div class="commands-search">
+        <div class="commands-search-wrapper">
             <input type="text" id="commandSearch" placeholder="🔍 Command suchen…" />
         </div>
 
         <!-- FILTER -->
         <div class="commands-filters commands-category-buttons">
-            <button data-filter="all" class="active">Alle</button>
-            <button data-filter="moderation">Moderation</button>
-            <button data-filter="levelsystem">Level & XP</button>
-            <button data-filter="economy">Economy</button>
-            <button data-filter="tickets">Tickets</button>
+            <button class="active" data-filter="all">Alle</button>
+            <button data-filter="mod">Moderation</button>
+            <button data-filter="level">Level</button>
+            <button data-filter="eco">Economy</button>
+            <button data-filter="ticket">Tickets</button>
+            <button data-filter="automod">Automod</button>
+            <button data-filter="settings">Settings</button>
+            <button data-filter="info">Info</button>
             <button data-filter="fun">Fun</button>
+            <button data-filter="gw">Gewinnspiele</button>
+            <button data-filter="messages">Messages</button>
+            <button data-filter="bdays">Birthdays</button>
+            <button data-filter="minigames">Minigames</button>
+            <button data-filter="backups">Backups</button>
         </div>
 
-        <!-- ACCORDION -->
+        <!-- =========================
+             ACCORDION
+             ========================= -->
         <div class="commands-accordion" id="commands-accordion">
 
             <!-- MODERATION -->
-            <section class="command-section" data-category="moderation">
-                <button class="accordion-toggle">
-                    Moderation
-                    <span class="chevron"></span>
-                </button>
+            <section class="command-section" data-category="mod">
+                <button class="accordion-toggle">🛡️ Moderation</button>
                 <div class="accordion-panel">
-
                     <div class="command-entry">
-                        <div class="command-head">
-                            <strong>/kick</strong>
-                            <span class="command-badge red">Mod</span>
-                        </div>
-                        <p>Kickt einen User vom Server.</p>
+                        <strong>/kick</strong>
+                        <span>Kickt einen User vom Server.</span>
                         <code>/kick [User] [Grund]</code>
                     </div>
-
                     <div class="command-entry">
-                        <div class="command-head">
-                            <strong>/ban</strong>
-                            <span class="command-badge red">Mod</span>
-                        </div>
-                        <p>Bannt einen User dauerhaft.</p>
+                        <strong>/ban</strong>
+                        <span>Bannt einen User dauerhaft.</span>
                         <code>/ban [User] [Grund]</code>
                     </div>
-
+                    <div class="command-entry">
+                        <strong>/clear</strong>
+                        <span>Löscht Nachrichten im Channel.</span>
+                        <code>/clear [Anzahl]</code>
+                    </div>
                 </div>
             </section>
 
             <!-- LEVEL -->
-            <section class="command-section" data-category="levelsystem">
-                <button class="accordion-toggle">
-                    Level & XP
-                    <span class="chevron"></span>
-                </button>
+            <section class="command-section" data-category="level">
+                <button class="accordion-toggle">📈 Level & XP</button>
                 <div class="accordion-panel">
-
                     <div class="command-entry">
-                        <div class="command-head">
-                            <strong>/level</strong>
-                            <span class="command-badge green">XP</span>
-                        </div>
-                        <p>Zeigt deinen aktuellen Level & XP.</p>
+                        <strong>/level</strong>
+                        <span>Zeigt deinen aktuellen Level & XP.</span>
                         <code>/level</code>
                     </div>
-
                     <div class="command-entry">
-                        <div class="command-head">
-                            <strong>/top</strong>
-                            <span class="command-badge green">XP</span>
-                        </div>
-                        <p>Leaderboard des Servers.</p>
+                        <strong>/top</strong>
+                        <span>Leaderboard des Servers.</span>
                         <code>/top</code>
                     </div>
-
                 </div>
             </section>
 
             <!-- ECONOMY -->
-            <section class="command-section" data-category="economy">
-                <button class="accordion-toggle">
-                    Economy
-                    <span class="chevron"></span>
-                </button>
+            <section class="command-section" data-category="eco">
+                <button class="accordion-toggle">💰 Economy</button>
                 <div class="accordion-panel">
-
                     <div class="command-entry">
-                        <div class="command-head">
-                            <strong>/balance</strong>
-                            <span class="command-badge yellow">Coins</span>
-                        </div>
-                        <p>Zeigt dein aktuelles Guthaben.</p>
-                        <code>/balance</code>
+                        <strong>/eco balance</strong>
+                        <span>Zeigt dein Guthaben.</span>
+                        <code>/eco balance</code>
                     </div>
+                    <div class="command-entry">
+                        <strong>/eco slot</strong>
+                        <span>Spiele Slots mit Coins.</span>
+                        <code>/eco slot</code>
+                    </div>
+                </div>
+            </section>
 
+            <!-- TICKET -->
+            <section class="command-section" data-category="ticket">
+                <button class="accordion-toggle">🎫 Tickets</button>
+                <div class="accordion-panel">
+                    <div class="command-entry">
+                        <strong>/ticket setup</strong>
+                        <span>Richtet das Ticketsystem ein.</span>
+                        <code>/ticket setup</code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FUN -->
+            <section class="command-section" data-category="fun">
+                <button class="accordion-toggle">🎉 Fun</button>
+                <div class="accordion-panel">
+                    <div class="command-entry">
+                        <strong>/meme</strong>
+                        <span>Sendet ein zufälliges Meme.</span>
+                        <code>/meme</code>
+                    </div>
+                    <div class="command-entry">
+                        <strong>/wanted</strong>
+                        <span>Wanted-Poster erstellen.</span>
+                        <code>/wanted</code>
+                    </div>
                 </div>
             </section>
 
@@ -149,23 +168,23 @@
 
 <?php include 'includes/footer.php'; ?>
 
-<!-- ================= JS ================= -->
+<!-- =========================
+     JAVASCRIPT
+     ========================= -->
 <script>
     const toggleAccordion = (btn) => {
         const panel = btn.nextElementSibling;
-        const isOpen = btn.classList.contains('open');
+        const open = btn.classList.contains('open');
 
         document.querySelectorAll('.accordion-panel').forEach(p => {
             p.style.maxHeight = null;
-            p.style.opacity = 0;
+            p.style.display = 'none';
         });
-        document.querySelectorAll('.accordion-toggle').forEach(b => {
-            b.classList.remove('open');
-        });
+        document.querySelectorAll('.accordion-toggle').forEach(b => b.classList.remove('open'));
 
-        if (!isOpen) {
+        if (!open) {
+            panel.style.display = 'block';
             panel.style.maxHeight = panel.scrollHeight + "px";
-            panel.style.opacity = 1;
             btn.classList.add('open');
         }
     };
@@ -184,22 +203,18 @@
                 entry.style.display = match ? '' : 'none';
                 if (match) visible = true;
             });
-            section.style.display = visible || !val ? '' : 'none';
+            section.style.display = (visible || !val) ? '' : 'none';
         });
     });
 
     document.querySelectorAll('.commands-category-buttons button').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.commands-category-buttons button')
-                .forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.commands-category-buttons button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
             const filter = btn.dataset.filter;
+
             document.querySelectorAll('.command-section').forEach(section => {
-                section.style.display =
-                    filter === 'all' || section.dataset.category === filter
-                        ? ''
-                        : 'none';
+                section.style.display = (filter === 'all' || section.dataset.category === filter) ? '' : 'none';
             });
 
             document.getElementById('commandSearch').value = '';
