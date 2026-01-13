@@ -910,7 +910,6 @@ main.astra-status-main {
     flex: 1;
     min-height: 560px;
     position: relative;
-    padding: 72px 16px 96px;
     display: flex;
     justify-content: center;
 }
@@ -1227,12 +1226,6 @@ main.report-main {
     flex: 1;
     display: flex;
     justify-content: center;
-
-    /* ✅ vertikaler Abstand zum Header */
-    padding-top: 32px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 64px;
 }
 
 @media (max-width: 600px) {
