@@ -543,6 +543,16 @@ main.commands-main {
     max-width: 1180px;
 }
 
+/* =========================
+   COMMANDS PAGE – ASTRA STYLE
+   ========================= */
+
+.commands-main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-bottom: 120px;
+}
+
 /* ================= HERO ================= */
 .commands-hero-card {
     position: relative;
