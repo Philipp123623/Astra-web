@@ -1,4 +1,5 @@
 <footer class="astra-footer">
+    <link rel="stylesheet" href="/css/style.css?v=2.4"/>
     <div class="astra-footer-wrap">
 
         <div class="astra-footer-brand">
