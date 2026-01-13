@@ -9,139 +9,158 @@
     <link rel="stylesheet" href="css/style.css?v=2.4"/>
 </head>
 <body>
+
 <?php include 'includes/header.php'; ?>
 
 <main>
-    <!-- Command Info-Card Astra-Style -->
-    <div class="commands-info-card">
-        <div class="commands-info-row">
-            <span class="info-badge cyan">Prefix: / (Slash Commands)</span>
-            <span class="info-badge purple">Version: 2.0</span>
+
+    <!-- HERO WRAPPER -->
+    <section class="commands-hero-card">
+
+        <!-- BUBBLES -->
+        <div class="commands-bubbles-bg">
+            <svg width="100%" height="100%">
+                <circle cx="12%" cy="18%" r="42" fill="#65e6ce33"/>
+                <circle cx="88%" cy="22%" r="64" fill="#a7c8fd22"/>
+                <circle cx="50%" cy="78%" r="52" fill="#7c41ee22"/>
+                <circle cx="92%" cy="82%" r="26" fill="#60e9cb22"/>
+            </svg>
         </div>
-        <div class="commands-info-desc">
-            <b>Entdecke alle Befehle von Astra, deinem vielseitigen Discord-Bot.</b>
-            <br>
-            Nutze die Suche, um schnell den passenden Command zu finden!
+
+        <!-- CONTENT -->
+        <div class="commands-hero-content">
+
+            <!-- Command Info-Card -->
+            <div class="commands-info-card">
+                <div class="commands-info-row">
+                    <span class="info-badge cyan">Prefix: / (Slash Commands)</span>
+                    <span class="info-badge purple">Version: 2.0</span>
+                </div>
+
+                <div class="commands-info-desc">
+                    <b>Entdecke alle Befehle von Astra, deinem vielseitigen Discord-Bot.</b><br>
+                    Nutze die Suche, um schnell den passenden Command zu finden!
+                </div>
+
+                <div class="commands-label-row">
+                    <span class="astra-label green">Level & XP</span>
+                    <span class="astra-label blue">Moderation</span>
+                    <span class="astra-label yellow">Economy & Games</span>
+                    <span class="astra-label purple">Tickets & Tools</span>
+                </div>
+            </div>
+
+            <!-- Suchleiste -->
+            <div class="command-searchbar">
+                <input type="text" id="commandSearch" placeholder="🔍 Command suchen..." />
+            </div>
+
+            <!-- Kategorie Buttons -->
+            <div class="commands-category-buttons">
+                <button data-filter="all" class="active">Alle</button>
+                <button data-filter="moderation">Moderation</button>
+                <button data-filter="levelsystem">Level & XP</button>
+                <button data-filter="economy">Economy & Games</button>
+                <button data-filter="tickets">Tickets & Tools</button>
+                <button data-filter="fun">Fun</button>
+            </div>
+
+            <!-- Commands Accordion -->
+            <div id="commands-accordion">
+
+                <section class="command-section" data-category="moderation">
+                    <button class="accordion-toggle" type="button">Moderation</button>
+                    <div class="accordion-panel">
+                        <div class="command-entry">
+                            <div class="command-name">/kick</div>
+                            <div class="command-info">
+                                <div class="command-desc">Kickt einen User vom Server.</div>
+                                <div><b>Usage:</b> <code>/kick [User] [Grund]</code></div>
+                                <div><b>Berechtigung:</b> Kick Members</div>
+                            </div>
+                        </div>
+                        <div class="command-entry">
+                            <div class="command-name">/ban</div>
+                            <div class="command-info">
+                                <div class="command-desc">Bannt einen User vom Server.</div>
+                                <div><b>Usage:</b> <code>/ban [User] [Grund]</code></div>
+                                <div><b>Berechtigung:</b> Ban Members</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="command-section" data-category="levelsystem">
+                    <button class="accordion-toggle" type="button">Levelsystem</button>
+                    <div class="accordion-panel">
+                        <div class="command-entry">
+                            <div class="command-name">/level</div>
+                            <div class="command-info">
+                                <div class="command-desc">Zeigt deinen aktuellen Level & XP.</div>
+                                <div><b>Usage:</b> <code>/level</code></div>
+                            </div>
+                        </div>
+                        <div class="command-entry">
+                            <div class="command-name">/top</div>
+                            <div class="command-info">
+                                <div class="command-desc">Zeigt das Leaderboard des Servers.</div>
+                                <div><b>Usage:</b> <code>/top</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="command-section" data-category="economy">
+                    <button class="accordion-toggle" type="button">Economy & Games</button>
+                    <div class="accordion-panel">
+                        <div class="command-entry">
+                            <div class="command-name">/balance</div>
+                            <div class="command-info">
+                                <div class="command-desc">Zeigt dein aktuelles Guthaben.</div>
+                                <div><b>Usage:</b> <code>/balance</code></div>
+                            </div>
+                        </div>
+                        <div class="command-entry">
+                            <div class="command-name">/slot</div>
+                            <div class="command-info">
+                                <div class="command-desc">Slot-Game für Astra-Coins.</div>
+                                <div><b>Usage:</b> <code>/slot [Einsatz]</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="command-section" data-category="tickets">
+                    <button class="accordion-toggle" type="button">Tickets & Tools</button>
+                    <div class="accordion-panel">
+                        <div class="command-entry">
+                            <div class="command-name">/ticket</div>
+                            <div class="command-info">
+                                <div class="command-desc">Öffnet ein neues Support-Ticket.</div>
+                                <div><b>Usage:</b> <code>/ticket</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="command-section" data-category="fun">
+                    <button class="accordion-toggle" type="button">Fun</button>
+                    <div class="accordion-panel">
+                        <div class="command-entry">
+                            <div class="command-name">/meme</div>
+                            <div class="command-info">
+                                <div class="command-desc">Sendet ein zufälliges Meme.</div>
+                                <div><b>Usage:</b> <code>/meme</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
         </div>
-        <div class="commands-label-row">
-            <span class="astra-label green">Level & XP</span>
-            <span class="astra-label blue">Moderation</span>
-            <span class="astra-label yellow">Economy & Games</span>
-            <span class="astra-label purple">Tickets & Tools</span>
-        </div>
-    </div>
+    </section>
 
-
-    <!-- Suchleiste -->
-    <div class="command-searchbar">
-        <input type="text" id="commandSearch" placeholder="🔍 Command suchen..." />
-    </div>
-
-    <!-- Kategorie Buttons -->
-    <div class="commands-category-buttons" style="max-width: 950px; margin: 0 auto 25px auto; text-align:center;">
-        <button data-filter="all" class="active">Alle</button>
-        <button data-filter="moderation">Moderation</button>
-        <button data-filter="levelsystem">Level & XP</button>
-        <button data-filter="economy">Economy & Games</button>
-        <button data-filter="tickets">Tickets & Tools</button>
-        <button data-filter="fun">Fun</button>
-    </div>
-
-    <!-- Commands Container -->
-    <div id="commands-accordion" style="max-width: 950px; margin: 0 auto;">
-        <!-- Kategorie Moderation -->
-        <section class="command-section" data-category="moderation">
-            <button class="accordion-toggle" type="button" aria-expanded="false">Moderation</button>
-            <div class="accordion-panel">
-                <div class="command-entry">
-                    <div class="command-name">/kick</div>
-                    <div class="command-info">
-                        <div class="command-desc">Kickt einen User vom Server.</div>
-                        <div><b>Usage:</b> <code>/kick [User] [Grund]</code></div>
-                        <div><b>Berechtigung:</b> Kick Members</div>
-                    </div>
-                </div>
-                <div class="command-entry">
-                    <div class="command-name">/ban</div>
-                    <div class="command-info">
-                        <div class="command-desc">Bannt einen User vom Server.</div>
-                        <div><b>Usage:</b> <code>/ban [User] [Grund]</code></div>
-                        <div><b>Berechtigung:</b> Ban Members</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategorie Levelsystem -->
-        <section class="command-section" data-category="levelsystem">
-            <button class="accordion-toggle" type="button" aria-expanded="false">Levelsystem</button>
-            <div class="accordion-panel">
-                <div class="command-entry">
-                    <div class="command-name">/level</div>
-                    <div class="command-info">
-                        <div class="command-desc">Zeigt deinen aktuellen Level & XP.</div>
-                        <div><b>Usage:</b> <code>/level</code></div>
-                    </div>
-                </div>
-                <div class="command-entry">
-                    <div class="command-name">/top</div>
-                    <div class="command-info">
-                        <div class="command-desc">Zeigt das Leaderboard des Servers.</div>
-                        <div><b>Usage:</b> <code>/top</code></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategorie Economy & Games -->
-        <section class="command-section" data-category="economy">
-            <button class="accordion-toggle" type="button" aria-expanded="false">Economy & Games</button>
-            <div class="accordion-panel">
-                <div class="command-entry">
-                    <div class="command-name">/balance</div>
-                    <div class="command-info">
-                        <div class="command-desc">Zeigt dein aktuelles Guthaben.</div>
-                        <div><b>Usage:</b> <code>/balance</code></div>
-                    </div>
-                </div>
-                <div class="command-entry">
-                    <div class="command-name">/slot</div>
-                    <div class="command-info">
-                        <div class="command-desc">Slot-Game für Astra-Coins.</div>
-                        <div><b>Usage:</b> <code>/slot [Einsatz]</code></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategorie Tickets & Tools -->
-        <section class="command-section" data-category="tickets">
-            <button class="accordion-toggle" type="button" aria-expanded="false">Tickets & Tools</button>
-            <div class="accordion-panel">
-                <div class="command-entry">
-                    <div class="command-name">/ticket</div>
-                    <div class="command-info">
-                        <div class="command-desc">Öffnet ein neues Support-Ticket.</div>
-                        <div><b>Usage:</b> <code>/ticket</code></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kategorie Fun -->
-        <section class="command-section" data-category="fun">
-            <button class="accordion-toggle" type="button" aria-expanded="false">Fun</button>
-            <div class="accordion-panel">
-                <div class="command-entry">
-                    <div class="command-name">/meme</div>
-                    <div class="command-info">
-                        <div class="command-desc">Sendet ein zufälliges Meme.</div>
-                        <div><b>Usage:</b> <code>/meme</code></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 </main>
 
 
