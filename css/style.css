@@ -304,8 +304,12 @@ a:hover { color: #ffd799; }
     min-height: 370px;
 }
 .bubbles-bg {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    position: absolute;
+    inset: -20%;
+    z-index: 1;
+    pointer-events: none;
 }
+
 .astra-hero-content {
     display: flex;
     flex-wrap: wrap;
@@ -561,12 +565,14 @@ main.commands-main {
 .commands-hero-glow {
     position: absolute;
     inset: -40%;
+    z-index: 2;
     background:
             radial-gradient(circle at 30% 25%, #65e6ce55, transparent 60%),
             radial-gradient(circle at 70% 75%, #7c41ee55, transparent 65%);
     filter: blur(120px);
     animation: heroGlow 10s ease-in-out infinite alternate;
 }
+
 
 @keyframes heroGlow {
     from { opacity: .45; }
@@ -575,8 +581,7 @@ main.commands-main {
 
 .commands-hero-content {
     position: relative;
-    z-index: 2;
-    padding: 64px 7vw 46px;
+    z-index: 3;
 }
 
 /* ================= PANEL ================= */
