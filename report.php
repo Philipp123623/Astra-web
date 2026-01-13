@@ -97,28 +97,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="report-page">
 <?php include "includes/header.php"; ?>
 
-<main class="report-page main">
-    <div class="astra-form-wrap">
-        <h1>Problem melden</h1>
-        <p>Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.</p>
-        <div class="astra-problem-types">
-            <div class="astra-problem-chip" data-type="Nutzer" title="Problem mit einem Nutzer">👤 <span>Nutzer</span></div>
-            <div class="astra-problem-chip" data-type="Webseite" title="Fehler auf der Webseite">💻 <span>Webseite</span></div>
-            <div class="astra-problem-chip" data-type="Discord" title="Fehler auf Discord">🐞 <span>Discord</span></div>
+<?php
+$pageClass = "report-page";
+include "includes/header.php";
+?>
+
+<main class="report-main">
+
+    <section class="report-hero-card">
+
+        <!-- BUBBLES -->
+        <div class="report-bubbles-bg">
+            <svg width="100%" height="100%">
+                <circle cx="12%" cy="18%" r="42" fill="#65e6ce33"/>
+                <circle cx="88%" cy="22%" r="64" fill="#a7c8fd22"/>
+                <circle cx="50%" cy="78%" r="52" fill="#7c41ee22"/>
+                <circle cx="92%" cy="82%" r="26" fill="#60e9cb22"/>
+            </svg>
         </div>
-        <form id="astra-report-form" class="astra-form" autocomplete="off" method="POST">
-            <input type="hidden" name="type" id="astra-report-type" required value="">
-            <label for="astra-desc">Beschreibung des Problems*:</label>
-            <textarea name="desc" id="astra-desc" required placeholder="Beschreibe das Problem möglichst genau..."></textarea>
-            <label for="astra-discord">Dein Discord-Name (optional):</label>
-            <input type="text" name="discord" id="astra-discord" maxlength="32" placeholder="z.B. User#1234">
-            <label for="astra-email">E-Mail (optional, falls Rückfrage):</label>
-            <input type="email" name="email" id="astra-email" maxlength="60" placeholder="Optional">
-            <button type="submit" id="astra-submit-btn">Absenden</button>
-        </form>
-        <div class="astra-msg-success" id="astra-report-success">Danke, deine Meldung wurde gesendet! ✨</div>
-        <div class="astra-msg-error" id="astra-report-error">Fehler beim Senden. Bitte später erneut versuchen.</div>
-    </div>
+
+        <!-- CONTENT -->
+        <div class="report-content">
+            <h1>Problem melden</h1>
+            <p class="report-desc">
+                Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.
+            </p>
+
+            <!-- TYPE SELECT -->
+            <div class="astra-problem-types">
+                <button class="astra-problem-chip selected" data-type="Nutzer">👤 Nutzer</button>
+                <button class="astra-problem-chip" data-type="Webseite">💻 Webseite</button>
+                <button class="astra-problem-chip" data-type="Discord">🤖 Discord</button>
+            </div>
+
+            <!-- FORM -->
+            <form class="astra-form">
+
+                <label>Beschreibung des Problems*</label>
+                <textarea placeholder="Beschreibe dein Problem möglichst genau..."></textarea>
+
+                <label>Dein Discord-Name (optional)</label>
+                <input type="text" placeholder="z. B. User#1234">
+
+                <label>E-Mail (optional, falls Rückfrage)</label>
+                <input type="email" placeholder="Optional">
+
+                <button type="submit" class="webseite">Absenden</button>
+
+                <div class="astra-msg-success">✔ Nachricht wurde gesendet</div>
+                <div class="astra-msg-error">✖ Fehler beim Senden</div>
+
+            </form>
+        </div>
+
+    </section>
+
 </main>
 
 <?php include "includes/footer.php"; ?>

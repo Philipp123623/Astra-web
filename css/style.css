@@ -1210,26 +1210,21 @@ a:hover { color: #ffd799; }
    REPORT PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
 
-/* ==== Main Layout ==== */
-.report-page main {
+.report-main {
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 80px 20px 120px;
+    padding: 96px 24px 120px;
 }
 
-@media (max-width: 900px) {
-    .report-page main {
-        padding: 64px 16px 120px;
-    }
-}
-
-/* ==== Card ==== */
-.astra-form-wrap {
+/* HERO CARD */
+.report-hero-card {
+    position: relative;
     width: 100%;
-    max-width: 680px;
-    padding: 44px 40px;
-    border-radius: 34px;
+    max-width: 720px;
+    padding: 56px 52px 48px;
+    border-radius: 38px;
+    overflow: hidden;
 
     background: linear-gradient(
             115deg,
@@ -1240,12 +1235,28 @@ a:hover { color: #ffd799; }
 
     box-shadow:
             0 14px 54px rgba(91,101,255,0.28),
-            0 0 80px rgba(96,233,203,0.22),
+            0 0 90px rgba(96,233,203,0.22),
             inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-/* ==== Title & Description ==== */
-.astra-form-wrap h1 {
+/* BUBBLES */
+.report-bubbles-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* CONTENT */
+.report-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+/* TITLE */
+.report-content h1 {
     font-size: 2.35rem;
     font-weight: 900;
     color: #65e6ce;
@@ -1254,14 +1265,14 @@ a:hover { color: #ffd799; }
     text-shadow: 0 0 22px rgba(101,230,206,0.45);
 }
 
-.astra-form-wrap p {
-    font-size: 1.05em;
+.report-desc {
+    font-size: 1.08em;
     color: #d7f3ff;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     line-height: 1.5;
 }
 
-/* ==== Problem Type Selection ==== */
+/* TYPE BUTTONS */
 .astra-problem-types {
     display: flex;
     gap: 14px;
@@ -1275,14 +1286,11 @@ a:hover { color: #ffd799; }
     border-radius: 18px;
     font-weight: 800;
     cursor: pointer;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.12);
-    color: #eafcff;
-    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    border: none;
+    transition: all .15s ease;
 }
 
-/* Color Variants */
+/* COLORS */
 .astra-problem-chip[data-type="Nutzer"] {
     background: linear-gradient(90deg,#ff7aa2,#ffb3c6);
     color: #3d0b21;
@@ -1296,20 +1304,12 @@ a:hover { color: #ffd799; }
     color: #250b3d;
 }
 
-/* Hover */
-.astra-problem-chip:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(0,0,0,0.25);
-}
-
-/* Selected */
 .astra-problem-chip.selected {
     transform: scale(1.06);
     box-shadow: 0 0 26px rgba(255,255,255,0.35);
-    border-color: rgba(255,255,255,0.8);
 }
 
-/* ==== Form Fields ==== */
+/* FORM */
 .astra-form label {
     display: block;
     font-weight: 800;
@@ -1318,19 +1318,14 @@ a:hover { color: #ffd799; }
 }
 
 .astra-form textarea,
-.astra-form input[type="text"],
-.astra-form input[type="email"] {
+.astra-form input {
     width: 100%;
     padding: 14px 16px;
     border-radius: 14px;
     border: none;
-    outline: none;
     background: rgba(255,255,255,0.12);
-    color: #f4faff;
-    font-size: 1em;
-    font-family: inherit;
+    color: #fff;
     margin-bottom: 18px;
-
     box-shadow:
             inset 0 0 0 1px rgba(255,255,255,0.06),
             0 2px 12px rgba(93,232,255,0.12);
@@ -1341,47 +1336,21 @@ a:hover { color: #ffd799; }
     resize: vertical;
 }
 
-.astra-form textarea:focus,
-.astra-form input:focus {
-    box-shadow:
-            0 0 0 2px rgba(101,230,206,0.55),
-            inset 0 0 0 1px rgba(255,255,255,0.08);
-}
-
-/* ==== Submit Button ==== */
+/* BUTTON */
 .astra-form button {
+    margin-top: 8px;
     font-weight: 900;
-    padding: 14px 34px;
+    padding: 14px 36px;
     border-radius: 18px;
     border: none;
-    cursor: pointer;
     font-size: 1.05em;
+    cursor: pointer;
     background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #223254;
-    transition: filter .14s, box-shadow .14s;
-
     box-shadow: 0 6px 26px rgba(101,230,206,0.45);
 }
 
-.astra-form button.nutzer {
-    background: linear-gradient(90deg,#ff7aa2,#ffb3c6);
-    color: #3d0b21;
-}
-.astra-form button.webseite {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
-    color: #0b2a26;
-}
-.astra-form button.discord {
-    background: linear-gradient(90deg,#a77bff,#c29cff);
-    color: #250b3d;
-}
-
-.astra-form button:hover {
-    filter: brightness(1.05);
-    box-shadow: 0 10px 34px rgba(0,0,0,0.35);
-}
-
-/* ==== Messages ==== */
+/* MESSAGES */
 .astra-msg-success,
 .astra-msg-error {
     display: none;
@@ -1401,13 +1370,12 @@ a:hover { color: #ffd799; }
     color: #ff7272;
 }
 
-/* ==== Mobile ==== */
+/* MOBILE */
 @media (max-width: 600px) {
-    .astra-form-wrap {
-        padding: 28px 22px;
+    .report-hero-card {
+        padding: 36px 22px;
         border-radius: 26px;
     }
-
     .astra-problem-chip {
         flex: 1 1 100%;
     }
