@@ -536,17 +536,25 @@ a:hover { color: #ffd799; }
 
 
 /* =========================
-   COMMANDS PAGE – ASTRA STYLE
+   COMMANDS PAGE – ASTRA FINAL
    ========================= */
 
 main.commands-main {
     max-width: 1180px;
 }
 
-/* HERO */
+/* =========================
+   HERO
+   ========================= */
+
 .commands-hero-card {
     position: relative;
-    background: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            #251f5b 0%,
+            #362897 65%,
+            #3fd6dd 160%
+    );
     border-radius: 38px;
     box-shadow: 0 14px 54px rgba(91,101,255,.28);
     overflow: hidden;
@@ -564,27 +572,115 @@ main.commands-main {
     margin-bottom: 10px;
 }
 
-/* PANEL */
+/* =========================
+   PANEL
+   ========================= */
+
 .commands-panel-card {
-    background: rgba(42,50,111,.45);
+    background: linear-gradient(
+            180deg,
+            rgba(42,50,111,.55),
+            rgba(32,38,90,.45)
+    );
     border-radius: 30px;
     padding: 46px 46px 54px;
-    box-shadow: 0 8px 40px rgba(91,101,255,.12);
+    box-shadow:
+            0 10px 40px rgba(91,101,255,.14),
+            inset 0 1px 0 rgba(255,255,255,.04);
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH – PREMIUM IDLE + POWER FOCUS
+   ========================= */
+
 .commands-search {
     width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 36px;
+
     padding: 18px 22px;
     border-radius: 18px;
-    border: none;
-    background: rgba(255,255,255,.12);
-    color: #fff;
-    font-size: 1.05em;
-    margin-bottom: 30px;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.05)
+            );
+    color: #f4faff;
+
+    font-size: 1.02em;
+    font-weight: 500;
+
+    border: 1px solid rgba(255,255,255,0.18);
+    outline: none;
+
+    box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.06),
+            inset 0 -1px 0 rgba(0,0,0,0.15),
+            0 6px 22px rgba(0,0,0,0.28);
+
+    transition:
+            background 220ms cubic-bezier(.4,0,.2,1),
+            border-color 220ms cubic-bezier(.4,0,.2,1),
+            box-shadow 260ms cubic-bezier(.4,0,.2,1);
 }
 
-/* FILTERS */
+/* ===== Hover (Desktop only) ===== */
+@media (hover: hover) {
+    .commands-search:hover {
+        background:
+                linear-gradient(
+                        180deg,
+                        rgba(255,255,255,0.12),
+                        rgba(255,255,255,0.07)
+                );
+        border-color: rgba(255,255,255,0.28);
+    }
+}
+
+/* ===== Focus – POWER STATE ===== */
+.commands-search:focus {
+    background:
+            linear-gradient(
+                    180deg,
+                    rgba(101,230,206,0.18),
+                    rgba(255,255,255,0.10)
+            );
+
+    border-color: rgba(101,230,206,0.95);
+
+    box-shadow:
+        /* inner precision */
+            inset 0 0 0 1px rgba(101,230,206,0.35),
+
+                /* main focus ring */
+            0 0 0 2px rgba(101,230,206,0.30),
+
+                /* energy halo */
+            0 0 26px rgba(101,230,206,0.38),
+
+                /* depth */
+            0 12px 34px rgba(0,0,0,0.35);
+}
+
+/* ===== Text & Cursor ===== */
+.commands-search::placeholder {
+    color: rgba(207,239,255,0.48);
+}
+
+.commands-search:focus::placeholder {
+    opacity: 0.6;
+}
+
+.commands-search {
+    caret-color: #65e6ce;
+}
+
+/* =========================
+   FILTERS
+   ========================= */
+
 .commands-filters {
     display: flex;
     flex-wrap: wrap;
@@ -597,10 +693,21 @@ main.commands-main {
     padding: 10px 24px;
     border-radius: 18px;
     border: none;
+
     background: rgba(255,255,255,.08);
     color: #cfefff;
+
     font-weight: 800;
     cursor: pointer;
+
+    transition:
+            background .18s ease,
+            box-shadow .18s ease,
+            transform .14s ease;
+}
+
+.commands-filters button:hover {
+    background: rgba(255,255,255,.12);
 }
 
 .commands-filters button.active {
@@ -609,7 +716,10 @@ main.commands-main {
     box-shadow: 0 6px 22px rgba(101,230,206,.35);
 }
 
-/* ACCORDION */
+/* =========================
+   ACCORDION
+   ========================= */
+
 .command-category {
     background: rgba(46,53,110,.33);
     border-radius: 22px;
@@ -620,12 +730,15 @@ main.commands-main {
 .command-category-header {
     width: 100%;
     padding: 22px 28px;
+
     font-size: 1.15em;
     font-weight: 900;
     color: #65e6ce;
+
     background: none;
     border: none;
     cursor: pointer;
+
     display: flex;
     justify-content: space-between;
 }
@@ -640,7 +753,10 @@ main.commands-main {
     max-height: 600px;
 }
 
-/* COMMAND ITEM */
+/* =========================
+   COMMAND ITEM
+   ========================= */
+
 .command-item {
     padding: 20px 28px;
     border-top: 1px solid rgba(255,255,255,.12);
@@ -663,15 +779,24 @@ main.commands-main {
     color: #65e6ce;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 700px) {
     .commands-panel-card {
         padding: 28px 18px 36px;
     }
+
     .commands-hero-content {
         padding: 42px 6vw 34px;
     }
+
+    .commands-search {
+        border-radius: 14px;
+    }
 }
+
 
 
 /* =========================

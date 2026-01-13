@@ -16,7 +16,39 @@
 
     <!-- HERO -->
     <section class="commands-hero-card">
-        <div class="bubbles-bg"></div>
+        <div class="status-bubbles-bg">
+            <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+
+                <!-- Links oben -->
+                <circle cx="80"  cy="90"  r="28" fill="rgba(101,230,206,0.35)" />
+                <circle cx="150" cy="160" r="18" fill="rgba(167,200,253,0.30)" />
+                <circle cx="210" cy="80"  r="14" fill="rgba(124,65,238,0.28)" />
+
+                <!-- Mitte -->
+                <circle cx="360" cy="140" r="22" fill="rgba(101,230,206,0.32)" />
+                <circle cx="420" cy="220" r="16" fill="rgba(255,215,153,0.30)" />
+                <circle cx="480" cy="100" r="12" fill="rgba(167,200,253,0.28)" />
+
+                <!-- Rechts oben -->
+                <circle cx="620" cy="90"  r="26" fill="rgba(101,230,206,0.30)" />
+                <circle cx="700" cy="160" r="18" fill="rgba(124,65,238,0.26)" />
+                <circle cx="740" cy="70"  r="12" fill="rgba(255,215,153,0.28)" />
+
+                <!-- Links unten -->
+                <circle cx="120" cy="420" r="22" fill="rgba(167,200,253,0.30)" />
+                <circle cx="200" cy="500" r="14" fill="rgba(101,230,206,0.28)" />
+
+                <!-- Mitte unten -->
+                <circle cx="380" cy="480" r="26" fill="rgba(124,65,238,0.25)" />
+                <circle cx="450" cy="520" r="16" fill="rgba(255,215,153,0.28)" />
+
+                <!-- Rechts unten -->
+                <circle cx="620" cy="460" r="22" fill="rgba(101,230,206,0.30)" />
+                <circle cx="700" cy="520" r="14" fill="rgba(167,200,253,0.26)" />
+
+            </svg>
+        </div>
+
 
         <div class="commands-hero-content">
             <div class="commands-hero-text">
@@ -46,8 +78,12 @@
     <section class="commands-panel-card">
 
         <!-- SEARCH -->
-        <input id="commandSearch" class="commands-search"
-               placeholder="🔍 Suche nach einem Command oder Feature …">
+        <input
+                id="commandSearch"
+                class="commands-search"
+                type="text"
+                placeholder="Suche nach einem Command oder Feature …"
+        />
 
         <!-- FILTERS -->
         <div class="commands-filters">
