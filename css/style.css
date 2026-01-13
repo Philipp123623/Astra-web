@@ -539,383 +539,22 @@ a:hover { color: #ffd799; }
    ASTRA COMMANDS PAGE
    ========================= */
 
-/* Command-Suchleiste */
-.command-searchbar {
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto 30px auto;
-    display: flex;
-    justify-content: center;
-}
-.command-searchbar input[type="text"] {
-    width: 100%;
-    padding: 15px 18px 15px 42px;
-    font-size: 1.13em;
-    border-radius: 17px;
-    border: none;
-    background: rgba(41,49,101,0.23);
-    color: #eafffa;
-    box-shadow: 0 2px 18px #5de8ff19;
-    outline: none;
-    font-family: 'Montserrat',sans-serif;
-    transition: box-shadow .15s, background .12s;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
-    background-repeat: no-repeat;
-    background-size: 22px 22px;
-    background-position: 13px center;
-}
-.command-searchbar input[type="text"]:focus {
-    background: rgba(101,230,206,0.10);
-    box-shadow: 0 4px 22px #7dfad722;
-}
-
-/* Command-Accordion Struktur */
-#commands-accordion {
-    margin: 0 auto;
-    max-width: 950px;
-}
-
-.command-section {
-    background: rgba(46, 53, 110, 0.28);
-    border-radius: 18px;
-    box-shadow: 0 2px 13px #5b65ff13;
-    margin-bottom: 22px;
-    overflow: hidden;
-    transition: box-shadow .16s;
-}
-.command-section:hover, .command-section.open {
-    box-shadow: 0 10px 38px #60e9cb16;
-}
-
-.accordion-toggle {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    text-align: left;
-    font-size: 1.28em;
-    font-weight: 900;
-    color: #7dfad7;
-    padding: 21px 32px 21px 28px;
-    cursor: pointer;
-    border-radius: 18px 18px 0 0;
-    transition: background .15s, color .14s;
-    letter-spacing: .5px;
-    position: relative;
-}
-.accordion-toggle::after {
-    content: "▼";
-    position: absolute;
-    right: 26px;
-    font-size: .88em;
-    color: #72ffe2bb;
-    transform: rotate(0deg);
-    transition: transform .22s cubic-bezier(.6,.02,.19,1.12);
-}
-.accordion-toggle.open::after {
-    transform: rotate(-180deg);
-}
-
-.accordion-panel {
-    display: none;
-    background: rgba(41, 49, 101, 0.13);
-    padding: 9px 20px 14px 36px;
-    border-radius: 0 0 18px 18px;
-    animation: fadeIn .26s cubic-bezier(.73,.01,.18,1.08);
-}
-.accordion-toggle.open + .accordion-panel {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-7px);}
-    to   { opacity: 1; transform: translateY(0);}
-}
-
-.command-entry {
-    margin: 0 0 16px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #25284c44;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.command-entry:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.command-name {
-    font-weight: 800;
-    font-size: 1.15em;
-    color: #a7c8fd;
-    letter-spacing: 0.2px;
-    margin-bottom: 3px;
-}
-.command-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 22px;
-    font-size: 1.06em;
-    color: #f4faff;
-}
-.command-desc {
-    color: #72ffe2;
-    font-weight: 700;
-    margin-right: 15px;
-}
-
-/* Responsive Anpassungen */
-@media (max-width: 750px) {
-    #commands-accordion { max-width: 99vw; }
-    .accordion-toggle { font-size: 1.07em; padding: 15px 18px 15px 14px; }
-    .accordion-panel { padding: 8px 9px 12px 16px; }
-}
-
-@media (max-width: 430px) {
-    .accordion-toggle { font-size: .96em; }
-    .command-info { font-size: .97em; gap: 10px 8px;}
-}
-
-/* === Commands Intro Text */
-.commands-intro {
-    max-width: 620px;
-    margin: 0 auto 28px auto;
-    padding: 16px 28px;
-    background: rgba(56, 65, 139, 0.42);
-    border-radius: 22px;
-    box-shadow: 0 6px 30px #5b65ff2a;
-    color: #b7f8f6;
-    font-size: 1.15em;
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.5;
-}
-
-/* === Kategorie Buttons (Filter) */
-.commands-category-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.commands-category-buttons button {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
-    font-weight: 900;
-    padding: 10px 22px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    box-shadow: 0 3px 18px #5de8ff33;
-    transition: all 0.22s ease;
-    user-select: none;
-}
-.commands-category-buttons button:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 6px 26px #65e6ce88;
-}
-.commands-category-buttons button.active {
-    background: linear-gradient(90deg, #72ffe2, #7dfad7);
-    color: #1b3447;
-    box-shadow: 0 8px 30px #60e9cbbb;
-}
-
-/* === Accordion Buttons Anpassung */
-.accordion-toggle {
-    color: #72ffe2;
-    font-weight: 900;
-    padding: 20px 36px 20px 36px;
-    font-size: 1.35em;
-    border-radius: 22px 22px 0 0;
-    background: linear-gradient(90deg, #2d2f72, #362897);
-    box-shadow: 0 4px 18px #5b65ff22;
-    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
-    position: relative;
-}
-.accordion-toggle:hover {
-    background: linear-gradient(90deg, #3fd6dd, #65e6ce);
-    color: #223254;
-    box-shadow: 0 6px 28px #65e6ce88;
-}
-.accordion-toggle.open {
-    background: linear-gradient(90deg, #7dfad7, #60e9cb);
-    color: #223254;
-    box-shadow: 0 8px 36px #60e9cbdd;
-}
-.accordion-toggle::after {
-    content: "▼";
-    position: absolute;
-    right: 28px;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-    font-size: 1.1em;
-    color: #65e6ceaa;
-    transition: transform 0.3s ease;
-}
-.accordion-toggle.open::after {
-    transform: translateY(-50%) rotate(-180deg);
-    color: #2a2463;
-}
-
-/* === Accordion Panel */
-.accordion-panel {
-    background: rgba(41, 49, 101, 0.21);
-    border-radius: 0 0 22px 22px;
-    padding: 22px 48px 28px 48px;
-    box-shadow: inset 0 2px 16px #7dfad722;
-}
-
-/* === Command Entries */
-.command-entry {
-    padding: 18px 0 14px 0;
-    border-bottom: 1.5px solid #31468f66;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.command-entry:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.command-name {
-    color: #a7c8fd;
-    font-size: 1.22em;
-    font-weight: 900;
-    letter-spacing: 0.4px;
-}
-.command-info {
-    font-size: 1.03em;
-    color: #d7f3ff;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 28px;
-    font-weight: 600;
-}
-.command-desc {
-    color: #72ffe2;
-    font-weight: 800;
-}
-
-/* === Responsive Anpassungen für Commands Section */
-@media (max-width: 850px) {
-    .commands-category-buttons {
-        max-width: 100%;
-        gap: 10px;
-        padding: 0 14px;
-    }
-    .accordion-toggle {
-        font-size: 1.2em;
-        padding: 16px 28px 16px 28px;
-    }
-    .accordion-panel {
-        padding: 18px 28px 24px 28px;
-    }
-    .command-info {
-        font-size: 0.95em;
-        gap: 12px 16px;
-    }
-}
-@media (max-width: 480px) {
-    .command-name {
-        font-size: 1.1em;
-    }
-    .command-info {
-        font-size: 0.9em;
-    }
-    .commands-category-buttons button {
-        font-size: 0.9em;
-        padding: 8px 16px;
-    }
-}
-
-.commands-info-card {
-    max-width: 860px;
-    margin: 38px auto 36px auto;
-    padding: 32px 28px 18px 28px;
-    border-radius: 32px;
-    background: linear-gradient(128deg, #251f5b 0%, #312c6c 92%);
-    box-shadow: 0 4px 30px 0 rgba(54,75,172,0.10);
-    color: #e7f8fc;
-    text-align: center;
-    position: relative;
-}
-
-.commands-info-row {
-    margin-bottom: 18px;
-}
-.info-badge {
-    display: inline-block;
-    padding: 7px 20px;
-    border-radius: 16px;
-    font-size: 1.04rem;
-    font-weight: 700;
-    margin-right: 7px;
-    margin-bottom: 6px;
-    letter-spacing: 0.01em;
-    background: #2b294e;
-    color: #7cebe7;
-    box-shadow: 0 2px 9px 0 rgba(91, 101, 255, 0.06);
-    border: 1.5px solid #222154;
-}
-.info-badge.cyan { background: #1d2b38; color: #65e6ce; border-color: #44e2d7; }
-.info-badge.green { background: #1d382a; color: #54fdbe; border-color: #44e2b0; }
-.info-badge.purple { background: #27284c; color: #b2a4ff; border-color: #8a76ff; }
-
-.commands-info-desc {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #b7f8f6;
-    margin-bottom: 18px;
-    line-height: 1.45;
-}
-
-.commands-label-row {
-    margin-top: 10px;
-    margin-bottom: 3px;
-}
-
-.commands-label-row .astra-label {
-    display: inline-block;
-    font-size: 1.01rem;
-    font-weight: 700;
-    padding: 7px 18px;
-    border-radius: 14px;
-    margin: 0 5px 4px 0;
-    box-shadow: 0 1px 6px #232b5244;
-}
-.astra-label.green  { background: #65e6ce; color: #223254; }
-.astra-label.blue   { background: #9cbeff; color: #223254; }
-.astra-label.yellow { background: #fad59c; color: #503820; }
-.astra-label.purple { background: #c29cff; color: #332245; }
-.info-badge.red {
-    background: #491b22;
-    color: #ff6464;
-    border-color: #ff7272;
-}
-
 /* =========================
-   COMMANDS HERO (ERGÄNZUNG)
+   COMMANDS – MINI HERO
    ========================= */
 
-.commands-hero-card {
+.commands-hero-mini {
     position: relative;
-    max-width: 1080px;
-    margin: 0 auto 60px auto;
-    padding: 56px 52px 52px;
-    border-radius: 42px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 44px;
+    border-radius: 34px;
     overflow: hidden;
-    background: linear-gradient(120deg, #251f5b 0%, #362897 62%, #3fd6dd 160%);
+
+    background: linear-gradient(120deg, #251f5b 0%, #362897 65%);
     box-shadow:
-            0 14px 54px rgba(91,101,255,0.28),
-            0 0 90px rgba(96,233,203,0.25),
-            inset 0 0 0 1px rgba(255,255,255,0.06);
+            0 10px 36px rgba(91,101,255,0.28),
+            0 0 42px rgba(96,233,203,0.22);
 }
 
 .commands-bubbles-bg {
@@ -925,14 +564,153 @@ a:hover { color: #ffd799; }
     z-index: 0;
 }
 
-.commands-bubbles-bg svg {
-    width: 100%;
-    height: 100%;
-}
-
 .commands-hero-content {
     position: relative;
     z-index: 2;
+}
+
+/* Abstand zwischen Hero & Content */
+.commands-separator {
+    height: 60px;
+}
+
+/* =========================
+   INFO CARD
+   ========================= */
+
+.commands-info-card {
+    text-align: center;
+    color: #e7f8fc;
+}
+
+.commands-info-row {
+    margin-bottom: 14px;
+}
+
+.info-badge {
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 16px;
+    font-weight: 700;
+    background: #2b294e;
+    color: #7cebe7;
+    border: 1.5px solid #222154;
+    margin: 0 6px 6px;
+}
+
+.commands-info-desc {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+.commands-label-row .astra-label {
+    display: inline-block;
+    padding: 7px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    margin: 4px;
+}
+
+.astra-label.green { background:#65e6ce; color:#223254; }
+.astra-label.blue { background:#9cbeff; color:#223254; }
+.astra-label.yellow { background:#fad59c; color:#503820; }
+.astra-label.purple { background:#c29cff; color:#332245; }
+
+/* =========================
+   COMMANDS CONTENT
+   ========================= */
+
+.commands-content {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.command-searchbar {
+    max-width: 520px;
+    margin: 0 auto 26px;
+}
+
+.command-searchbar input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 18px;
+    border: none;
+    background: rgba(41,49,101,0.18);
+    color: #eafffa;
+    box-shadow: 0 2px 14px rgba(91,101,255,0.18);
+    font-size: 1.1em;
+}
+
+/* =========================
+   FILTER BUTTONS
+   ========================= */
+
+.commands-category-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.commands-category-buttons button {
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 900;
+    cursor: pointer;
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    color: #223254;
+}
+
+.commands-category-buttons button.active {
+    background: linear-gradient(90deg, #72ffe2, #7dfad7);
+}
+
+/* =========================
+   ACCORDION
+   ========================= */
+
+.command-section {
+    background: rgba(46,53,110,0.22);
+    border-radius: 22px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(91,101,255,0.14);
+}
+
+.accordion-toggle {
+    width: 100%;
+    padding: 18px 28px;
+    font-size: 1.3em;
+    font-weight: 900;
+    color: #72ffe2;
+    background: linear-gradient(90deg, #2d2f72, #362897);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accordion-panel {
+    display: none;
+    padding: 22px 30px;
+    background: rgba(41,49,101,0.22);
+}
+
+.command-entry {
+    border-bottom: 1px solid #31468f66;
+    padding-bottom: 14px;
+}
+
+.command-name {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: #a7c8fd;
+}
+
+.command-desc {
+    color: #72ffe2;
+    font-weight: 700;
 }
 
 
