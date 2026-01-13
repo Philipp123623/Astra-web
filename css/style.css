@@ -18,9 +18,6 @@ html, body {
     background: linear-gradient(120deg, #221c50 0%, #2a2463 90%, #33ccd7 200%);
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -75,7 +72,7 @@ a:hover { color: #ffd799; }
 
 .astra-header {
     position: fixed;
-    top: env(safe-area-inset-top, 0px);
+    top: 0;
     width: 100%;
     z-index: 50;
     background: #1c1250;
@@ -539,15 +536,11 @@ a:hover { color: #ffd799; }
    COMMANDS PAGE – ASTRA STYLE (FINAL FIX)
    ========================= */
 
-main.commands-main {
-    max-width: 1180px;
-}
-
 /* ================= HERO ================= */
 
 .commands-hero-card {
     position: relative;
-    margin-bottom: 54px; /* ❗ KEIN margin-top mehr */
+    margin-top: 0; /* oder 16–24px rein optisch */
     border-radius: 38px;
     overflow: hidden;
 
@@ -560,6 +553,7 @@ main.commands-main {
 
     box-shadow: 0 14px 54px rgba(91,101,255,.28);
 }
+
 
 /* ===== SICHTBARE BUBBLES (WIE HOME) ===== */
 .commands-hero-card .bubbles-bg {
