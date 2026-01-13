@@ -1,26 +1,24 @@
 <footer class="astra-footer">
-    <div class="astra-footer-grid">
+    <div class="astra-footer-wrap">
 
-        <!-- BRAND -->
-        <div class="footer-brand">
-            <div class="footer-logo">
+        <div class="astra-footer-brand">
+            <div class="astra-footer-logo">
                 <img src="/public/favicon_transparent.png" alt="Astra Bot">
-                <span>Astra <span>Bot</span></span>
+                <span>Astra <strong>Bot</strong></span>
             </div>
 
-            <p class="footer-desc">
-                Moderner Discord Bot für Automatisierung, Statusüberwachung
-                und Community-Management.
+            <p class="astra-footer-text">
+                Moderner Discord Bot für Automatisierung,<br>
+                Statusüberwachung und Community-Management.
             </p>
 
-            <p class="footer-copy">
+            <p class="astra-footer-copy">
                 © <?php echo date('Y'); ?> Astra Bot<br>
                 Nicht affiliiert mit Discord.
             </p>
         </div>
 
-        <!-- LINKS -->
-        <div class="footer-links-col">
+        <div class="astra-footer-links">
             <h4>Useful Links</h4>
             <a href="https://astra-bot.de/">Home</a>
             <a href="https://astra-bot.de/features">Features</a>
@@ -29,7 +27,7 @@
             <a href="https://astra-bot.de/status">Status</a>
         </div>
 
-        <div class="footer-links-col">
+        <div class="astra-footer-links">
             <h4>Other Links</h4>
             <a href="https://astra-bot.de/support">Support</a>
             <a href="https://astra-bot.de/invite">Bot einladen</a>
@@ -38,17 +36,5 @@
             <a href="https://astra-bot.de/terms">Terms of Use</a>
         </div>
 
-    </div>
-
-    <div class="footer-bottom">
-        <span>Made with <span class="heart">♥</span></span>
-        <div class="footer-social">
-            <a href="https://github.com/" target="_blank">
-                <img src="/public/github.svg" alt="GitHub">
-            </a>
-            <a href="https://discord.gg/" target="_blank">
-                <img src="/public/discord-icon.svg" alt="Discord">
-            </a>
-        </div>
     </div>
 </footer>

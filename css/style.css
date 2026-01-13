@@ -521,118 +521,6 @@ a:hover { color: #ffd799; }
     h2 { font-size: 1.17em; }
 }
 
-/* Footer-Abstand nur durch main regeln – margin-top raus */
-.astra-footer {
-    margin-top: 100px;
-    background:
-            linear-gradient(135deg, #5a4cff 0%, #7a38d6 50%, #4b3cff 100%);
-    color: #eef4ff;
-}
-
-/* GRID */
-.astra-footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 32px 40px;
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 60px;
-}
-
-/* BRAND */
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 1.4em;
-    font-weight: 800;
-}
-.footer-logo img {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,.25);
-}
-.footer-logo span span {
-    color: #7dfad7;
-}
-
-.footer-desc {
-    margin-top: 16px;
-    max-width: 360px;
-    line-height: 1.55;
-    color: #dbe3ff;
-}
-
-.footer-copy {
-    margin-top: 18px;
-    font-size: .9em;
-    color: #c6d2ff;
-}
-
-/* LINK COLS */
-.footer-links-col h4 {
-    font-size: 1.05em;
-    margin-bottom: 14px;
-    color: #ffffff;
-}
-.footer-links-col a {
-    display: block;
-    margin-bottom: 10px;
-    color: #d6e2ff;
-    text-decoration: none;
-    transition: all .15s;
-}
-.footer-links-col a:hover {
-    color: #7dfad7;
-    transform: translateX(3px);
-}
-
-/* BOTTOM BAR */
-.footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 18px 32px 26px;
-    border-top: 1px solid rgba(255,255,255,.18);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .95em;
-    color: #dbe3ff;
-}
-
-.footer-bottom .heart {
-    color: #7dfad7;
-}
-
-.footer-social {
-    display: flex;
-    gap: 14px;
-}
-.footer-social img {
-    width: 26px;
-    height: 26px;
-    opacity: .9;
-    transition: all .15s;
-}
-.footer-social a:hover img {
-    opacity: 1;
-    transform: translateY(-2px);
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-    .astra-footer-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-}
-
 
 /* =========================
    ASTRA COMMANDS PAGE
@@ -1432,6 +1320,95 @@ a:hover { color: #ffd799; }
         flex: 1 1 100%;
     }
 }
+
+/* =========================
+   ASTRA FOOTER (ISOLATED)
+   ========================= */
+
+.astra-footer {
+    width: 100%;
+    background: linear-gradient(135deg, #221c50, #2a2463);
+    color: #eef4ff;
+    margin-top: 80px;
+}
+
+.astra-footer * {
+    box-sizing: border-box;
+}
+
+/* GRID */
+.astra-footer-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 38px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+}
+
+/* BRAND */
+.astra-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.35em;
+    font-weight: 800;
+}
+
+.astra-footer-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px #00000033;
+}
+
+.astra-footer-logo strong {
+    color: #65e6ce;
+}
+
+.astra-footer-text {
+    margin-top: 14px;
+    max-width: 360px;
+    line-height: 1.55;
+    color: #d7f3ff;
+}
+
+.astra-footer-copy {
+    margin-top: 16px;
+    font-size: .9em;
+    color: #b7cfff;
+}
+
+/* LINKS */
+.astra-footer-links h4 {
+    font-size: 1.05em;
+    margin-bottom: 14px;
+    font-weight: 800;
+}
+
+.astra-footer-links a {
+    display: block;
+    margin-bottom: 10px;
+    color: #d6e2ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color .15s, transform .15s;
+}
+
+.astra-footer-links a:hover {
+    color: #7dfad7;
+    transform: translateX(4px);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .astra-footer-wrap {
+        grid-template-columns: 1fr;
+        padding: 42px 16px;
+        gap: 32px;
+    }
+}
+
 
 
 /* === Fertig! === */
