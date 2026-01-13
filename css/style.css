@@ -906,7 +906,7 @@ a:hover { color: #ffd799; }
    ========================= */
 
 /* ==== Main Wrapper ==== */
-.astra-status-main {
+main.astra-status-main {
     flex: 1;
     min-height: 560px;
     position: relative;
@@ -1223,7 +1223,7 @@ a:hover { color: #ffd799; }
    REPORT PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
 
-.report-main {
+main.report-main {
     flex: 1;
     display: flex;
     justify-content: center;
