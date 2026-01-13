@@ -30,7 +30,7 @@ main {
     width: 100%;
     margin: 0 auto;
 
-    /* ⬇️ DAS IST ENTSCHEIDEND */
+    /* ✅ EINHEITLICHER HEADER-ABSTAND */
     padding-top: calc(var(--header-height) + 32px);
     padding-left: 38px;
     padding-right: 38px;
@@ -42,7 +42,7 @@ main {
 
 @media (max-width: 900px) {
     main {
-        padding-top: calc(var(--header-height) + 24px);
+        padding-top: calc(var(--header-height-mobile) + 24px);
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 70px;
@@ -524,7 +524,6 @@ a:hover { color: #ffd799; }
     .astra-about-card { flex-direction: column; gap: 19px; padding: 21px 10px 17px 10px; }
     .astra-about-card > div:last-child { min-width: 0; }
     .astra-hero-logo { width: 120px; }
-    main { padding: 36px 8px 0 8px; }
 }
 @media (max-width: 750px) {
     .astra-stats { flex-direction: column; align-items: center; gap: 16px; }
@@ -1228,7 +1227,21 @@ a:hover { color: #ffd799; }
     flex: 1;
     display: flex;
     justify-content: center;
-    padding: 0 24px;
+
+    /* ✅ vertikaler Abstand zum Header */
+    padding-top: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 64px;
+}
+
+@media (max-width: 600px) {
+    .report-main {
+        padding-top: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 56px;
+    }
 }
 
 /* HERO CARD */
