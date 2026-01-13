@@ -1,40 +1,54 @@
 <footer class="astra-footer">
-    <div class="astra-footer-inner">
+    <div class="astra-footer-grid">
 
-        <div class="footer-col footer-brand">
+        <!-- BRAND -->
+        <div class="footer-brand">
             <div class="footer-logo">
-                <img src="/public/favicon_transparent.png" alt="Astra Logo">
+                <img src="/public/favicon_transparent.png" alt="Astra Bot">
                 <span>Astra <span>Bot</span></span>
             </div>
-            <p class="footer-tagline">
-                Moderner Discord Bot für Automatisierung, Status & Community.
+
+            <p class="footer-desc">
+                Moderner Discord Bot für Automatisierung, Statusüberwachung
+                und Community-Management.
+            </p>
+
+            <p class="footer-copy">
+                © <?php echo date('Y'); ?> Astra Bot<br>
+                Nicht affiliiert mit Discord.
             </p>
         </div>
 
-        <div class="footer-col footer-links">
-            <a href="https://astra-bot.de/about">Über Astra</a>
+        <!-- LINKS -->
+        <div class="footer-links-col">
+            <h4>Useful Links</h4>
+            <a href="https://astra-bot.de/">Home</a>
             <a href="https://astra-bot.de/features">Features</a>
             <a href="https://astra-bot.de/commands">Commands</a>
             <a href="https://astra-bot.de/faq">FAQ</a>
             <a href="https://astra-bot.de/status">Status</a>
-            <a href="https://astra-bot.de/support">Support</a>
-            <a href="https://astra-bot.de/invite" class="footer-btn">Bot einladen</a>
         </div>
 
-        <div class="footer-col footer-social">
-            <a href="https://github.com/" target="_blank" title="GitHub">
-                <img src="/public/github.svg" alt="GitHub">
-            </a>
-            <a href="https://discord.gg/" target="_blank" title="Discord">
-                <img src="/public/discord-icon.svg" alt="Discord">
-            </a>
+        <div class="footer-links-col">
+            <h4>Other Links</h4>
+            <a href="https://astra-bot.de/support">Support</a>
+            <a href="https://astra-bot.de/invite">Bot einladen</a>
+            <a href="https://astra-bot.de/impressum.php">Impressum</a>
+            <a href="https://astra-bot.de/privacy">Privacy Policy</a>
+            <a href="https://astra-bot.de/terms">Terms of Use</a>
         </div>
 
     </div>
 
-    <div class="footer-meta">
-        © <?php echo date('Y'); ?> Astra Bot · Made with
-        <span style="color:#7dfad7;">♥</span> ·
-        <a href="/impressum.php">Impressum</a>
+    <div class="footer-bottom">
+        <span>Made with <span class="heart">♥</span></span>
+        <div class="footer-social">
+            <a href="https://github.com/" target="_blank">
+                <img src="/public/github.svg" alt="GitHub">
+            </a>
+            <a href="https://discord.gg/" target="_blank">
+                <img src="/public/discord-icon.svg" alt="Discord">
+            </a>
+        </div>
     </div>
 </footer>
