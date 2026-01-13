@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css?v=2.4" />
+    <link rel="stylesheet" href="/css/style.css?v=5" />
 </head>
 <body>
 
 <?php include 'includes/header.php'; ?>
 
-<main class="commands-main">
+<main>
 
     <!-- ================= HERO ================= -->
     <section class="commands-hero-card">
-        <div class="commands-hero-glow"></div>
         <div class="bubbles-bg"></div>
 
         <div class="commands-hero-content">
