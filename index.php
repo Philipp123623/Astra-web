@@ -88,8 +88,11 @@ if ($result->num_rows > 0) {
                 </div>
                 <h1>
                     Astra<br>
-                    <span class="highlight">Discord Bot</span>
+                    <span class="highlight">
+                        <span id="typing-text"></span><span class="cursor">|</span>
+                    </span>
                 </h1>
+
                 <div class="astra-desc">
                     <b>Das All-in-One Toolkit für deinen Discord-Server!</b><br>
                     Level, XP, Economy, Moderation, Tools & Fun – individuell, zuverlässig, blitzschnell.
@@ -274,5 +277,42 @@ if ($result->num_rows > 0) {
         navToggle.blur();
     });
 </script>
+<script>
+    const texts = [
+        "Discord Bot",
+        "Level & XP System",
+        "Moderation Tool",
+        "Economy & Games",
+        "All-in-One Toolkit"
+    ];
+
+    const textEl = document.getElementById("typing-text");
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        const current = texts[textIndex];
+
+        if (!isDeleting) {
+            textEl.textContent = current.slice(0, charIndex++);
+            if (charIndex > current.length) {
+                setTimeout(() => isDeleting = true, 1400);
+            }
+        } else {
+            textEl.textContent = current.slice(0, charIndex--);
+            if (charIndex < 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+        }
+
+        setTimeout(typeEffect, isDeleting ? 40 : 85);
+    }
+
+    typeEffect();
+</script>
+
 </body>
 </html>

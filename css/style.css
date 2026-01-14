@@ -294,6 +294,21 @@ a:hover { color: #ffd799; }
 /* ===================
       HERO SECTION
 =================== */
+.highlight {
+    white-space: nowrap;
+}
+
+.cursor {
+    display: inline-block;
+    margin-left: 4px;
+    color: #65e6ce;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
 .astra-hero-card {
     position: relative;
     background: linear-gradient(115deg, #251f5b 0%, #362897 65%, #3fd6dd 160%);
@@ -687,7 +702,12 @@ main.commands-main {
 }
 
 .commands-search::placeholder {
-    color: rgba(200,230,255,0.6);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.commands-search.hide-placeholder::placeholder {
+    opacity: 0;
+    transform: translateX(8px);
 }
 
 /* =========================

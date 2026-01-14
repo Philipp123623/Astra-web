@@ -83,6 +83,7 @@
                 class="commands-search"
                 type="text"
                 placeholder="Suche nach einem Command oder Feature …"
+                data-placeholder="Suche nach einem Command oder Feature …"
         />
 
         <!-- FILTERS -->
@@ -198,11 +199,63 @@
         });
     });
 
-    /* Search */
+    /* SEARCH – mit Kategorie-Logik */
     document.getElementById('commandSearch').addEventListener('input', e => {
-        const val = e.target.value.toLowerCase();
-        document.querySelectorAll('.command-item').forEach(cmd => {
-            cmd.style.display = cmd.innerText.toLowerCase().includes(val) ? '' : 'none';
-        });
+    const val = e.target.value.toLowerCase().trim();
+
+    document.querySelectorAll('.command-category').forEach(cat => {
+    let hasMatch = false;
+
+    cat.querySelectorAll('.command-item').forEach(cmd => {
+    const match = cmd.innerText.toLowerCase().includes(val);
+    cmd.style.display = match ? '' : 'none';
+    if (match) hasMatch = true;
     });
+
+        if (val === '') {
+        // Reset-Zustand
+        cat.style.display = '';
+        cat.classList.remove('open');
+        cat.querySelectorAll('.command-item').forEach(cmd => cmd.style.display = '');
+    } else {
+        // Suchmodus
+        cat.style.display = hasMatch ? '' : 'none';
+        cat.classList.toggle('open', hasMatch);
+    }
+    });
+    });
+
+    const searchInput = document.getElementById('commandSearch');
+    const placeholderText = searchInput.dataset.placeholder;
+    let typingInterval = null;
+
+    /* Fokus: Placeholder sofort weg */
+    searchInput.addEventListener('focus', () => {
+        searchInput.classList.add('hide-placeholder');
+        clearInterval(typingInterval);
+    });
+
+    /* Blur: Placeholder tippen, wenn leer */
+    searchInput.addEventListener('blur', () => {
+        if (searchInput.value.trim() !== '') return;
+
+        clearInterval(typingInterval);
+        searchInput.classList.remove('hide-placeholder');
+
+        let i = 0;
+        searchInput.placeholder = '';
+
+        typingInterval = setInterval(() => {
+            if (i >= placeholderText.length) {
+                clearInterval(typingInterval);
+                return;
+            }
+
+            searchInput.placeholder += placeholderText.charAt(i);
+            i++;
+        }, 35);
+    });
+
+
+
 </script>
