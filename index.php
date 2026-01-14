@@ -277,12 +277,12 @@ if ($result->num_rows > 0) {
 </script>
 <script>
     const words = [
-        "modern",
-        "zuverlässig",
-        "effizient",
-        "modular",
-        "stabil",
-        "innovativ"
+        "modern.",
+        "zuverlässig.",
+        "effizient.",
+        "modular.",
+        "stabil.",
+        "innovativ."
     ];
 
     const el = document.getElementById("typing-text");
