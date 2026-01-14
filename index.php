@@ -88,10 +88,11 @@ if ($result->num_rows > 0) {
                 </div>
                 <h1>
                     Astra<br>
-                    <span class="highlight">
-                        <span id="typing-text"></span><span class="cursor">|</span>
+                    <span class="highlight">Astra ist <span id="typing-text">
+                        </span><span class="cursor">|</span>
                     </span>
                 </h1>
+
 
                 <div class="astra-desc">
                     <b>Das All-in-One Toolkit für deinen Discord-Server!</b><br>
@@ -278,41 +279,52 @@ if ($result->num_rows > 0) {
     });
 </script>
 <script>
-    const texts = [
-        "Discord Bot",
-        "Level & XP System",
-        "Moderation Tool",
-        "Economy & Games",
-        "All-in-One Toolkit"
+    const words = [
+        "modern",
+        "fortschrittlich",
+        "strukturiert",
+        "zuverlässig",
+        "dein Discord-Upgrade"
     ];
 
-    const textEl = document.getElementById("typing-text");
+    const el = document.getElementById("typing-text");
 
-    let textIndex = 0;
+    let wordIndex = 0;
     let charIndex = 0;
-    let isDeleting = false;
+    let state = "typing"; // typing | pause | deleting
+    const typingSpeed = 90;
+    const deletingSpeed = 50;
+    const pauseAfterTyping = 1400;
+    const pauseAfterDeleting = 400;
 
-    function typeEffect() {
-        const current = texts[textIndex];
+    function loop() {
+        const word = words[wordIndex];
 
-        if (!isDeleting) {
-            textEl.textContent = current.slice(0, charIndex++);
-            if (charIndex > current.length) {
-                setTimeout(() => isDeleting = true, 1400);
-            }
-        } else {
-            textEl.textContent = current.slice(0, charIndex--);
-            if (charIndex < 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
+        if (state === "typing") {
+            el.textContent = word.slice(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === word.length) {
+                state = "pause";
+                setTimeout(() => state = "deleting", pauseAfterTyping);
             }
         }
 
-        setTimeout(typeEffect, isDeleting ? 40 : 85);
+        else if (state === "deleting") {
+            el.textContent = word.slice(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+                state = "pause";
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(() => state = "typing", pauseAfterDeleting);
+            }
+        }
+
+        setTimeout(loop, state === "typing" ? typingSpeed : deletingSpeed);
     }
 
-    typeEffect();
+    loop();
 </script>
-
 </body>
 </html>
