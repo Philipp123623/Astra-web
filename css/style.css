@@ -294,18 +294,22 @@ a:hover { color: #ffd799; }
 /* ===================
       HERO SECTION
 =================== */
+.hero-headline {
+    display: flex;
+    align-items: baseline;
+    gap: 10px; /* DAS verhindert "istmodern" */
+}
+
 .headline-static {
-    color: #ffffff; /* Weiß */
+    color: #ffffff;
 }
 
 .headline-dynamic {
-    margin-left: 8px;
-    color: #65e6ce; /* dein Mint / Cyan */
+    color: #65e6ce; /* dein Mint */
 }
 
 /* Cursor */
 .cursor {
-    margin-left: 4px;
     color: #65e6ce;
     animation: blink 1s steps(1) infinite;
 }
@@ -314,9 +318,6 @@ a:hover { color: #ffd799; }
     50% { opacity: 0; }
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
-}
 
 .astra-hero-card {
     position: relative;

@@ -86,11 +86,10 @@ if ($result->num_rows > 0) {
                     <span class="astra-label blue">Moderation</span>
                     <span class="astra-label yellow">Economy & Games</span>
                 </div>
-                <h1>
-                    Astra<br>
-                    <span class="headline-static">Astra ist<span id="typing-text" class="headline-dynamic"></span>
-                        <span class="cursor">|</span>
-                    </span>
+                <h1 class="hero-headline">
+                    <span class="headline-static">Astra ist</span>
+                    <span id="typing-text" class="headline-dynamic"></span>
+                    <span class="cursor">|</span>
                 </h1>
 
                 <div class="astra-desc">
