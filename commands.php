@@ -16,40 +16,6 @@
 
     <!-- HERO -->
     <section class="commands-hero-card">
-        <div class="status-bubbles-bg">
-            <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-
-                <!-- Links oben -->
-                <circle cx="80"  cy="90"  r="28" fill="rgba(101,230,206,0.35)" />
-                <circle cx="150" cy="160" r="18" fill="rgba(167,200,253,0.30)" />
-                <circle cx="210" cy="80"  r="14" fill="rgba(124,65,238,0.28)" />
-
-                <!-- Mitte -->
-                <circle cx="360" cy="140" r="22" fill="rgba(101,230,206,0.32)" />
-                <circle cx="420" cy="220" r="16" fill="rgba(255,215,153,0.30)" />
-                <circle cx="480" cy="100" r="12" fill="rgba(167,200,253,0.28)" />
-
-                <!-- Rechts oben -->
-                <circle cx="620" cy="90"  r="26" fill="rgba(101,230,206,0.30)" />
-                <circle cx="700" cy="160" r="18" fill="rgba(124,65,238,0.26)" />
-                <circle cx="740" cy="70"  r="12" fill="rgba(255,215,153,0.28)" />
-
-                <!-- Links unten -->
-                <circle cx="120" cy="420" r="22" fill="rgba(167,200,253,0.30)" />
-                <circle cx="200" cy="500" r="14" fill="rgba(101,230,206,0.28)" />
-
-                <!-- Mitte unten -->
-                <circle cx="380" cy="480" r="26" fill="rgba(124,65,238,0.25)" />
-                <circle cx="450" cy="520" r="16" fill="rgba(255,215,153,0.28)" />
-
-                <!-- Rechts unten -->
-                <circle cx="620" cy="460" r="22" fill="rgba(101,230,206,0.30)" />
-                <circle cx="700" cy="520" r="14" fill="rgba(167,200,253,0.26)" />
-
-            </svg>
-        </div>
-
-
         <div class="commands-hero-content">
             <div class="commands-hero-text">
                 <div class="astra-label-row">
@@ -62,7 +28,7 @@
                 <p class="astra-desc">
                     Alle verfügbaren Commands von Astra – übersichtlich,
                     durchsuchbar und ständig erweitert.
-                </div>
+                </p>
 
                 <div class="astra-badges-row">
                     <span class="astra-badge mint">Moderation</span>
@@ -89,81 +55,17 @@
         <!-- FILTERS -->
         <div class="commands-filters">
             <button class="active" data-filter="all">Alle</button>
-            <button data-filter="mod">Moderation</button>
-            <button data-filter="level">Level & XP</button>
-            <button data-filter="eco">Economy</button>
-            <button data-filter="fun">Fun</button>
+            <button data-filter="Mod">Moderation</button>
+            <button data-filter="Level">Level</button>
+            <button data-filter="Eco">Economy</button>
+            <button data-filter="Fun">Fun</button>
+            <button data-filter="Settings">Settings</button>
+            <button data-filter="Info">Info</button>
         </div>
 
-        <!-- ACCORDION -->
-        <div class="commands-accordion">
+        <!-- ACCORDION (DYNAMIC) -->
+        <div class="commands-accordion" id="commandsAccordion"></div>
 
-            <!-- MODERATION -->
-            <div class="command-category" data-category="mod">
-                <button class="command-category-header">
-                    🛡️ Moderation
-                    <span>3 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <div class="cmd-name">/kick</div>
-                        <div class="cmd-desc">Kickt einen User vom Server</div>
-                        <div class="cmd-usage">/kick [User] [Grund]</div>
-                    </div>
-                    <div class="command-item">
-                        <div class="cmd-name">/ban</div>
-                        <div class="cmd-desc">Bannt einen User dauerhaft</div>
-                        <div class="cmd-usage">/ban [User] [Grund]</div>
-                    </div>
-                    <div class="command-item">
-                        <div class="cmd-name">/clear</div>
-                        <div class="cmd-desc">Löscht Nachrichten im Channel</div>
-                        <div class="cmd-usage">/clear [Anzahl]</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- LEVEL -->
-            <div class="command-category" data-category="level">
-                <button class="command-category-header">
-                    📈 Level & XP
-                    <span>2 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <div class="cmd-name">/level</div>
-                        <div class="cmd-desc">Zeigt dein aktuelles Level</div>
-                        <div class="cmd-usage">/level</div>
-                    </div>
-                    <div class="command-item">
-                        <div class="cmd-name">/top</div>
-                        <div class="cmd-desc">Server Rangliste</div>
-                        <div class="cmd-usage">/top</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FUN -->
-            <div class="command-category" data-category="fun">
-                <button class="command-category-header">
-                    🎉 Fun
-                    <span>2 Commands</span>
-                </button>
-                <div class="command-category-body">
-                    <div class="command-item">
-                        <div class="cmd-name">/meme</div>
-                        <div class="cmd-desc">Zufälliges Meme</div>
-                        <div class="cmd-usage">/meme</div>
-                    </div>
-                    <div class="command-item">
-                        <div class="cmd-name">/wanted</div>
-                        <div class="cmd-desc">Wanted-Poster erstellen</div>
-                        <div class="cmd-usage">/wanted</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </section>
 
 </main>
@@ -171,71 +73,140 @@
 <?php include 'includes/footer.php'; ?>
 
 <script>
-    /* ACCORDION – SINGLE OPEN */
-    document.querySelectorAll('.command-category-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const current = btn.parentElement;
+    /* ============================
+       LOAD JSON & RENDER
+    ============================ */
+    fetch('/json/commands.json')
+        .then(res => res.json())
+        .then(data => renderCommands(data));
 
-            document.querySelectorAll('.command-category').forEach(cat => {
-                if (cat !== current) {
-                    cat.classList.remove('open');
-                }
-            });
+    function renderCommands(data) {
+        const accordion = document.getElementById('commandsAccordion');
 
-            current.classList.toggle('open');
+        Object.entries(data).forEach(([category, catData]) => {
+            const count = catData.commands.length;
+
+            const categoryEl = document.createElement('div');
+            categoryEl.className = 'command-category';
+            categoryEl.dataset.category = category;
+
+            categoryEl.innerHTML = `
+            <button class="command-category-header">
+                ${getIcon(category)} ${category}
+                <span>${count} Commands</span>
+            </button>
+            <div class="command-category-body">
+                ${catData.commands.map(cmd => `
+                    <div class="command-item">
+                        <div class="cmd-name">${cmd.name}</div>
+                        <div class="cmd-desc">${cmd.description}</div>
+                        <div class="cmd-usage">${cmd.usage}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+            accordion.appendChild(categoryEl);
         });
-    });
 
-    /* Filter */
+        initAccordion();
+    }
+
+    /* ============================
+       ICONS
+    ============================ */
+    function getIcon(cat) {
+        const icons = {
+            Mod: '🛡️',
+            Level: '📈',
+            Eco: '💰',
+            Fun: '🎉',
+            Settings: '⚙️',
+            Info: 'ℹ️',
+            GW: '🎁',
+            Ticket: '🎫',
+            Automod: '🤖',
+            Messages: '💬',
+            Minigames: '🕹️',
+            backups: '🗄️',
+            bdays: '🎂'
+        };
+        return icons[cat] || '📘';
+    }
+
+    /* ============================
+       ACCORDION – SINGLE OPEN
+    ============================ */
+    function initAccordion() {
+        document.querySelectorAll('.command-category-header').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const current = btn.parentElement;
+
+                document.querySelectorAll('.command-category').forEach(cat => {
+                    if (cat !== current) cat.classList.remove('open');
+                });
+
+                current.classList.toggle('open');
+            });
+        });
+    }
+
+    /* ============================
+       FILTER
+    ============================ */
     document.querySelectorAll('.commands-filters button').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.commands-filters button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.commands-filters button')
+                .forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             const f = btn.dataset.filter;
+
             document.querySelectorAll('.command-category').forEach(cat => {
                 cat.style.display = (f === 'all' || cat.dataset.category === f) ? '' : 'none';
+                cat.classList.remove('open');
             });
         });
     });
 
-    /* SEARCH – mit Kategorie-Logik */
+    /* ============================
+       SEARCH (MIT KATEGORIE-OPEN)
+    ============================ */
     document.getElementById('commandSearch').addEventListener('input', e => {
-    const val = e.target.value.toLowerCase().trim();
+        const val = e.target.value.toLowerCase().trim();
 
-    document.querySelectorAll('.command-category').forEach(cat => {
-    let hasMatch = false;
+        document.querySelectorAll('.command-category').forEach(cat => {
+            let hasMatch = false;
 
-    cat.querySelectorAll('.command-item').forEach(cmd => {
-    const match = cmd.innerText.toLowerCase().includes(val);
-    cmd.style.display = match ? '' : 'none';
-    if (match) hasMatch = true;
+            cat.querySelectorAll('.command-item').forEach(cmd => {
+                const match = cmd.innerText.toLowerCase().includes(val);
+                cmd.style.display = match ? '' : 'none';
+                if (match) hasMatch = true;
+            });
+
+            if (val === '') {
+                cat.style.display = '';
+                cat.classList.remove('open');
+                cat.querySelectorAll('.command-item').forEach(cmd => cmd.style.display = '');
+            } else {
+                cat.style.display = hasMatch ? '' : 'none';
+                cat.classList.toggle('open', hasMatch);
+            }
+        });
     });
 
-        if (val === '') {
-        // Reset-Zustand
-        cat.style.display = '';
-        cat.classList.remove('open');
-        cat.querySelectorAll('.command-item').forEach(cmd => cmd.style.display = '');
-    } else {
-        // Suchmodus
-        cat.style.display = hasMatch ? '' : 'none';
-        cat.classList.toggle('open', hasMatch);
-    }
-    });
-    });
-
+    /* ============================
+       PLACEHOLDER TYPE EFFECT
+    ============================ */
     const searchInput = document.getElementById('commandSearch');
     const placeholderText = searchInput.dataset.placeholder;
     let typingInterval = null;
 
-    /* Fokus: Placeholder sofort weg */
     searchInput.addEventListener('focus', () => {
         searchInput.classList.add('hide-placeholder');
         clearInterval(typingInterval);
     });
 
-    /* Blur: Placeholder tippen, wenn leer */
     searchInput.addEventListener('blur', () => {
         if (searchInput.value.trim() !== '') return;
 
@@ -250,12 +221,10 @@
                 clearInterval(typingInterval);
                 return;
             }
-
-            searchInput.placeholder += placeholderText.charAt(i);
-            i++;
+            searchInput.placeholder += placeholderText.charAt(i++);
         }, 35);
     });
-
-
-
 </script>
+
+</body>
+</html>
