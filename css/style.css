@@ -299,30 +299,29 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .hero-headline {
-    display: inline-flex;
+    display: flex;
     align-items: baseline;
     white-space: nowrap;
 }
 
-.hero-headline .headline-static {
+.headline-static {
     color: #ffffff;
 }
 
-/* Dynamisches Wort – stabil + farbig */
-.hero-headline .headline-dynamic {
-    display: inline-block;
+/* Dynamisches Wort */
+.headline-dynamic {
+    position: relative;
     margin-left: 10px;
-    min-width: 17ch;           /* Platz für längstes Wort */
-    text-align: left;
-    color: #65e6ce;
     font-weight: 900;
+    color: #65e6ce;
 }
 
-/* Cursor */
-.hero-headline .cursor {
+/* Cursor IMMER direkt hinter dem Text */
+.headline-dynamic::after {
+    content: "|";
     margin-left: 4px;
-    color: #65e6ce;
     animation: blink 1s steps(1) infinite;
+    color: #65e6ce;
 }
 
 @keyframes blink {
@@ -330,25 +329,24 @@ a:hover { color: #ffd799; }
 }
 
 /* =========================
-   MOBILE FIX (kein Rutschen)
+   MOBILE
    ========================= */
-
 @media (max-width: 700px) {
     .hero-headline {
-        white-space: normal;
         flex-wrap: wrap;
+        white-space: normal;
     }
 
-    .hero-headline .headline-dynamic {
-        min-width: 100%;
-        margin-left: 0;
+    .headline-dynamic {
         display: block;
+        margin-left: 0;
     }
 
-    .hero-headline .cursor {
+    .headline-dynamic::after {
         display: none;
     }
 }
+
 
 
 

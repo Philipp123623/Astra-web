@@ -89,7 +89,6 @@ if ($result->num_rows > 0) {
                 <h1 class="hero-headline">
                     <span class="headline-static">Astra ist</span>
                     <span id="typing-text" class="headline-dynamic"></span>
-                    <span class="cursor">|</span>
                 </h1>
 
                 <div class="astra-desc">
