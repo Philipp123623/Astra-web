@@ -278,10 +278,11 @@ if ($result->num_rows > 0) {
 <script>
     const words = [
         "modern",
-        "fortschrittlich",
-        "strukturiert",
         "zuverlässig",
-        "dein Discord-Upgrade"
+        "effizient",
+        "modular",
+        "stabil",
+        "innovativ"
     ];
 
     const el = document.getElementById("typing-text");
