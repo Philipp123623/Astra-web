@@ -861,9 +861,11 @@ main.commands-main {
 }
 
 .command-category-body {
-    height: 0;
-    overflow: hidden;
-    transition: height .45s ease;
+    display: none;
+}
+
+.command-category.open .command-category-body {
+    display: block;
 }
 
 
@@ -878,19 +880,18 @@ main.commands-main {
 .command-item {
     display: grid;
     grid-template-columns:
-        180px
-        1fr
-        260px;
+        minmax(220px, 1.2fr)
+        minmax(0, 2fr)
+        max-content;
 
     gap: 18px;
     align-items: center;
 
     padding: 22px 28px;
-
     border-top: 1px solid rgba(255,255,255,0.08);
-
     color: #eafcff;
 }
+
 
 /* First item no border */
 .command-item:first-child {
@@ -902,7 +903,10 @@ main.commands-main {
     font-weight: 900;
     color: #8bb7ff;
     font-size: 1.05em;
-    white-space: nowrap;
+
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.35;
 }
 
 /* DESCRIPTION – wraps clean */
@@ -910,7 +914,7 @@ main.commands-main {
     font-size: 1em;
     line-height: 1.45;
     color: #d7f3ff;
-
+    min-width: 0;
     word-break: break-word;
 }
 
@@ -928,7 +932,10 @@ main.commands-main {
     font-size: 0.95em;
 
     white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 100%;
 }
+
 
 /* TODO: ALT – später entfernen */
 @media (max-width: 700px) {
