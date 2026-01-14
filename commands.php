@@ -55,12 +55,12 @@
         <!-- FILTERS -->
         <div class="commands-filters">
             <button class="active" data-filter="all">Alle</button>
-            <button data-filter="Mod">Moderation</button>
-            <button data-filter="Level">Level</button>
-            <button data-filter="Eco">Economy</button>
+            <button data-filter="Modration">Moderation</button>
+            <button data-filter="Levelsystem">Level</button>
+            <button data-filter="Economy">Economy</button>
             <button data-filter="Fun">Fun</button>
-            <button data-filter="Settings">Settings</button>
-            <button data-filter="Info">Info</button>
+            <button data-filter="Einstellungen">Settings</button>
+            <button data-filter="Informationen">Info</button>
         </div>
 
         <!-- ACCORDION (DYNAMIC) -->
@@ -96,13 +96,15 @@
                 <span>${count} Commands</span>
             </button>
             <div class="command-category-body">
-                ${catData.commands.map(cmd => `
-                    <div class="command-item">
-                        <div class="cmd-name">${cmd.name}</div>
-                        <div class="cmd-desc">${cmd.description}</div>
-                        <div class="cmd-usage">${cmd.usage}</div>
-                    </div>
-                `).join('')}
+                <div class="command-category-inner">
+                    ${catData.commands.map(cmd => `
+                        <div class="command-item">
+                            <div class="cmd-name">${cmd.name}</div>
+                            <div class="cmd-desc">${cmd.description}</div>
+                            <div class="cmd-usage">${cmd.usage}</div>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         `;
 
@@ -141,27 +143,16 @@
         document.querySelectorAll('.command-category-header').forEach(btn => {
             btn.addEventListener('click', () => {
                 const category = btn.parentElement;
-                const body = category.querySelector('.command-category-body');
                 const isOpen = category.classList.contains('open');
 
-                // andere schließen
-                document.querySelectorAll('.command-category').forEach(cat => {
-                    if (cat !== category) {
-                        cat.classList.remove('open');
-                        cat.querySelector('.command-category-body').style.height = '0px';
-                    }
-                });
+                document.querySelectorAll('.command-category')
+                    .forEach(c => c.classList.remove('open'));
 
-                if (isOpen) {
-                    category.classList.remove('open');
-                    body.style.height = '0px';
-                } else {
-                    category.classList.add('open');
-                    body.style.height = body.scrollHeight + 'px';
-                }
+                if (!isOpen) category.classList.add('open');
             });
         });
     }
+
 
     /* ============================
        FILTER
