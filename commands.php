@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css?v=2.9" />
+    <link rel="stylesheet" href="/css/style.css?v=2.5" />
 </head>
 <body>
 
@@ -55,12 +55,12 @@
         <!-- FILTERS -->
         <div class="commands-filters">
             <button class="active" data-filter="all">Alle</button>
-            <button data-filter="Modration">Moderation</button>
-            <button data-filter="Levelsystem">Level</button>
-            <button data-filter="Economy">Economy</button>
+            <button data-filter="Mod">Moderation</button>
+            <button data-filter="Level">Level</button>
+            <button data-filter="Eco">Economy</button>
             <button data-filter="Fun">Fun</button>
-            <button data-filter="Einstellungen">Settings</button>
-            <button data-filter="Informationen">Info</button>
+            <button data-filter="Settings">Settings</button>
+            <button data-filter="Info">Info</button>
         </div>
 
         <!-- ACCORDION (DYNAMIC) -->
@@ -96,15 +96,13 @@
                 <span>${count} Commands</span>
             </button>
             <div class="command-category-body">
-                <div class="command-category-inner">
-                    ${catData.commands.map(cmd => `
-                        <div class="command-item">
-                            <div class="cmd-name">${cmd.name}</div>
-                            <div class="cmd-desc">${cmd.description}</div>
-                            <div class="cmd-usage">${cmd.usage}</div>
-                        </div>
-                    `).join('')}
-                </div>
+                ${catData.commands.map(cmd => `
+                    <div class="command-item">
+                        <div class="cmd-name">${cmd.name}</div>
+                        <div class="cmd-desc">${cmd.description}</div>
+                        <div class="cmd-usage">${cmd.usage}</div>
+                    </div>
+                `).join('')}
             </div>
         `;
 
@@ -142,17 +140,16 @@
     function initAccordion() {
         document.querySelectorAll('.command-category-header').forEach(btn => {
             btn.addEventListener('click', () => {
-                const category = btn.parentElement;
-                const isOpen = category.classList.contains('open');
+                const current = btn.parentElement;
 
-                document.querySelectorAll('.command-category')
-                    .forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.command-category').forEach(cat => {
+                    if (cat !== current) cat.classList.remove('open');
+                });
 
-                if (!isOpen) category.classList.add('open');
+                current.classList.toggle('open');
             });
         });
     }
-
 
     /* ============================
        FILTER

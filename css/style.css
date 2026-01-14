@@ -861,20 +861,14 @@ main.commands-main {
 }
 
 .command-category-body {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .45s ease;
 }
 
 .command-category.open .command-category-body {
-    grid-template-rows: 1fr;
+    max-height: 600px;
 }
-
-.command-category-inner {
-    overflow: hidden;
-}
-
-
 
 /* =========================
    COMMAND ITEM
@@ -887,15 +881,19 @@ main.commands-main {
 .command-item {
     display: grid;
     grid-template-columns:
-        minmax(180px, 260px)
+        180px
         1fr
-        minmax(160px, 280px);
+        260px;
 
     gap: 18px;
     align-items: center;
+
+    padding: 22px 28px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    color: #eafcff;
 }
-
-
 
 /* First item no border */
 .command-item:first-child {
@@ -907,10 +905,7 @@ main.commands-main {
     font-weight: 900;
     color: #8bb7ff;
     font-size: 1.05em;
-
-    white-space: normal;
-    word-break: break-word;
-    line-height: 1.35;
+    white-space: nowrap;
 }
 
 /* DESCRIPTION – wraps clean */
@@ -918,7 +913,7 @@ main.commands-main {
     font-size: 1em;
     line-height: 1.45;
     color: #d7f3ff;
-    min-width: 0;
+
     word-break: break-word;
 }
 
@@ -935,13 +930,8 @@ main.commands-main {
     font-family: monospace;
     font-size: 0.95em;
 
-    white-space: normal;
-    word-break: break-word;
-    max-width: 100%;
-    line-height: 1.35;
+    white-space: nowrap;
 }
-
-
 
 /* TODO: ALT – später entfernen */
 @media (max-width: 700px) {
@@ -952,8 +942,6 @@ main.commands-main {
 
     .cmd-usage {
         justify-self: start;
-        text-align: left;
-        margin-top: 6px;
     }
 }
 
