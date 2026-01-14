@@ -1,5 +1,5 @@
 {
-  "Mod": {
+  "Moderation": {
     "description": "Klassische Moderationsbefehle",
     "commands": [
       { "name": "/kick", "description": "Kicke einen Nutzer vom Server.", "usage": "/kick <user> <reason>" },
@@ -10,7 +10,7 @@
     ]
   },
 
-  "Level": {
+  "Levelsystem": {
     "description": "Levelsystem & XP",
     "commands": [
       { "name": "/levelsystem", "description": "Alles rund ums Levelsystem.", "usage": "/levelsystem" },
@@ -28,7 +28,7 @@
     ]
   },
 
-  "GW": {
+  "Gewinnspiele": {
     "description": "Gewinnspiele & Community Events",
     "commands": [
       { "name": "/gewinnspiel", "description": "Alles rund um Gewinnspiele.", "usage": "/gewinnspiel" },
@@ -37,7 +37,7 @@
     ]
   },
 
-  "Settings": {
+  "Einstellungen": {
     "description": "Server-Einstellungen & Tools",
     "commands": [
       { "name": "/afk", "description": "Setze dich selbst auf AFK.", "usage": "/afk [grund]" },
@@ -65,7 +65,7 @@
     ]
   },
 
-  "Automod": {
+  "Automoderation": {
     "description": "Automatisierte Moderation",
     "commands": [
       { "name": "/warn", "description": "Warnt einen User.", "usage": "/warn <member> <reason>" },
@@ -80,7 +80,7 @@
     ]
   },
 
-  "Info": {
+  "Informationen": {
     "description": "Infos & Bot-Daten",
     "commands": [
       { "name": "/help", "description": "Zeigt alle Befehle.", "usage": "/help" },
@@ -120,7 +120,7 @@
     ]
   },
 
-  "Eco": {
+  "Economy": {
     "description": "Economy & Jobs",
     "commands": [
       { "name": "/eco", "description": "Economy System.", "usage": "/eco" },
@@ -142,7 +142,7 @@
     ]
   },
 
-  "Messages": {
+  "Nachrichten": {
     "description": "Nachrichten & Benachrichtigungen",
     "commands": [
       { "name": "/joinmsg", "description": "Join Nachricht.", "usage": "/joinmsg <argument> [channel]" },
@@ -169,7 +169,7 @@
     ]
   },
 
-  "backups": {
+  "Backups": {
     "description": "Server Backups",
     "commands": [
       { "name": "/backup", "description": "Backup System.", "usage": "/backup" },
@@ -184,7 +184,7 @@
     ]
   },
 
-  "bdays": {
+  "Geburtstage": {
     "description": "Geburtstage",
     "commands": [
       { "name": "/geburtstag", "description": "Geburtstagssystem.", "usage": "/geburtstag" },
