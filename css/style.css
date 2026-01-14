@@ -294,22 +294,33 @@ a:hover { color: #ffd799; }
 /* ===================
       HERO SECTION
 =================== */
+/* =========================
+   HERO HEADLINE – FINAL
+   ========================= */
+
 .hero-headline {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
-    gap: 10px; /* DAS verhindert "istmodern" */
+    white-space: nowrap;
 }
 
-.headline-static {
+.hero-headline .headline-static {
     color: #ffffff;
 }
 
-.headline-dynamic {
-    color: #65e6ce; /* dein Mint */
+/* Dynamisches Wort – stabil + farbig */
+.hero-headline .headline-dynamic {
+    display: inline-block;
+    margin-left: 10px;
+    min-width: 17ch;           /* Platz für längstes Wort */
+    text-align: left;
+    color: #65e6ce;
+    font-weight: 900;
 }
 
 /* Cursor */
-.cursor {
+.hero-headline .cursor {
+    margin-left: 4px;
     color: #65e6ce;
     animation: blink 1s steps(1) infinite;
 }
@@ -317,6 +328,28 @@ a:hover { color: #ffd799; }
 @keyframes blink {
     50% { opacity: 0; }
 }
+
+/* =========================
+   MOBILE FIX (kein Rutschen)
+   ========================= */
+
+@media (max-width: 700px) {
+    .hero-headline {
+        white-space: normal;
+        flex-wrap: wrap;
+    }
+
+    .hero-headline .headline-dynamic {
+        min-width: 100%;
+        margin-left: 0;
+        display: block;
+    }
+
+    .hero-headline .cursor {
+        display: none;
+    }
+}
+
 
 
 .astra-hero-card {
