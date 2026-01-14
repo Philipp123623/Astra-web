@@ -861,14 +861,11 @@ main.commands-main {
 }
 
 .command-category-body {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height .45s ease;
+    transition: height .45s ease;
 }
 
-.command-category.open .command-category-body {
-    max-height: 600px;
-}
 
 /* =========================
    COMMAND ITEM

@@ -117,19 +117,19 @@
     ============================ */
     function getIcon(cat) {
         const icons = {
-            Mod: '🛡️',
-            Level: '📈',
-            Eco: '💰',
+            Moderation: '🛡️',
+            Levelsystem: '📈',
+            Economy: '💰',
             Fun: '🎉',
-            Settings: '⚙️',
-            Info: 'ℹ️',
-            GW: '🎁',
+            Einstellungen: '⚙️',
+            Informationen: 'ℹ️',
+            Gewinnspiele: '🎁',
             Ticket: '🎫',
-            Automod: '🤖',
-            Messages: '💬',
+            Automoderation: '🤖',
+            Nachrichten: '💬',
             Minigames: '🕹️',
-            backups: '🗄️',
-            bdays: '🎂'
+            Backups: '🗄️',
+            Geburtstage: '🎂'
         };
         return icons[cat] || '📘';
     }
@@ -140,13 +140,25 @@
     function initAccordion() {
         document.querySelectorAll('.command-category-header').forEach(btn => {
             btn.addEventListener('click', () => {
-                const current = btn.parentElement;
+                const category = btn.parentElement;
+                const body = category.querySelector('.command-category-body');
+                const isOpen = category.classList.contains('open');
 
+                // andere schließen
                 document.querySelectorAll('.command-category').forEach(cat => {
-                    if (cat !== current) cat.classList.remove('open');
+                    if (cat !== category) {
+                        cat.classList.remove('open');
+                        cat.querySelector('.command-category-body').style.height = '0px';
+                    }
                 });
 
-                current.classList.toggle('open');
+                if (isOpen) {
+                    category.classList.remove('open');
+                    body.style.height = '0px';
+                } else {
+                    category.classList.add('open');
+                    body.style.height = body.scrollHeight + 'px';
+                }
             });
         });
     }
