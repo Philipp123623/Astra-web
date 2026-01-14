@@ -88,11 +88,10 @@ if ($result->num_rows > 0) {
                 </div>
                 <h1>
                     Astra<br>
-                    <span class="highlight">Astra ist <span id="typing-text">
-                        </span><span class="cursor">|</span>
+                    <span class="headline-static">Astra ist<span id="typing-text" class="headline-dynamic"></span>
+                        <span class="cursor">|</span>
                     </span>
                 </h1>
-
 
                 <div class="astra-desc">
                     <b>Das All-in-One Toolkit für deinen Discord-Server!</b><br>
@@ -291,7 +290,8 @@ if ($result->num_rows > 0) {
 
     let wordIndex = 0;
     let charIndex = 0;
-    let state = "typing"; // typing | pause | deleting
+    let state = "typing";
+
     const typingSpeed = 90;
     const deletingSpeed = 50;
     const pauseAfterTyping = 1400;
@@ -309,7 +309,6 @@ if ($result->num_rows > 0) {
                 setTimeout(() => state = "deleting", pauseAfterTyping);
             }
         }
-
         else if (state === "deleting") {
             el.textContent = word.slice(0, charIndex - 1);
             charIndex--;
