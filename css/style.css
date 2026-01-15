@@ -885,7 +885,7 @@ main.commands-main {
     align-items: center;
 
     padding: 22px 28px;
-    overflow: hidden;
+    outline: 2px solid red;
 
     /* border-top ENTFERNT → verursacht Artefakte */
     position: relative;
