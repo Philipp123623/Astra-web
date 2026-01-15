@@ -867,7 +867,7 @@ main.commands-main {
 }
 
 .command-category.open .command-category-body {
-    max-height: 600px;
+    max-height: 3000px;
 }
 
 /* =========================
@@ -880,32 +880,46 @@ main.commands-main {
 
 .command-item {
     display: grid;
-    grid-template-columns:
-        180px
-        1fr
-        260px;
-
+    grid-template-columns: minmax(140px, 220px) 1fr auto;
     gap: 18px;
     align-items: center;
 
     padding: 22px 28px;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    /* border-top ENTFERNT → verursacht Artefakte */
+    position: relative;
 
     color: #eafcff;
 }
 
-/* First item no border */
-.command-item:first-child {
-    border-top: none;
+.command-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 1px;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.12),
+            transparent
+    );
 }
+
+.command-item:first-child::before {
+    display: none;
+}
+
+
 
 /* COMMAND NAME */
 .cmd-name {
     font-weight: 900;
     color: #8bb7ff;
     font-size: 1.05em;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
 }
 
 /* DESCRIPTION – wraps clean */
@@ -917,20 +931,27 @@ main.commands-main {
     word-break: break-word;
 }
 
+.command-category-header {
+    user-select: none;
+}
+
 /* USAGE CHIP */
 .cmd-usage {
-    justify-self: end;
+    justify-self: start;
 
     background: rgba(0,0,0,0.35);
     color: #65e6ce;
 
     padding: 6px 14px;
     border-radius: 999px;
+    max-width: 100%;
+    opacity: 0.95;
 
     font-family: monospace;
     font-size: 0.95em;
 
-    white-space: nowrap;
+    white-space: normal;
+    text-align: right;
 }
 
 /* TODO: ALT – später entfernen */
