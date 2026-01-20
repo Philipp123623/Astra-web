@@ -19,7 +19,7 @@ $env = loadEnv(__DIR__ . '/.env');
 
 // Benutze die geladenen Variablen
 $servername = $env['DB_HOST'];
-$username = $env['DB_USER'];
+$username = $env['DB_USER_WEB'];
 $password = $env['DB_PASS'];
 $dbname = $env['DB_NAME'];
 
