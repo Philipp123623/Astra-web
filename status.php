@@ -47,7 +47,7 @@ if ($mysql_online) {
 // Bot Status prüfen
 $bot_online = false;
 try {
-    $json = @file_get_contents('http://127.0.0.1:5000/status');
+    $json = @file_get_contents('http://localhost:5000/status');
     if ($json) {
         $data = json_decode($json, true);
         $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
