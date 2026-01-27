@@ -13,6 +13,8 @@
 <?php include "includes/header.php"; ?>
 
 <main class="legal-main">
+    <!-- FIX: Layout-Trigger für fixed Header -->
+    <div aria-hidden="true"></div>
 
     <!-- ================= HERO ================= -->
     <section class="legal-hero-card">
@@ -83,6 +85,37 @@
             <span class="legal-chip">
                 ℹ️ Nicht-kommerzielles Projekt · keine Gewinnerzielungsabsicht
             </span>
+        </div>
+
+    </section>
+
+    <!-- ================= SMALL CARDS (WICHTIG!) ================= -->
+    <section class="legal-mini-cards">
+
+        <div class="legal-mini-card">
+            <h3>📄 Rechtsgrundlage</h3>
+            <ul>
+                <li>§ 5 TMG</li>
+                <li>§ 55 RStV</li>
+                <li>Deutsches Recht</li>
+            </ul>
+        </div>
+
+        <div class="legal-mini-card">
+            <h3>⚖️ Haftung</h3>
+            <ul>
+                <li>Inhalte nach bestem Wissen</li>
+                <li>Keine Gewähr für Richtigkeit</li>
+                <li>Änderungen vorbehalten</li>
+            </ul>
+        </div>
+
+        <div class="legal-mini-card">
+            <h3>📩 Kontakt</h3>
+            <ul>
+                <li>Kontakt per E-Mail</li>
+                <li>Antwort innerhalb angemessener Zeit</li>
+            </ul>
         </div>
 
     </section>

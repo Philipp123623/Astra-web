@@ -1755,6 +1755,7 @@ main.legal-main {
    ========================================================= */
 
 .legal-hero-card {
+    margin-top: 36px;
     position: relative;
     background: linear-gradient(
             115deg,
