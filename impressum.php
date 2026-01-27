@@ -54,18 +54,18 @@
 
                 <div class="legal-grid">
                     <div class="legal-label">Name</div>
-                    <div class="legal-value">[Vorname Nachname]</div>
+                    <div class="legal-value">Stüve, Philipp Lukas</div>
 
                     <div class="legal-label">Adresse</div>
                     <div class="legal-value">
-                        [Straße Hausnummer]<br>
-                        [PLZ Ort]<br>
+                        Berliner Straße 25<br>
+                        63477 Maintal<br>
                         Deutschland
                     </div>
 
                     <div class="legal-label">E-Mail</div>
                     <div class="legal-value">
-                        <a href="mailto:deine@email.de">deine@email.de</a>
+                        <a href="mailto:support@astra-bot.de">support@astra-bot.de</a>
                     </div>
                 </div>
             </div>
