@@ -34,6 +34,7 @@
             <a href="https://astra-bot.de/invite">Bot einladen</a>
             <a href="https://astra-bot.de/impressum">Impressum</a>
             <a href="https://astra-bot.de/privacy-policy">Privacy Policy</a>
+            <a href="https://astra-bot.de/terms-of-service">Terms of Service</a>
         </div>
 
     </div>
