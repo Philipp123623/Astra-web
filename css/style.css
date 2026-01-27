@@ -59,11 +59,6 @@ main section {
     margin-bottom: 0;
     padding-bottom: 0;
 }
-/* ✅ Legal Pages dürfen wieder Abstand haben */
-main.legal-main section {
-    margin-bottom: initial;
-    padding-bottom: initial;
-}
 
 h1, h2, h3, h4 {
     font-weight: 900;
@@ -1753,14 +1748,7 @@ footer.astra-footer::before {
 
 main.legal-main {
     max-width: 1180px;
-    margin: 0 auto;
-    flex: unset;
 }
-
-body.legal-layout {
-    display: block;
-}
-
 
 /* =========================================================
    HERO
@@ -1783,11 +1771,10 @@ body.legal-layout {
             0 20px 70px rgba(91,101,255,0.35),
             0 0 120px rgba(101,230,206,0.25),
             inset 0 0 0 1px rgba(255,255,255,0.06);
-
 }
 
 .legal-hero-content {
-    padding: 70px 38px 56px;
+    padding: 70px 7vw 56px;
     position: relative;
     z-index: 2;
 }
