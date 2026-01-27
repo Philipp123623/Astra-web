@@ -41,52 +41,48 @@
     </section>
 
     <!-- ================= MAIN CARD ================= -->
-    <!-- ================= MAIN CARD ================= -->
     <section class="legal-main-card">
 
-        <!-- ROW: Verantwortliche Person + Geltungsbereich -->
-        <div class="legal-row">
+        <!-- Verantwortliche Person -->
+        <div class="legal-section">
+            <h2>👤 Verantwortliche Person</h2>
 
-            <!-- Verantwortliche Person -->
-            <div class="legal-section">
-                <h2>👤 Verantwortliche Person</h2>
+            <div class="legal-grid">
+                <div class="legal-label">Name</div>
+                <div class="legal-value">[Vorname Nachname]</div>
 
-                <div class="legal-grid">
-                    <div class="legal-label">Name</div>
-                    <div class="legal-value">[Vorname Nachname]</div>
+                <div class="legal-label">Adresse</div>
+                <div class="legal-value">
+                    [Straße Hausnummer]<br>
+                    [PLZ Ort]<br>
+                    Deutschland
+                </div>
 
-                    <div class="legal-label">Adresse</div>
-                    <div class="legal-value">
-                        [Straße Hausnummer]<br>
-                        [PLZ Ort]<br>
-                        Deutschland
-                    </div>
-
-                    <div class="legal-label">E-Mail</div>
-                    <div class="legal-value">
-                        <a href="mailto:deine@email.de">deine@email.de</a>
-                    </div>
+                <div class="legal-label">E-Mail</div>
+                <div class="legal-value">
+                    <a href="mailto:deine@email.de">deine@email.de</a>
                 </div>
             </div>
+        </div>
 
-            <!-- Geltungsbereich BOX -->
-            <div class="legal-side-card">
-                <h3>📌 Geltungsbereich</h3>
+        <div class="legal-divider"></div>
 
-                <p class="legal-text">
-                    Dieses Impressum gilt für folgende Angebote:
-                </p>
+        <!-- Geltungsbereich -->
+        <div class="legal-section">
+            <h2>📌 Geltungsbereich</h2>
 
-                <ul class="legal-list">
-                    <li>🌐 Website <strong>astra-bot.de</strong></li>
-                    <li>🤖 Discord-Bot <strong>„Astra“</strong></li>
-                </ul>
+            <p class="legal-text">
+                Dieses Impressum gilt für folgende Angebote:
+            </p>
 
-                <span class="legal-chip">
+            <ul class="legal-list">
+                <li>🌐 Website <strong>astra-bot.de</strong></li>
+                <li>🤖 Discord-Bot <strong>„Astra“</strong></li>
+            </ul>
+
+            <span class="legal-chip">
                 ℹ️ Nicht-kommerzielles Projekt · keine Gewinnerzielungsabsicht
             </span>
-            </div>
-
         </div>
 
     </section>
