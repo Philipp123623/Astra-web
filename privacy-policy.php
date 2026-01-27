@@ -97,7 +97,7 @@
         <div class="legal-divider"></div>
 
         <!-- Speicher & Sicherheit -->
-        <div class="legal-section two-col">
+        <div class="legal-section legal-two-col">
             <div>
                 <h2>🗑️ Speicherdauer</h2>
                 <p class="legal-text">

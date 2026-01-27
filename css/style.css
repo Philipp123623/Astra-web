@@ -1743,29 +1743,39 @@ footer.astra-footer::before {
     box-shadow: 0 0 14px rgba(125,250,215,0.35);
 }
 /* =========================================================
-   LEGAL PAGE – ASTRA MODERN (FULL REWRITE)
+   LEGAL PAGES – ASTRA FINAL FIX (NO HEADER ISSUES)
    ========================================================= */
 
+/* ---------- MAIN WRAPPER ---------- */
 main.legal-main {
     max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+
+    /* ⛔ verhindert Margin-Collapse */
+    display: flow-root;
+
+    /* zusätzlicher Sicherheitsabstand zum Header */
+    padding-top: calc(var(--header-height) + 32px);
 }
 
-/* =========================================================
-   HERO
-   ========================================================= */
-
+/* ---------- HERO ---------- */
 .legal-hero-card {
-    margin-top: 36px;
     position: relative;
+    isolation: isolate; /* ⛔ kein Durchschlagen */
+
     background: linear-gradient(
             115deg,
             #251f5b 0%,
             #362897 65%,
             #3fd6dd 160%
     );
+
     border-radius: 40px;
-    padding: 0;
     overflow: hidden;
+
+    /* ❗ Abstand NUR über padding, nicht margin */
+    padding-top: 1px;
     margin-bottom: 64px;
 
     box-shadow:
@@ -1774,6 +1784,7 @@ main.legal-main {
             inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 
+/* Inhalt */
 .legal-hero-content {
     padding: 70px 7vw 56px;
     position: relative;
@@ -1815,18 +1826,17 @@ main.legal-main {
             0 0 18px rgba(101,230,206,0.25);
 }
 
-/* =========================================================
-   MAIN LEGAL CARD (ONE BIG CARD)
-   ========================================================= */
-
+/* ---------- MAIN CARD ---------- */
 .legal-main-card {
     background: linear-gradient(
             180deg,
             rgba(42,50,111,0.65),
             rgba(32,38,90,0.55)
     );
+
     border-radius: 36px;
     padding: 58px 62px;
+    margin-bottom: 60px;
 
     box-shadow:
             0 24px 80px rgba(0,0,0,0.45),
@@ -1834,10 +1844,7 @@ main.legal-main {
             inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 
-/* =========================================================
-   SECTIONS INSIDE MAIN CARD
-   ========================================================= */
-
+/* ---------- SECTIONS ---------- */
 .legal-section {
     margin-bottom: 46px;
 }
@@ -1863,10 +1870,7 @@ main.legal-main {
     max-width: 900px;
 }
 
-/* =========================================================
-   GRID (RESPONSIBLE PERSON)
-   ========================================================= */
-
+/* ---------- GRID ---------- */
 .legal-grid {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -1877,7 +1881,6 @@ main.legal-main {
 .legal-label {
     color: #a7c8fd;
     font-weight: 800;
-    letter-spacing: .4px;
 }
 
 .legal-value {
@@ -1885,20 +1888,14 @@ main.legal-main {
     line-height: 1.55;
 }
 
-/* =========================================================
-   LISTS
-   ========================================================= */
-
+/* ---------- LISTS ---------- */
 .legal-list {
     margin: 14px 0 0 22px;
     line-height: 1.6;
     color: #eafcff;
 }
 
-/* =========================================================
-   DIVIDER (GLOW LINE)
-   ========================================================= */
-
+/* ---------- DIVIDER ---------- */
 .legal-divider {
     height: 1px;
     margin: 42px 0;
@@ -1911,20 +1908,14 @@ main.legal-main {
     box-shadow: 0 0 22px rgba(125,250,215,0.45);
 }
 
-/* =========================================================
-   TWO COLUMN (STORAGE + SECURITY)
-   ========================================================= */
-
+/* ---------- TWO COL ---------- */
 .legal-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
 }
 
-/* =========================================================
-   MINI CARDS (BOTTOM)
-   ========================================================= */
-
+/* ---------- MINI CARDS ---------- */
 .legal-mini-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1940,17 +1931,6 @@ main.legal-main {
     box-shadow:
             0 16px 50px rgba(0,0,0,0.45),
             inset 0 0 0 1px rgba(255,255,255,0.08);
-
-    transition:
-            transform .18s ease,
-            box-shadow .18s ease;
-}
-
-.legal-mini-card:hover {
-    transform: translateY(-6px);
-    box-shadow:
-            0 26px 80px rgba(101,230,206,0.45),
-            inset 0 0 0 1px rgba(101,230,206,0.45);
 }
 
 .legal-mini-card h3 {
@@ -1960,13 +1940,7 @@ main.legal-main {
     margin-bottom: 16px;
 }
 
-.legal-mini-card ul {
-    margin: 0 0 18px 20px;
-    color: #eafcff;
-    line-height: 1.55;
-}
-
-/* Chip */
+/* ---------- CHIP ---------- */
 .legal-chip {
     display: inline-block;
     padding: 8px 18px;
@@ -1975,64 +1949,14 @@ main.legal-main {
     font-weight: 800;
     background: rgba(101,230,206,0.2);
     color: #bffcff;
-    box-shadow:
-            inset 0 0 0 1px rgba(101,230,206,0.45),
-            0 0 16px rgba(101,230,206,0.35);
 }
 
-/* =========================================================
-   IMPRESSUM – SIDE BY SIDE FIX
-   ========================================================= */
-
-.legal-row {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 48px;
-    align-items: start;
-}
-
-/* Right side box (like mini card) */
-.legal-side-card {
-    background: rgba(0,0,0,0.32);
-    border-radius: 28px;
-    padding: 32px 30px;
-
-    box-shadow:
-            0 16px 50px rgba(0,0,0,0.45),
-            inset 0 0 0 1px rgba(255,255,255,0.08);
-
-    transition:
-            transform .18s ease,
-            box-shadow .18s ease;
-}
-
-.legal-side-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-            0 26px 80px rgba(101,230,206,0.45),
-            inset 0 0 0 1px rgba(101,230,206,0.45);
-}
-
-.legal-side-card h3 {
-    font-size: 1.3em;
-    font-weight: 900;
-    color: #7dfad7;
-    margin-bottom: 14px;
-    text-shadow: 0 0 14px rgba(125,250,215,0.35);
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
+/* ---------- MOBILE ---------- */
 @media (max-width: 900px) {
-    .legal-row {
-        grid-template-columns: 1fr;
-        gap: 32px;
+    main.legal-main {
+        padding-top: calc(var(--header-height-mobile) + 24px);
     }
-}
 
-@media (max-width: 900px) {
     .legal-two-col {
         grid-template-columns: 1fr;
     }
@@ -2058,6 +1982,7 @@ main.legal-main {
         font-size: 2.2em;
     }
 }
+
 
 
 

@@ -13,8 +13,6 @@
 <?php include "includes/header.php"; ?>
 
 <main class="legal-main">
-    <!-- FIX: Layout-Trigger für fixed Header -->
-    <div aria-hidden="true"></div>
 
     <!-- ================= HERO ================= -->
     <section class="legal-hero-card">
