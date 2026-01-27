@@ -18,7 +18,7 @@ html, body {
     min-height: 100vh;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    background: linear-gradient(120deg, #221c50 0%, #2a2463 90%, #33ccd7 200%);
+    background: #221c50;
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 
@@ -32,6 +32,7 @@ main {
     max-width: 1180px;
     width: 100%;
     margin: 0 auto;
+    background: transparent;
 
     /* ✅ EINHEITLICHER HEADER-ABSTAND */
     padding-top: calc(var(--header-height) + 32px);
@@ -57,6 +58,11 @@ main {
 main section {
     margin-bottom: 0;
     padding-bottom: 0;
+}
+/* ✅ Legal Pages dürfen wieder Abstand haben */
+main.legal-main section {
+    margin-bottom: initial;
+    padding-bottom: initial;
 }
 
 h1, h2, h3, h4 {
@@ -1741,8 +1747,330 @@ footer.astra-footer::before {
     );
     box-shadow: 0 0 14px rgba(125,250,215,0.35);
 }
+/* =========================================================
+   LEGAL PAGE – ASTRA MODERN (FULL REWRITE)
+   ========================================================= */
 
-/* === Fertig! === */
+main.legal-main {
+    max-width: 1180px;
+    margin: 0 auto;
+    flex: unset;
+}
+
+body.legal-layout {
+    display: block;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.legal-hero-card {
+    position: relative;
+    background: linear-gradient(
+            115deg,
+            #251f5b 0%,
+            #362897 65%,
+            #3fd6dd 160%
+    );
+    border-radius: 40px;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 64px;
+
+    box-shadow:
+            0 20px 70px rgba(91,101,255,0.35),
+            0 0 120px rgba(101,230,206,0.25),
+            inset 0 0 0 1px rgba(255,255,255,0.06);
+
+}
+
+.legal-hero-content {
+    padding: 70px 38px 56px;
+    position: relative;
+    z-index: 2;
+}
+
+.legal-hero-content h1 {
+    font-size: 2.7em;
+    font-weight: 900;
+    color: #65e6ce;
+    margin-bottom: 12px;
+    letter-spacing: .05em;
+    text-shadow: 0 0 22px rgba(101,230,206,0.45);
+}
+
+.legal-hero-desc {
+    font-size: 1.15em;
+    color: #d7f3ff;
+    max-width: 760px;
+    line-height: 1.55;
+}
+
+.legal-hero-meta {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.legal-hero-meta span {
+    padding: 9px 20px;
+    border-radius: 999px;
+    font-size: 0.95em;
+    font-weight: 800;
+    background: rgba(255,255,255,0.12);
+    color: #cfefff;
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,0.12),
+            0 0 18px rgba(101,230,206,0.25);
+}
+
+/* =========================================================
+   MAIN LEGAL CARD (ONE BIG CARD)
+   ========================================================= */
+
+.legal-main-card {
+    background: linear-gradient(
+            180deg,
+            rgba(42,50,111,0.65),
+            rgba(32,38,90,0.55)
+    );
+    border-radius: 36px;
+    padding: 58px 62px;
+
+    box-shadow:
+            0 24px 80px rgba(0,0,0,0.45),
+            0 0 120px rgba(101,230,206,0.18),
+            inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* =========================================================
+   SECTIONS INSIDE MAIN CARD
+   ========================================================= */
+
+.legal-section {
+    margin-bottom: 46px;
+}
+
+.legal-section:last-child {
+    margin-bottom: 0;
+}
+
+.legal-section h2 {
+    font-size: 1.55em;
+    font-weight: 900;
+    color: #7dfad7;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 0 16px rgba(125,250,215,0.35);
+}
+
+.legal-text {
+    color: #eafcff;
+    line-height: 1.6;
+    max-width: 900px;
+}
+
+/* =========================================================
+   GRID (RESPONSIBLE PERSON)
+   ========================================================= */
+
+.legal-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px 28px;
+    font-size: 1.05em;
+}
+
+.legal-label {
+    color: #a7c8fd;
+    font-weight: 800;
+    letter-spacing: .4px;
+}
+
+.legal-value {
+    color: #eafcff;
+    line-height: 1.55;
+}
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+.legal-list {
+    margin: 14px 0 0 22px;
+    line-height: 1.6;
+    color: #eafcff;
+}
+
+/* =========================================================
+   DIVIDER (GLOW LINE)
+   ========================================================= */
+
+.legal-divider {
+    height: 1px;
+    margin: 42px 0;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(125,250,215,0.55),
+            transparent
+    );
+    box-shadow: 0 0 22px rgba(125,250,215,0.45);
+}
+
+/* =========================================================
+   TWO COLUMN (STORAGE + SECURITY)
+   ========================================================= */
+
+.legal-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+/* =========================================================
+   MINI CARDS (BOTTOM)
+   ========================================================= */
+
+.legal-mini-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    margin-top: 60px;
+}
+
+.legal-mini-card {
+    background: rgba(0,0,0,0.32);
+    border-radius: 28px;
+    padding: 32px 30px;
+
+    box-shadow:
+            0 16px 50px rgba(0,0,0,0.45),
+            inset 0 0 0 1px rgba(255,255,255,0.08);
+
+    transition:
+            transform .18s ease,
+            box-shadow .18s ease;
+}
+
+.legal-mini-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+            0 26px 80px rgba(101,230,206,0.45),
+            inset 0 0 0 1px rgba(101,230,206,0.45);
+}
+
+.legal-mini-card h3 {
+    font-size: 1.25em;
+    font-weight: 900;
+    color: #7dfad7;
+    margin-bottom: 16px;
+}
+
+.legal-mini-card ul {
+    margin: 0 0 18px 20px;
+    color: #eafcff;
+    line-height: 1.55;
+}
+
+/* Chip */
+.legal-chip {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: .9em;
+    font-weight: 800;
+    background: rgba(101,230,206,0.2);
+    color: #bffcff;
+    box-shadow:
+            inset 0 0 0 1px rgba(101,230,206,0.45),
+            0 0 16px rgba(101,230,206,0.35);
+}
+
+/* =========================================================
+   IMPRESSUM – SIDE BY SIDE FIX
+   ========================================================= */
+
+.legal-row {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: start;
+}
+
+/* Right side box (like mini card) */
+.legal-side-card {
+    background: rgba(0,0,0,0.32);
+    border-radius: 28px;
+    padding: 32px 30px;
+
+    box-shadow:
+            0 16px 50px rgba(0,0,0,0.45),
+            inset 0 0 0 1px rgba(255,255,255,0.08);
+
+    transition:
+            transform .18s ease,
+            box-shadow .18s ease;
+}
+
+.legal-side-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+            0 26px 80px rgba(101,230,206,0.45),
+            inset 0 0 0 1px rgba(101,230,206,0.45);
+}
+
+.legal-side-card h3 {
+    font-size: 1.3em;
+    font-weight: 900;
+    color: #7dfad7;
+    margin-bottom: 14px;
+    text-shadow: 0 0 14px rgba(125,250,215,0.35);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .legal-row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 900px) {
+    .legal-two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .legal-mini-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .legal-main-card {
+        padding: 38px 24px;
+        border-radius: 26px;
+    }
+
+    .legal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legal-hero-content {
+        padding: 46px 6vw 38px;
+    }
+
+    .legal-hero-content h1 {
+        font-size: 2.2em;
+    }
+}
+
 
 
 /* =========================================================
