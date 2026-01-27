@@ -33,7 +33,7 @@
             <a href="https://astra-bot.de/support">Support</a>
             <a href="https://astra-bot.de/invite">Bot einladen</a>
             <a href="https://astra-bot.de/impressum.php">Impressum</a>
-            <a href="https://astra-bot.de/privacy">Privacy Policy</a>
+            <a href="https://astra-bot.de/privacy-policy">Privacy Policy</a>
             <a href="https://astra-bot.de/terms">Terms of Use</a>
         </div>
 
