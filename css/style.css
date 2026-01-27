@@ -2021,6 +2021,15 @@ main.legal-main {
     text-shadow: 0 0 14px rgba(125,250,215,0.35);
 }
 
+.legal-side-card .legal-chip {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+
+
 /* =========================================================
    MOBILE
    ========================================================= */
