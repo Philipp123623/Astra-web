@@ -180,11 +180,76 @@ a:hover { color: #ffd799; }
     box-shadow: 0 6px 24px #65e6ce38;
 }
 
-/* Hamburger und Overlay auf Desktop verstecken */
-.astra-nav-toggle,
-.astra-nav-mobile-overlay {
+/* =========================
+   MOBILE HAMBURGER MENU
+   ========================= */
+
+.astra-nav-toggle {
     display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
+
+.astra-nav-toggle span {
+    width: 26px;
+    height: 3px;
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+
+/* MOBILE MENU PANEL */
+.astra-nav-mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 82%;
+    max-width: 340px;
+    height: 100vh;
+    padding: 96px 26px 36px;
+    background: linear-gradient(160deg, #251f5b, #362897);
+    box-shadow: -12px 0 48px rgba(0,0,0,0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    z-index: 1001;
+    transition: right 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.astra-nav-mobile .nav-link {
+    font-size: 1.25em;
+    font-weight: 900;
+}
+
+.astra-nav-mobile .nav-btn {
+    margin-top: 12px;
+}
+
+/* OVERLAY */
+.astra-nav-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 8, 40, 0.6);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+/* ACTIVE STATE */
+body.nav-open .astra-nav-mobile {
+    right: 0;
+}
+
+body.nav-open .astra-nav-mobile-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
 
 /* ===================
       HERO SECTION
@@ -1798,6 +1863,13 @@ main.legal-main {
         font-size: 1.3em;
     }
 
+    .astra-navbar {
+        display: none;
+    }
+
+    .astra-nav-toggle {
+        display: flex;
+    }
 
     /* =====================
        TYPOGRAPHY
