@@ -45,6 +45,11 @@ main {
     box-sizing: border-box;
 }
 
+/* === EINHEITLICHER STARTABSTAND FÜR ALLE SEITEN === */
+main > *:first-child {
+    margin-top: 36px;
+}
+
 
 /* Globale Regel: Sections unten keinen eigenen Abstand geben */
 main section {
@@ -1756,6 +1761,10 @@ main.legal-main {
         padding-bottom: 64px;
     }
 
+    main > *:first-child {
+        margin-top: 24px;
+    }
+
     body {
         padding-top: calc(var(--header-height-mobile) + 24px);
     }
@@ -1833,5 +1842,9 @@ main.legal-main {
     main {
         padding-left: 24px;
         padding-right: 24px;
+    }
+
+    main > *:first-child {
+        margin-top: 24px;
     }
 }
