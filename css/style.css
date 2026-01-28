@@ -1777,6 +1777,13 @@ main.legal-main {
        HEADER
     ===================== */
 
+    .astra-header,
+    .astra-header * {
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+    }
+
     .astra-header-inner {
         height: var(--header-height-mobile);
         padding: 0 18px;
