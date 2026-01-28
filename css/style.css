@@ -2,13 +2,15 @@
    Astra Discord Bot Style
    ========================= */
 
-@media (max-width: 768px){} /* Tablet + Handy */
-@media (max-width: 480px){}  /* kleines Handy */
-
 :root {
     --header-height: 68px;   /* Desktop Header */
     --header-height-mobile: 56px;
 }
+
+* {
+    word-break: break-word;
+}
+
 
 
 /* ==== Base Layout ==== */
@@ -43,16 +45,6 @@ main {
     box-sizing: border-box;
 }
 
-
-/* TODO: ALT – später entfernen */
-@media (max-width: 900px) {
-    main {
-        padding-top: calc(var(--header-height-mobile) + 24px);
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-bottom: 70px;
-    }
-}
 
 /* Globale Regel: Sections unten keinen eigenen Abstand geben */
 main section {
@@ -190,114 +182,6 @@ a:hover { color: #ffd799; }
     display: none;
 }
 
-/* TODO: ALT – später entfernen */
-/* ========== MOBILE STYLES ========== */
-@media (max-width: 900px) {
-    .astra-header-inner {
-        padding: 0 16px;
-        height: 56px;
-        gap: 0;
-    }
-    .astra-header {
-        background: #1c1250 !important;
-        height: 56px;
-    }
-    /* Navbar als Drawer */
-    .astra-navbar ul {
-        display: none;
-        position: fixed;
-        top: 56px;
-        right: 0;
-        width: 80vw;
-        max-width: 320px;
-        height: calc(100vh - 56px);
-        background: #251f5b;
-        box-shadow: -4px 0 14px #140b3666;
-        padding: 36px 18px 24px 18px;
-        flex-direction: column;
-        gap: 18px;
-        z-index: 120;
-        border-radius: 12px 0 0 12px;
-        overflow-y: auto;
-        margin: 0;
-    }
-    body.nav-open .astra-navbar ul {
-        display: flex !important;
-    }
-    .astra-nav-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 32px;
-        height: 23px;
-        background: none;
-        border: none;
-        position: fixed;
-        top: 13px;
-        right: 16px;
-        z-index: 150;
-        cursor: pointer;
-        padding: 0;
-    }
-    .astra-nav-toggle span {
-        display: block;
-        height: 3px;
-        background: #fff;
-        border-radius: 2px;
-        width: 100%;
-        transition: background 0.2s;
-    }
-    .astra-nav-toggle:hover span {
-        background: #65e6ce;
-    }
-    .astra-nav-toggle:focus-visible {
-        outline: 2px solid #65e6ce;
-    }
-    .astra-nav-mobile-overlay {
-        display: block;
-        position: fixed;
-        top: 56px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #1a124499;
-        z-index: 110;
-        transition: opacity .22s;
-    }
-    .astra-navbar ul li {
-        text-align: center;
-    }
-    .astra-navbar ul li a {
-        font-size: 1em;
-        font-weight: 700;
-        padding: 14px 0;
-        display: block;
-    }
-    .nav-btn {
-        margin: 22px auto 0 auto;
-        width: fit-content;
-        display: block;
-        font-size: 1.08em;
-    }
-    .astra-navbar ul {
-        gap: 14px;
-    }
-}
-
-/* TODO: ALT – später entfernen */
-@media (max-width: 650px) {
-    .astra-header-inner { flex-direction: column; height: auto; gap: 7px; padding: 0 2vw;}
-    .astra-navbar ul { flex-direction: column; gap: 7px; }
-    .astra-hero-card, .astra-about-card, .astra-features-grid, .astra-faq-section {
-        max-width: 98vw !important; padding-left: 1vw; padding-right: 1vw;
-    }
-    .astra-hero-logo { width: 90px; }
-    .about-img { width: 80px; height: 80px; }
-    .feature-card { padding: 13px 7px; font-size: 1em; }
-    .faq-question { font-size: 1em; padding: 11px 9px 11px 9px; }
-    .faq-answer { padding: 0 9px 8px 9px; }
-}
-
 /* ===================
       HERO SECTION
 =================== */
@@ -331,28 +215,6 @@ a:hover { color: #ffd799; }
 @keyframes blink {
     50% { opacity: 0; }
 }
-
-/* TODO: ALT – später entfernen */
-/* =========================
-   MOBILE
-   ========================= */
-@media (max-width: 700px) {
-    .hero-headline {
-        flex-wrap: wrap;
-        white-space: normal;
-    }
-
-    .headline-dynamic {
-        display: block;
-        margin-left: 0;
-    }
-
-    .headline-dynamic::after {
-        display: none;
-    }
-}
-
-
 
 
 .astra-hero-card {
@@ -571,29 +433,6 @@ a:hover { color: #ffd799; }
     opacity: 1;
     visibility: visible;
     padding: 15px 25px;
-}
-
-/* TODO: ALT – später entfernen */
-/* MEDIA QUERIES */
-@media (max-width: 1200px) {
-    .astra-header-inner { max-width: 100vw; padding: 0 14px; }
-    main { max-width: 100vw; }
-}
-@media (max-width: 900px) {
-    .astra-header-inner { padding: 0 12px; }
-    .astra-navbar ul { gap: 14px; }
-    .astra-hero-content { flex-direction: column; padding: 42px 2vw 24px 2vw; gap: 19px; }
-    .astra-about-card { flex-direction: column; gap: 19px; padding: 21px 10px 17px 10px; }
-    .astra-about-card > div:last-child { min-width: 0; }
-    .astra-hero-logo { width: 120px; }
-}
-@media (max-width: 750px) {
-    .astra-stats { flex-direction: column; align-items: center; gap: 16px; }
-    .stat-card { min-width: 80vw; }
-}
-@media (max-width: 500px) {
-    h1 { font-size: 1.7em; }
-    h2 { font-size: 1.17em; }
 }
 
 
@@ -956,18 +795,6 @@ main.commands-main {
     text-align: right;
 }
 
-/* TODO: ALT – später entfernen */
-@media (max-width: 700px) {
-    .command-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .cmd-usage {
-        justify-self: start;
-    }
-}
-
 
 .command-item strong {
     color: #a7c8fd;
@@ -986,27 +813,6 @@ main.commands-main {
     color: #65e6ce;
 }
 
-/* TODO: ALT – später entfernen */
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 700px) {
-    .commands-panel-card {
-        padding: 28px 18px 36px;
-    }
-
-    .commands-hero-content {
-        padding: 42px 6vw 34px;
-    }
-
-    .commands-search {
-        border-radius: 14px;
-    }
-}
-
-
-
 /* =========================
    ASTRA STATUS PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
@@ -1018,14 +824,6 @@ main.astra-status-main {
     position: relative;
     display: flex;
     justify-content: center;
-}
-
-/* TODO: ALT – später entfernen */
-@media (max-width: 700px) {
-    .astra-status-main {
-        min-height: auto !important;
-        padding: 56px 16px 96px;
-    }
 }
 
 /* ==== Background Bubbles ==== */
@@ -1064,15 +862,6 @@ main.astra-status-main {
 
     display: flex;
     flex-direction: column;
-}
-
-/* TODO: ALT – später entfernen */
-@media (max-width: 700px) {
-    .astra-status-card {
-        padding: 28px 18px;
-        min-height: auto;
-        border-radius: 22px;
-    }
 }
 
 .astra-status-card > *:not(.status-bubbles-bg) {
@@ -1304,29 +1093,6 @@ main.astra-status-main {
     letter-spacing: .04em;
 }
 
-/* TODO: ALT – später entfernen */
-/* ==== Mobile ==== */
-@media (max-width: 700px) {
-    .status-row {
-        font-size: 1.02rem;
-        padding: 12px 0;
-    }
-    .stats-box-row {
-        flex-direction: column;
-        gap: 12px;
-    }
-}
-@media (max-width: 500px) {
-    .status-row {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .status-badge {
-        min-width: 88px;
-    }
-}
-
-
 /* =========================
    REPORT PAGE STYLES (CLEAN / HERO CONSISTENT)
    ========================= */
@@ -1335,16 +1101,6 @@ main.report-main {
     flex: 1;
     display: flex;
     justify-content: center;
-}
-
-/* TODO: ALT – später entfernen */
-@media (max-width: 600px) {
-    .report-main {
-        padding-top: 24px;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-bottom: 56px;
-    }
 }
 
 /* HERO CARD */
@@ -1500,17 +1256,7 @@ main.report-main {
     color: #ff7272;
 }
 
-/* TODO: ALT – später entfernen */
-/* MOBILE */
-@media (max-width: 600px) {
-    .report-hero-card {
-        padding: 36px 22px;
-        border-radius: 26px;
-    }
-    .astra-problem-chip {
-        flex: 1 1 100%;
-    }
-}
+
 
 
 /* =========================
@@ -1603,25 +1349,6 @@ main.report-main {
     gap: 18px;
     flex-wrap: wrap;
 }
-
-/* TODO: ALT – später entfernen */
-/* MOBILE */
-@media (max-width: 768px) {
-    .error-hero-card {
-        padding: 56px 28px;
-        border-radius: 28px;
-    }
-
-    .error-code {
-        font-size: 4.4rem;
-    }
-
-    .error-hero-content h1 {
-        font-size: 1.7rem;
-    }
-}
-
-
 
 /* =========================
    HEADER FIX – 404 PAGE
@@ -1717,17 +1444,6 @@ footer.astra-footer {
     color: #7dfad7;
     transform: translateX(4px);
 }
-
-/* TODO: ALT – später entfernen */
-/* Mobile */
-@media (max-width: 900px) {
-    .astra-footer-wrap {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 40px 20px;
-    }
-}
-
 
 footer.astra-footer::before {
     content: "";
@@ -2027,196 +1743,92 @@ main.legal-main {
     align-items: center;
 }
 
-
-
-
 /* =========================================================
-   MOBILE
+   MOBILE + TABLET – DESKTOP SCALE DOWN (FINAL)
    ========================================================= */
 
 @media (max-width: 900px) {
-    .legal-row {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-}
 
-@media (max-width: 900px) {
-    .legal-two-col {
-        grid-template-columns: 1fr;
-    }
-
-    .legal-mini-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .legal-main-card {
-        padding: 38px 24px;
-        border-radius: 26px;
-    }
-
-    .legal-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .legal-hero-content {
-        padding: 46px 6vw 38px;
-    }
-
-    .legal-hero-content h1 {
-        font-size: 2.2em;
-    }
-}
-
-
-
-/* =========================================================
-   GLOBAL RESPONSIVE PATCH – ASTRA (MOBILE FIRST FIX)
-   ========================================================= */
-
-
-/* =========================================================
-   MAIN LAYOUT FIX
-   ========================================================= */
-/* TODO: ALT – später entfernen */
-@media (max-width: 768px) {
+    /* === GLOBAL LAYOUT === */
     main {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-        padding-top: calc(var(--header-height-mobile) + 20px);
+        padding-top: calc(var(--header-height-mobile) + 24px);
+        padding-left: 18px;
+        padding-right: 18px;
         padding-bottom: 64px;
     }
-}
 
-@media (max-width: 480px) {
-    main {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
-}
-
-/* =========================================================
-   UNIVERSAL GRID → STACK RULE
-   ========================================================= */
-
-@media (max-width: 800px) {
-    .astra-stats,
-    .stats-box-row,
-    .astra-features-grid,
-    .astra-footer-wrap,
-    .command-item {
-        grid-template-columns: 1fr !important;
-        flex-direction: column !important;
-    }
-}
-
-/* =========================================================
-   COMMAND ITEMS – MOBILE PERFECT
-   ========================================================= */
-
-@media (max-width: 800px) {
-    .command-item {
-        padding: 16px 16px;
-        gap: 8px;
+    /* === HEADER === */
+    .astra-header-inner {
+        height: var(--header-height-mobile);
+        padding: 0 18px;
     }
 
-    .cmd-name {
-        font-size: 1.05em;
-        white-space: normal;
+    .astra-logo img {
+        width: 38px;
+        height: 38px;
     }
 
-    .cmd-desc {
-        font-size: 0.95em;
-        line-height: 1.45;
+    .astra-logo-text {
+        font-size: 1.3em;
     }
 
-    .cmd-usage {
-        font-size: 0.9em;
-        padding: 5px 12px;
-        justify-self: flex-start;
-    }
-}
+    /* === TYPO === */
+    h1 { font-size: 2.1em; }
+    h2 { font-size: 1.45em; }
+    h3 { font-size: 1.15em; }
 
-/* =========================================================
-   SEARCH BAR – MOBILE PERFORMANCE MODE
-   ========================================================= */
-
-@media (max-width: 700px) {
-    .commands-search {
-        height: 48px;
-        font-size: 1em;
-        animation: none !important;
-        box-shadow:
-                0 0 0 1px rgba(101,230,206,0.35),
-                0 0 16px rgba(101,230,206,0.35);
+    /* === HERO === */
+    .astra-hero-content,
+    .commands-hero-content,
+    .legal-hero-content {
+        padding: 42px 4vw 32px;
+        gap: 28px;
     }
 
-    .commands-search:focus {
-        box-shadow:
-                0 0 0 2px rgba(101,230,206,0.6),
-                0 0 22px rgba(101,230,206,0.6);
+    .astra-hero-logo {
+        width: 120px;
     }
-}
 
-/* =========================================================
-   HERO CARDS – MOBILE SCALE DOWN
-   ========================================================= */
-
-@media (max-width: 700px) {
+    /* === CARDS === */
     .astra-hero-card,
     .commands-hero-card,
     .astra-status-card,
     .report-hero-card,
-    .error-hero-card {
-        border-radius: 22px;
-        padding: 24px 18px;
+    .error-hero-card,
+    .legal-hero-card {
+        border-radius: 24px;
     }
 
-    .astra-hero-content,
-    .commands-hero-content {
-        padding: 36px 4vw 28px;
-        gap: 18px;
+    /* === COMMAND ITEMS (SEHR WICHTIG) === */
+    .command-item {
+        grid-template-columns: minmax(110px, 1fr) 2fr auto;
+        padding: 16px 18px;
+        gap: 14px;
     }
 
-    h1 {
-        font-size: 1.9em !important;
+    .cmd-name {
+        font-size: 1em;
     }
 
-    h2 {
-        font-size: 1.25em !important;
-    }
-}
-
-/* =========================================================
-   EFFECT REDUCTION (MOBILE PERFORMANCE)
-   ========================================================= */
-
-@media (max-width: 700px) {
-    * {
-        animation: none !important;
+    .cmd-desc {
+        font-size: 0.95em;
     }
 
-    .astra-hero-card,
-    .commands-panel-card,
-    .command-category,
-    .astra-status-card {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.25) !important;
+    .cmd-usage {
+        font-size: 0.85em;
+        padding: 5px 12px;
     }
-}
 
-/* =========================================================
-   FOOTER MOBILE FIX
-   ========================================================= */
-
-@media (max-width: 900px) {
+    /* === FOOTER === */
     .astra-footer-wrap {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-    }
-
-    .astra-footer-brand,
-    .astra-footer-links {
-        align-items: center;
+        padding: 48px 20px;
+        gap: 32px;
     }
 }
 
+@media (max-width: 1100px) {
+    main {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
