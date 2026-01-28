@@ -227,7 +227,6 @@ a:hover { color: #ffd799; }
     background: linear-gradient(115deg, #251f5b 0%, #362897 65%, #3fd6dd 160%);
     border-radius: 38px;
     box-shadow: 0 12px 48px #5b65ff2a;
-    margin: 36px auto 46px auto;
     overflow: hidden;
     min-height: 370px;
 }
@@ -464,7 +463,6 @@ main.commands-main {
     border-radius: 38px;
     box-shadow: 0 14px 54px rgba(91,101,255,.28);
     overflow: hidden;
-    margin-bottom: 54px;
 }
 
 .commands-hero-content {
@@ -827,8 +825,6 @@ main.astra-status-main {
     flex: 1;
     min-height: 560px;
     position: relative;
-    display: flex;
-    justify-content: center;
 }
 
 /* ==== Background Bubbles ==== */
@@ -1476,7 +1472,6 @@ main.legal-main {
    ========================================================= */
 
 .legal-hero-card {
-    margin-top: 36px;
     position: relative;
     background: linear-gradient(
             115deg,
@@ -1765,6 +1760,11 @@ main.legal-main {
         margin-top: 24px;
     }
 
+    /* Fallback für Seiten mit Wrapper-Layouts */
+    main > *:first-child > *:first-child {
+        margin-top: 36px;
+    }
+
     body {
         padding-top: calc(var(--header-height-mobile) + 24px);
     }
@@ -1844,7 +1844,8 @@ main.legal-main {
         padding-right: 24px;
     }
 
-    main > *:first-child {
-        margin-top: 24px;
+    /* Fallback für Seiten mit Wrapper-Layouts */
+    main > *:first-child > *:first-child {
+        margin-top: 36px;
     }
 }
