@@ -191,6 +191,8 @@ a:hover { color: #ffd799; }
     background: none;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    z-index: 10002;
 }
 
 .astra-nav-toggle span {
@@ -198,8 +200,23 @@ a:hover { color: #ffd799; }
     height: 3px;
     background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     border-radius: 999px;
-    transition: all 0.35s ease;
+    box-shadow: 0 0 14px rgba(101,230,206,0.65);
+    transition:
+            transform 0.35s cubic-bezier(.4,0,.2,1),
+            opacity 0.25s ease;
 }
+
+/* Hamburger → X */
+body.nav-open .astra-nav-toggle span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+body.nav-open .astra-nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+body.nav-open .astra-nav-toggle span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 
 /* =========================
    ASTRA MOBILE APP DRAWER
@@ -209,43 +226,42 @@ a:hover { color: #ffd799; }
     position: fixed;
     top: 12px;
     right: -100%;
-
     width: 86%;
-    max-width: 320px;
-    height: calc(100vh - 24px);
+    max-width: 340px;
+    height: calc(100dvh - 24px);
 
-    padding: 78px 18px 20px;
+    padding: 78px 18px 22px;
 
-    background:
-            linear-gradient(
-                    145deg,
-                    rgba(37,31,91,0.96),
-                    rgba(54,40,151,0.96)
-            );
+    background: linear-gradient(
+            145deg,
+            rgba(37,31,91,0.97),
+            rgba(54,40,151,0.97)
+    );
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
     border-radius: 28px 0 0 28px;
 
     box-shadow:
-            -22px 0 70px rgba(0,0,0,0.55),
+            -22px 0 80px rgba(0,0,0,0.6),
             inset 0 0 0 1px rgba(255,255,255,0.06);
 
     display: flex;
     flex-direction: column;
     gap: 10px;
 
-    z-index: 1001;
+    z-index: 10001;
 
     opacity: 0;
-    transform: translateX(24px);
+    transform: translateX(32px);
 
     transition:
-            right 0.38s cubic-bezier(.4,0,.2,1),
-            opacity 0.28s ease,
-            transform 0.38s cubic-bezier(.4,0,.2,1);
+            right 0.42s cubic-bezier(.4,0,.2,1),
+            opacity 0.3s ease,
+            transform 0.42s cubic-bezier(.4,0,.2,1);
 }
+
 
 /* =========================
    NAV ITEMS – CARD STYLE
@@ -265,41 +281,40 @@ a:hover { color: #ffd799; }
     color: #eefaff;
     text-decoration: none;
 
-    background:
-            linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.06),
-                    rgba(255,255,255,0.02)
-            );
+    background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.02)
+    );
 
     box-shadow:
             inset 0 0 0 1px rgba(255,255,255,0.05),
-            0 6px 22px rgba(0,0,0,0.25);
+            0 8px 28px rgba(0,0,0,0.28);
 
-    transform: translateX(18px);
+    transform: translateX(20px);
     opacity: 0;
 
     transition:
             background 0.2s ease,
             box-shadow 0.2s ease,
-            transform 0.4s cubic-bezier(.4,0,.2,1),
-            opacity 0.4s ease;
+            transform 0.45s cubic-bezier(.4,0,.2,1),
+            opacity 0.45s ease;
 }
 
 .astra-nav-mobile .nav-link:hover {
-    background:
-            linear-gradient(
-                    180deg,
-                    rgba(101,230,206,0.22),
-                    rgba(101,230,206,0.12)
-            );
+    background: linear-gradient(
+            180deg,
+            rgba(101,230,206,0.28),
+            rgba(101,230,206,0.14)
+    );
 
     color: #65e6ce;
 
     box-shadow:
-            0 10px 36px rgba(101,230,206,0.35),
+            0 14px 44px rgba(101,230,206,0.45),
             inset 0 0 0 1px rgba(101,230,206,0.45);
 }
+
 
 /* =========================
    CTA BUTTON – PREMIUM
@@ -308,7 +323,7 @@ a:hover { color: #ffd799; }
 .astra-nav-mobile .nav-btn {
     margin-top: auto;
 
-    padding: 14px 20px;
+    padding: 14px 22px;
     border-radius: 999px;
 
     font-size: 1em;
@@ -320,19 +335,20 @@ a:hover { color: #ffd799; }
     color: #223254;
 
     box-shadow:
-            0 10px 36px rgba(101,230,206,0.55),
+            0 14px 46px rgba(101,230,206,0.6),
             0 0 0 1px rgba(255,255,255,0.25);
 
     transition:
-            transform 0.16s ease,
-            box-shadow 0.16s ease;
+            transform 0.18s ease,
+            box-shadow 0.18s ease;
 }
 
 .astra-nav-mobile .nav-btn:hover {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px) scale(1.03);
     box-shadow:
-            0 18px 52px rgba(101,230,206,0.75);
+            0 22px 68px rgba(101,230,206,0.8);
 }
+
 
 /* =========================
    OVERLAY
@@ -342,15 +358,16 @@ a:hover { color: #ffd799; }
     position: fixed;
     inset: 0;
 
-    background: rgba(8, 6, 30, 0.55);
-    backdrop-filter: blur(10px);
+    background: rgba(8, 6, 30, 0.6);
+    backdrop-filter: blur(12px);
 
     opacity: 0;
     pointer-events: none;
 
-    transition: opacity 0.3s ease;
-    z-index: 1000;
+    transition: opacity 0.32s ease;
+    z-index: 10000;
 }
+
 
 /* =========================
    ACTIVE STATE
@@ -1940,7 +1957,7 @@ main.legal-main {
 }
 
 /* =========================================================
-   MOBILE + TABLET – DESKTOP SCALE DOWN (FINAL & SAFE)
+   MOBILE + TABLET – DESKTOP SCALE DOWN (FINAL & HERO STYLE)
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -1950,7 +1967,7 @@ main.legal-main {
     ===================== */
 
     body {
-        padding-top: calc(var(--header-height-mobile) + 24px);
+        padding-top: var(--header-height-mobile);
     }
 
     main {
@@ -1959,40 +1976,73 @@ main.legal-main {
         padding-bottom: 64px;
     }
 
-    /* Einheitlicher Startabstand */
-    main > *:first-child {
-        margin-top: 24px;
-    }
-
-    /* Fallback für Wrapper-Strukturen */
-    main > *:first-child > *:first-child {
-        margin-top: 24px;
-    }
-
 
     /* =====================
-       HEADER
+       HEADER – MINI HERO
     ===================== */
 
-    .astra-header,
-    .astra-header * {
-        word-break: normal;
-        overflow-wrap: normal;
-        white-space: nowrap;
+    .astra-header {
+        position: fixed;
+        top: env(safe-area-inset-top, 0);
+        left: 0;
+        right: 0;
+        z-index: 9999;
+
+        background: linear-gradient(
+                115deg,
+                rgba(37,31,91,0.98),
+                rgba(54,40,151,0.96),
+                rgba(63,214,221,0.35)
+        );
+
+        backdrop-filter: blur(26px);
+        -webkit-backdrop-filter: blur(26px);
+
+        box-shadow:
+                0 14px 48px rgba(0,0,0,0.55),
+                0 0 60px rgba(101,230,206,0.25);
+
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Glow-Line unten */
+    .astra-header::after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: -1px;
+        height: 1px;
+        background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(101,230,206,0.7),
+                transparent
+        );
+        box-shadow: 0 0 18px rgba(101,230,206,0.6);
     }
 
     .astra-header-inner {
         height: var(--header-height-mobile);
         padding: 0 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .astra-logo img {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        box-shadow:
+                0 0 24px rgba(101,230,206,0.6),
+                0 0 42px rgba(124,65,238,0.35);
     }
 
     .astra-logo-text {
-        font-size: 1.3em;
+        font-size: 1.35em;
+        font-weight: 900;
+        letter-spacing: 0.5px;
     }
 
     .astra-navbar {
@@ -2002,6 +2052,22 @@ main.legal-main {
     .astra-nav-toggle {
         display: flex;
     }
+
+
+    /* =====================
+       STATUS PAGE FIX
+    ===================== */
+
+    main.astra-status-main {
+        min-height: unset;
+        padding-bottom: 80px;
+    }
+
+    .astra-status-card {
+        min-height: unset;
+        padding: 28px 22px 26px;
+    }
+
 
     /* =====================
        TYPOGRAPHY
@@ -2022,10 +2088,9 @@ main.legal-main {
 
 
     /* =====================
-       HERO (KRITISCH)
+       HERO FIX
     ===================== */
 
-    /* Zeilenumbruch erlauben (verhindert Abschneiden!) */
     .hero-headline {
         white-space: normal;
         flex-wrap: wrap;
@@ -2040,44 +2105,6 @@ main.legal-main {
 
     .astra-hero-logo {
         width: 120px;
-    }
-
-
-    /* =====================
-       CARDS
-    ===================== */
-
-    .astra-hero-card,
-    .commands-hero-card,
-    .astra-status-card,
-    .report-hero-card,
-    .error-hero-card,
-    .legal-hero-card {
-        border-radius: 24px;
-    }
-
-
-    /* =====================
-       COMMAND ITEMS
-    ===================== */
-
-    .command-item {
-        grid-template-columns: minmax(110px, 1fr) 2fr auto;
-        padding: 16px 18px;
-        gap: 14px;
-    }
-
-    .cmd-name {
-        font-size: 1em;
-    }
-
-    .cmd-desc {
-        font-size: 0.95em;
-    }
-
-    .cmd-usage {
-        font-size: 0.85em;
-        padding: 5px 12px;
     }
 
 
