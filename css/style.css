@@ -23,9 +23,12 @@ html, body {
     background: #221c50;
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-
     display: flex;
     flex-direction: column;
+}
+
+body {
+    padding-top: calc(var(--header-height) + 32px);
 }
 
 
@@ -35,9 +38,6 @@ main {
     width: 100%;
     margin: 0 auto;
     background: transparent;
-
-    /* ✅ EINHEITLICHER HEADER-ABSTAND */
-    padding-top: calc(var(--header-height) + 32px);
     padding-left: 38px;
     padding-right: 38px;
     padding-bottom: 80px;
@@ -74,7 +74,7 @@ a:hover { color: #ffd799; }
     position: fixed;
     top: env(safe-area-inset-top, 0px);
     width: 100%;
-    z-index: 50;
+    z-index: 1000;
     background: #1c1250;
     backdrop-filter: blur(14px);
     box-shadow: 0 2px 24px #65e6ce23;
@@ -1751,10 +1751,13 @@ main.legal-main {
 
     /* === GLOBAL LAYOUT === */
     main {
-        padding-top: calc(var(--header-height-mobile) + 24px);
         padding-left: 18px;
         padding-right: 18px;
         padding-bottom: 64px;
+    }
+
+    body {
+        padding-top: calc(var(--header-height-mobile) + 24px);
     }
 
     /* === HEADER === */
