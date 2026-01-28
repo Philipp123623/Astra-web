@@ -185,28 +185,28 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .astra-nav-toggle {
-    display: none;
+    display: flex; /* IMMER sichtbar */
     flex-direction: column;
     gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 10002;
+    z-index: 10020;
 }
 
 .astra-nav-toggle span {
     width: 26px;
     height: 3px;
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     border-radius: 999px;
-    box-shadow: 0 0 14px rgba(101,230,206,0.65);
+    box-shadow: 0 0 14px rgba(101,230,206,.65);
     transition:
-            transform 0.35s cubic-bezier(.4,0,.2,1),
-            opacity 0.25s ease;
+            transform .35s cubic-bezier(.4,0,.2,1),
+            opacity .25s ease;
 }
 
-/* Hamburger → X */
+/* Hamburger → X (Header) */
 body.nav-open .astra-nav-toggle span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
 }
@@ -224,129 +224,174 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 
 .astra-nav-mobile {
     position: fixed;
-    top: 12px;
-    right: -100%;
-    width: 86%;
-    max-width: 340px;
-    height: calc(100dvh - 24px);
+    top: env(safe-area-inset-top, 0);
+    right: 0;
 
-    padding: 78px 18px 22px;
+    width: 100vw;                /* ❗ KEIN CROP */
+    max-width: 380px;
+    height: 100dvh;
+
+    padding:
+            calc(72px + env(safe-area-inset-top))
+            20px
+            calc(24px + env(safe-area-inset-bottom));
 
     background: linear-gradient(
-            145deg,
-            rgba(37,31,91,0.97),
-            rgba(54,40,151,0.97)
+            160deg,
+            rgba(32,26,88,.98),
+            rgba(54,40,151,.96)
     );
 
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
 
-    border-radius: 28px 0 0 28px;
+    border-radius: 32px 0 0 32px;
 
     box-shadow:
-            -22px 0 80px rgba(0,0,0,0.6),
-            inset 0 0 0 1px rgba(255,255,255,0.06);
+            -28px 0 90px rgba(0,0,0,.65),
+            inset 0 0 0 1px rgba(255,255,255,.06);
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
 
-    z-index: 10001;
+    z-index: 10010;
 
+    /* CLOSED STATE */
+    transform: translateX(100%);
     opacity: 0;
-    transform: translateX(32px);
 
     transition:
-            right 0.42s cubic-bezier(.4,0,.2,1),
-            opacity 0.3s ease,
-            transform 0.42s cubic-bezier(.4,0,.2,1);
+            transform .48s cubic-bezier(.4,0,.2,1),
+            opacity .28s ease;
 }
 
 
 /* =========================
-   NAV ITEMS – CARD STYLE
+   DRAWER HEADER (TITLE + X)
+   ========================= */
+
+.astra-nav-mobile-header {
+    position: absolute;
+    top: calc(18px + env(safe-area-inset-top));
+    left: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.astra-nav-mobile-title {
+    font-size: .8em;
+    font-weight: 900;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+}
+
+/* CLOSE X */
+.astra-nav-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(8px);
+
+    position: relative;
+}
+
+.astra-nav-close::before,
+.astra-nav-close::after {
+    content: "";
+    position: absolute;
+    inset: 50%;
+    width: 18px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.astra-nav-close::before {
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+.astra-nav-close::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+
+/* =========================
+   NAV ITEMS – APP STYLE
    ========================= */
 
 .astra-nav-mobile .nav-link {
     display: flex;
     align-items: center;
 
-    padding: 14px 16px;
-    border-radius: 16px;
+    padding: 18px 22px;
+    border-radius: 20px;
 
-    font-size: 1em;
+    font-size: 1.08em;
     font-weight: 800;
-    letter-spacing: 0.3px;
 
     color: #eefaff;
     text-decoration: none;
 
     background: linear-gradient(
             180deg,
-            rgba(255,255,255,0.07),
-            rgba(255,255,255,0.02)
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.03)
     );
 
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.05),
-            0 8px 28px rgba(0,0,0,0.28);
+            inset 0 0 0 1px rgba(255,255,255,.06),
+            0 12px 34px rgba(0,0,0,.35);
 
-    transform: translateX(20px);
+    transform: translateX(26px);
     opacity: 0;
 
     transition:
-            background 0.2s ease,
-            box-shadow 0.2s ease,
-            transform 0.45s cubic-bezier(.4,0,.2,1),
-            opacity 0.45s ease;
+            transform .45s cubic-bezier(.4,0,.2,1),
+            opacity .45s ease,
+            background .18s ease,
+            box-shadow .18s ease;
 }
 
-.astra-nav-mobile .nav-link:hover {
-    background: linear-gradient(
-            180deg,
-            rgba(101,230,206,0.28),
-            rgba(101,230,206,0.14)
-    );
-
-    color: #65e6ce;
-
+/* ACTIVE PAGE */
+.astra-nav-mobile .nav-link.active {
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    color: #223254;
     box-shadow:
-            0 14px 44px rgba(101,230,206,0.45),
-            inset 0 0 0 1px rgba(101,230,206,0.45);
+            0 18px 56px rgba(101,230,206,.6);
+}
+
+/* TOUCH FEEDBACK */
+.astra-nav-mobile .nav-link:active {
+    transform: scale(.97);
 }
 
 
 /* =========================
-   CTA BUTTON – PREMIUM
+   CTA BUTTON
    ========================= */
 
 .astra-nav-mobile .nav-btn {
     margin-top: auto;
-
-    padding: 14px 22px;
+    padding: 18px 26px;
     border-radius: 999px;
 
-    font-size: 1em;
+    font-size: 1.05em;
     font-weight: 900;
-    letter-spacing: 0.4px;
     text-align: center;
 
     background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #223254;
 
     box-shadow:
-            0 14px 46px rgba(101,230,206,0.6),
-            0 0 0 1px rgba(255,255,255,0.25);
-
-    transition:
-            transform 0.18s ease,
-            box-shadow 0.18s ease;
-}
-
-.astra-nav-mobile .nav-btn:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow:
-            0 22px 68px rgba(101,230,206,0.8);
+            0 18px 60px rgba(101,230,206,.7);
 }
 
 
@@ -357,26 +402,24 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 .astra-nav-mobile-overlay {
     position: fixed;
     inset: 0;
-
-    background: rgba(8, 6, 30, 0.6);
-    backdrop-filter: blur(12px);
+    background: rgba(6,4,24,.7);
+    backdrop-filter: blur(14px);
 
     opacity: 0;
     pointer-events: none;
-
-    transition: opacity 0.32s ease;
     z-index: 10000;
+
+    transition: opacity .3s ease;
 }
 
 
 /* =========================
-   ACTIVE STATE
+   ACTIVE STATE (OPEN)
    ========================= */
 
 body.nav-open .astra-nav-mobile {
-    right: 12px;
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 body.nav-open .astra-nav-mobile .nav-link {
@@ -384,15 +427,15 @@ body.nav-open .astra-nav-mobile .nav-link {
     opacity: 1;
 }
 
-/* Stagger Animation */
-body.nav-open .astra-nav-mobile .nav-link:nth-child(1) { transition-delay: 0.05s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(2) { transition-delay: 0.08s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(3) { transition-delay: 0.11s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(4) { transition-delay: 0.14s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(5) { transition-delay: 0.17s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(6) { transition-delay: 0.20s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(7) { transition-delay: 0.23s; }
-body.nav-open .astra-nav-mobile .nav-link:nth-child(8) { transition-delay: 0.26s; }
+/* STAGGER */
+body.nav-open .astra-nav-mobile .nav-link:nth-child(1){transition-delay:.06s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(2){transition-delay:.09s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(3){transition-delay:.12s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(4){transition-delay:.15s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(5){transition-delay:.18s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(6){transition-delay:.21s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(7){transition-delay:.24s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(8){transition-delay:.27s}
 
 body.nav-open .astra-nav-mobile-overlay {
     opacity: 1;
@@ -1968,12 +2011,15 @@ main.legal-main {
 
     body {
         padding-top: var(--header-height-mobile);
+        overflow-x: hidden; /* ✅ STATUS & DRAWER CROP FIX */
     }
 
     main {
         padding-left: 18px;
         padding-right: 18px;
         padding-bottom: 64px;
+        max-width: 100%;
+        overflow-x: hidden; /* ✅ extra safety */
     }
 
 
@@ -2050,22 +2096,39 @@ main.legal-main {
     }
 
     .astra-nav-toggle {
-        display: flex;
+        display: flex; /* ✅ Hamburger überall sichtbar */
     }
 
 
     /* =====================
-       STATUS PAGE FIX
+       STATUS PAGE FIX (ANTI-CROP)
     ===================== */
 
     main.astra-status-main {
-        min-height: unset;
-        padding-bottom: 80px;
+        min-height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 0;
+        padding-bottom: 96px;
+        overflow-x: hidden; /* ✅ entscheidend */
     }
 
     .astra-status-card {
-        min-height: unset;
-        padding: 28px 22px 26px;
+        min-height: auto;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 28px 22px 32px;
+        border-radius: 26px;
+        overflow: hidden; /* ✅ Glow + Content safe */
+    }
+
+
+    /* ❌ DOPPELTER STARTABSTAND RAUS */
+    main > *:first-child,
+    main > *:first-child > *:first-child {
+        margin-top: 0;
     }
 
 
