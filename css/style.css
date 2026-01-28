@@ -78,7 +78,7 @@ a:hover { color: #ffd799; }
     position: fixed;
     top: env(safe-area-inset-top, 0px);
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
     background: #1c1250;
     backdrop-filter: blur(14px);
     box-shadow: 0 2px 24px #65e6ce23;
@@ -1974,11 +1974,13 @@ main.legal-main {
        HEADER
     ===================== */
 
-    .astra-header,
-    .astra-header * {
+    .astra-header{
         word-break: normal;
         overflow-wrap: normal;
         white-space: nowrap;
+        top: env(safe-area-inset-top, 0);
+        left: 0;
+        right: 0;
     }
 
     .astra-header-inner {
@@ -2054,6 +2056,16 @@ main.legal-main {
     .error-hero-card,
     .legal-hero-card {
         border-radius: 24px;
+    }
+
+    main.astra-status-main {
+        min-height: unset;
+        padding-bottom: 80px;
+    }
+
+    .astra-status-card {
+        min-height: unset;
+        padding: 28px 22px 26px;
     }
 
 
