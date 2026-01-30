@@ -85,6 +85,7 @@ a:hover { color: #ffd799; }
     transition: background 0.2s;
 }
 
+
 .astra-header-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -140,6 +141,13 @@ a:hover { color: #ffd799; }
     flex-direction: row;
 }
 
+/* FIX: Navbar-Texte dürfen nicht umbrechen */
+.astra-navbar,
+.astra-navbar * {
+    word-break: normal;
+    white-space: nowrap;
+}
+
 .nav-link {
     color: #e4eaff;
     text-decoration: none;
@@ -185,7 +193,7 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .astra-nav-toggle {
-    display: flex; /* IMMER sichtbar */
+    display: none; /* IMMER sichtbar */
     flex-direction: column;
     gap: 6px;
     background: none;
