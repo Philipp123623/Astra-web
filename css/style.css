@@ -2169,8 +2169,8 @@ main.legal-main {
 
 
     /* =====================================================
-       HERO / CONTENT
-       ===================================================== */
+   HERO / CONTENT
+   ===================================================== */
 
     .astra-hero-card,
     .commands-hero-card,
@@ -2178,6 +2178,7 @@ main.legal-main {
     .report-hero-card,
     .error-hero-card {
         border-radius: 26px;
+        overflow: hidden; /* verhindert rechten Crop bei langen Headlines */
     }
 
     .astra-hero-content,
@@ -2185,24 +2186,41 @@ main.legal-main {
     .legal-hero-content {
         padding: 42px 18px 32px;
         gap: 28px;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     /* =====================================================
-   HERO HEADLINE – MOBILE WORD WRAP FIX
-   ===================================================== */
+       HERO HEADLINE – MOBILE & TABLET FINAL FIX
+       ===================================================== */
 
     .hero-headline {
-        white-space: normal;
+        display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
+        white-space: normal;
         max-width: 100%;
     }
 
+    /* ALLE Headline-Teile (h1 + dynamische Spans) */
     .hero-headline h1,
     .hero-headline span {
         max-width: 100%;
-        word-break: normal;
-        overflow-wrap: break-word;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
+
+    /* LEGAL / HERO H1 – RESPONSIVE SKALIERUNG */
+    .legal-hero-content h1,
+    .commands-hero-content h1,
+    .astra-hero-content h1,
+    .report-hero-content h1,
+    .error-hero-content h1 {
+        font-size: clamp(1.9rem, 6vw, 2.3rem);
+        line-height: 1.15;
+    }
+
 
 
 
