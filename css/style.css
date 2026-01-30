@@ -459,23 +459,18 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
    ========================= */
 
 .astra-nav-mobile .nav-btn {
-    margin-top: auto;
-    padding: 16px 26px;
-    border-radius: 18px;
+    margin: 32px 24px 24px;
+    padding: 16px 0;
+    border-radius: 16px;
 
+    text-align: center;
     font-size: 1.05em;
     font-weight: 900;
-    text-align: center;
 
     background: linear-gradient(90deg,#65e6ce,#a7c8fd);
     color: #223254;
 
-    box-shadow:
-            0 14px 40px rgba(101,230,206,0.55);
-
-    transition:
-            transform .22s cubic-bezier(.4,0,.2,1),
-            box-shadow .22s ease;
+    box-shadow: 0 12px 36px rgba(101,230,206,0.55);
 }
 
 .astra-nav-mobile .nav-btn:active {
