@@ -75,6 +75,97 @@ a:hover { color: #ffd799; }
 ::-webkit-scrollbar-thumb { background: #362897; border-radius: 6px; }
 ::selection { background: #72ffe2; color: #2a2463; }
 
+
+/* =========================
+   ASTRA PREMIUM LOADER
+   ========================= */
+
+#astra-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #161338;
+    overflow: hidden;
+}
+
+.astra-loader-bg {
+    position: absolute;
+    inset: 0;
+    background:
+            radial-gradient(420px 420px at 20% 20%, rgba(101,230,206,.25), transparent 70%),
+            radial-gradient(520px 520px at 80% 70%, rgba(124,65,238,.35), transparent 75%),
+            linear-gradient(180deg,#161338,#221c50);
+    animation: loaderBgMove 6s ease-in-out infinite;
+}
+
+@keyframes loaderBgMove {
+    0% { transform: scale(1) }
+    50% { transform: scale(1.05) }
+    100% { transform: scale(1) }
+}
+
+.astra-loader-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #eafcff;
+}
+
+.astra-loader-content img {
+    width: 96px;
+    border-radius: 24px;
+    box-shadow:
+            0 0 40px rgba(101,230,206,.55),
+            0 0 80px rgba(124,65,238,.35);
+    margin-bottom: 22px;
+}
+
+.astra-loader-text {
+    display: block;
+    font-weight: 800;
+    letter-spacing: .15em;
+    font-size: .9em;
+    opacity: .75;
+    margin-bottom: 18px;
+}
+
+/* Progress Bar */
+.astra-loader-bar {
+    width: 180px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    overflow: hidden;
+}
+
+.astra-loader-bar span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    animation: loaderProgress 1.2s ease forwards;
+}
+
+@keyframes loaderProgress {
+    from { width: 0% }
+    to   { width: 100% }
+}
+
+/* Fade out */
+#astra-loader.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+}
+
+
+
+
 /* ========== HEADER & NAVBAR ========== */
 
 .astra-header {

@@ -107,6 +107,21 @@ if (file_exists($historyFile)) {
 </head>
 <body class="status-page">
 
+<!-- ASTRA LOADER -->
+<div id="astra-loader">
+    <div class="astra-loader-bg"></div>
+
+    <div class="astra-loader-content">
+        <img src="/public/favicon_transparent.png" alt="Astra Logo" />
+        <span class="astra-loader-text">Initializing Astra…</span>
+
+        <div class="astra-loader-bar">
+            <span></span>
+        </div>
+    </div>
+</div>
+
+
 <?php include 'includes/header.php'; ?>
 
 <main class="astra-status-main" role="main" aria-label="Service Status Übersicht">
@@ -203,6 +218,31 @@ if (file_exists($historyFile)) {
 </main>
 
 <?php include 'includes/footer.php'; ?>
+
+<script>
+    (function () {
+
+        const loader = document.getElementById('astra-loader');
+        const KEY = 'astra_loader_shown';
+
+        // Nur beim ersten Besuch
+        if (sessionStorage.getItem(KEY)) {
+            loader.remove();
+            return;
+        }
+
+        sessionStorage.setItem(KEY, 'true');
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hide');
+                setTimeout(() => loader.remove(), 500);
+            }, 600); // fühlt sich smooth an, nicht künstlich
+        });
+
+    })();
+</script>
+
 
 <script>
     // Tab Switch
