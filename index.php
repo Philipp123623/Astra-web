@@ -62,6 +62,14 @@ if ($result->num_rows > 0) {
     <link rel="icon" href="/public/favicon_transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=2.4"/>
+    <meta property="og:title" content="Astra | Discord Bot">
+    <meta property="og:description" content="All-in-One Discord Bot mit Levels, Economy, Moderation, Tickets, Mini-Games & mehr.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://astra-bot.de/">
+    <meta property="og:image" content="https://astra-bot.de/public/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
 </head>
 <body>
 
