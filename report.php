@@ -95,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="report-page">
-<?php include "includes/header.php"; ?>
 
 <?php
 $pageClass = "report-page";
