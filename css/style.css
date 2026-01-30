@@ -2083,38 +2083,53 @@ main.legal-main {
 }
 
 /* =========================================================
-   MOBILE + TABLET – DESKTOP SCALE DOWN (FINAL & HERO STYLE)
+   MOBILE + TABLET – FINAL CLEAN OVERRIDE
+   Gilt für Handys & Tablets (≤ 900px)
    ========================================================= */
 
 @media (max-width: 900px) {
 
-    /* =====================
-       GLOBAL LAYOUT
-    ===================== */
+    /* =====================================================
+       RESET DESKTOP LAYOUT EINFLÜSSE
+       ===================================================== */
+
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
 
     body {
-        padding-top: var(--header-height-mobile);
-        overflow-x: hidden; /* ✅ STATUS & DRAWER CROP FIX */
+        padding-top: calc(var(--header-height-mobile) + 24px);
+        margin: 0;
+        overflow-x: hidden;
     }
 
     main {
-        padding-left: 18px;
-        padding-right: 18px;
-        padding-bottom: 64px;
+        width: 100%;
         max-width: 100%;
-        overflow-x: hidden; /* ✅ extra safety */
+        margin: 0;
+        padding: 0 18px 80px;
+        box-sizing: border-box;
+        overflow-x: visible;
+    }
+
+    /* Desktop-Startabstände komplett neutralisieren */
+    main > *:first-child,
+    main > *:first-child > *:first-child {
+        margin-top: 0 !important;
     }
 
 
-    /* =====================
-       HEADER – MINI HERO
-    ===================== */
+    /* =====================================================
+       HEADER – MOBILE FIXED BAR
+       ===================================================== */
 
     .astra-header {
         position: fixed;
         top: env(safe-area-inset-top, 0);
         left: 0;
         right: 0;
+        height: var(--header-height-mobile);
         z-index: 9999;
 
         background: linear-gradient(
@@ -2128,27 +2143,8 @@ main.legal-main {
         -webkit-backdrop-filter: blur(26px);
 
         box-shadow:
-                0 14px 48px rgba(0,0,0,0.55),
-                0 0 60px rgba(101,230,206,0.25);
-
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    /* Glow-Line unten */
-    .astra-header::after {
-        content: "";
-        position: absolute;
-        left: 18px;
-        right: 18px;
-        bottom: -1px;
-        height: 1px;
-        background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(101,230,206,0.7),
-                transparent
-        );
-        box-shadow: 0 0 18px rgba(101,230,206,0.6);
+                0 12px 40px rgba(0,0,0,0.55),
+                0 0 48px rgba(101,230,206,0.25);
     }
 
     .astra-header-inner {
@@ -2157,21 +2153,7 @@ main.legal-main {
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .astra-logo img {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        box-shadow:
-                0 0 24px rgba(101,230,206,0.6),
-                0 0 42px rgba(124,65,238,0.35);
-    }
-
-    .astra-logo-text {
-        font-size: 1.35em;
-        font-weight: 900;
-        letter-spacing: 0.5px;
+        max-width: 100%;
     }
 
     .astra-navbar {
@@ -2179,70 +2161,20 @@ main.legal-main {
     }
 
     .astra-nav-toggle {
-        display: flex; /* ✅ Hamburger überall sichtbar */
+        display: flex;
     }
 
 
-    /* =====================
-       STATUS PAGE FIX (ANTI-CROP)
-    ===================== */
+    /* =====================================================
+       HERO / CONTENT
+       ===================================================== */
 
-    main.astra-status-main {
-        min-height: auto;
-        width: 100%;
-        max-width: 100%;
-        padding-top: 0;
-        padding-bottom: 96px;
-        overflow-x: hidden; /* ✅ entscheidend */
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .astra-status-card {
-        min-height: auto;
-        height: auto;
-        width: 100%;
-        margin-left: 18px;
-        margin-right: 18px;
-        max-width: calc(100% - 36px);
-        padding: 28px 22px 32px;
+    .astra-hero-card,
+    .commands-hero-card,
+    .legal-hero-card,
+    .report-hero-card,
+    .error-hero-card {
         border-radius: 26px;
-        overflow: hidden; /* ✅ Glow + Content safe */
-    }
-
-
-    /* ❌ DOPPELTER STARTABSTAND RAUS */
-    main > *:first-child,
-    main > *:first-child > *:first-child {
-        margin-top: 0;
-    }
-
-
-    /* =====================
-       TYPOGRAPHY
-    ===================== */
-
-    h1 {
-        font-size: 2.1em;
-        line-height: 1.2;
-    }
-
-    h2 {
-        font-size: 1.45em;
-    }
-
-    h3 {
-        font-size: 1.15em;
-    }
-
-
-    /* =====================
-       HERO FIX
-    ===================== */
-
-    .hero-headline {
-        white-space: normal;
-        flex-wrap: wrap;
     }
 
     .astra-hero-content,
@@ -2252,18 +2184,94 @@ main.legal-main {
         gap: 28px;
     }
 
-    .astra-hero-logo {
-        width: 120px;
+    .hero-headline {
+        white-space: normal;
+        flex-wrap: wrap;
     }
 
 
-    /* =====================
+    /* =====================================================
+       STATUS PAGE – FINAL FIX (NO RIGHT CROP)
+       ===================================================== */
+
+    main.astra-status-main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 0 96px;
+        overflow-x: visible;
+    }
+
+    .astra-status-card {
+        width: 100%;
+        max-width: calc(100vw - 36px);
+        margin: 0 auto;
+        padding: 28px 22px 32px;
+        border-radius: 26px;
+        box-sizing: border-box;
+
+        /* wichtig: kein overflow hidden → Shadow darf leben */
+        overflow: visible;
+    }
+
+    .status-tabs-row {
+        gap: 10px;
+    }
+
+    .status-tab-btn {
+        padding: 10px 18px;
+        font-size: 0.95em;
+    }
+
+    .stats-box-row {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+
+    /* =====================================================
+       COMMANDS PAGE
+       ===================================================== */
+
+    .command-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px 20px;
+    }
+
+    .cmd-usage {
+        justify-self: flex-start;
+        text-align: left;
+    }
+
+
+    /* =====================================================
+       ABOUT / FEATURES / FAQ
+       ===================================================== */
+
+    .astra-about-card {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 22px;
+    }
+
+    .astra-features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .astra-faq-section {
+        padding: 0;
+    }
+
+
+    /* =====================================================
        FOOTER
-    ===================== */
+       ===================================================== */
 
     .astra-footer-wrap {
-        padding: 48px 20px;
-        gap: 32px;
         grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 20px;
     }
 }
