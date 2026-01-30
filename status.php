@@ -111,13 +111,15 @@ if (file_exists($historyFile)) {
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
 
-    <div class="astra-loader-content">
-        <img src="/public/favicon_transparent.png" alt="Astra Logo" />
-        <span class="astra-loader-text">Initializing Astra…</span>
+    <!-- Floating bubbles -->
+    <div class="astra-loader-bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
 
-        <div class="astra-loader-bar">
-            <span></span>
-        </div>
+    <div class="astra-loader-core">
+        <div class="astra-loader-ring"></div>
+        <img src="/public/favicon_transparent.png" class="astra-loader-logo" alt="Astra">
+        <span class="astra-loader-text">Booting Astra</span>
     </div>
 </div>
 

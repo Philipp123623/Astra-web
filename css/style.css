@@ -115,12 +115,18 @@ a:hover { color: #ffd799; }
     position: relative;
     z-index: 1;
     text-align: center;
+    animation: coreFloat 6s ease-in-out infinite;
+}
+
+@keyframes coreFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 /* Rotating glow ring */
 .astra-loader-ring {
     position: absolute;
-    inset: -34px;
+    inset: -42px;
     border-radius: 50%;
     background:
             conic-gradient(
@@ -130,9 +136,9 @@ a:hover { color: #ffd799; }
                     #7c41ee,
                     #65e6ce
             );
-    filter: blur(14px);
-    opacity: .75;
-    animation: spin 3.6s linear infinite;
+    filter: blur(18px);
+    opacity: .85;
+    animation: spin 4.8s linear infinite;
 }
 
 @keyframes spin {
@@ -187,6 +193,80 @@ a:hover { color: #ffd799; }
     transform: scale(1.04);
     transition: opacity .45s ease, transform .45s ease;
     pointer-events: none;
+}
+
+/* =========================
+   FLOATING ENERGY BUBBLES
+   ========================= */
+
+.astra-loader-bubbles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.astra-loader-bubbles span {
+    position: absolute;
+    bottom: -120px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+            circle at 30% 30%,
+            rgba(101,230,206,.45),
+            rgba(124,65,238,.25),
+            transparent 70%
+    );
+
+    filter: blur(12px);
+    opacity: .55;
+    animation: bubbleFloat linear infinite;
+}
+
+/* individuelle Größen / Zeiten */
+.astra-loader-bubbles span:nth-child(1) {
+    left: 10%;
+    width: 220px;
+    height: 220px;
+    animation-duration: 22s;
+}
+.astra-loader-bubbles span:nth-child(2) {
+    left: 30%;
+    width: 140px;
+    height: 140px;
+    animation-duration: 18s;
+}
+.astra-loader-bubbles span:nth-child(3) {
+    left: 55%;
+    width: 260px;
+    height: 260px;
+    animation-duration: 26s;
+}
+.astra-loader-bubbles span:nth-child(4) {
+    left: 75%;
+    width: 180px;
+    height: 180px;
+    animation-duration: 20s;
+}
+.astra-loader-bubbles span:nth-child(5) {
+    left: 90%;
+    width: 120px;
+    height: 120px;
+    animation-duration: 16s;
+}
+
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: .0;
+    }
+    10% { opacity: .6; }
+    100% {
+        transform: translateY(-140vh) scale(1.2);
+        opacity: 0;
+    }
 }
 
 

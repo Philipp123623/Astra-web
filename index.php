@@ -68,15 +68,14 @@ if ($result->num_rows > 0) {
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
 
+    <!-- Floating bubbles -->
+    <div class="astra-loader-bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="astra-loader-core">
         <div class="astra-loader-ring"></div>
-
-        <img
-                src="/public/favicon_transparent.png"
-                alt="Astra"
-                class="astra-loader-logo"
-        />
-
+        <img src="/public/favicon_transparent.png" class="astra-loader-logo" alt="Astra">
         <span class="astra-loader-text">Booting Astra</span>
     </div>
 </div>
