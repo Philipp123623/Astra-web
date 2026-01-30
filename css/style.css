@@ -582,14 +582,6 @@ body.nav-open {
     align-items: center;
     justify-content: space-between;
 
-    /* VISUELLE TRENNUNG */
-    background: linear-gradient(
-            180deg,
-            rgba(22,19,56,0.95),
-            rgba(22,19,56,0.85) 70%,
-            rgba(22,19,56,0)
-    );
-
     padding-bottom: 16px;
 }
 
