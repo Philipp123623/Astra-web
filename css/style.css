@@ -2287,6 +2287,9 @@ main.legal-main {
         text-align: left;
     }
 
+    .commands-hero-card {
+        margin-bottom: 28px;
+    }
 
     /* =====================================================
        ABOUT / FEATURES / FAQ
