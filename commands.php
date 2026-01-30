@@ -16,6 +16,17 @@
 
     <!-- HERO -->
     <section class="commands-hero-card">
+
+        <!-- BUBBLES -->
+        <div class="bubbles-bg">
+            <svg width="100%" height="100%">
+                <circle cx="12%" cy="18%" r="42" fill="#65e6ce33"/>
+                <circle cx="88%" cy="22%" r="64" fill="#a7c8fd22"/>
+                <circle cx="50%" cy="78%" r="52" fill="#7c41ee22"/>
+                <circle cx="92%" cy="82%" r="26" fill="#60e9cb22"/>
+            </svg>
+        </div>
+
         <div class="commands-hero-content">
             <div class="commands-hero-text">
                 <div class="astra-label-row">
