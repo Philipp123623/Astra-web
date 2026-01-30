@@ -244,9 +244,9 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     padding-top: calc(110px + env(safe-area-inset-top));
 
     background:
-            radial-gradient(140px 140px at 75% 18%, rgba(101,230,206,.22), transparent 65%),
-            radial-gradient(220px 220px at 18% 82%, rgba(124,65,238,.28), transparent 70%),
-            radial-gradient(120px 120px at 90% 65%, rgba(167,200,253,.18), transparent 65%),
+            radial-gradient(420px 420px at 85% 12%, rgba(124,65,238,.32), transparent 70%),
+            radial-gradient(320px 320px at 15% 38%, rgba(101,230,206,.26), transparent 68%),
+            radial-gradient(200px 200px at 75% 68%, rgba(167,200,253,.22), transparent 70%),
             linear-gradient(
                     180deg,
                     #161338 0%,
@@ -288,10 +288,10 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     position: absolute;
     inset: 0;
     background:
-            radial-gradient(260px 180px at 50% 0%, rgba(101,230,206,.18), transparent 70%),
-            radial-gradient(300px 240px at 100% 100%, rgba(124,65,238,.22), transparent 75%);
+            radial-gradient(360px 240px at 50% 0%, rgba(101,230,206,.18), transparent 70%),
+            radial-gradient(420px 320px at 100% 100%, rgba(124,65,238,.22), transparent 75%);
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
 }
 
 .astra-nav-mobile::after {
@@ -305,7 +305,7 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
             rgba(0,0,0,.38) 100%
     );
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
 }
 
 /* Inhalt über Bubbles */
@@ -417,6 +417,21 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
             transform .35s cubic-bezier(.4,0,.2,1),
             background .2s ease,
             color .2s ease;
+}
+
+.astra-nav-mobile .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+    );
 }
 
 .astra-nav-mobile .nav-link:hover {
