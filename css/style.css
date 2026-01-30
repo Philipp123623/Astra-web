@@ -232,6 +232,7 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 /* =========================
    ASTRA MOBILE APP DRAWER
    ========================= */
+
 .astra-nav-mobile {
     position: fixed;
     top: env(safe-area-inset-top, 0);
@@ -244,9 +245,10 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     padding-top: calc(110px + env(safe-area-inset-top));
 
     background:
-            radial-gradient(420px 420px at 85% 12%, rgba(124,65,238,.32), transparent 70%),
-            radial-gradient(320px 320px at 15% 38%, rgba(101,230,206,.26), transparent 68%),
-            radial-gradient(200px 200px at 75% 68%, rgba(167,200,253,.22), transparent 70%),
+            radial-gradient(520px 520px at 85% 10%, rgba(124,65,238,.32), transparent 72%),
+            radial-gradient(420px 420px at 15% 35%, rgba(101,230,206,.26), transparent 70%),
+            radial-gradient(360px 360px at 90% 65%, rgba(167,200,253,.22), transparent 72%),
+            radial-gradient(520px 520px at 20% 85%, rgba(124,65,238,.30), transparent 75%),
             linear-gradient(
                     180deg,
                     #161338 0%,
@@ -282,16 +284,17 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     overflow: hidden;
 }
 
-/* zusätzliche Tiefe / Glow */
+/* zusätzliche Tiefe / Glow – volle Höhe */
 .astra-nav-mobile::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-            radial-gradient(360px 240px at 50% 0%, rgba(101,230,206,.18), transparent 70%),
-            radial-gradient(420px 320px at 100% 100%, rgba(124,65,238,.22), transparent 75%);
+            radial-gradient(420px 320px at 50% 0%, rgba(101,230,206,.18), transparent 72%),
+            radial-gradient(520px 420px at 100% 100%, rgba(124,65,238,.26), transparent 78%),
+            radial-gradient(420px 420px at 0% 100%, rgba(101,230,206,.22), transparent 78%);
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 }
 
 .astra-nav-mobile::after {
@@ -300,12 +303,12 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     inset: 0;
     background: linear-gradient(
             180deg,
-            transparent 0%,
+            rgba(0,0,0,.05) 0%,
             rgba(0,0,0,.18) 65%,
             rgba(0,0,0,.38) 100%
     );
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 }
 
 /* Inhalt über Bubbles */
