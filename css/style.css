@@ -7,9 +7,12 @@
     --header-height-mobile: 56px;
 }
 
+/* GLOBAL NORMAL */
 * {
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
 }
+
 
 
 
