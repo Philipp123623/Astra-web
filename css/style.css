@@ -1569,6 +1569,19 @@ main.report-main {
             0 2px 12px rgba(93,232,255,0.12);
 }
 
+/* =====================================================
+   REPORT FORM – PERFECT HORIZONTAL ALIGN FIX
+   (Desktop + Mobile)
+   ===================================================== */
+
+.astra-form textarea,
+.astra-form input {
+    min-height: 130px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+
 .astra-form textarea {
     min-height: 130px;
     resize: vertical;
