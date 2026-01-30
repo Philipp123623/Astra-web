@@ -243,6 +243,7 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     height: 100dvh;
 
     padding-top: calc(110px + env(safe-area-inset-top));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
 
     background:
             radial-gradient(520px 520px at 85% 10%, rgba(124,65,238,.32), transparent 72%),
@@ -531,6 +532,7 @@ body.nav-open {
     color: #223254;
 
     box-shadow: 0 12px 36px rgba(101,230,206,0.55);
+    margin-bottom: 0;
 }
 
 .astra-nav-mobile .nav-btn:active {
