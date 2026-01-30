@@ -72,6 +72,7 @@
 
         <!-- CTA -->
         <a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a>
+        <a href="/api/auth/signin/discord" class="nav-btn outline">Dashboard</a>
 
     </div>
 </nav>
