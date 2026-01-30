@@ -232,7 +232,6 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 /* =========================
    ASTRA MOBILE APP DRAWER
    ========================= */
-
 .astra-nav-mobile {
     position: fixed;
     top: env(safe-area-inset-top, 0);
@@ -284,6 +283,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     transition:
             transform .52s cubic-bezier(.4,0,.2,1),
             opacity .32s ease;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -362,39 +363,39 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
    NAV ITEMS – APP STYLE
    ========================= */
 
+/* LISTE */
 .astra-nav-mobile .nav-link {
-    position: relative;
     display: flex;
     align-items: center;
 
-    padding: 16px 20px;
-    border-radius: 16px;
+    padding: 18px 28px;
+    margin: 0;
 
-    font-size: 1.05em;
+    font-size: 1.1em;
     font-weight: 800;
-    letter-spacing: .3px;
+    letter-spacing: .4px;
 
     color: #eafcff;
     text-decoration: none;
 
-    background: rgba(255,255,255,0.06);
+    background: transparent;
+    border-radius: 0;
 
-    box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.06),
-            0 6px 22px rgba(0,0,0,0.35);
+    position: relative;
 
-    transform: translateX(18px);
     opacity: 0;
+    transform: translateX(12px);
 
     transition:
-            transform .35s cubic-bezier(.4,0,.2,1),
             opacity .35s ease,
+            transform .35s cubic-bezier(.4,0,.2,1),
             background .2s ease,
-            box-shadow .25s ease;
+            color .2s ease;
 }
 
+
 .astra-nav-mobile .nav-link:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
     box-shadow:
             inset 0 0 0 1px rgba(101,230,206,0.25),
             0 10px 30px rgba(0,0,0,0.45);
@@ -403,11 +404,11 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 .astra-nav-mobile .nav-link.active {
     background: linear-gradient(
             90deg,
-            rgba(101,230,206,0.95),
-            rgba(167,200,253,0.95)
+            rgba(101,230,206,0.14),
+            transparent 70%
     );
 
-    color: #223254;
+    color: #65e6ce;
 
     box-shadow:
             0 12px 36px rgba(101,230,206,0.55),
@@ -416,17 +417,18 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     transform: translateX(6px);
 }
 
+/* ACTIVE INDICATOR LINE */
 .astra-nav-mobile .nav-link.active::before {
     content: "";
     position: absolute;
-    left: -8px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 4px;
-    height: 60%;
-    border-radius: 4px;
-    background: #65e6ce;
-    box-shadow: 0 0 18px rgba(101,230,206,.9);
+    height: 56%;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(#65e6ce, #a7c8fd);
+    box-shadow: 0 0 18px rgba(101,230,206,0.6);
 }
 
 /* Subtle active glow – no pulse */
@@ -508,20 +510,21 @@ body.nav-open .astra-nav-mobile {
     opacity: 1;
 }
 
+/* OPEN STATE */
 body.nav-open .astra-nav-mobile .nav-link {
-    transform: translateX(0);
     opacity: 1;
+    transform: translateX(0);
 }
 
 /* STAGGER */
-body.nav-open .astra-nav-mobile .nav-link:nth-child(1){transition-delay:.06s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(2){transition-delay:.09s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(3){transition-delay:.12s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(4){transition-delay:.15s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(5){transition-delay:.18s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(6){transition-delay:.21s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(7){transition-delay:.24s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(8){transition-delay:.27s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(1){transition-delay:.05s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(2){transition-delay:.08s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(3){transition-delay:.11s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(4){transition-delay:.14s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(5){transition-delay:.17s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(6){transition-delay:.20s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(7){transition-delay:.23s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(8){transition-delay:.26s}
 
 body.nav-open .astra-nav-mobile-overlay {
     opacity: 1;
