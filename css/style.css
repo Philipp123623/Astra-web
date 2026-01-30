@@ -257,8 +257,14 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
             ),
             local;
 
+
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
+
+    /* MENU SCROLL */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 
     border-radius: 32px 0 0 32px;
 
@@ -281,8 +287,11 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 
     padding-left: 0;
     padding-right: 0;
+}
 
+body.nav-open {
     overflow: hidden;
+    touch-action: none;
 }
 
 /* zusätzliche Tiefe / Glow – volle Höhe */
