@@ -19,7 +19,7 @@
                 <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
                 <li><a href="https://astra-bot.de/report" class="nav-link">Report</a></li>
                 <li><a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a></li>
-                <li><a href="/api/auth/signin/discord" class="nav-btn outline">Dashboard</a></li>
+                <li><a href="/api/auth/callback/discord" class="nav-btn outline">Dashboard</a></li>
             </ul>
         </nav>
 
@@ -73,7 +73,7 @@
 
         <!-- CTA -->
         <a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a>
-        <a href="/api/auth/signin/discord" class="nav-btn outline">Dashboard</a>
+        <a href="/api/auth/callback/discord" class="nav-btn outline">Dashboard</a>
 
     </div>
 </nav>
