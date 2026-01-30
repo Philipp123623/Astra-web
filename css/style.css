@@ -243,20 +243,20 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 
     background:
             radial-gradient(
-                    140% 120% at 100% 0%,
-                    rgba(101,230,206,.22),
-                    transparent 45%
+                    120% 90% at 50% 0%,
+                    rgba(101,230,206,.25),
+                    transparent 55%
             ),
             radial-gradient(
                     120% 120% at 0% 100%,
-                    rgba(124,65,238,.28),
-                    transparent 50%
+                    rgba(124,65,238,.35),
+                    transparent 55%
             ),
             linear-gradient(
                     180deg,
-                    #1b1744 0%,
-                    #26206b 40%,
-                    #1f1a57 100%
+                    #161338 0%,
+                    #221c50 50%,
+                    #1a1642 100%
             );
 
     backdrop-filter: blur(28px);
@@ -364,36 +364,38 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     display: flex;
     align-items: center;
 
-    padding: 16px 20px;
-    border-radius: 16px;
+    padding: 18px 22px;
+    border-radius: 18px;
 
     font-size: 1.05em;
     font-weight: 800;
-    letter-spacing: .2px;
 
-    color: #eafcff;
+    color: #eefaff;
     text-decoration: none;
 
     background:
             linear-gradient(
                     180deg,
-                    rgba(255,255,255,.06),
-                    rgba(255,255,255,.02)
+                    rgba(255,255,255,.10),
+                    rgba(255,255,255,.03)
             );
 
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.05),
-            0 8px 22px rgba(0,0,0,.35);
+            inset 0 1px 0 rgba(255,255,255,.18),
+            inset 0 -1px 0 rgba(0,0,0,.35),
+            0 10px 26px rgba(0,0,0,.45);
 
-    transform: translateX(28px);
+    backdrop-filter: blur(6px);
+
+    transform: translateX(24px);
     opacity: 0;
 
     transition:
             transform .35s cubic-bezier(.4,0,.2,1),
             opacity .35s ease,
-            background .2s ease,
             box-shadow .25s ease;
 }
+
 
 .astra-nav-mobile .nav-link.active {
     background:
