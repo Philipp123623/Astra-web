@@ -237,7 +237,7 @@ if ($result->num_rows > 0) {
             setTimeout(() => {
                 loader.classList.add('hide');
                 setTimeout(() => loader.remove(), 500);
-            }, 600); // fühlt sich smooth an, nicht künstlich
+            }, 1300); // fühlt sich smooth an, nicht künstlich
         });
 
     })();

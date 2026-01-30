@@ -159,16 +159,27 @@ a:hover { color: #ffd799; }
     50% { transform: scale(1.06); }
 }
 
-/* Text */
 .astra-loader-text {
     display: block;
-    margin-top: 22px;
-    font-size: .85em;
+    margin-top: 28px;
+
+    font-size: 1.05em;              /* ⬅ größer */
     font-weight: 900;
-    letter-spacing: .28em;
+    letter-spacing: .32em;
     text-transform: uppercase;
-    color: rgba(234,252,255,.75);
+
+    color: rgba(234,252,255,.9);
+    text-shadow:
+            0 0 18px rgba(101,230,206,.35);
+
+    animation: textPulse 2.2s ease-in-out infinite;
 }
+
+@keyframes textPulse {
+    0%,100% { opacity: .85; }
+    50%     { opacity: 1; }
+}
+
 
 /* Fade out */
 #astra-loader.hide {
