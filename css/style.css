@@ -1576,8 +1576,6 @@ main.report-main {
 
 .astra-form textarea,
 .astra-form input {
-    min-height: 130px;
-    resize: vertical;
     box-sizing: border-box;
 }
 
