@@ -2187,10 +2187,23 @@ main.legal-main {
         gap: 28px;
     }
 
+    /* =====================================================
+   HERO HEADLINE – MOBILE WORD WRAP FIX
+   ===================================================== */
+
     .hero-headline {
         white-space: normal;
         flex-wrap: wrap;
+        max-width: 100%;
     }
+
+    .hero-headline h1,
+    .hero-headline span {
+        max-width: 100%;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
 
 
     /* =====================================================
