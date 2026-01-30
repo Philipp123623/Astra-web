@@ -242,8 +242,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     max-width: 380px;
     height: 100dvh;
 
-    padding-top: calc(110px + env(safe-area-inset-top));
-    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+    padding-top: 0;
+    padding-bottom: 0;
 
     background:
             radial-gradient(520px 520px at 85% 10%, rgba(124,65,238,.32), transparent 72%),
@@ -263,7 +263,7 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     -webkit-backdrop-filter: blur(28px);
 
     /* MENU SCROLL */
-    overflow-y: auto;
+    overflow: hidden;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 
@@ -289,6 +289,21 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     padding-left: 0;
     padding-right: 0;
 }
+
+.astra-nav-mobile-scroll {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-top: calc(110px + env(safe-area-inset-top));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+}
+
 
 body.nav-open {
     overflow: hidden;

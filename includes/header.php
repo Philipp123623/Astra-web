@@ -57,18 +57,23 @@
         <button class="astra-nav-close" aria-label="Menü schließen"></button>
     </div>
 
-    <!-- LINKS -->
-    <a href="https://astra-bot.de/" class="nav-link">Home</a>
-    <a href="https://astra-bot.de/#stats" class="nav-link">Stats</a>
-    <a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a>
-    <a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a>
-    <a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a>
-    <a href="https://astra-bot.de/commands" class="nav-link">Commands</a>
-    <a href="https://astra-bot.de/status" class="nav-link">Status</a>
-    <a href="https://astra-bot.de/report" class="nav-link">Report</a>
+    <!-- ⬇️ NUR DAS SCROLLT -->
+    <div class="astra-nav-mobile-scroll">
 
-    <!-- CTA -->
-    <a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a>
+        <!-- LINKS -->
+        <a href="https://astra-bot.de/" class="nav-link">Home</a>
+        <a href="https://astra-bot.de/#stats" class="nav-link">Stats</a>
+        <a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a>
+        <a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a>
+        <a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a>
+        <a href="https://astra-bot.de/commands" class="nav-link">Commands</a>
+        <a href="https://astra-bot.de/status" class="nav-link">Status</a>
+        <a href="https://astra-bot.de/report" class="nav-link">Report</a>
+
+        <!-- CTA -->
+        <a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a>
+
+    </div>
 </nav>
 
 <!-- ======================
