@@ -581,14 +581,6 @@ body.nav-open {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    /* leichter Scroll-Schutz, nicht hässlich */
-    background: linear-gradient(
-            180deg,
-            rgba(22,19,56,0.92),
-            rgba(22,19,56,0.65) 60%,
-            rgba(22,19,56,0)
-    );
 }
 
 .astra-nav-mobile-title {
@@ -606,7 +598,6 @@ body.nav-open {
     border-radius: 12px;
     border: none;
     cursor: pointer;
-    margin-right: 2px;
 
     background: rgba(255,255,255,.08);
     backdrop-filter: blur(8px);
