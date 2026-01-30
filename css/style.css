@@ -367,53 +367,53 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     display: flex;
     align-items: center;
 
-    padding: 18px 22px;
-    border-radius: 18px;
+    padding: 16px 20px;
+    border-radius: 16px;
 
     font-size: 1.05em;
     font-weight: 800;
+    letter-spacing: .3px;
 
-    color: #eefaff;
+    color: #eafcff;
     text-decoration: none;
 
-    background:
-            linear-gradient(
-                    180deg,
-                    rgba(255,255,255,.10),
-                    rgba(255,255,255,.03)
-            );
+    background: rgba(255,255,255,0.06);
 
     box-shadow:
-            inset 0 1px 0 rgba(255,255,255,.18),
-            inset 0 -1px 0 rgba(0,0,0,.35),
-            0 10px 26px rgba(0,0,0,.45);
+            inset 0 0 0 1px rgba(255,255,255,0.06),
+            0 6px 22px rgba(0,0,0,0.35);
 
-    backdrop-filter: blur(6px);
-
-    transform: translateX(24px);
+    transform: translateX(18px);
     opacity: 0;
 
     transition:
             transform .35s cubic-bezier(.4,0,.2,1),
             opacity .35s ease,
+            background .2s ease,
             box-shadow .25s ease;
 }
 
+.astra-nav-mobile .nav-link:hover {
+    background: rgba(255,255,255,0.1);
+    box-shadow:
+            inset 0 0 0 1px rgba(101,230,206,0.25),
+            0 10px 30px rgba(0,0,0,0.45);
+}
 
 .astra-nav-mobile .nav-link.active {
-    background:
-            linear-gradient(
-                    90deg,
-                    rgba(101,230,206,.95),
-                    rgba(167,200,253,.95)
-            );
+    background: linear-gradient(
+            90deg,
+            rgba(101,230,206,0.95),
+            rgba(167,200,253,0.95)
+    );
 
     color: #223254;
 
     box-shadow:
-            0 18px 50px rgba(101,230,206,.65);
+            0 12px 36px rgba(101,230,206,0.55),
+            inset 0 0 0 1px rgba(255,255,255,0.35);
 
-    transform: translateX(10px);
+    transform: translateX(6px);
 }
 
 .astra-nav-mobile .nav-link.active::before {
@@ -429,16 +429,17 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     box-shadow: 0 0 18px rgba(101,230,206,.9);
 }
 
+/* Subtle active glow – no pulse */
 .astra-nav-mobile .nav-link.active::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: 0 0 28px rgba(101,230,206,.8);
-    opacity: .65;
-    animation: navActivePulse 1.8s ease-in-out infinite;
+    box-shadow: 0 0 22px rgba(101,230,206,0.45);
+    opacity: .6;
     pointer-events: none;
 }
+
 
 @keyframes navActivePulse {
     0%   { opacity: .35; }
@@ -446,9 +447,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     100% { opacity: .35; }
 }
 
-/* TOUCH FEEDBACK */
 .astra-nav-mobile .nav-link:active {
-    transform: scale(.95);
+    transform: scale(.96);
 }
 
 
@@ -458,8 +458,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 
 .astra-nav-mobile .nav-btn {
     margin-top: auto;
-    padding: 18px 26px;
-    border-radius: 999px;
+    padding: 16px 26px;
+    border-radius: 18px;
 
     font-size: 1.05em;
     font-weight: 900;
@@ -469,15 +469,15 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     color: #223254;
 
     box-shadow:
-            0 18px 60px rgba(101,230,206,.7);
+            0 14px 40px rgba(101,230,206,0.55);
 
     transition:
-            transform .25s cubic-bezier(.4,0,.2,1),
-            box-shadow .25s ease;
+            transform .22s cubic-bezier(.4,0,.2,1),
+            box-shadow .22s ease;
 }
 
 .astra-nav-mobile .nav-btn:active {
-    transform: scale(.95);
+    transform: scale(.96);
 }
 
 
