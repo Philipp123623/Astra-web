@@ -2185,6 +2185,7 @@ main.legal-main {
             0 24px 80px rgba(0,0,0,0.45),
             0 0 120px rgba(101,230,206,0.18),
             inset 0 0 0 1px rgba(255,255,255,0.06);
+    box-sizing: border-box;
 }
 
 /* =========================================================
@@ -2214,6 +2215,12 @@ main.legal-main {
     color: #eafcff;
     line-height: 1.6;
     max-width: 900px;
+}
+
+.legal-text,
+.legal-main-card {
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 /* =========================================================
@@ -2406,7 +2413,7 @@ main.legal-main {
         width: 100%;
         max-width: 100%;
         margin: 0;
-        padding: 0 18px 80px;
+        padding: 0 16px 80px;
         box-sizing: border-box;
         overflow-x: visible;
     }
@@ -2484,6 +2491,13 @@ main.legal-main {
         max-width: 100%;
         box-sizing: border-box;
     }
+
+    .astra-hero-card,
+    .commands-hero-card {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
 
     /* =====================================================
        HERO HEADLINE – MOBILE & TABLET FINAL FIX
