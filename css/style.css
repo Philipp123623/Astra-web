@@ -2194,14 +2194,17 @@ main.legal-main {
         padding-top: 0;
         padding-bottom: 96px;
         overflow-x: hidden; /* ✅ entscheidend */
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .astra-status-card {
         min-height: auto;
         height: auto;
         width: 100%;
-        max-width: 100%;
-        margin: 0;
+        margin-left: 18px;
+        margin-right: 18px;
+        max-width: calc(100% - 36px);
         padding: 28px 22px 32px;
         border-radius: 26px;
         overflow: hidden; /* ✅ Glow + Content safe */
