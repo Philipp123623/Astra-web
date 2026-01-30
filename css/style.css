@@ -2521,11 +2521,6 @@ main.legal-main {
         max-width: 100%;
     }
 
-    /* STARTSEITE – sauberer Umbruch, kein Zerhacken */
-    .hero-headline {
-        white-space: normal;
-    }
-
     .hero-headline h1,
     .hero-headline span {
         max-width: 100%;
