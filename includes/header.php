@@ -40,6 +40,17 @@
      ====================== -->
 <nav class="astra-nav-mobile">
 
+    <!-- HERO BUBBLES -->
+    <div class="astra-nav-bubbles">
+        <svg width="100%" height="100%" preserveAspectRatio="none">
+            <circle cx="20%" cy="12%" r="46" fill="#65e6ce22"/>
+            <circle cx="82%" cy="18%" r="78" fill="#a7c8fd22"/>
+            <circle cx="36%" cy="64%" r="72" fill="#7c41ee22"/>
+            <circle cx="88%" cy="78%" r="34" fill="#60e9cb22"/>
+        </svg>
+    </div>
+
+
     <!-- HEADER MIT ❌ -->
     <div class="astra-nav-mobile-header">
         <span class="astra-nav-mobile-title">Menu</span>
