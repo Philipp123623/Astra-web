@@ -25,6 +25,7 @@ html, body {
     background: #221c50;
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 body {
@@ -430,12 +431,11 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
    ========================= */
 
 .astra-nav-mobile {
-    z-index: 5;
     position: fixed;
     top: env(safe-area-inset-top, 0);
     right: 0;
 
-    width: 100vw;
+    width: 100%;
     max-width: 380px;
     height: 100dvh;
 
@@ -2494,8 +2494,8 @@ main.legal-main {
 
     .astra-hero-card,
     .commands-hero-card {
-        margin-left: 2px;
-        margin-right: 2px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
 
@@ -2547,7 +2547,7 @@ main.legal-main {
 
     .astra-status-card {
         width: 100%;
-        max-width: calc(100vw - 36px);
+        max-width: calc(100% - 36px);
         margin: 0 auto;
         padding: 28px 22px 32px;
         border-radius: 26px;
@@ -2630,6 +2630,13 @@ main.legal-main {
         line-height: 1.3;
     }
 
+    /* LEGAL HERO TITLE – NUR MOBILE UMBRUCH */
+    .legal-hero-content h1 {
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        max-width: 100%;
+    }
 
 
     /* =====================================================
