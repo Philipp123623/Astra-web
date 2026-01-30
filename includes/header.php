@@ -64,19 +64,26 @@
      MOBILE MENU SCRIPT
      ====================== -->
 <script>
-    const toggle = document.querySelector('.astra-nav-toggle');
-    const closeBtn = document.querySelector('.astra-nav-close');
-    const overlay = document.querySelector('.astra-nav-mobile-overlay');
+    document.addEventListener('DOMContentLoaded', () => {
 
-    toggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-    });
+        const toggle = document.querySelector('.astra-nav-toggle');
+        const closeBtn = document.querySelector('.astra-nav-close');
+        const overlay = document.querySelector('.astra-nav-mobile-overlay');
 
-    closeBtn.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
-    });
+        if (!toggle) return;
 
-    overlay.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
+        toggle.addEventListener('click', () => {
+            document.body.classList.add('nav-open');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
+
     });
 </script>
+
