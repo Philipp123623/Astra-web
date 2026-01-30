@@ -2087,7 +2087,7 @@ main.legal-main {
    Gilt für Handys & Tablets (≤ 900px)
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1256px) {
 
     /* =====================================================
        RESET DESKTOP LAYOUT EINFLÜSSE
@@ -2274,4 +2274,21 @@ main.legal-main {
         gap: 32px;
         padding: 48px 20px;
     }
+}
+
+
+/* =========================================================
+   DESKTOP HEADER – NUR AB 1257px
+   ========================================================= */
+
+@media (min-width: 1257px) {
+
+    .astra-navbar {
+        display: block;
+    }
+
+    .astra-nav-toggle {
+        display: none;
+    }
+
 }
