@@ -2641,6 +2641,13 @@ main.legal-main {
         gap: 32px;
         padding: 48px 20px;
     }
+
+    @media (max-width: 600px) {
+        .legal-main-card {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
 }
 
 
