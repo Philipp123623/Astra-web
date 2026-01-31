@@ -1434,6 +1434,9 @@ main.commands-main {
     text-align: right;
 }
 
+.command-item.no-usage {
+    grid-template-columns: minmax(140px, 220px) 1fr;
+}
 
 .command-item strong {
     color: #a7c8fd;

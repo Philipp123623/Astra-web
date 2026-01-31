@@ -127,7 +127,7 @@
 
 <script>
     /* ============================
-       LOAD JSON & RENDER
+       LOAD JSON & RENDER (FIXED)
     ============================ */
     fetch('/json/commands.json')
         .then(res => res.json())
@@ -135,6 +135,7 @@
 
     function renderCommands(data) {
         const accordion = document.getElementById('commandsAccordion');
+        accordion.innerHTML = '';
 
         Object.entries(data).forEach(([category, catData]) => {
             const count = catData.commands.length;
@@ -144,25 +145,28 @@
             categoryEl.dataset.category = category;
 
             categoryEl.innerHTML = `
-            <button class="command-category-header">
-                ${getIcon(category)} ${category}
-                <span>${count} Commands</span>
-            </button>
-            <div class="command-category-body">
-                ${catData.commands.map(cmd => `
-                    <div class="command-item">
-                        <div class="cmd-name">${cmd.name}</div>
-                        <div class="cmd-desc">${cmd.description}</div>
-                        ${
-                            cmd.usage && cmd.usage.trim() !== cmd.name.trim()
-                                ? `<div class="cmd-usage">${cmd.usage}</div>`
-                                : ''
-                        }
+      <button class="command-category-header">
+        ${getIcon(category)} ${category}
+        <span>${count} Commands</span>
+      </button>
 
-                    </div>
-                `).join('')}
+      <div class="command-category-body">
+        ${catData.commands.map(cmd => {
+                const showUsage =
+                    cmd.usage &&
+                    cmd.usage.trim() !== '' &&
+                    cmd.usage.trim() !== cmd.name.trim();
+
+                return `
+            <div class="command-item ${showUsage ? '' : 'no-usage'}">
+              <div class="cmd-name">${cmd.name}</div>
+              <div class="cmd-desc">${cmd.description}</div>
+              ${showUsage ? `<div class="cmd-usage">${cmd.usage}</div>` : ''}
             </div>
-        `;
+          `;
+            }).join('')}
+      </div>
+    `;
 
             accordion.appendChild(categoryEl);
         });
@@ -216,19 +220,20 @@
         btn.addEventListener('click', () => {
             document.querySelectorAll('.commands-filters button')
                 .forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
 
-            const f = btn.dataset.filter;
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
 
             document.querySelectorAll('.command-category').forEach(cat => {
-                cat.style.display = (f === 'all' || cat.dataset.category === f) ? '' : 'none';
+                cat.style.display =
+                    filter === 'all' || cat.dataset.category === filter ? '' : 'none';
                 cat.classList.remove('open');
             });
         });
     });
 
     /* ============================
-       SEARCH (MIT KATEGORIE-OPEN)
+       SEARCH (OPEN MATCHING CATS)
     ============================ */
     document.getElementById('commandSearch').addEventListener('input', e => {
         const val = e.target.value.toLowerCase().trim();
@@ -245,7 +250,8 @@
             if (val === '') {
                 cat.style.display = '';
                 cat.classList.remove('open');
-                cat.querySelectorAll('.command-item').forEach(cmd => cmd.style.display = '');
+                cat.querySelectorAll('.command-item')
+                    .forEach(cmd => cmd.style.display = '');
             } else {
                 cat.style.display = hasMatch ? '' : 'none';
                 cat.classList.toggle('open', hasMatch);
@@ -283,6 +289,7 @@
         }, 35);
     });
 </script>
+
 
 </body>
 </html>
