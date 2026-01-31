@@ -152,16 +152,11 @@
 
       <div class="command-category-body">
         ${catData.commands.map(cmd => {
-                const showUsage =
-                    cmd.usage &&
-                    cmd.usage.trim() !== '' &&
-                    cmd.usage.trim() !== cmd.name.trim();
-
                 return `
-            <div class="command-item ${showUsage ? '' : 'no-usage'}">
+            <div class="command-item">
               <div class="cmd-name">${cmd.name}</div>
               <div class="cmd-desc">${cmd.description}</div>
-              ${showUsage ? `<div class="cmd-usage">${cmd.usage}</div>` : ''}
+              <div class="cmd-usage">${cmd.usage}</div>
             </div>
           `;
             }).join('')}

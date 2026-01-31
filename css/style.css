@@ -1362,30 +1362,12 @@ main.commands-main {
     grid-template-columns: minmax(140px, 220px) 1fr auto;
     gap: 18px;
     align-items: center;
-
     padding: 22px 28px;
-    outline: 2px solid red;
-
-    /* border-top ENTFERNT → verursacht Artefakte */
     position: relative;
-
     color: #eafcff;
 }
 
-.command-item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 28px;
-    right: 28px;
-    height: 1px;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.12),
-            transparent
-    );
-}
+
 
 .command-item:first-child::before {
     display: none;
@@ -1417,22 +1399,16 @@ main.commands-main {
 
 /* USAGE CHIP */
 .cmd-usage {
-    justify-self: start;
-
+    justify-self: end;
     background: rgba(0,0,0,0.35);
     color: #65e6ce;
-
     padding: 6px 14px;
     border-radius: 999px;
-    max-width: 100%;
-    opacity: 0.95;
-
     font-family: monospace;
     font-size: 0.95em;
-
-    white-space: normal;
-    text-align: right;
+    white-space: nowrap;
 }
+
 
 .command-item.no-usage {
     grid-template-columns: minmax(140px, 220px) 1fr;
