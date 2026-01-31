@@ -1,0 +1,88 @@
+/* =========================================================
+   ASTRA THEME CORE – GLOBAL SYSTEM
+   ========================================================= */
+
+:root {
+    /* Layout */
+    --header-height: 68px;
+    --header-height-mobile: 56px;
+
+    /* Base Backgrounds */
+    --bg-main: #221c50;
+    --bg-header: #1c1250;
+    --bg-soft: rgba(255,255,255,0.08);
+    --bg-panel: rgba(42,50,111,0.45);
+
+    /* Text */
+    --text-main: #f4faff;
+    --text-soft: #d7f3ff;
+    --text-muted: #bcdcff;
+
+    /* Accent */
+    --accent-main: #65e6ce;
+    --accent-soft: #a7c8fd;
+    --accent-warm: #ffd799;
+    --accent-danger: #ff7272;
+
+    /* Gradients */
+    --grad-main: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    --grad-hero: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
+
+    /* Glow */
+    --glow-main: rgba(101,230,206,.55);
+    --glow-soft: rgba(101,230,206,.25);
+}
+/* =========================================================
+   GLOBAL BASE THEME OVERRIDE
+   ========================================================= */
+
+html, body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-main);
+}
+
+a {
+    color: var(--accent-main);
+}
+a:hover {
+    color: var(--accent-warm);
+}
+
+::selection {
+    background: var(--accent-main);
+    color: #223254;
+}
+/* =========================================================
+   HEADER & NAV – FULL THEME OVERRIDE
+   ========================================================= */
+
+.astra-header {
+    background: var(--bg-header);
+    box-shadow: 0 2px 24px var(--glow-soft);
+}
+
+.astra-logo-text {
+    color: var(--text-main);
+}
+
+.astra-logo-text span {
+    color: var(--accent-main);
+}
+
+.nav-link {
+    color: var(--text-soft);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-main);
+}
+
+.nav-btn {
+    background: var(--grad-main);
+    color: #223254;
+}
