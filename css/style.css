@@ -2424,7 +2424,21 @@ main.legal-main {
 
 body.theme-test {
     --bg-page: #ff0055;
+    --bg-card: #1e1e2f;
+    --bg-card-soft: rgba(30,30,47,.6);
+
+    --accent: #00ffd5;
+    --accent-2: #6ecbff;
+    --accent-3: #7c41ee;
+
+    --accent-soft: rgba(0,255,213,.35);
+    --accent-glow: rgba(0,255,213,.6);
+
+    --text-main: #ffffff;
+    --text-soft: #f1f1f1;
+    --text-muted: #cfcfcf;
 }
+
 
 
 /* =========================================================
