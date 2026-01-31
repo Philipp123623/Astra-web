@@ -228,16 +228,25 @@
     ============================ */
     document.querySelectorAll('.commands-filters button').forEach(btn => {
         btn.addEventListener('click', () => {
+            // Active State
             document.querySelectorAll('.commands-filters button')
                 .forEach(b => b.classList.remove('active'));
-
             btn.classList.add('active');
+
             const filter = btn.dataset.filter;
 
             document.querySelectorAll('.command-category').forEach(cat => {
-                cat.style.display =
-                    filter === 'all' || cat.dataset.category === filter ? '' : 'none';
-                cat.classList.remove('open');
+                const isMatch = filter === 'all' || cat.dataset.category === filter;
+
+                // Sichtbarkeit
+                cat.style.display = isMatch ? '' : 'none';
+
+                // Accordion State
+                if (filter === 'all') {
+                    cat.classList.remove('open');
+                } else {
+                    cat.classList.toggle('open', isMatch);
+                }
             });
         });
     });
