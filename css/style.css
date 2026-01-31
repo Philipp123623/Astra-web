@@ -1367,6 +1367,25 @@ main.commands-main {
     color: #eafcff;
 }
 
+.command-item::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 0;
+
+    height: 1px;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(101,230,206,0.35),
+            transparent
+    );
+
+    opacity: 0.6;
+    box-shadow: 0 0 12px rgba(101,230,206,0.35);
+}
+
 
 
 .command-item:first-child::before {
