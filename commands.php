@@ -153,7 +153,7 @@
                     <div class="command-item">
                         <div class="cmd-name">${cmd.name}</div>
                         <div class="cmd-desc">${cmd.description}</div>
-                        <div class="cmd-usage">${cmd.usage}</div>
+                        ${cmd.usage ? `<div class="cmd-usage">${cmd.usage}</div>` : ''}
                     </div>
                 `).join('')}
             </div>
