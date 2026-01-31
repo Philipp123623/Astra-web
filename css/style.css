@@ -6,6 +6,33 @@
     --header-height: 68px;   /* Desktop Header */
     --header-height-mobile: 56px;
 }
+/* =========================================================
+   ASTRA THEME CORE (MINIMAL)
+   ========================================================= */
+:root {
+    /* Base */
+    --bg-main: #221c50;
+    --bg-header: #1c1250;
+    --bg-panel: rgba(42,50,111,0.45);
+
+    /* Text */
+    --text-main: #f4faff;
+    --text-soft: #d7f3ff;
+
+    /* Accent */
+    --accent-main: #65e6ce;
+    --accent-soft: #a7c8fd;
+    --accent-warm: #ffd799;
+    --accent-danger: #ff7272;
+
+    /* Gradients */
+    --grad-hero: linear-gradient(115deg,#251f5b 0%,#362897 65%,#3fd6dd 160%);
+    --grad-main: linear-gradient(90deg,#65e6ce,#a7c8fd);
+
+    /* Glow */
+    --glow-main: rgba(101,230,206,.55);
+}
+
 
 
 /* GLOBAL NORMAL */
@@ -2694,4 +2721,95 @@ main.legal-main {
         display: none;
     }
 
+}
+
+[data-theme="light"] {
+    --bg-main: #f6f8ff;
+    --bg-header: #ffffff;
+    --bg-panel: rgba(235,240,255,0.9);
+
+    --text-main: #1e2448;
+    --text-soft: #38407a;
+
+    --accent-main: #4ac7b8;
+    --accent-soft: #6fa3ff;
+    --accent-warm: #ffb84d;
+
+    --grad-main: linear-gradient(90deg,#4ac7b8,#6fa3ff);
+    --grad-hero: linear-gradient(115deg,#ffffff 0%,#eef2ff 65%,#dff7f4 160%);
+
+    --glow-main: rgba(74,199,184,.45);
+}
+
+[data-theme="neon"] {
+    --bg-main: #05050f;
+    --bg-header: #070716;
+    --bg-panel: rgba(20,20,60,0.65);
+
+    --text-main: #eaffff;
+    --text-soft: #bffcff;
+
+    --accent-main: #00fff7;
+    --accent-soft: #7c41ee;
+    --accent-warm: #ffd86b;
+
+    --grad-main: linear-gradient(90deg,#00fff7,#7c41ee);
+    --grad-hero: linear-gradient(115deg,#070716 0%,#151540 65%,#00fff7 160%);
+
+    --glow-main: rgba(0,255,247,.65);
+}
+
+
+/* =========================================================
+   ASTRA THEME OVERRIDES (NON-DESTRUCTIVE)
+   ========================================================= */
+
+/* Global */
+html, body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Header */
+.astra-header {
+    background: var(--bg-header);
+}
+
+/* ALLE Hero Cards auf einmal */
+.astra-hero-card,
+.commands-hero-card,
+.report-hero-card,
+.legal-hero-card,
+.error-hero-card,
+.astra-status-card {
+    background: var(--grad-hero);
+}
+
+/* Panels / Cards */
+.astra-about-card,
+.commands-panel-card,
+.feature-card,
+.command-category,
+.legal-main-card {
+    background: var(--bg-panel);
+}
+
+/* Accent-Farben */
+.highlight,
+.stat-num,
+.status-icon,
+.cmd-usage,
+.headline-dynamic,
+.astra-logo-text span {
+    color: var(--accent-main);
+}
+
+/* Buttons */
+.nav-btn,
+.astra-btn.main,
+.commands-filters button.active,
+.status-badge.ok,
+.astra-form button {
+    background: var(--grad-main);
+    color: #223254;
 }

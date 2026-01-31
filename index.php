@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
 </head>
-<body class="theme-test">
+<body class="light">
 
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
