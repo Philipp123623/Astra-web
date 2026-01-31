@@ -251,7 +251,11 @@
             let hasMatch = false;
 
             cat.querySelectorAll('.command-item').forEach(cmd => {
-                const match = cmd.innerText.toLowerCase().includes(val);
+                const name = cmd.querySelector('.cmd-name')?.innerText.toLowerCase() || '';
+                const usage = cmd.querySelector('.cmd-usage')?.innerText.toLowerCase() || '';
+
+                const match = name.includes(val) || usage.includes(val);
+
                 cmd.style.display = match ? '' : 'none';
                 if (match) hasMatch = true;
             });
