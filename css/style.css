@@ -3,32 +3,8 @@
    ========================= */
 
 :root {
-    --header-height: 68px;
+    --header-height: 68px;   /* Desktop Header */
     --header-height-mobile: 56px;
-
-    /* ===== ASTRA DESIGN TOKENS ===== */
-
-    /* Base */
-    --bg-page: #120f2f;
-    --bg-card: #251f5b;
-    --bg-card-soft: rgba(42,50,111,0.55);
-
-    /* Primary Accent */
-    --accent: #65e6ce;
-    --accent-soft: rgba(101,230,206,.35);
-    --accent-glow: rgba(101,230,206,.6);
-
-    /* Secondary Accent */
-    --accent-2: #a7c8fd;
-    --accent-3: #7c41ee;
-
-    /* Text */
-    --text-main: #eafcff;
-    --text-soft: #d7f3ff;
-    --text-muted: #9fb3d9;
-
-    /* Borders / Lines */
-    --line-soft: rgba(255,255,255,.12);
 }
 
 
@@ -48,12 +24,11 @@ html, body {
     min-height: 100%;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    background: var(--bg-page);
-    color: var(--text-main);
+    background: #221c50;
+    color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
     overflow-x: hidden;
 }
-
 
 body {
     overflow-y: auto !important;
@@ -2567,9 +2542,6 @@ main.legal-main {
 
 
 
-
-
-
     /* =====================================================
        STATUS PAGE – FINAL FIX (NO RIGHT CROP)
        ===================================================== */
@@ -2723,4 +2695,3 @@ main.legal-main {
     }
 
 }
-
