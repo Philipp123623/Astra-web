@@ -127,7 +127,7 @@
 
 <script>
     /* ============================
-       LOAD JSON & RENDER (FIXED)
+       LOAD JSON & RENDER (SAFE)
     ============================ */
     fetch('/json/commands.json')
         .then(res => res.json())
@@ -144,25 +144,39 @@
             categoryEl.className = 'command-category';
             categoryEl.dataset.category = category;
 
+            const body = document.createElement('div');
+            body.className = 'command-category-body';
+
+            catData.commands.forEach(cmd => {
+                const item = document.createElement('div');
+                item.className = 'command-item';
+
+                const name = document.createElement('div');
+                name.className = 'cmd-name';
+                name.textContent = cmd.name;
+
+                const desc = document.createElement('div');
+                desc.className = 'cmd-desc';
+                desc.textContent = cmd.description;
+
+                const usage = document.createElement('div');
+                usage.className = 'cmd-usage';
+                usage.textContent = cmd.usage; // ⬅️ DAS IST DER FIX
+
+                item.appendChild(name);
+                item.appendChild(desc);
+                item.appendChild(usage);
+                body.appendChild(item);
+            });
+
             categoryEl.innerHTML = `
       <button class="command-category-header">
         ${getIcon(category)} ${category}
         <span>${count} Commands</span>
       </button>
-
-      <div class="command-category-body">
-        ${catData.commands.map(cmd => {
-                return `
-            <div class="command-item">
-              <div class="cmd-name">${cmd.name}</div>
-              <div class="cmd-desc">${cmd.description}</div>
-              <div class="cmd-usage">${cmd.usage}</div>
-            </div>
-          `;
-            }).join('')}
-      </div>
     `;
 
+            categoryEl.appendChild(body);
             accordion.appendChild(categoryEl);
         });
 
@@ -192,7 +206,7 @@
     }
 
     /* ============================
-       ACCORDION – SINGLE OPEN
+       ACCORDION
     ============================ */
     function initAccordion() {
         document.querySelectorAll('.command-category-header').forEach(btn => {
@@ -228,7 +242,7 @@
     });
 
     /* ============================
-       SEARCH (OPEN MATCHING CATS)
+       SEARCH
     ============================ */
     document.getElementById('commandSearch').addEventListener('input', e => {
         const val = e.target.value.toLowerCase().trim();
@@ -253,37 +267,8 @@
             }
         });
     });
-
-    /* ============================
-       PLACEHOLDER TYPE EFFECT
-    ============================ */
-    const searchInput = document.getElementById('commandSearch');
-    const placeholderText = searchInput.dataset.placeholder;
-    let typingInterval = null;
-
-    searchInput.addEventListener('focus', () => {
-        searchInput.classList.add('hide-placeholder');
-        clearInterval(typingInterval);
-    });
-
-    searchInput.addEventListener('blur', () => {
-        if (searchInput.value.trim() !== '') return;
-
-        clearInterval(typingInterval);
-        searchInput.classList.remove('hide-placeholder');
-
-        let i = 0;
-        searchInput.placeholder = '';
-
-        typingInterval = setInterval(() => {
-            if (i >= placeholderText.length) {
-                clearInterval(typingInterval);
-                return;
-            }
-            searchInput.placeholder += placeholderText.charAt(i++);
-        }, 35);
-    });
 </script>
+
 
 
 </body>
