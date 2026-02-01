@@ -1,23 +1,8 @@
 <?php
-session_start();
-
-/* =====================
-   LANGUAGE HANDLING
-===================== */
-$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
-if (!in_array($lang, ['de','en'])) $lang = 'de';
-$_SESSION['lang'] = $lang;
-
-$t = require __DIR__ . "/lang/$lang.php";
-
-/* =====================
-   TIMEZONE
-===================== */
+// Zeitzone setzen
 date_default_timezone_set('Europe/Berlin');
 
-/* =====================
-   ENV LOADER
-===================== */
+// Funktion zum Laden der .env-Datei
 function loadEnv(string $path): array {
     if (!file_exists($path)) {
         die(".env Datei nicht gefunden!");
@@ -35,9 +20,7 @@ function loadEnv(string $path): array {
 
 $env = loadEnv(__DIR__ . '/.env');
 
-/* =====================
-   DATABASE
-===================== */
+// Datenbank-Verbindung herstellen
 $conn = @new mysqli(
     $env['DB_SERVER'] ?? '',
     $env['DB_USER'] ?? '',
@@ -46,9 +29,7 @@ $conn = @new mysqli(
 );
 $mysql_online = ($conn && !$conn->connect_error);
 
-/* =====================
-   STATS
-===================== */
+// Statistiken aus der Datenbank laden
 $stats = [
     'servercount' => '-',
     'usercount' => '-',
@@ -63,9 +44,7 @@ if ($mysql_online) {
     $conn->close();
 }
 
-/* =====================
-   BOT STATUS
-===================== */
+// Bot Status prüfen
 $bot_online = false;
 try {
     $json = @file_get_contents('http://localhost:5000/status');
@@ -73,17 +52,17 @@ try {
         $data = json_decode($json, true);
         $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
     }
-} catch (Exception $e) {}
+} catch (Exception $e) {
+    // Fehler ignorieren, $bot_online bleibt false
+}
 
-/* =====================
-   HISTORY
-===================== */
+// Status Historie laden (letzte 12h und 30 Tage)
 $historyFile = __DIR__ . '/status_history_bot.txt';
 
 $history_12h = [];
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72);
+    $lines = array_slice($lines, -72); // Letzte 12 Stunden (12*6 = 72 * 10min Intervalle)
     foreach ($lines as $line) {
         if (strpos($line, ':') === false) continue;
         list($ts, $st) = explode(':', $line, 2);
@@ -103,6 +82,7 @@ if (file_exists($historyFile)) {
         $daily[$tag]['total']++;
         if ((int)$st === 1) $daily[$tag]['online']++;
     }
+    // Nur letzte 30 Tage behalten
     $daily = array_slice($daily, -30, 30, true);
     foreach ($daily as $tag => $data) {
         $percent = ($data['total'] > 0) ? ($data['online'] / $data['total'] * 100) : 0;
@@ -116,7 +96,7 @@ if (file_exists($historyFile)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?= $lang ?>">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <title>Status | Astra Bot</title>
@@ -130,56 +110,112 @@ if (file_exists($historyFile)) {
 <!-- ASTRA LOADER -->
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
+
+    <!-- Floating bubbles -->
     <div class="astra-loader-bubbles">
         <span></span><span></span><span></span><span></span><span></span>
     </div>
+
     <div class="astra-loader-core">
         <div class="astra-loader-ring"></div>
         <img src="/public/favicon_transparent.png" class="astra-loader-logo" alt="Astra">
-        <span class="astra-loader-text"><?= $t['booting'] ?></span>
+        <span class="astra-loader-text">Booting Astra</span>
     </div>
 </div>
 
+
 <?php include 'includes/header.php'; ?>
 
-<main class="astra-status-main" role="main" aria-label="<?= $t['status_aria'] ?>">
+<main class="astra-status-main" role="main" aria-label="Service Status Übersicht">
     <section class="astra-status-card" aria-labelledby="service-status-title">
+        <div class="status-bubbles-bg" aria-hidden="true">
+            <svg width="100%" height="100%" role="img" focusable="false" aria-hidden="true">
+                <circle cx="12%" cy="18%" r="43" fill="#65e6ce33" />
+                <circle cx="98%" cy="18%" r="58" fill="#a7c8fd22" />
+                <circle cx="50%" cy="95%" r="32" fill="#7c41ee22" />
+                <circle cx="6%" cy="89%" r="41" fill="#60e9cb22" />
+            </svg>
+        </div>
 
-        <h1 id="service-status-title"><?= $t['status_heading'] ?></h1>
+        <h1 id="service-status-title">Service Status</h1>
 
-        <ul class="status-list">
+        <ul class="status-list" role="list">
             <li class="status-row">
-                <span class="status-label">🤖 <?= $t['status_bot'] ?></span>
-                <span class="status-badge <?= $bot_online ? 'ok' : 'err' ?>">
-            <?= $bot_online ? $t['online'] : $t['offline'] ?>
-        </span>
+                <span class="status-label"><span class="status-icon" aria-hidden="true">🤖</span> Bot</span>
+                <span class="status-badge <?php echo $bot_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
+                    <?php echo $bot_online ? 'Online' : 'Offline'; ?>
+                </span>
             </li>
             <li class="status-row">
-                <span class="status-label">🗄️ MySQL</span>
-                <span class="status-badge <?= $mysql_online ? 'ok' : 'err' ?>">
-            <?= $mysql_online ? $t['online'] : $t['offline'] ?>
-        </span>
+                <span class="status-label"><span class="status-icon" aria-hidden="true">🗄️</span> MySQL</span>
+                <span class="status-badge <?php echo $mysql_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
+                    <?php echo $mysql_online ? 'Online' : 'Offline'; ?>
+                </span>
             </li>
         </ul>
 
-        <div class="status-tabs-row">
-            <button id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">
-                <?= $t['last_12h'] ?>
-            </button>
-            <button id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">
-                <?= $t['last_30d'] ?>
-            </button>
+        <div class="status-tabs-row" role="tablist" aria-label="Status Zeitraum auswählen">
+            <button role="tab" aria-selected="true" aria-controls="uptime-detail" id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">Letzte 12h</button>
+            <button role="tab" aria-selected="false" aria-controls="uptime-tage" id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">Letzte 30 Tage</button>
         </div>
 
-        <p class="uptime-legend"><?= $t['uptime_legend'] ?></p>
-
-        <div class="stats-box-row">
-            <div class="stat-box"><div><?= $t['servers'] ?></div><b><?= $stats['servercount'] ?></b></div>
-            <div class="stat-box"><div><?= $t['users'] ?></div><b><?= $stats['usercount'] ?></b></div>
-            <div class="stat-box"><div><?= $t['commands'] ?></div><b><?= $stats['commandCount'] ?></b></div>
-            <div class="stat-box"><div><?= $t['channels'] ?></div><b><?= $stats['channelCount'] ?></b></div>
+        <div class="uptime-chart" role="tabpanel" id="uptime-detail" aria-labelledby="tab-btn-detail">
+            <h2 class="uptime-chart-title" id="uptime-title-detail">Bot-Uptime Verlauf (letzte 12h)</h2>
+            <div class="uptime-bar-row" id="uptimeBarRowDetail">
+                <?php foreach ($history_12h as $idx => $entry):
+                    $class = $entry['status'] ? 'online' : 'offline';
+                    $ts = $entry['timestamp'];
+                    $statusStr = $entry['status'] ? 'Online' : 'Offline';
+                    $dateStr = date("d.m. H:i", $ts);
+                    echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'" tabindex="0"></div>';
+                endforeach; ?>
+            </div>
         </div>
 
+        <div class="uptime-chart" role="tabpanel" id="uptime-tage" aria-labelledby="tab-btn-tage" style="display:none;">
+            <h2 class="uptime-chart-title" id="uptime-title-tage">Tages-Uptime (letzte 30 Tage)</h2>
+            <div class="uptime-bar-row-day" id="uptimeBarRowTage">
+                <?php foreach ($history_30d as $entry):
+                    $p = $entry['percent'];
+                    $dateStr = date("d.m.", strtotime($entry['date']));
+                    if ($p >= 99.95) $class = 'perfect';
+                    elseif ($p >= 98.0) $class = 'good';
+                    elseif ($p >= 90.0) $class = 'warn';
+                    else $class = 'bad';
+                    $tooltip = "{$dateStr} <br>Uptime: ".round($p,2)."%<br>({$entry['online']}/{$entry['total']})";
+                    echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
+                endforeach; ?>
+            </div>
+        </div>
+
+        <p class="uptime-legend" aria-live="polite">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten — oder 1 Tag.</p>
+
+        <div id="uptime-tooltip" style="display:none;" role="tooltip" aria-hidden="true">
+            <div class="uptime-tooltip-bubble">
+                <button type="button" class="uptime-tooltip-close" aria-label="Schließen">&times;</button>
+                <div class="uptime-tooltip-content"></div>
+                <div class="uptime-tooltip-arrow"></div>
+            </div>
+        </div>
+
+        <div class="stats-box-row" role="list" aria-label="Statistik Übersicht">
+            <div class="stat-box" role="listitem">
+                <div class="stat-head">Server</div>
+                <div class="stat-num"><?php echo htmlspecialchars($stats['servercount']); ?></div>
+            </div>
+            <div class="stat-box" role="listitem">
+                <div class="stat-head">User</div>
+                <div class="stat-num"><?php echo htmlspecialchars($stats['usercount']); ?></div>
+            </div>
+            <div class="stat-box" role="listitem">
+                <div class="stat-head">Commands</div>
+                <div class="stat-num"><?php echo htmlspecialchars($stats['commandCount']); ?></div>
+            </div>
+            <div class="stat-box" role="listitem">
+                <div class="stat-head">Channels</div>
+                <div class="stat-num"><?php echo htmlspecialchars($stats['channelCount']); ?></div>
+            </div>
+        </div>
     </section>
 </main>
 
