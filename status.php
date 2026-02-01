@@ -191,12 +191,36 @@ if (file_exists($historyFile)) {
         <div class="uptime-chart" role="tabpanel" id="uptime-detail" aria-labelledby="tab-btn-detail">
             <h2 class="uptime-chart-title"><?= $t['uptime_12h_title'] ?></h2>
             <div class="uptime-bar-row" id="uptimeBarRowDetail">
-                <?php foreach ($history_12h as $idx => $entry):
-                    $class = $entry['status'] ? 'online' : 'offline';
-                    $ts = $entry['timestamp'];
-                    $statusStr = $entry['status'] ? $t['online'] : $t['offline'];
-                    $dateStr = date("d.m. H:i", $ts);
-                    echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'" tabindex="0"></div>';
+                <?php foreach ($history_30d as $entry):
+                    $p = $entry['percent'];
+                    $dateStr = date("d.m.", strtotime($entry['date']));
+
+                    if ($p >= 99.95) {
+                        $class = 'perfect';
+                        $statusText = $t['online'];
+                        $statusColor = '#65e6ce';
+                    } elseif ($p >= 98.0) {
+                        $class = 'good';
+                        $statusText = $t['online'];
+                        $statusColor = '#65e6ce';
+                    } elseif ($p >= 90.0) {
+                        $class = 'warn';
+                        $statusText = $t['offline'];
+                        $statusColor = '#ffb347';
+                    } else {
+                        $class = 'bad';
+                        $statusText = $t['offline'];
+                        $statusColor = '#ff7272';
+                    }
+
+                    $tooltip = "
+        <b>{$dateStr}</b><br>
+        {$t['status']}: <span style='font-weight:700;color:{$statusColor}'>{$statusText}</span><br>
+        {$t['uptime_popup_title']} <span style='color:#90e3e7'>".round($p,2)."%</span><br>
+        ({$entry['online']}/{$entry['total']})
+    ";
+
+                    echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
                 endforeach; ?>
             </div>
         </div>
