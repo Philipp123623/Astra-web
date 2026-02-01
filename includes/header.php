@@ -241,14 +241,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 ====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
         const themeSwitch = document.getElementById('themeSwitch');
         if (!themeSwitch) return;
 
         const root = document.documentElement;
         const STORAGE_KEY = 'astra-theme';
+
+        const btn   = themeSwitch.querySelector('.theme-btn');
         const items = themeSwitch.querySelectorAll('[data-theme]');
 
-        // INIT – OHNE Animation
+        /* =========================
+           INIT (NO ANIMATION)
+        ========================= */
+
         const savedTheme = localStorage.getItem(STORAGE_KEY);
         if (savedTheme && savedTheme !== 'default') {
             root.setAttribute('data-theme', savedTheme);
@@ -262,16 +268,34 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         updateActive(savedTheme || 'default');
 
-        // THEME CLICK
+        /* =========================
+           BUTTON CLICK FEEDBACK
+           (EVERY CLICK)
+        ========================= */
+
+        btn.addEventListener('click', () => {
+            themeSwitch.classList.remove('clicked');
+            void themeSwitch.offsetWidth; // force reflow
+            themeSwitch.classList.add('clicked');
+
+            setTimeout(() => {
+                themeSwitch.classList.remove('clicked');
+            }, 450);
+        });
+
+        /* =========================
+           THEME CHANGE (BIG ANIMATION)
+        ========================= */
+
         items.forEach(item => {
             item.addEventListener('click', e => {
                 e.stopPropagation();
 
                 const theme = item.dataset.theme;
 
-                // 🔥 Animation sicher neu starten
+                // 🌈 BIG AURORA – nur hier
                 root.classList.remove('theme-animating');
-                void root.offsetWidth; // reflow erzwingen
+                void root.offsetWidth; // force reflow
                 root.classList.add('theme-animating');
 
                 if (theme === 'default') {
@@ -284,14 +308,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
                 updateActive(theme);
 
-                // 🔥 Animation cleanup
                 setTimeout(() => {
                     root.classList.remove('theme-animating');
                 }, 1700);
             });
         });
+
     });
 </script>
+
 
 
 
