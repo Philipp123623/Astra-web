@@ -29,7 +29,6 @@ html, body {
     color: #f4faff;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 body {
@@ -704,7 +703,6 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
    ========================= */
 
 .astra-nav-mobile {
-    outline: 3px solid red;
     position: fixed;
     top: env(safe-area-inset-top, 0);
     right: 0;
@@ -945,6 +943,7 @@ body.nav-open {
 }
 
 .astra-nav-mobile .nav-link::after {
+    display: none;
     content: "";
     position: absolute;
     left: 28px;
