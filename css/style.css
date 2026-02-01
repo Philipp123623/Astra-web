@@ -3731,381 +3731,54 @@ main.legal-main {
 
 }
 
-/* =========================
-   AURORA – FULL THEME
-   ========================= */
 
 :root[data-theme="aurora"] {
+    /* Backgrounds */
+    --bg-main: #0b1024;
 
-    /* =========================
-       LAYOUT
-       ========================= */
-    --header-height: 68px;
-    --header-height-mobile: 56px;
+    /* Text */
+    --text-main: #eaf6ff;
+    --text-heading: #ffffff;
+    --text-link: #5fffe0;
+    --text-link-hover: #ffd37a;
 
-    /* =========================
-       BACKGROUNDS
-       ========================= */
-    --bg-main: #050814;
+    /* Scrollbar */
+    --scrollbar-bg: #12183a;
+    --scrollbar-thumb: #2a3cff;
 
-    /* =========================
-       TEXT
-       ========================= */
-    --text-main: #e6fbff;
-    --text-heading: #f4ffff;
-    --text-link: #6dffe3;
-    --text-link-hover: #b6fff2;
+    /* Selection */
+    --selection-bg: #5fffe0;
+    --selection-text: #0b1024;
 
-    /* =========================
-       SCROLLBAR
-       ========================= */
-    --scrollbar-bg: #0a1024;
-    --scrollbar-thumb: #2af0cc;
+    /* Header */
+    --header-bg: #0d1330;
+    --header-shadow: rgba(95, 255, 224, 0.18);
 
-    /* =========================
-       SELECTION
-       ========================= */
-    --selection-bg: #6dffe3;
-    --selection-text: #041216;
+    /* Accents */
+    --accent-primary: #5fffe0;
+    --accent-secondary: #7aa2ff;
+    --accent-green-soft: #8ffff0;
 
-    /* =========================
-       LOADER TOKENS
-       ========================= */
-    --loader-bg-main: #030610;
-    --loader-bg-gradient-end: #0a1430;
+    /* Logo / Nav */
+    --logo-bg: #0a0f28;
+    --nav-link: #dbe7ff;
+    --nav-link-active: #5fffe0;
 
-    --loader-accent-primary: #6dffe3;
-    --loader-accent-secondary: #7fa6ff;
-    --loader-accent-violet: #9a6cff;
-
-    --loader-text: rgba(235, 255, 255, .92);
-
-    --loader-glow-primary: rgba(109, 255, 227, .65);
-    --loader-glow-primary-soft: rgba(109, 255, 227, .35);
-    --loader-glow-violet: rgba(154, 108, 255, .45);
-    --loader-glow-violet-soft: rgba(154, 108, 255, .25);
-
-    /* =========================
-       HEADER / NAV
-       ========================= */
-    --header-bg: rgba(6, 10, 30, .82);
-    --header-shadow: rgba(109, 255, 227, .22);
-
-    --lang-btn-bg: rgba(255, 255, 255, .06);
-    --lang-btn-border: rgba(255, 255, 255, .12);
-    --lang-btn-shadow: rgba(0, 0, 0, .55);
-
-    --lang-accent: #6dffe3;
-    --lang-accent-soft: rgba(109, 255, 227, .35);
-    --lang-accent-strong: rgba(109, 255, 227, .9);
-    --lang-accent-max: rgba(109, 255, 227, 1);
-
-    --icon-main: #ffffff;
-    --icon-secondary: #b7d4ff;
-
-    --lang-dropdown-bg-top: rgba(10, 16, 46, .98);
-    --lang-dropdown-bg-bottom: rgba(4, 8, 26, .98);
-    --lang-dropdown-text: #eafcff;
-    --lang-dropdown-text-active: #041216;
-    --lang-dropdown-text-hover: #ffffff;
-
-    /* =========================
-       LOGO / NAVBAR
-       ========================= */
-    --logo-bg: #070c24;
-    --logo-shadow: rgba(109, 255, 227, .28);
-    --logo-text: #ffffff;
-    --logo-accent: #6dffe3;
-
-    --nav-link: #e6fbff;
-    --nav-link-active: #6dffe3;
-
-    --nav-btn-gradient-start: #6dffe3;
-    --nav-btn-gradient-end: #7fa6ff;
-    --nav-btn-text: #041216;
-    --nav-btn-shadow: rgba(109, 255, 227, .28);
-    --nav-btn-shadow-hover: rgba(109, 255, 227, .38);
-
-    --hamburger-gradient-start: #6dffe3;
-    --hamburger-gradient-end: #7fa6ff;
-    --hamburger-glow: rgba(109, 255, 227, .7);
-
-    /* =========================
-       MOBILE DRAWER
-       ========================= */
-    --drawer-bg-main: #050814;
-    --drawer-bg-top: #02040c;
-    --drawer-bg-bottom: #0b1336;
-
-    --drawer-glow-primary: rgba(109, 255, 227, .3);
-    --drawer-glow-secondary: rgba(154, 108, 255, .35);
-    --drawer-glow-tertiary: rgba(127, 166, 255, .25);
-    --drawer-glow-quaternary: rgba(154, 108, 255, .28);
-
-    --drawer-shadow-main: rgba(0, 0, 0, .75);
-    --drawer-border: rgba(255, 255, 255, .06);
-
-    --drawer-title: rgba(255, 255, 255, .42);
-
-    --drawer-close-bg: rgba(255, 255, 255, .08);
-    --drawer-close-hover-bg: rgba(109, 255, 227, .25);
-    --drawer-close-icon: #ffffff;
-    --drawer-close-glow: rgba(109, 255, 227, .65);
-
-    --drawer-link: #eafcff;
-    --drawer-link-hover-bg: rgba(255, 255, 255, .06);
-    --drawer-link-active: #6dffe3;
-
-    --drawer-link-accent-soft: rgba(109, 255, 227, .18);
-    --drawer-link-border: rgba(109, 255, 227, .42);
-    --drawer-link-glow: rgba(109, 255, 227, .5);
-
-    --drawer-cta-bg-start: #6dffe3;
-    --drawer-cta-bg-end: #7fa6ff;
-    --drawer-cta-text: #041216;
-    --drawer-cta-glow: rgba(109, 255, 227, .6);
-
-    --drawer-overlay-bg: rgba(2, 6, 18, .75);
-
-    /* =========================
-       HERO / CONTENT
-       ========================= */
-    --hero-bg-start: #0a1440;
-    --hero-bg-mid: #142a7a;
-    --hero-bg-end: #2ffff0;
-    --hero-shadow: rgba(109, 255, 227, .25);
-
-    --hero-text-main: #ffffff;
-    --hero-text-muted: #d6f7ff;
-    --hero-accent: #6dffe3;
-    --hero-accent-secondary: #7fa6ff;
-    --hero-accent-warm: #ffd799;
-
-    /* Labels */
-    --label-bg-default: #141c44;
-    --label-text-default: #c9fbff;
-    --label-green-start: #6dffe3;
-    --label-green-end: #8dfff0;
-    --label-blue-start: #7fa6ff;
-    --label-blue-end: #9b7bff;
-    --label-yellow-start: #ffe08a;
-    --label-yellow-end: #ffb7d8;
-    --label-shadow: rgba(109, 255, 227, .14);
-
-    /* Buttons */
-    --hero-btn-main-start: #6dffe3;
-    --hero-btn-main-end: #7fa6ff;
-    --hero-btn-text-dark: #041216;
-    --hero-btn-outline: #7fa6ff;
-    --hero-btn-shadow: rgba(109, 255, 227, .22);
-    --hero-btn-hover-shadow: rgba(109, 255, 227, .35);
-
-    /* Badges */
-    --badge-bg: rgba(255, 255, 255, .08);
-    --badge-text: #c9fbff;
-    --badge-mint-bg: rgba(109, 255, 227, .18);
-    --badge-mint-text: #6dffe3;
-    --badge-violet-bg: rgba(154, 108, 255, .2);
-    --badge-violet-text: #eedaff;
-    --badge-yellow-bg: rgba(255, 224, 138, .18);
-    --badge-yellow-text: #ffe08a;
-    --badge-blue-bg: rgba(127, 166, 255, .18);
-    --badge-blue-text: #7fa6ff;
+    /* Hero */
+    --hero-bg-start: #0b1024;
+    --hero-bg-mid: #1a2a6c;
+    --hero-bg-end: #5fffe0;
+    --hero-text-muted: #d2e6ff;
 
     /* Cards */
-    --card-bg-soft: rgba(12, 20, 56, .45);
-    --card-bg-strong: rgba(16, 26, 72, .65);
-    --card-shadow-soft: rgba(0, 0, 0, .45);
-    --card-shadow-strong: rgba(0, 0, 0, .65);
+    --card-bg-soft: rgba(20, 28, 70, .35);
+    --card-bg-strong: rgba(30, 40, 95, .5);
 
-    /* Stats */
-    --stat-bg: rgba(16, 26, 72, .6);
-    --stat-number: #6dffe3;
-    --stat-title: #cfe8ff;
-
-    /* About */
-    --about-title: #6dffe3;
-    --about-text: #c9fbff;
-    --about-link: #6dffe3;
-    --about-link-hover: #b6fff2;
-
-    /* Features */
-    --feature-hover-shadow: rgba(109, 255, 227, .35);
-
-    /* FAQ */
-    --faq-bg: rgba(16, 26, 72, .55);
-    --faq-bg-active: rgba(109, 255, 227, .18);
-    --faq-question: #6dffe3;
-    --faq-shadow: rgba(0, 0, 0, .45);
-    --faq-shadow-hover: rgba(109, 255, 227, .35);
-
-    /* =========================
-       COMMANDS
-       ========================= */
-    --commands-hero-bg-start: #0a1440;
-    --commands-hero-bg-mid: #142a7a;
-    --commands-hero-bg-end: #2ffff0;
-    --commands-hero-shadow: rgba(109, 255, 227, .32);
-
-    --commands-panel-bg-top: rgba(16, 26, 72, .75);
-    --commands-panel-bg-bottom: rgba(10, 16, 46, .65);
-    --commands-panel-radius: 30px;
-    --commands-panel-shadow-main: rgba(0, 0, 0, .55);
-    --commands-panel-shadow-inset: rgba(255, 255, 255, .04);
-
-    --search-bg-start: rgba(10, 16, 46, .95);
-    --search-bg-mid: rgba(20, 42, 122, .95);
-    --search-bg-end: rgba(10, 16, 46, .95);
-
-    --search-text: #ffffff;
-    --search-text-preview: rgba(255, 255, 255, .55);
-
-    --search-border: rgba(109, 255, 227, .45);
-    --search-accent: #6dffe3;
-
-    --search-glow-soft: rgba(109, 255, 227, .45);
-    --search-glow-strong: rgba(109, 255, 227, .95);
-
-    --search-shadow-dark: rgba(0, 0, 0, .65);
-    --search-shadow-focus-dark: rgba(0, 0, 0, .85);
-
-    --filter-bg: rgba(255, 255, 255, .08);
-    --filter-bg-hover: rgba(255, 255, 255, .14);
-    --filter-active-start: #6dffe3;
-    --filter-active-end: #7fa6ff;
-    --filter-active-text: #041216;
-    --filter-active-shadow: rgba(109, 255, 227, .45);
-    --filter-text: #cfefff;
-
-    --accordion-bg-top: rgba(16, 26, 72, .65);
-    --accordion-bg-bottom: rgba(10, 16, 46, .55);
-    --accordion-radius: 22px;
-    --accordion-shadow: rgba(0, 0, 0, .45);
-    --accordion-title: #6dffe3;
-
-    --command-text-main: #eafcff;
-    --command-text-muted: #cfefff;
-    --command-name: #7fa6ff;
-    --command-strong: #6dffe3;
-
-    --command-divider: rgba(109, 255, 227, .45);
-    --command-divider-glow: rgba(109, 255, 227, .45);
-
-    --usage-bg: rgba(0, 0, 0, .45);
-    --usage-text: #6dffe3;
-
-    /* =========================
-       STATUS / REPORT / FOOTER / LEGAL
-       ========================= */
-    --status-hero-bg-start: #0a1440;
-    --status-hero-bg-mid: #142a7a;
-    --status-hero-bg-end: #2ffff0;
-
-    --status-hero-shadow-main: rgba(109, 255, 227, .32);
-    --status-hero-shadow-glow: rgba(109, 255, 227, .28);
-    --status-hero-border: rgba(255, 255, 255, .06);
-
-    --status-title: #6dffe3;
-    --status-title-glow: rgba(109, 255, 227, .55);
-
-    --status-text-main: #eafcff;
-    --status-text-muted: #cfefff;
-    --status-text-soft: #bfe7ff;
-
-    --status-row-border: rgba(255, 255, 255, .12);
-
-    --status-badge-bg: rgba(255, 255, 255, .14);
-    --status-badge-text: #eafcff;
-    --status-badge-border: rgba(255, 255, 255, .22);
-
-    --status-ok-start: #6dffe3;
-    --status-ok-end: #7fa6ff;
-    --status-ok-text: #041216;
-    --status-ok-glow: rgba(109, 255, 227, .35);
-
-    --status-err-start: #ff6b6b;
-    --status-err-end: #ffb3b3;
-    --status-err-text: #4a1515;
-
-    --status-warn-start: #ffe08a;
-    --status-warn-end: #ffbd34;
-    --status-warn-text: #4a320c;
-
-    --status-tab-bg: rgba(255, 255, 255, .1);
-    --status-tab-text: #cfefff;
-    --status-tab-active-start: #6dffe3;
-    --status-tab-active-end: #7fa6ff;
-    --status-tab-active-text: #041216;
-    --status-tab-active-shadow: rgba(109, 255, 227, .45);
-
-    --uptime-online: #6dffe3;
-    --uptime-online-glow: rgba(109, 255, 227, .6);
-    --uptime-offline: #ff6b6b;
-    --uptime-good: #9bffe9;
-    --uptime-warn: #ffe08a;
-
-    --tooltip-bg: rgba(8, 12, 34, .95);
-    --tooltip-text: #7fa6ff;
-    --tooltip-shadow: rgba(0, 0, 0, .45);
-
-    --stats-box-bg: rgba(0, 0, 0, .35);
-    --stats-head: #7fa6ff;
-    --stats-number: #6dffe3;
-
-    --report-desc: #cfefff;
-
-    --problem-user-start: #ff7aa2;
-    --problem-user-end: #ffb3c6;
-    --problem-user-text: #3d0b21;
-
-    --problem-web-start: #6dffe3;
-    --problem-web-end: #7fa6ff;
-    --problem-web-text: #041216;
-
-    --problem-discord-start: #9a6cff;
-    --problem-discord-end: #c29cff;
-    --problem-discord-text: #250b3d;
-
-    --form-bg: rgba(255, 255, 255, .14);
-    --form-shadow: rgba(109, 255, 227, .18);
-
-    --msg-success-bg: rgba(109, 255, 227, .22);
-    --msg-success-text: #6dffe3;
-
-    --msg-error-bg: rgba(255, 107, 107, .22);
-    --msg-error-text: #ff6b6b;
-
-    --hero-shadow-soft: rgba(109, 255, 227, .28);
-    --hero-shadow-strong: rgba(109, 255, 227, .45);
-    --hero-glow-mint: rgba(109, 255, 227, .3);
-    --hero-border-soft: rgba(255, 255, 255, .06);
-
-    --text-muted: #cfefff;
-    --text-soft: #bfe7ff;
-
-    --accent-primary: #6dffe3;
-    --accent-secondary: #7fa6ff;
-    --accent-green-soft: #9bffe9;
-
-    --error-glow-primary: rgba(109, 255, 227, .6);
-    --error-glow-secondary: rgba(154, 108, 255, .4);
-
-    --footer-bg-top: #050814;
-    --footer-bg-bottom: #0b1336;
-    --footer-text-main: #eafcff;
-    --footer-text-muted: #cfefff;
-    --footer-text-soft: #9fbfe0;
-    --footer-link: #7fa6ff;
-    --footer-link-hover: #6dffe3;
-
-    --legal-card-bg-top: rgba(16, 26, 72, .85);
-    --legal-card-bg-bottom: rgba(10, 16, 46, .75);
-    --legal-shadow-dark: rgba(0, 0, 0, .65);
-    --legal-glow-soft: rgba(109, 255, 227, .22);
-
-    --chip-bg: rgba(109, 255, 227, .22);
-    --chip-border: rgba(109, 255, 227, .45);
-    --chip-text: #eafcff;
+    /* Footer */
+    --footer-bg-top: #080c1e;
+    --footer-bg-bottom: #0b1024;
+    --footer-link: #7aa2ff;
+    --footer-link-hover: #5fffe0;
 }
 
 
