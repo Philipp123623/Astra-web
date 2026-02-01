@@ -2972,9 +2972,10 @@ main.report-main {
     position: sticky;
     top: calc(var(--header-height) + 32px);
 
+    min-height: calc(100vh - var(--header-height) - 32px - 32px);
+
     border-radius: 22px;
     height: auto;        /* ✅ natürlich wachsen */
-    min-height: calc(100vh - var(--header-height));
     padding: 26px 18px 22px;
 
     background: linear-gradient(
