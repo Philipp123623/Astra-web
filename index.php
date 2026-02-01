@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en" data-theme="sunset">>
+<html lang="en" data-theme="aurora">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
