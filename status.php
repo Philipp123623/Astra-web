@@ -228,7 +228,7 @@ if (file_exists($historyFile)) {
 
                     $tooltip = "
         <b>{$dateStr}</b><br>
-        {$t['status']}: <span style='font-weight:700;color:{$statusColor}'>{$statusText}</span><br>
+        Status: <span style='font-weight:700;color:{$statusColor}'>{$statusText}</span><br>
         {$t['uptime_popup_title']} <span style='color:#90e3e7'>".round($p,2)."%</span><br>
         ({$entry['online']}/{$entry['total']})
     ";
