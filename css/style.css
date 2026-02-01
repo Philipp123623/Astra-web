@@ -1049,6 +1049,70 @@ body.nav-open .lang-switch * {
     fill: #1a2333;
 }
 
+
+/* =========================
+   THEME SWITCH (DESKTOP)
+========================= */
+
+.theme-switch {
+    margin-left: 14px;
+    position: relative;
+}
+
+.theme-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .3s ease, box-shadow .3s ease;
+}
+
+.theme-btn:hover {
+    background: rgba(106,255,234,0.18);
+    box-shadow: 0 0 18px rgba(106,255,234,0.45);
+}
+
+.theme-core {
+    width: 22px;
+    height: 22px;
+}
+
+.theme-ring {
+    fill: none;
+    stroke: url(#themeGradient);
+    stroke-width: 1.6;
+    opacity: .9;
+}
+
+.theme-core-dot {
+    fill: url(#themeGradient);
+    filter: drop-shadow(0 0 6px rgba(106,255,234,0.6));
+}
+
+.theme-rays line {
+    stroke: url(#themeGradient);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    opacity: .85;
+}
+
+/* Active animation */
+:root[data-theme="aurora-mint"] .theme-core {
+    animation: theme-spin 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes theme-spin {
+    0%   { transform: rotate(0deg) scale(1); }
+    40%  { transform: rotate(160deg) scale(1.15); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+
 .astra-logo {
     display: flex;
     align-items: center;

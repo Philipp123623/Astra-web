@@ -87,7 +87,33 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </div>
 
         </div>
+        <!-- Theme Switch (Desktop) -->
+        <div class="theme-switch" id="themeSwitch">
+            <button class="theme-btn" aria-label="Switch theme">
+                <svg class="theme-core" viewBox="0 0 24 24" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="themeGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#6affea"/>
+                            <stop offset="100%" stop-color="#9cbcff"/>
+                        </linearGradient>
+                    </defs>
 
+                    <!-- Outer ring -->
+                    <circle cx="12" cy="12" r="9" class="theme-ring"/>
+
+                    <!-- Inner dot -->
+                    <circle cx="12" cy="12" r="4" class="theme-core-dot"/>
+
+                    <!-- Rays -->
+                    <g class="theme-rays">
+                        <line x1="12" y1="1.5" x2="12" y2="4"/>
+                        <line x1="12" y1="20" x2="12" y2="22.5"/>
+                        <line x1="1.5" y1="12" x2="4" y2="12"/>
+                        <line x1="20" y1="12" x2="22.5" y2="12"/>
+                    </g>
+                </svg>
+            </button>
+        </div>
     </div>
 </header>
 
@@ -181,6 +207,36 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         });
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const switcher = document.getElementById('themeSwitch');
+        if (!switcher) return;
+
+        const root = document.documentElement;
+        const STORAGE_KEY = 'astra-theme';
+
+        // Init
+        const savedTheme = localStorage.getItem(STORAGE_KEY);
+        if (savedTheme) {
+            root.setAttribute('data-theme', savedTheme);
+        }
+
+        switcher.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme');
+            const next = current === 'aurora-mint' ? 'default' : 'aurora-mint';
+
+            if (next === 'default') {
+                root.removeAttribute('data-theme');
+                localStorage.removeItem(STORAGE_KEY);
+            } else {
+                root.setAttribute('data-theme', next);
+                localStorage.setItem(STORAGE_KEY, next);
+            }
+        });
+    });
+</script>
+
 
 
 
