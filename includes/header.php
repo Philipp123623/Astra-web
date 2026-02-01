@@ -179,99 +179,121 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
         const toggle = document.querySelector('.astra-nav-toggle');
         const closeBtn = document.querySelector('.astra-nav-close');
         const overlay = document.querySelector('.astra-nav-mobile-overlay');
 
-        if (!toggle) return;
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                document.body.classList.add('nav-open');
+            });
 
-        toggle.addEventListener('click', () => {
-            document.body.classList.add('nav-open');
-        });
+            closeBtn?.addEventListener('click', () => {
+                document.body.classList.remove('nav-open');
+            });
 
-        closeBtn.addEventListener('click', () => {
-            document.body.classList.remove('nav-open');
-        });
-
-        overlay.addEventListener('click', () => {
-            document.body.classList.remove('nav-open');
-        });
-
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const langSwitch = document.getElementById('langSwitch');
-        if (!langSwitch) return;
-
-        const btn = langSwitch.querySelector('.lang-btn');
-
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langSwitch.classList.toggle('open');
-        });
-
-        document.addEventListener('click', () => {
-            langSwitch.classList.remove('open');
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const switcher = document.getElementById('themeSwitch');
-        if (!switcher) return;
-
-        const root = document.documentElement;
-        const STORAGE_KEY = 'astra-theme';
-        const btn = switcher.querySelector('.theme-btn');
-        const items = switcher.querySelectorAll('[data-theme]');
-
-        // Init
-        const savedTheme = localStorage.getItem(STORAGE_KEY);
-        if (savedTheme && savedTheme !== 'default') {
-            root.setAttribute('data-theme', savedTheme);
-        }
-
-        function updateActive(theme) {
-            items.forEach(el => {
-                el.classList.toggle('active', el.dataset.theme === theme);
+            overlay?.addEventListener('click', () => {
+                document.body.classList.remove('nav-open');
             });
         }
 
-        updateActive(savedTheme || 'default');
+        /* =========================
+           DROPDOWNS (LANG + THEME)
+        ========================= */
 
-        // Open / close dropdown
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            switcher.classList.toggle('open');
-        });
+        const langSwitch  = document.getElementById('langSwitch');
+        const themeSwitch = document.getElementById('themeSwitch');
 
-        // Select theme
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                const theme = item.dataset.theme;
+        function closeAllDropdowns() {
+            langSwitch?.classList.remove('open');
+            themeSwitch?.classList.remove('open');
+        }
 
-                if (theme === 'default') {
-                    root.removeAttribute('data-theme');
-                    localStorage.removeItem(STORAGE_KEY);
-                } else {
-                    root.setAttribute('data-theme', theme);
-                    localStorage.setItem(STORAGE_KEY, theme);
-                }
-
-                updateActive(theme);
-                switcher.classList.remove('open');
+        // Language toggle
+        if (langSwitch) {
+            const btn = langSwitch.querySelector('.lang-btn');
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                const wasOpen = langSwitch.classList.contains('open');
+                closeAllDropdowns();
+                if (!wasOpen) langSwitch.classList.add('open');
             });
-        });
+        }
 
-        // Click outside → close
-        document.addEventListener('click', () => {
-            switcher.classList.remove('open');
-        });
+        // Theme dropdown toggle
+        if (themeSwitch) {
+            const btn = themeSwitch.querySelector('.theme-btn');
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                const wasOpen = themeSwitch.classList.contains('open');
+                closeAllDropdowns();
+                if (!wasOpen) themeSwitch.classList.add('open');
+            });
+        }
+
+        // Click outside closes all
+        document.addEventListener('click', closeAllDropdowns);
+
+        /* =========================
+           THEME SELECTION + ANIMATION
+        ========================= */
+
+        if (themeSwitch) {
+            const root = document.documentElement;
+            const STORAGE_KEY = 'astra-theme';
+            const items = themeSwitch.querySelectorAll('[data-theme]');
+
+            // INIT – nur setzen, KEINE Animation
+            const savedTheme = localStorage.getItem(STORAGE_KEY);
+            if (savedTheme && savedTheme !== 'default') {
+                root.setAttribute('data-theme', savedTheme);
+            }
+
+            function updateActive(theme) {
+                items.forEach(el =>
+                    el.classList.toggle('active', el.dataset.theme === theme)
+                );
+            }
+
+            updateActive(savedTheme || 'default');
+
+            // Theme auswählen
+            items.forEach(item => {
+                item.addEventListener('click', e => {
+                    e.stopPropagation();
+
+                    const theme = item.dataset.theme;
+
+                    // 🔥 Animation explizit triggern
+                    root.classList.add('theme-animating');
+
+                    if (theme === 'default') {
+                        root.removeAttribute('data-theme');
+                        localStorage.removeItem(STORAGE_KEY);
+                    } else {
+                        root.setAttribute('data-theme', theme);
+                        localStorage.setItem(STORAGE_KEY, theme);
+                    }
+
+                    updateActive(theme);
+                    closeAllDropdowns();
+
+                    // 🔥 Animation nach Ende entfernen
+                    setTimeout(() => {
+                        root.classList.remove('theme-animating');
+                    }, 1700);
+                });
+            });
+        }
+
     });
 </script>
+
+
 
 
 
