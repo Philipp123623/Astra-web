@@ -75,14 +75,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         />
 
         <div class="commands-filters">
-            <button class="active" data-filter="all"><?= $t['filter_all'] ?></button>
-            <button data-filter="Moderation"><?= $t['filter_mod'] ?></button>
-            <button data-filter="Levelsystem"><?= $t['filter_level'] ?></button>
-            <button data-filter="Economy"><?= $t['filter_eco'] ?></button>
-            <button data-filter="Fun"><?= $t['filter_fun'] ?></button>
-            <button data-filter="Einstellungen"><?= $t['filter_settings'] ?></button>
-            <button data-filter="Informationen"><?= $t['filter_info'] ?></button>
+            <button class="active" data-filter-key="all"><?= $t['filter_all'] ?></button>
+
+            <button data-filter-key="moderation"><?= $t['filter_mod'] ?></button>
+            <button data-filter-key="level"><?= $t['filter_level'] ?></button>
+            <button data-filter-key="economy"><?= $t['filter_eco'] ?></button>
+            <button data-filter-key="fun"><?= $t['filter_fun'] ?></button>
+            <button data-filter-key="settings"><?= $t['filter_settings'] ?></button>
+            <button data-filter-key="information"><?= $t['filter_info'] ?></button>
         </div>
+
 
         <div class="commands-accordion" id="commandsAccordion"></div>
 
@@ -228,7 +230,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             const filter = btn.dataset.filter;
 
             document.querySelectorAll('.command-category').forEach(cat => {
-                const isMatch = filter === 'all' || cat.dataset.category === filter;
+                const isMatch = filter === 'all' || cat.dataset.filterKey === filterKey;
 
                 cat.style.display = isMatch ? '' : 'none';
 
