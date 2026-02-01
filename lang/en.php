@@ -98,5 +98,16 @@ return [
     'filter_settings' => 'Settings',
     'filter_info'     => 'Info',
 
+    /* STATUS PAGE */
+    'status_title'   => 'Status | Astra Bot',
+    'status_heading' => 'Service Status',
+    'status_bot'     => 'Bot',
+    'online'         => 'Online',
+    'offline'        => 'Offline',
+    'last_12h'       => 'Last 12 hours',
+    'last_30d'       => 'Last 30 days',
+    'uptime_legend'  => 'Green = Online, Red = Offline'
+
+
 ];
 
