@@ -5,67 +5,48 @@
     <title>Astra Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=2.4"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=5.0">
 </head>
 
 <body>
 
 <?php include "includes/header.php"; ?>
 
-<div class="dashboard">
+<!-- DASHBOARD WRAPPER -->
+<div class="dashboard-wrapper">
 
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="dashboard-sidebar">
+    <div class="dashboard">
 
-        <!-- LOGO -->
-        <div class="dashboard-logo">
-            <span class="logo-main">Astra</span><span class="logo-accent">Bot</span>
-        </div>
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar">
 
-        <!-- NAV -->
-        <nav class="dashboard-nav">
+            <div class="dashboard-logo">
+                Astra<span>Bot</span>
+            </div>
 
-            <a class="nav-item active">
-                <span class="nav-icon">📊</span>
-                <span class="nav-text">Overview</span>
-            </a>
+            <nav class="dashboard-nav">
+                <a class="active" data-icon="📊">Overview</a>
+                <a data-icon="🖥️">Servers</a>
+                <a data-icon="⚙️">Commands</a>
+                <a data-icon="👥">Users</a>
+                <a data-icon="🛠️">Settings</a>
+            </nav>
 
-            <a class="nav-item">
-                <span class="nav-icon">🖥️</span>
-                <span class="nav-text">Servers</span>
-            </a>
+            <div class="dashboard-sidebar-footer">
+                <span>Status</span>
+                <span class="dashboard-status">● Online</span>
+            </div>
 
-            <a class="nav-item">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-text">Commands</span>
-            </a>
+        </aside>
 
-            <a class="nav-item">
-                <span class="nav-icon">👥</span>
-                <span class="nav-text">Users</span>
-            </a>
+        <!-- CONTENT -->
+        <main class="dashboard-content">
+            <h1>Overview</h1>
+            <p style="opacity:.6">Dashboard Content kommt hier…</p>
+        </main>
 
-            <a class="nav-item">
-                <span class="nav-icon">🛠️</span>
-                <span class="nav-text">Settings</span>
-            </a>
-
-        </nav>
-
-        <!-- FOOTER -->
-        <div class="dashboard-sidebar-footer">
-            <span class="status-label">Status</span>
-            <span class="status-online">● Online</span>
-        </div>
-
-    </aside>
-
-    <!-- ================= CONTENT ================= -->
-    <main class="dashboard-content">
-        <h1>Overview</h1>
-        <p>Dashboard Content kommt hier…</p>
-    </main>
+    </div>
 
 </div>
 
