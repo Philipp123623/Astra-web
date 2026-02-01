@@ -304,7 +304,7 @@ a:hover { color: #ffd799; }
 
 /* =========================
    ASTRA LANGUAGE SWITCH
-   CLEAN & POLISHED (FINAL)
+   CLEAN & POLISHED
    ========================= */
 
 .lang-switch {
@@ -345,7 +345,7 @@ a:hover { color: #ffd799; }
 }
 
 /* =========================
-   ICON (BUTTON)
+   BUTTON ICON
    ========================= */
 
 .lang-core {
@@ -379,11 +379,9 @@ a:hover { color: #ffd799; }
 
 .lang-btn:hover {
     background: rgba(101,230,206,.18);
-
     box-shadow:
             inset 0 0 0 1px rgba(101,230,206,.35),
             0 6px 24px rgba(101,230,206,.45);
-
     transform: translateY(-1px);
 }
 
@@ -410,7 +408,7 @@ a:hover { color: #ffd799; }
     top: calc(100% + 12px);
     right: 0;
 
-    min-width: 170px;
+    min-width: 180px;
     padding: 8px;
 
     background: linear-gradient(
@@ -478,28 +476,46 @@ a:hover { color: #ffd799; }
 .lang-dropdown a.active {
     background: linear-gradient(90deg,#65e6ce,#7bdcff);
     color: #1a2333;
-
-    box-shadow:
-            0 0 0 1px rgba(101,230,206,.55),
-            0 0 18px rgba(101,230,206,.45);
 }
 
 /* =========================
-   DROPDOWN SVG ICONS
+   DE / EN TEXT ICONS
    ========================= */
 
-.lang-icon {
-    width: 18px;
-    height: 18px;
-
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    opacity: .9;
+.lang-text-icon {
+    width: 34px;
+    height: 22px;
+    flex-shrink: 0;
 }
+
+.lang-text-icon rect {
+    fill: rgba(255,255,255,.12);
+    stroke: rgba(255,255,255,.35);
+    stroke-width: 1;
+}
+
+.lang-text-icon text {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    fill: #ffffff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+/* Active / Hover Accent */
+
+.lang-dropdown a:hover .lang-text-icon rect,
+.lang-dropdown a.active .lang-text-icon rect {
+    fill: rgba(101,230,206,.9);
+    stroke: rgba(101,230,206,1);
+}
+
+.lang-dropdown a:hover .lang-text-icon text,
+.lang-dropdown a.active .lang-text-icon text {
+    fill: #1a2333;
+}
+
 
 
 .astra-logo {
