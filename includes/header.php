@@ -35,13 +35,25 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         </button>
 
         <!-- Language Switch -->
-        <div class="lang-switch">
+
+        <div class="lang-switch" id="langSwitch">
             <button class="lang-btn" aria-label="Switch language">
-                <svg class="lang-core" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="8.5" class="core-orb"/>
-                    <path d="M3 12h18" class="core-grid"/>
-                    <path d="M12 3c3.8 4 3.8 14 0 18" class="core-grid"/>
-                    <path d="M12 3c-3.8 4-3.8 14 0 18" class="core-grid"/>
+                <svg class="lang-core" viewBox="0 0 100 100" aria-hidden="true">
+                    <!-- Outer Energy Ring -->
+                    <circle cx="50" cy="50" r="46" class="q-ring"/>
+
+                    <!-- Pulse Ring -->
+                    <circle cx="50" cy="50" r="38" class="q-pulse"/>
+
+                    <!-- Core Planet -->
+                    <circle cx="50" cy="50" r="22" class="q-core"/>
+
+                    <!-- Latitude Lines -->
+                    <ellipse cx="50" cy="50" rx="34" ry="12" class="q-lat"/>
+                    <ellipse cx="50" cy="50" rx="34" ry="12" class="q-lat flip"/>
+
+                    <!-- Orbit -->
+                    <circle cx="50" cy="50" r="30" class="q-orbit"/>
                 </svg>
             </button>
 
@@ -119,7 +131,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const langSwitch = document.getElementById('langSwitch');
+        const langSwitch = document.querySelector('.lang-switch');
+        if (!langSwitch) return;
+
         const btn = langSwitch.querySelector('.lang-btn');
 
         btn.addEventListener('click', (e) => {
@@ -132,5 +146,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         });
     });
 </script>
+
 
 
