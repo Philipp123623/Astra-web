@@ -2974,7 +2974,7 @@ main.report-main {
 
     border-radius: 22px;
     height: auto;        /* ✅ natürlich wachsen */
-    min-height: calc(100vh - var(--header-height) - 96px);
+    min-height: calc(100vh - var(--header-height) - 64px);
     padding: 26px 18px 22px;
 
     background: linear-gradient(
