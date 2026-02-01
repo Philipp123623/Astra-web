@@ -89,7 +89,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         </div>
         <!-- Theme Switch (Desktop) -->
         <div class="theme-switch" id="themeSwitch">
-            <button class="theme-btn" aria-label="Switch theme">
+
+            <button class="theme-btn" aria-label="Choose theme">
                 <svg class="theme-core" viewBox="0 0 24 24" aria-hidden="true">
                     <defs>
                         <linearGradient id="themeGradient" x1="0" y1="0" x2="1" y2="1">
@@ -113,7 +114,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                     </g>
                 </svg>
             </button>
+
+            <div class="theme-dropdown">
+                <button data-theme="default">Default</button>
+                <button data-theme="aurora-mint">Aurora Mint</button>
+                <button data-theme="aurora-violet">Aurora Violet</button>
+                <button data-theme="midnight">Midnight</button>
+            </div>
+
         </div>
+
     </div>
 </header>
 
@@ -215,27 +225,54 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         const root = document.documentElement;
         const STORAGE_KEY = 'astra-theme';
+        const btn = switcher.querySelector('.theme-btn');
+        const items = switcher.querySelectorAll('[data-theme]');
 
         // Init
         const savedTheme = localStorage.getItem(STORAGE_KEY);
-        if (savedTheme) {
+        if (savedTheme && savedTheme !== 'default') {
             root.setAttribute('data-theme', savedTheme);
         }
 
-        switcher.addEventListener('click', () => {
-            const current = root.getAttribute('data-theme');
-            const next = current === 'aurora-mint' ? 'default' : 'aurora-mint';
+        function updateActive(theme) {
+            items.forEach(el => {
+                el.classList.toggle('active', el.dataset.theme === theme);
+            });
+        }
 
-            if (next === 'default') {
-                root.removeAttribute('data-theme');
-                localStorage.removeItem(STORAGE_KEY);
-            } else {
-                root.setAttribute('data-theme', next);
-                localStorage.setItem(STORAGE_KEY, next);
-            }
+        updateActive(savedTheme || 'default');
+
+        // Open / close dropdown
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            switcher.classList.toggle('open');
+        });
+
+        // Select theme
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const theme = item.dataset.theme;
+
+                if (theme === 'default') {
+                    root.removeAttribute('data-theme');
+                    localStorage.removeItem(STORAGE_KEY);
+                } else {
+                    root.setAttribute('data-theme', theme);
+                    localStorage.setItem(STORAGE_KEY, theme);
+                }
+
+                updateActive(theme);
+                switcher.classList.remove('open');
+            });
+        });
+
+        // Click outside → close
+        document.addEventListener('click', () => {
+            switcher.classList.remove('open');
         });
     });
 </script>
+
 
 
 
