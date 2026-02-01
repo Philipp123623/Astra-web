@@ -343,6 +343,7 @@ a:hover { color: #ffd799; }
             background .2s ease,
             box-shadow .2s ease,
             transform .12s ease;
+    will-change: transform;
 }
 
 .lang-btn:hover {
@@ -350,7 +351,7 @@ a:hover { color: #ffd799; }
     box-shadow:
             0 0 0 2px rgba(101,230,206,0.35),
             0 0 26px rgba(101,230,206,0.55);
-    transform: translateY(-1px);
+    transform: translateZ(0);
 }
 
 /* Dropdown */
@@ -383,13 +384,12 @@ a:hover { color: #ffd799; }
             opacity .18s ease,
             transform .18s cubic-bezier(.4,0,.2,1);
 }
-
-/* Show on hover */
-.lang-switch:hover .lang-dropdown {
+.lang-switch.open .lang-dropdown {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scale(1);
 }
+
 
 /* Links */
 .lang-dropdown a {

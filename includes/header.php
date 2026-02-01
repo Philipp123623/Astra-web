@@ -35,8 +35,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         </button>
 
         <!-- Language Switch -->
-        <div class="lang-switch">
-            <button class="lang-btn" aria-label="Sprache wechseln">
+        <div class="lang-switch" id="langSwitch">
+            <button class="lang-btn" aria-label="Sprache wechseln" type="button">
                 🌐
             </button>
 
@@ -110,4 +110,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const langSwitch = document.getElementById('langSwitch');
+        const btn = langSwitch.querySelector('.lang-btn');
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSwitch.classList.toggle('open');
+        });
+
+        document.addEventListener('click', () => {
+            langSwitch.classList.remove('open');
+        });
+    });
+</script>
+
 
