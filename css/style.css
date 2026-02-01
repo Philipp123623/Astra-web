@@ -630,15 +630,28 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .astra-nav-toggle {
-    display: none;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 44px;
+    height: 44px;
     gap: 6px;
+
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 0;
+
     z-index: 10020;
 }
+
 
 .astra-nav-toggle span {
     width: 26px;
@@ -649,18 +662,22 @@ a:hover { color: #ffd799; }
     transition:
             transform .35s cubic-bezier(.4,0,.2,1),
             opacity .25s ease;
+    transform-origin: center;
+    will-change: transform, opacity;
 }
 
-/* Hamburger → X (Header) */
 body.nav-open .astra-nav-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
+
 body.nav-open .astra-nav-toggle span:nth-child(2) {
     opacity: 0;
 }
+
 body.nav-open .astra-nav-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
+
 
 
 /* =========================
