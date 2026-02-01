@@ -70,9 +70,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 id="commandSearch"
                 class="commands-search"
                 type="text"
-                value="<?= $t['cmd_search'] ?>"
-                data-default="<?= $t['cmd_search'] ?>"
-        >
+                placeholder="<?= $t['cmd_search'] ?>"
+                data-placeholder="<?= $t['cmd_search'] ?>"
+        />
 
         <div class="commands-filters">
             <button class="active" data-filter-key="all"><?= $t['filter_all'] ?></button>
@@ -272,24 +272,44 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 </script>
 
 <script>
-    const searchInput = document.getElementById('commandSearch');
-    const defaultText = searchInput.dataset.default;
+    const search = document.getElementById('commandSearch');
+    const previewText = search.placeholder;
 
-    // Fokus → leeren
-    searchInput.addEventListener('focus', () => {
-        if (searchInput.value === defaultText) {
-            searchInput.value = '';
+    let typingTimer = null;
+
+    function typeText(text, speed = 35) {
+        let i = 0;
+        search.value = '';
+
+        typingTimer = setInterval(() => {
+            if (i >= text.length) {
+                clearInterval(typingTimer);
+                return;
+            }
+            search.value += text[i];
+            i++;
+        }, speed);
+    }
+
+    // FOCUS → Preview weg
+    search.addEventListener('focus', () => {
+        clearInterval(typingTimer);
+        search.classList.add('hide-placeholder');
+
+        if (search.value === previewText) {
+            search.value = '';
         }
     });
 
-    // Blur → Default wieder einsetzen
-    searchInput.addEventListener('blur', () => {
-        if (searchInput.value.trim() === '') {
-            searchInput.value = defaultText;
+    // BLUR → Preview langsam eintippen
+    search.addEventListener('blur', () => {
+        search.classList.remove('hide-placeholder');
+
+        if (search.value.trim() === '') {
+            typeText(previewText);
         }
     });
 </script>
-
 
 
 </body>
