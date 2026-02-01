@@ -257,7 +257,36 @@ return [
     'error_404_home' => 'Back to home',
     'error_404_support' => 'Support',
 
+    /* FOOTER */
+    'footer_desc' => 'Modern Discord bot for automation, status monitoring and community management.',
+    'footer_not_affiliated' => 'Not affiliated with Discord.',
 
+    'footer_links_useful' => 'Useful Links',
+    'footer_links_other'  => 'Other Links',
 
+    'footer_home'     => 'Home',
+    'footer_features' => 'Features',
+    'footer_commands' => 'Commands',
+    'footer_faq'      => 'FAQ',
+    'footer_status'   => 'Status',
+
+    'footer_support'  => 'Support',
+    'footer_invite'   => 'Invite Bot',
+    'footer_imprint'  => 'Legal Notice',
+    'footer_privacy'  => 'Privacy Policy',
+    'footer_terms'    => 'Terms of Service',
+
+    /* HEADER */
+    'nav_home'     => 'Home',
+    'nav_stats'    => 'Stats',
+    'nav_about'    => 'About',
+    'nav_features' => 'Features',
+    'nav_faq'      => 'FAQ',
+    'nav_commands' => 'Commands',
+    'nav_status'   => 'Status',
+    'nav_report'   => 'Report',
+    'nav_invite'   => 'Invite Bot',
+
+    'nav_menu' => 'Menu',
 ];
 

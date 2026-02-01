@@ -257,5 +257,35 @@ return [
     'error_404_home' => 'Zur Startseite',
     'error_404_support' => 'Support',
 
+    /* FOOTER */
+    'footer_desc' => 'Moderner Discord Bot für Automatisierung, Statusüberwachung und Community-Management.',
+    'footer_not_affiliated' => 'Nicht affiliiert mit Discord.',
 
+    'footer_links_useful' => 'Nützliche Links',
+    'footer_links_other'  => 'Weitere Links',
+
+    'footer_home'     => 'Startseite',
+    'footer_features' => 'Features',
+    'footer_commands' => 'Commands',
+    'footer_faq'      => 'FAQ',
+    'footer_status'   => 'Status',
+
+    'footer_support'  => 'Support',
+    'footer_invite'   => 'Bot einladen',
+    'footer_imprint'  => 'Impressum',
+    'footer_privacy'  => 'Datenschutz',
+    'footer_terms'    => 'Nutzungsbedingungen',
+
+    /* HEADER */
+    'nav_home'     => 'Startseite',
+    'nav_stats'    => 'Stats',
+    'nav_about'    => 'Über Astra',
+    'nav_features' => 'Features',
+    'nav_faq'      => 'FAQ',
+    'nav_commands' => 'Commands',
+    'nav_status'   => 'Status',
+    'nav_report'   => 'Melden',
+    'nav_invite'   => 'Bot einladen',
+
+    'nav_menu' => 'Menü',
 ];

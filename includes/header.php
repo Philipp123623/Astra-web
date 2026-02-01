@@ -10,24 +10,26 @@
         <!-- Desktop Navigation -->
         <nav class="astra-navbar">
             <ul>
-                <li><a href="https://astra-bot.de/" class="nav-link">Home</a></li>
-                <li><a href="https://astra-bot.de/#stats" class="nav-link">Stats</a></li>
-                <li><a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a></li>
-                <li><a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a></li>
-                <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a></li>
-                <li><a href="https://astra-bot.de/commands" class="nav-link">Commands</a></li>
-                <li><a href="https://astra-bot.de/status" class="nav-link">Status</a></li>
-                <li><a href="https://astra-bot.de/report" class="nav-link">Report</a></li>
-                <li><a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a></li>
+                <li><a href="https://astra-bot.de/" class="nav-link"><?= $t['nav_home'] ?></a></li>
+                <li><a href="https://astra-bot.de/#stats" class="nav-link"><?= $t['nav_stats'] ?></a></li>
+                <li><a href="https://astra-bot.de/#about" class="nav-link scrollto"><?= $t['nav_about'] ?></a></li>
+                <li><a href="https://astra-bot.de/#features" class="nav-link scrollto"><?= $t['nav_features'] ?></a></li>
+                <li><a href="https://astra-bot.de/#faq" class="nav-link scrollto"><?= $t['nav_faq'] ?></a></li>
+                <li><a href="https://astra-bot.de/commands" class="nav-link"><?= $t['nav_commands'] ?></a></li>
+                <li><a href="https://astra-bot.de/status" class="nav-link"><?= $t['nav_status'] ?></a></li>
+                <li><a href="https://astra-bot.de/report" class="nav-link"><?= $t['nav_report'] ?></a></li>
+                <li><a href="https://astra-bot.de/invite" class="nav-btn"><?= $t['nav_invite'] ?></a></li>
             </ul>
         </nav>
 
         <!-- Hamburger Button -->
-        <button class="astra-nav-toggle" aria-label="Menü öffnen">
+        <button class="astra-nav-toggle" aria-label="<?= $t['nav_menu'] ?>">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
+        <!-- Language Switch -->
         <div class="lang-switch">
             <a href="?lang=de">🇩🇪 DE</a>
             <a href="?lang=en">🇬🇧 EN</a>
@@ -39,12 +41,8 @@
 <!-- Mobile Overlay -->
 <div class="astra-nav-mobile-overlay"></div>
 
-<!-- ======================
-     MOBILE MENU DRAWER
-     ====================== -->
 <nav class="astra-nav-mobile">
 
-    <!-- HERO BUBBLES -->
     <div class="astra-nav-bubbles">
         <svg width="100%" height="100%" preserveAspectRatio="none">
             <circle cx="20%" cy="12%" r="46" fill="#65e6ce22"/>
@@ -54,31 +52,25 @@
         </svg>
     </div>
 
-
-    <!-- HEADER MIT ❌ -->
     <div class="astra-nav-mobile-header">
-        <span class="astra-nav-mobile-title">Menu</span>
-        <button class="astra-nav-close" aria-label="Menü schließen"></button>
+        <span class="astra-nav-mobile-title"><?= $t['nav_menu'] ?></span>
+        <button class="astra-nav-close" aria-label="<?= $t['nav_menu'] ?>"></button>
     </div>
 
-    <!-- ⬇️ NUR DAS SCROLLT -->
     <div class="astra-nav-mobile-scroll">
+        <a href="https://astra-bot.de/" class="nav-link"><?= $t['nav_home'] ?></a>
+        <a href="https://astra-bot.de/#stats" class="nav-link"><?= $t['nav_stats'] ?></a>
+        <a href="https://astra-bot.de/#about" class="nav-link scrollto"><?= $t['nav_about'] ?></a>
+        <a href="https://astra-bot.de/#features" class="nav-link scrollto"><?= $t['nav_features'] ?></a>
+        <a href="https://astra-bot.de/#faq" class="nav-link scrollto"><?= $t['nav_faq'] ?></a>
+        <a href="https://astra-bot.de/commands" class="nav-link"><?= $t['nav_commands'] ?></a>
+        <a href="https://astra-bot.de/status" class="nav-link"><?= $t['nav_status'] ?></a>
+        <a href="https://astra-bot.de/report" class="nav-link"><?= $t['nav_report'] ?></a>
 
-        <!-- LINKS -->
-        <a href="https://astra-bot.de/" class="nav-link">Home</a>
-        <a href="https://astra-bot.de/#stats" class="nav-link">Stats</a>
-        <a href="https://astra-bot.de/#about" class="nav-link scrollto">About</a>
-        <a href="https://astra-bot.de/#features" class="nav-link scrollto">Features</a>
-        <a href="https://astra-bot.de/#faq" class="nav-link scrollto">FAQ</a>
-        <a href="https://astra-bot.de/commands" class="nav-link">Commands</a>
-        <a href="https://astra-bot.de/status" class="nav-link">Status</a>
-        <a href="https://astra-bot.de/report" class="nav-link">Report</a>
-
-        <!-- CTA -->
-        <a href="https://astra-bot.de/invite" class="nav-btn">Bot einladen</a>
-
+        <a href="https://astra-bot.de/invite" class="nav-btn"><?= $t['nav_invite'] ?></a>
     </div>
 </nav>
+
 
 <!-- ======================
      MOBILE MENU SCRIPT

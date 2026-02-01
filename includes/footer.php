@@ -1,5 +1,11 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+?>
+
+
 <footer class="astra-footer">
     <link rel="stylesheet" href="/css/style.css?v=2.4"/>
+
     <div class="astra-footer-wrap">
 
         <div class="astra-footer-brand">
@@ -9,32 +15,31 @@
             </div>
 
             <p class="astra-footer-text">
-                Moderner Discord Bot für Automatisierung,<br>
-                Statusüberwachung und Community-Management.
+                <?= $t['footer_desc'] ?>
             </p>
 
             <p class="astra-footer-copy">
-                © <?php echo date('Y'); ?> Astra Bot<br>
-                Nicht affiliiert mit Discord.
+                © <?= date('Y'); ?> Astra Bot<br>
+                <?= $t['footer_not_affiliated'] ?>
             </p>
         </div>
 
         <div class="astra-footer-links">
-            <h4>Useful Links</h4>
-            <a href="https://astra-bot.de/">Home</a>
-            <a href="https://astra-bot.de/features">Features</a>
-            <a href="https://astra-bot.de/commands">Commands</a>
-            <a href="https://astra-bot.de/faq">FAQ</a>
-            <a href="https://astra-bot.de/status">Status</a>
+            <h4><?= $t['footer_links_useful'] ?></h4>
+            <a href="/"><?= $t['footer_home'] ?></a>
+            <a href="/features"><?= $t['footer_features'] ?></a>
+            <a href="/commands"><?= $t['footer_commands'] ?></a>
+            <a href="/faq"><?= $t['footer_faq'] ?></a>
+            <a href="/status"><?= $t['footer_status'] ?></a>
         </div>
 
         <div class="astra-footer-links">
-            <h4>Other Links</h4>
-            <a href="https://astra-bot.de/support">Support</a>
-            <a href="https://astra-bot.de/invite">Bot einladen</a>
-            <a href="https://astra-bot.de/impressum">Impressum</a>
-            <a href="https://astra-bot.de/privacy-policy">Privacy Policy</a>
-            <a href="https://astra-bot.de/terms-of-service">Terms of Service</a>
+            <h4><?= $t['footer_links_other'] ?></h4>
+            <a href="/support"><?= $t['footer_support'] ?></a>
+            <a href="/invite"><?= $t['footer_invite'] ?></a>
+            <a href="/impressum"><?= $t['footer_imprint'] ?></a>
+            <a href="/privacy-policy"><?= $t['footer_privacy'] ?></a>
+            <a href="/terms-of-service"><?= $t['footer_terms'] ?></a>
         </div>
 
     </div>
