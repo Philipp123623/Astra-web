@@ -288,6 +288,105 @@
     --usage-bg: rgba(0, 0, 0, 0.35);
     --usage-text: #65e6ce;
 
+
+    /* =========================
+   STATUS / REPORT PAGE TOKENS
+   ========================= */
+
+    /* Hero / Card backgrounds */
+    --status-hero-bg-start: #251f5b;
+    --status-hero-bg-mid: #362897;
+    --status-hero-bg-end: #3fd6dd;
+
+    --status-hero-shadow-main: rgba(91, 101, 255, 0.28);
+    --status-hero-shadow-glow: rgba(96, 233, 203, 0.22);
+    --status-hero-border: rgba(255, 255, 255, 0.05);
+
+    /* Titles */
+    --status-title: #65e6ce;
+    --status-title-glow: rgba(101, 230, 206, 0.45);
+
+    /* Text */
+    --status-text-main: #eafcff;
+    --status-text-muted: #d7f3ff;
+    --status-text-soft: #cfefff;
+
+    /* Status rows */
+    --status-row-border: rgba(255, 255, 255, 0.1);
+
+    /* Badges – base */
+    --status-badge-bg: rgba(255, 255, 255, 0.12);
+    --status-badge-text: #eafcff;
+    --status-badge-border: rgba(255, 255, 255, 0.18);
+
+    /* Badges – OK */
+    --status-ok-start: #65e6ce;
+    --status-ok-end: #a7c8fd;
+    --status-ok-text: #223254;
+    --status-ok-glow: rgba(101, 230, 206, 0.22);
+
+    /* Badges – Error */
+    --status-err-start: #ff7272;
+    --status-err-end: #ffb3b3;
+    --status-err-text: #4a1515;
+
+    /* Badges – Warning */
+    --status-warn-start: #ffe479;
+    --status-warn-end: #ffbd34;
+    --status-warn-text: #4a320c;
+
+    /* Tabs */
+    --status-tab-bg: rgba(255, 255, 255, 0.08);
+    --status-tab-text: #cfefff;
+    --status-tab-active-start: #65e6ce;
+    --status-tab-active-end: #a7c8fd;
+    --status-tab-active-text: #223254;
+    --status-tab-active-shadow: rgba(101, 230, 206, 0.35);
+
+    /* Uptime */
+    --uptime-online: #65e6ce;
+    --uptime-online-glow: rgba(101, 230, 206, 0.55);
+    --uptime-offline: #ff7272;
+    --uptime-good: #b5f7de;
+    --uptime-warn: #ffe479;
+
+    /* Tooltip */
+    --tooltip-bg: rgba(28, 18, 80, 0.95);
+    --tooltip-text: #a7c8fd;
+    --tooltip-shadow: rgba(0, 0, 0, 0.35);
+
+    /* Stats boxes */
+    --stats-box-bg: rgba(0, 0, 0, 0.25);
+    --stats-head: #a7c8fd;
+    --stats-number: #65e6ce;
+
+    /* Report */
+    --report-desc: #d7f3ff;
+
+    /* Problem chips */
+    --problem-user-start: #ff7aa2;
+    --problem-user-end: #ffb3c6;
+    --problem-user-text: #3d0b21;
+
+    --problem-web-start: #65e6ce;
+    --problem-web-end: #a7c8fd;
+    --problem-web-text: #0b2a26;
+
+    --problem-discord-start: #a77bff;
+    --problem-discord-end: #c29cff;
+    --problem-discord-text: #250b3d;
+
+    /* Form */
+    --form-bg: rgba(255, 255, 255, 0.12);
+    --form-shadow: rgba(93, 232, 255, 0.12);
+
+    /* Messages */
+    --msg-success-bg: rgba(101, 230, 206, 0.18);
+    --msg-success-text: #65e6ce;
+
+    --msg-error-bg: rgba(255, 114, 114, 0.18);
+    --msg-error-text: #ff7272;
+
 }
 
 
@@ -2272,21 +2371,23 @@ main.astra-status-main {
     padding: 44px 40px 36px;
     border-radius: 34px;
 
-    background: linear-gradient(115deg,
-    #251f5b 0%,
-    #362897 65%,
-    #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--status-hero-bg-start) 0%,
+            var(--status-hero-bg-mid) 65%,
+            var(--status-hero-bg-end) 160%
+    );
 
     box-shadow:
-            0 14px 54px rgba(91, 101, 255, 0.28),
-            0 0 90px rgba(96, 233, 203, 0.22),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            0 14px 54px var(--status-hero-shadow-main),
+            0 0 90px var(--status-hero-shadow-glow),
+            inset 0 0 0 1px var(--status-hero-border);
 
     display: flex;
     flex-direction: column;
 }
 
-.astra-status-card>*:not(.status-bubbles-bg) {
+.astra-status-card > *:not(.status-bubbles-bg) {
     position: relative;
     z-index: 2;
 }
@@ -2295,10 +2396,10 @@ main.astra-status-main {
 .astra-status-card h1 {
     font-size: 2.35rem;
     font-weight: 900;
-    color: #65e6ce;
+    color: var(--status-title);
     margin-bottom: 18px;
     letter-spacing: .04em;
-    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
+    text-shadow: 0 0 22px var(--status-title-glow);
 }
 
 /* ==== Status Rows ==== */
@@ -2311,7 +2412,7 @@ main.astra-status-main {
     align-items: center;
     justify-content: space-between;
     padding: 14px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--status-row-border);
     font-size: 1.08rem;
     font-weight: 700;
 }
@@ -2342,26 +2443,38 @@ main.astra-status-main {
     font-size: .95rem;
     font-weight: 900;
     letter-spacing: .04em;
-    background: rgba(255, 255, 255, 0.12);
-    color: #eafcff;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: var(--status-badge-bg);
+    color: var(--status-badge-text);
+    border: 1px solid var(--status-badge-border);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .status-badge.ok {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
-    box-shadow: 0 0 0 4px rgba(101, 230, 206, 0.22);
+    background: linear-gradient(
+            90deg,
+            var(--status-ok-start),
+            var(--status-ok-end)
+    );
+    color: var(--status-ok-text);
+    box-shadow: 0 0 0 4px var(--status-ok-glow);
 }
 
 .status-badge.err {
-    background: linear-gradient(90deg, #ff7272, #ffb3b3);
-    color: #4a1515;
+    background: linear-gradient(
+            90deg,
+            var(--status-err-start),
+            var(--status-err-end)
+    );
+    color: var(--status-err-text);
 }
 
 .status-badge.warn {
-    background: linear-gradient(90deg, #ffe479, #ffbd34);
-    color: #4a320c;
+    background: linear-gradient(
+            90deg,
+            var(--status-warn-start),
+            var(--status-warn-end)
+    );
+    color: var(--status-warn-text);
 }
 
 /* ==== Tabs ==== */
@@ -2378,8 +2491,8 @@ main.astra-status-main {
     border-radius: 18px;
     font-weight: 800;
     font-size: 1.05em;
-    background: rgba(255, 255, 255, 0.08);
-    color: #cfefff;
+    background: var(--status-tab-bg);
+    color: var(--status-tab-text);
     border: none;
     cursor: pointer;
     transition: all .16s ease;
@@ -2387,9 +2500,13 @@ main.astra-status-main {
 
 .status-tab-btn.active,
 .status-tab-btn:focus {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
-    box-shadow: 0 6px 22px rgba(101, 230, 206, 0.35);
+    background: linear-gradient(
+            90deg,
+            var(--status-tab-active-start),
+            var(--status-tab-active-end)
+    );
+    color: var(--status-tab-active-text);
+    box-shadow: 0 6px 22px var(--status-tab-active-shadow);
 }
 
 /* ==== Uptime (12h) ==== */
@@ -2419,12 +2536,12 @@ main.astra-status-main {
 }
 
 .uptime-bar.online {
-    background: #65e6ce;
-    box-shadow: 0 0 12px rgba(101, 230, 206, 0.55);
+    background: var(--uptime-online);
+    box-shadow: 0 0 12px var(--uptime-online-glow);
 }
 
 .uptime-bar.offline {
-    background: #ff7272;
+    background: var(--uptime-offline);
 }
 
 .uptime-legend {
@@ -2451,21 +2568,10 @@ main.astra-status-main {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.uptime-bar-day.perfect {
-    background: #65e6ce;
-}
-
-.uptime-bar-day.good {
-    background: #b5f7de;
-}
-
-.uptime-bar-day.warn {
-    background: #ffe479;
-}
-
-.uptime-bar-day.bad {
-    background: #ff7272;
-}
+.uptime-bar-day.perfect { background: var(--uptime-online); }
+.uptime-bar-day.good    { background: var(--uptime-good); }
+.uptime-bar-day.warn    { background: var(--uptime-warn); }
+.uptime-bar-day.bad     { background: var(--uptime-offline); }
 
 /* Tooltip Label */
 .uptime-bar-day .uptime-day-label {
@@ -2474,13 +2580,13 @@ main.astra-status-main {
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
-    background: rgba(28, 18, 80, 0.95);
-    color: #a7c8fd;
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
     padding: 6px 14px;
     border-radius: 10px;
     font-size: .95em;
     white-space: nowrap;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 18px var(--tooltip-shadow);
     z-index: 10;
 }
 
@@ -2505,7 +2611,7 @@ main.astra-status-main {
 
 .stat-box {
     flex: 1;
-    background: rgba(0, 0, 0, 0.25);
+    background: var(--stats-box-bg);
     border-radius: 18px;
     padding: 18px 0 14px;
     display: flex;
@@ -2515,14 +2621,14 @@ main.astra-status-main {
 
 .stat-head {
     font-size: .95rem;
-    color: #a7c8fd;
+    color: var(--stats-head);
     margin-bottom: 4px;
 }
 
 .stat-num {
     font-size: 1.45rem;
     font-weight: 900;
-    color: #65e6ce;
+    color: var(--stats-number);
     letter-spacing: .04em;
 }
 
@@ -2545,15 +2651,17 @@ main.report-main {
     border-radius: 38px;
     overflow: hidden;
 
-    background: linear-gradient(115deg,
-    #251f5b 0%,
-    #362897 65%,
-    #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--status-hero-bg-start) 0%,
+            var(--status-hero-bg-mid) 65%,
+            var(--status-hero-bg-end) 160%
+    );
 
     box-shadow:
-            0 14px 54px rgba(91, 101, 255, 0.28),
-            0 0 90px rgba(96, 233, 203, 0.22),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            0 14px 54px var(--status-hero-shadow-main),
+            0 0 90px var(--status-hero-shadow-glow),
+            inset 0 0 0 1px var(--status-hero-border);
 }
 
 /* BUBBLES */
@@ -2576,15 +2684,15 @@ main.report-main {
 .report-content h1 {
     font-size: 2.35rem;
     font-weight: 900;
-    color: #65e6ce;
+    color: var(--status-title);
     margin-bottom: 10px;
     letter-spacing: .04em;
-    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
+    text-shadow: 0 0 22px var(--status-title-glow);
 }
 
 .report-desc {
     font-size: 1.08em;
-    color: #d7f3ff;
+    color: var(--report-desc);
     margin-bottom: 32px;
     line-height: 1.5;
 }
@@ -2609,18 +2717,30 @@ main.report-main {
 
 /* COLORS */
 .astra-problem-chip[data-type="Nutzer"] {
-    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
-    color: #3d0b21;
+    background: linear-gradient(
+            90deg,
+            var(--problem-user-start),
+            var(--problem-user-end)
+    );
+    color: var(--problem-user-text);
 }
 
 .astra-problem-chip[data-type="Webseite"] {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #0b2a26;
+    background: linear-gradient(
+            90deg,
+            var(--problem-web-start),
+            var(--problem-web-end)
+    );
+    color: var(--problem-web-text);
 }
 
 .astra-problem-chip[data-type="Discord"] {
-    background: linear-gradient(90deg, #a77bff, #c29cff);
-    color: #250b3d;
+    background: linear-gradient(
+            90deg,
+            var(--problem-discord-start),
+            var(--problem-discord-end)
+    );
+    color: var(--problem-discord-text);
 }
 
 .astra-problem-chip.selected {
@@ -2633,7 +2753,7 @@ main.report-main {
     display: block;
     font-weight: 800;
     margin-bottom: 6px;
-    color: #a7c8fd;
+    color: var(--stats-head);
 }
 
 .astra-form textarea,
@@ -2642,24 +2762,19 @@ main.report-main {
     padding: 14px 16px;
     border-radius: 14px;
     border: none;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--form-bg);
     color: #fff;
     margin-bottom: 18px;
     box-shadow:
             inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-            0 2px 12px rgba(93, 232, 255, 0.12);
+            0 2px 12px var(--form-shadow);
 }
 
-/* =====================================================
-   REPORT FORM – PERFECT HORIZONTAL ALIGN FIX
-   (Desktop + Mobile)
-   ===================================================== */
-
+/* ALIGN FIX */
 .astra-form textarea,
 .astra-form input {
     box-sizing: border-box;
 }
-
 
 .astra-form textarea {
     min-height: 130px;
@@ -2675,8 +2790,12 @@ main.report-main {
     border: none;
     font-size: 1.05em;
     cursor: pointer;
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
+    background: linear-gradient(
+            90deg,
+            var(--status-ok-start),
+            var(--status-ok-end)
+    );
+    color: var(--status-ok-text);
     box-shadow: 0 6px 26px rgba(101, 230, 206, 0.45);
 }
 
@@ -2691,17 +2810,14 @@ main.report-main {
 }
 
 .astra-msg-success {
-    background: rgba(101, 230, 206, 0.18);
-    color: #65e6ce;
+    background: var(--msg-success-bg);
+    color: var(--msg-success-text);
 }
 
 .astra-msg-error {
-    background: rgba(255, 114, 114, 0.18);
-    color: #ff7272;
+    background: var(--msg-error-bg);
+    color: var(--msg-error-text);
 }
-
-
-
 
 /* =========================
    404 ERROR PAGE – HERO STYLE
