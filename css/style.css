@@ -1453,12 +1453,11 @@ main.commands-main {
    ========================= */
 
 .commands-search.is-preview {
-    color: rgba(255,255,255,0.48);   /* leicht dunkler */
-    font-weight: 500;               /* ↓ statt 600 */
-    opacity: 0.85;                  /* Placeholder-Feeling */
-    text-shadow: none;              /* wichtig */
-    filter: blur(0.15px);           /* subtil! */
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;            /* GLEICH wie Original */
+    text-shadow: none;
 }
+
 
 .commands-search.is-preview:focus {
     color: rgba(255,255,255,0.48);
