@@ -34,7 +34,6 @@ html, body {
 body {
     overflow-y: auto !important;
     padding-top: calc(var(--header-height) + 32px);
-    scrollbar-gutter: stable;
 }
 
 
@@ -58,6 +57,16 @@ main > *:first-child {
 main > *:first-child > *:first-child {
     margin-top: 36px;
 }
+
+/* === FIX: Hero-Cards dürfen KEINEN Start-Margin haben === */
+.astra-hero-card,
+.commands-hero-card,
+.legal-hero-card,
+.report-hero-card,
+.error-hero-card {
+    margin-top: 0 !important;
+}
+
 
 /* Globale Regel: Sections unten keinen eigenen Abstand geben */
 main section {
