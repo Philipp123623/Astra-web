@@ -2949,7 +2949,7 @@ main.report-main {
 ========================================================= */
 
 .dashboard-wrapper {
-    padding: 32px 32px 80px;
+    padding: 32px 32px 0;
     min-height: calc(100vh - var(--header-height));
     background: var(--bg-main);
 }
