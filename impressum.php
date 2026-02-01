@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8" />
-    <title>Impressum | Astra Bot</title>
+    <title><?= $t['imprint_title'] ?> | Astra Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
 
 <main class="legal-main">
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
     <section class="legal-hero-card">
         <div class="bubbles-bg">
             <svg width="100%" height="100%">
@@ -25,67 +25,59 @@
         </div>
 
         <div class="legal-hero-content">
-            <h1>Impressum</h1>
-            <p class="legal-hero-desc">
-                Rechtliche Angaben gemäß § 5 TMG für die Website und den Discord-Bot
-                <strong>„Astra“</strong>.
-            </p>
+            <h1><?= $t['imprint_title'] ?></h1>
+            <p class="legal-hero-desc"><?= $t['imprint_desc'] ?></p>
 
             <div class="legal-hero-meta">
-                <span>📄 Rechtliches</span>
-                <span>🤖 Discord Bot</span>
-                <span>🌐 Website</span>
-                <span>🇩🇪 Deutschland</span>
+                <span>📄 <?= $t['imprint_meta_legal'] ?></span>
+                <span>🤖 <?= $t['imprint_meta_bot'] ?></span>
+                <span>🌐 <?= $t['imprint_meta_website'] ?></span>
+                <span>🇩🇪 <?= $t['imprint_meta_country'] ?></span>
             </div>
         </div>
     </section>
 
-    <!-- ================= MAIN CARD ================= -->
-    <!-- ================= MAIN CARD ================= -->
+    <!-- MAIN -->
     <section class="legal-main-card">
 
-
-        <!-- ROW: Verantwortliche Person + Geltungsbereich -->
         <div class="legal-row">
 
-            <!-- Verantwortliche Person -->
+            <!-- RESPONSIBLE -->
             <div class="legal-section">
-                <h2>👤 Verantwortliche Person</h2>
+                <h2>👤 <?= $t['imprint_responsible_title'] ?></h2>
 
                 <div class="legal-grid">
-                    <div class="legal-label">Name</div>
+                    <div class="legal-label"><?= $t['imprint_name'] ?></div>
                     <div class="legal-value">Stüve, Philipp Lukas</div>
 
-                    <div class="legal-label">Adresse</div>
+                    <div class="legal-label"><?= $t['imprint_address'] ?></div>
                     <div class="legal-value">
                         Berliner Straße 25<br>
                         63477 Maintal<br>
                         Deutschland
                     </div>
 
-                    <div class="legal-label">E-Mail</div>
+                    <div class="legal-label"><?= $t['imprint_email'] ?></div>
                     <div class="legal-value">
                         <a href="mailto:support@astra-bot.de">support@astra-bot.de</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Geltungsbereich BOX -->
+            <!-- SCOPE -->
             <div class="legal-side-card">
-                <h3>📌 Geltungsbereich</h3>
+                <h3>📌 <?= $t['imprint_scope_title'] ?></h3>
 
-                <p class="legal-text">
-                    Dieses Impressum gilt für folgende Angebote:
-                </p>
+                <p class="legal-text"><?= $t['imprint_scope_desc'] ?></p>
 
                 <ul class="legal-list">
-                    <li>🌐 Website <strong>astra-bot.de</strong></li>
-                    <li>🤖 Discord-Bot <strong>„Astra“</strong></li>
+                    <li>🌐 <strong><?= $t['imprint_scope_website'] ?></strong></li>
+                    <li>🤖 <strong><?= $t['imprint_scope_bot'] ?></strong></li>
                 </ul>
 
                 <span class="legal-chip">
-                ℹ️ Nicht-kommerzielles Projekt · keine Gewinnerzielungsabsicht
-            </span>
+                    ℹ️ <?= $t['imprint_scope_note'] ?>
+                </span>
             </div>
 
         </div>

@@ -133,5 +133,25 @@ return [
     'report_email_input_preview' => 'Optional',
     'report_button_send' => 'Absenden',
 
+    /* IMPRESSUM */
+    'imprint_title' => 'Impressum',
+    'imprint_desc' => 'Rechtliche Angaben gemäß § 5 TMG für die Website und den Discord-Bot „Astra“.',
+    'imprint_meta_legal' => 'Rechtliches',
+    'imprint_meta_bot' => 'Discord Bot',
+    'imprint_meta_website' => 'Website',
+    'imprint_meta_country' => 'Deutschland',
+
+    'imprint_responsible_title' => 'Verantwortliche Person',
+    'imprint_name' => 'Name',
+    'imprint_address' => 'Adresse',
+    'imprint_email' => 'E-Mail',
+
+    'imprint_scope_title' => 'Geltungsbereich',
+    'imprint_scope_desc' => 'Dieses Impressum gilt für folgende Angebote:',
+    'imprint_scope_website' => 'Website astra-bot.de',
+    'imprint_scope_bot' => 'Discord-Bot „Astra“',
+    'imprint_scope_note' => 'Nicht-kommerzielles Projekt · keine Gewinnerzielungsabsicht',
+
+
 
 ];

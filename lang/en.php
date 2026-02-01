@@ -133,6 +133,26 @@ return [
     'report_email_input_preview' => 'Optional',
     'report_button_send' => 'Submit',
 
+    /* IMPRINT */
+    'imprint_title' => 'Legal Notice',
+    'imprint_desc' => 'Legal information according to § 5 TMG for the website and the Discord bot “Astra”.',
+    'imprint_meta_legal' => 'Legal',
+    'imprint_meta_bot' => 'Discord Bot',
+    'imprint_meta_website' => 'Website',
+    'imprint_meta_country' => 'Germany',
+
+    'imprint_responsible_title' => 'Responsible Person',
+    'imprint_name' => 'Name',
+    'imprint_address' => 'Address',
+    'imprint_email' => 'Email',
+
+    'imprint_scope_title' => 'Scope',
+    'imprint_scope_desc' => 'This legal notice applies to the following services:',
+    'imprint_scope_website' => 'Website astra-bot.de',
+    'imprint_scope_bot' => 'Discord bot “Astra”',
+    'imprint_scope_note' => 'Non-commercial project · no profit intention',
+
+
 
 ];
 
