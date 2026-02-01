@@ -2760,6 +2760,26 @@ main.legal-main {
         pointer-events: auto;
     }
 
+    /* Keine Hover-/Click-Animationen */
+    .lang-switch,
+    .lang-switch * {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    /* Open-State komplett neutralisieren */
+    .lang-switch.open .lang-core {
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .lang-switch.open .lang-dropdown {
+        opacity: 1;            /* sichtbar, falls benötigt */
+        transform: none;
+    }
+
 
     /* =====================================================
        HERO / CONTENT
