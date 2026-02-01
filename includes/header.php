@@ -35,16 +35,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         </button>
 
         <!-- Language Switch -->
-        <div class="lang-switch" id="langSwitch">
-            <button class="lang-btn" aria-label="Sprache wechseln" type="button">
-                🌐
+        <div class="lang-switch">
+            <button class="lang-btn" aria-label="Switch language">
+                <svg class="lang-core" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" class="core-orb"/>
+                    <path d="M3 12h18" class="core-grid"/>
+                    <path d="M12 3c3.8 4 3.8 14 0 18" class="core-grid"/>
+                    <path d="M12 3c-3.8 4-3.8 14 0 18" class="core-grid"/>
+                </svg>
             </button>
 
             <div class="lang-dropdown">
-                <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">🇩🇪 Deutsch</a>
-                <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">🇬🇧 English</a>
+                <a href="?lang=de" class="active">🇩🇪 Deutsch</a>
+                <a href="?lang=en">🇬🇧 English</a>
             </div>
         </div>
+
 
 
     </div>
