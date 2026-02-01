@@ -70,9 +70,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 id="commandSearch"
                 class="commands-search"
                 type="text"
-                placeholder="<?= $t['cmd_search'] ?>"
-                data-placeholder="<?= $t['cmd_search'] ?>"
-        />
+                value="<?= $t['cmd_search'] ?>"
+                data-default="<?= $t['cmd_search'] ?>"
+        >
 
         <div class="commands-filters">
             <button class="active" data-filter-key="all"><?= $t['filter_all'] ?></button>
@@ -273,18 +273,24 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 <script>
     const searchInput = document.getElementById('commandSearch');
-    const originalPlaceholder = searchInput.dataset.placeholder;
+    const defaultText = searchInput.dataset.default;
 
+    // Fokus → leeren
     searchInput.addEventListener('focus', () => {
-        searchInput.placeholder = '';
+        if (searchInput.value === defaultText) {
+            searchInput.value = '';
+        }
     });
 
+    // Blur → Default wieder einsetzen
     searchInput.addEventListener('blur', () => {
         if (searchInput.value.trim() === '') {
-            searchInput.placeholder = originalPlaceholder;
+            searchInput.value = defaultText;
         }
     });
 </script>
+
+
 
 </body>
 </html>
