@@ -1,0 +1,199 @@
+{
+  "Moderation": {
+    "description": "Classic moderation commands",
+    "commands": [
+      { "name": "/kick", "description": "Kick a user from the server.", "usage": "/kick <user> <reason>" },
+      { "name": "/ban", "description": "Ban a user from the server.", "usage": "/ban <user> <reason>" },
+      { "name": "/unban", "description": "Unban a user by tag.", "usage": "/unban <usertag>" },
+      { "name": "/banlist", "description": "Shows a list of all banned users.", "usage": "/banlist" },
+      { "name": "/clear", "description": "Deletes messages (≤14 days & older in background).", "usage": "/clear <channel> <amount>" }
+    ]
+  },
+
+  "Levelsystem": {
+    "description": "Level system & XP",
+    "commands": [
+      { "name": "/levelsystem", "description": "Everything about the level system.", "usage": "/levelsystem" },
+      { "name": "/levelsystem rank", "description": "Shows your current level.", "usage": "/levelsystem rank [user]" },
+      { "name": "/levelsystem setstyle", "description": "Choose your rank card style.", "usage": "/levelsystem setstyle <style>" },
+      { "name": "/levelsystem previewstyle", "description": "Preview your level card.", "usage": "/levelsystem previewstyle <style>" },
+      { "name": "/levelsystem status", "description": "Enable or disable the level system.", "usage": "/levelsystem status <arg>" },
+      { "name": "/levelsystem leaderboard", "description": "Top 10 level & XP leaderboard.", "usage": "/levelsystem leaderboard" },
+      { "name": "/levelsystem levelupkanal", "description": "Set the level-up channel.", "usage": "/levelsystem levelupkanal <arg> [channel]" },
+      { "name": "/levelsystem levelupnachricht", "description": "Configure the level-up message.", "usage": "/levelsystem levelupnachricht <arg> [message]" },
+      { "name": "/levelsystem role", "description": "Add or remove level roles.", "usage": "/levelsystem role <mode> <level> <role>" },
+      { "name": "/xpboost", "description": "Enable or disable XP boost.", "usage": "/xpboost <status>" },
+      { "name": "/setlevel", "description": "Set a member's level.", "usage": "/setlevel <member> <level>" },
+      { "name": "/setxp", "description": "Set a member's XP.", "usage": "/setxp <member> <xp>" }
+    ]
+  },
+
+  "Giveaways": {
+    "description": "Giveaways & community events",
+    "commands": [
+      { "name": "/giveaway", "description": "Everything about giveaways.", "usage": "/giveaway" },
+      { "name": "/giveaway start", "description": "Start a giveaway.", "usage": "/giveaway start <prize> <channel> <winners> <time> [role] [level] [messages]" },
+      { "name": "/giveaway manage", "description": "Manage a giveaway.", "usage": "/giveaway manage <action> [messageid]" }
+    ]
+  },
+
+  "Settings": {
+    "description": "Server settings & tools",
+    "commands": [
+      { "name": "/afk", "description": "Set yourself as AFK.", "usage": "/afk [reason]" },
+      { "name": "/reminder", "description": "Manage reminders.", "usage": "/reminder" },
+      { "name": "/reminder create", "description": "Create a reminder.", "usage": "/reminder create <description> <time>" },
+      { "name": "/reminder list", "description": "Show all reminders.", "usage": "/reminder list" },
+      { "name": "/reminder delete", "description": "Delete a reminder.", "usage": "/reminder delete <id>" },
+      { "name": "/joinrole", "description": "Manage join roles.", "usage": "/joinrole <argument> [role]" },
+      { "name": "/botrole", "description": "Set a bot role.", "usage": "/botrole <argument> [role]" },
+      { "name": "/voicesetup", "description": "Voice auto setup.", "usage": "/voicesetup <action> [visibility] [role]" },
+      { "name": "/reactionrole", "description": "Create reaction roles.", "usage": "/reactionrole <style>" },
+      { "name": "/globalchat", "description": "Enable or disable global chat.", "usage": "/globalchat <argument>" }
+    ]
+  },
+
+  "Ticket": {
+    "description": "Ticket system & support",
+    "commands": [
+      { "name": "/ticket", "description": "Everything about the ticket system.", "usage": "/ticket" },
+      { "name": "/ticket setup", "description": "Start the setup wizard.", "usage": "/ticket setup" },
+      { "name": "/ticket list", "description": "List ticket panels.", "usage": "/ticket list" },
+      { "name": "/ticket delete", "description": "Delete a ticket panel.", "usage": "/ticket delete <channel>" },
+      { "name": "/ticket log", "description": "Manage ticket log channel.", "usage": "/ticket log <argument> [channel]" },
+      { "name": "/ticket config", "description": "Change ticket settings.", "usage": "/ticket config <mode>" }
+    ]
+  },
+
+  "Automoderation": {
+    "description": "Automated moderation",
+    "commands": [
+      { "name": "/warn", "description": "Warn a user.", "usage": "/warn <member> <reason>" },
+      { "name": "/unwarn", "description": "Remove a warning.", "usage": "/unwarn <member> <warnid>" },
+      { "name": "/warns", "description": "List all warnings of a user.", "usage": "/warns <member>" },
+      { "name": "/automod", "description": "Automod commands.", "usage": "/automod" },
+      { "name": "/automod add", "description": "Add an automod rule.", "usage": "/automod add <warns> <action>" },
+      { "name": "/automod remove", "description": "Remove an automod rule.", "usage": "/automod remove <warns>" },
+      { "name": "/automod list", "description": "Show automod rules.", "usage": "/automod list" },
+      { "name": "/capslock", "description": "Configure caps lock filter.", "usage": "/capslock <argument> [percent]" },
+      { "name": "/blacklist", "description": "Manage blacklist.", "usage": "/blacklist <argument> [word]" }
+    ]
+  },
+
+  "Information": {
+    "description": "Information & bot data",
+    "commands": [
+      { "name": "/help", "description": "Show all commands.", "usage": "/help" },
+      { "name": "/about", "description": "Information about the bot.", "usage": "/about" },
+      { "name": "/invite", "description": "Bot invite link.", "usage": "/invite" },
+      { "name": "/support", "description": "Support server.", "usage": "/support" },
+      { "name": "/ping", "description": "Bot ping.", "usage": "/ping" },
+      { "name": "/uptime", "description": "Bot uptime.", "usage": "/uptime" },
+      { "name": "/info", "description": "Server information.", "usage": "/info" },
+      { "name": "/info channel", "description": "Information about a channel.", "usage": "/info channel [textchannel] [voicechannels]" },
+      { "name": "/info user", "description": "Information about a user.", "usage": "/info user [member]" },
+      { "name": "/info server", "description": "Information about the server.", "usage": "/info server" },
+      { "name": "/info icon", "description": "Show the server icon.", "usage": "/info icon" },
+      { "name": "/info role", "description": "Information about a role.", "usage": "/info role <role>" },
+      { "name": "/info weather", "description": "Weather information.", "usage": "/info weather <city>" }
+    ]
+  },
+
+  "Fun": {
+    "description": "Fun & entertainment",
+    "commands": [
+      { "name": "/wanted", "description": "Wanted poster.", "usage": "/wanted [member]" },
+      { "name": "/pix", "description": "Pixelate avatar.", "usage": "/pix [member]" },
+      { "name": "/wasted", "description": "GTA wasted effect.", "usage": "/wasted [user]" },
+      { "name": "/gay", "description": "Pride overlay.", "usage": "/gay [user]" },
+      { "name": "/triggered", "description": "Triggered GIF.", "usage": "/triggered [user]" },
+      { "name": "/color", "description": "Show a color.", "usage": "/color <hex>" },
+      { "name": "/meme", "description": "Random meme.", "usage": "/meme" },
+      { "name": "/qrcode", "description": "Generate QR code.", "usage": "/qrcode <link>" },
+      { "name": "/lostrate", "description": "Show lost rate.", "usage": "/lostrate [user]" },
+      { "name": "/iq", "description": "Fake IQ.", "usage": "/iq [user]" },
+      { "name": "/ask", "description": "Ask a question.", "usage": "/ask <question>" },
+      { "name": "/love", "description": "Love rate.", "usage": "/love <user1> <user2>" },
+      { "name": "/scratch", "description": "Scratch card.", "usage": "/scratch" },
+      { "name": "/games", "description": "Active games.", "usage": "/games" },
+      { "name": "/password", "description": "Generate secure password.", "usage": "/password" }
+    ]
+  },
+
+  "Economy": {
+    "description": "Economy & jobs",
+    "commands": [
+      { "name": "/eco", "description": "Economy system.", "usage": "/eco" },
+      { "name": "/eco balance", "description": "Account balance.", "usage": "/eco balance" },
+      { "name": "/eco deposit", "description": "Deposit money.", "usage": "/eco deposit <amount>" },
+      { "name": "/eco withdraw", "description": "Withdraw money.", "usage": "/eco withdraw <amount>" },
+      { "name": "/eco beg", "description": "Beg for money.", "usage": "/eco beg" },
+      { "name": "/eco slot", "description": "Slot machine.", "usage": "/eco slot <bet>" },
+      { "name": "/eco rps", "description": "Rock paper scissors.", "usage": "/eco rps <choice>" },
+      { "name": "/eco coinflip", "description": "Coin flip.", "usage": "/eco coinflip <choice> <amount>" },
+      { "name": "/eco rob", "description": "Rob someone.", "usage": "/eco rob <target>" },
+      { "name": "/eco leaderboard", "description": "Richest players.", "usage": "/eco leaderboard <scope>" },
+      { "name": "/eco blackjack", "description": "Blackjack.", "usage": "/eco blackjack <bet>" },
+      { "name": "/job", "description": "Job system.", "usage": "/job" },
+      { "name": "/job work", "description": "Work.", "usage": "/job work" },
+      { "name": "/job list", "description": "Job list.", "usage": "/job list" },
+      { "name": "/job apply", "description": "Apply for a job.", "usage": "/job apply <name>" },
+      { "name": "/job quit", "description": "Quit your job.", "usage": "/job quit" }
+    ]
+  },
+
+  "Messages": {
+    "description": "Messages & notifications",
+    "commands": [
+      { "name": "/joinmsg", "description": "Join message.", "usage": "/joinmsg <argument> [channel]" },
+      { "name": "/leavemsg", "description": "Leave message.", "usage": "/leavemsg <argument> [channel]" },
+      { "name": "/autoreact", "description": "Auto reactions.", "usage": "/autoreact <mode> <channel> <emoji>" },
+      { "name": "/embedfy", "description": "Create embed.", "usage": "/embedfy [color]" },
+      { "name": "/notification", "description": "YouTube & Twitch notifications.", "usage": "/notification" },
+      { "name": "/notification info", "description": "Active notifications.", "usage": "/notification info" },
+      { "name": "/notification youtube", "description": "YouTube notification.", "usage": "/notification youtube <action> <channel> <channelname> [role]" },
+      { "name": "/notification twitch", "description": "Twitch notification.", "usage": "/notification twitch <action> <channel> <channelname> [role]" }
+    ]
+  },
+
+  "Minigames": {
+    "description": "Games & minigames",
+    "commands": [
+      { "name": "/hangman", "description": "Hangman game.", "usage": "/hangman" },
+      { "name": "/snake", "description": "Snake game.", "usage": "/snake" },
+      { "name": "/snake start", "description": "Start snake.", "usage": "/snake start" },
+      { "name": "/snake highscore", "description": "Snake highscore.", "usage": "/snake highscore [player]" },
+      { "name": "/emojiquiz", "description": "Emoji quiz.", "usage": "/emojiquiz <status> <channel>" },
+      { "name": "/guessthenumber", "description": "Guess the number.", "usage": "/guessthenumber <mode> <channel>" },
+      { "name": "/counting", "description": "Counting channel.", "usage": "/counting <argument> <channel>" }
+    ]
+  },
+
+  "Backups": {
+    "description": "Server backups",
+    "commands": [
+      { "name": "/backup", "description": "Backup system.", "usage": "/backup" },
+      { "name": "/backup create", "description": "Create a backup.", "usage": "/backup create" },
+      { "name": "/backup list", "description": "List backups.", "usage": "/backup list" },
+      { "name": "/backup load", "description": "Load a backup.", "usage": "/backup load <code>" },
+      { "name": "/backup undo", "description": "Undo last restore.", "usage": "/backup undo" },
+      { "name": "/backup status", "description": "Backup status.", "usage": "/backup status" },
+      { "name": "/backup delete", "description": "Delete a backup.", "usage": "/backup delete <code>" },
+      { "name": "/backup export", "description": "Export a backup.", "usage": "/backup export <code>" },
+      { "name": "/backup import", "description": "Import a backup.", "usage": "/backup import <file> [overwrite]" }
+    ]
+  },
+
+  "Birthdays": {
+    "description": "Birthdays",
+    "commands": [
+      { "name": "/birthday", "description": "Birthday system.", "usage": "/birthday" },
+      { "name": "/birthday set", "description": "Set your birthday.", "usage": "/birthday set <date>" },
+      { "name": "/birthday show", "description": "Show birthday.", "usage": "/birthday show" },
+      { "name": "/birthday delete", "description": "Delete birthday.", "usage": "/birthday delete" },
+      { "name": "/birthday setup", "description": "Birthday setup.", "usage": "/birthday setup [channel] [time] [timezone]" },
+      { "name": "/birthday message", "description": "Set birthday message.", "usage": "/birthday message" },
+      { "name": "/birthday status", "description": "Enable birthday system.", "usage": "/birthday status <mode>" }
+    ]
+  }
+}

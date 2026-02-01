@@ -98,6 +98,10 @@ $t = require __DIR__ . "/lang/$lang.php";
 <?php include 'includes/footer.php'; ?>
 
 <script>
+    const lang = "<?= $lang ?>";
+</script>
+
+<script>
     (function () {
 
         const loader = document.getElementById('astra-loader');
@@ -121,12 +125,11 @@ $t = require __DIR__ . "/lang/$lang.php";
     })();
 </script>
 
-
 <script>
     /* ============================
        LOAD JSON & RENDER (SAFE)
     ============================ */
-    fetch('/json/commands.json')
+    fetch(`/json/commands_${lang}.json`)
         .then(res => res.json())
         .then(data => renderCommands(data));
 
@@ -158,7 +161,7 @@ $t = require __DIR__ . "/lang/$lang.php";
 
                 const usage = document.createElement('div');
                 usage.className = 'cmd-usage';
-                usage.textContent = cmd.usage; // ⬅️ DAS IST DER FIX
+                usage.textContent = cmd.usage;
 
                 item.appendChild(name);
                 item.appendChild(desc);
@@ -167,11 +170,11 @@ $t = require __DIR__ . "/lang/$lang.php";
             });
 
             categoryEl.innerHTML = `
-      <button class="command-category-header">
-        ${getIcon(category)} ${category}
-        <span>${count} Commands</span>
-      </button>
-    `;
+                <button class="command-category-header">
+                    ${getIcon(category)} ${category}
+                    <span>${count} Commands</span>
+                </button>
+            `;
 
             categoryEl.appendChild(body);
             accordion.appendChild(categoryEl);
@@ -224,7 +227,6 @@ $t = require __DIR__ . "/lang/$lang.php";
     ============================ */
     document.querySelectorAll('.commands-filters button').forEach(btn => {
         btn.addEventListener('click', () => {
-            // Active State
             document.querySelectorAll('.commands-filters button')
                 .forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -234,10 +236,8 @@ $t = require __DIR__ . "/lang/$lang.php";
             document.querySelectorAll('.command-category').forEach(cat => {
                 const isMatch = filter === 'all' || cat.dataset.category === filter;
 
-                // Sichtbarkeit
                 cat.style.display = isMatch ? '' : 'none';
 
-                // Accordion State
                 if (filter === 'all') {
                     cat.classList.remove('open');
                 } else {
@@ -278,8 +278,6 @@ $t = require __DIR__ . "/lang/$lang.php";
         });
     });
 </script>
-
-
 
 </body>
 </html>
