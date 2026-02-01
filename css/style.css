@@ -3731,86 +3731,120 @@ main.legal-main {
 
 }
 
-:root[data-theme="midnight-cool"] {
-    /* ===== Backgrounds ===== */
-    --bg-main: #151a33;
+:root[data-theme="aurora-bright"] {
 
-    /* ===== Text ===== */
-    --text-main: #edf4ff;
+    /* =========================
+       CORE BACKGROUND
+    ========================= */
+    --bg-main: #171a3a;
+
+    /* =========================
+       TEXT
+    ========================= */
+    --text-main: #f6f8ff;
     --text-heading: #ffffff;
-    --text-muted: #cdd9ff;
-    --text-soft: #b8c8ff;
+    --text-muted: #cfd6ff;
+    --text-soft: #b9c3ff;
 
-    --text-link: #6fffe9;
-    --text-link-hover: #ffe08a;
+    --text-link: #6affea;
+    --text-link-hover: #b388ff;
 
-    /* ===== Scrollbar ===== */
-    --scrollbar-bg: #1f2550;
-    --scrollbar-thumb: #5b6dff;
+    /* =========================
+       ACCENTS (AURORA CORE)
+    ========================= */
+    --accent-primary: #6affea;
+    --accent-secondary: #8b7bff;
+    --accent-green-soft: #9dffee;
 
-    /* ===== Selection ===== */
-    --selection-bg: #6fffe9;
-    --selection-text: #0d122b;
+    /* =========================
+       HEADER / NAV
+    ========================= */
+    --header-bg: rgba(23, 26, 58, 0.85);
+    --header-shadow: rgba(139, 123, 255, 0.25);
 
-    /* ===== Header / Nav ===== */
-    --header-bg: #111633;
-    --header-shadow: rgba(111, 255, 233, 0.18);
+    --nav-link: #e3e8ff;
+    --nav-link-active: #6affea;
 
-    /* ===== Accents ===== */
-    --accent-primary: #6fffe9;
-    --accent-secondary: #8fa7ff;
-    --accent-green-soft: #8dfff0;
+    /* =========================
+       HERO
+    ========================= */
+    --hero-bg-start: #1b1f4d;
+    --hero-bg-mid: #2d2f7a;
+    --hero-bg-end: #5dffe8;
 
-    /* ===== Logo / Nav ===== */
-    --logo-bg: #0f1430;
-    --nav-link: #e6eeff;
-    --nav-link-active: #6fffe9;
+    --hero-shadow: rgba(139, 123, 255, 0.35);
 
-    /* ===== Drawer ===== */
-    --drawer-bg-main: #151a33;
-    --drawer-bg-top: #0f1430;
-    --drawer-bg-bottom: #1e2455;
+    --hero-text-main: #ffffff;
+    --hero-text-muted: #dbe3ff;
 
-    --drawer-overlay-bg: rgba(8, 10, 35, 0.65);
+    --hero-accent: #6affea;
+    --hero-accent-secondary: #a98bff;
+    --hero-accent-warm: #ffd6a6;
 
-    /* ===== Hero ===== */
-    --hero-bg-start: #151a33;
-    --hero-bg-mid: #2a38a8;
-    --hero-bg-end: #6fffe9;
+    /* =========================
+       BUTTONS
+    ========================= */
+    --hero-btn-main-start: #6affea;
+    --hero-btn-main-end: #8b7bff;
+    --hero-btn-text-dark: #1b1f3f;
+    --hero-btn-shadow: rgba(106, 255, 234, 0.35);
+    --hero-btn-hover-shadow: rgba(139, 123, 255, 0.45);
 
-    --hero-text-muted: #dbe7ff;
-    --hero-shadow: rgba(110, 130, 255, 0.25);
+    /* =========================
+       CARDS
+    ========================= */
+    --card-bg-soft: rgba(40, 45, 110, 0.55);
+    --card-bg-strong: rgba(50, 55, 140, 0.65);
 
-    /* ===== Buttons ===== */
-    --hero-btn-main-start: #6fffe9;
-    --hero-btn-main-end: #8fa7ff;
-    --hero-btn-shadow: rgba(111, 255, 233, 0.28);
-    --hero-btn-hover-shadow: rgba(111, 255, 233, 0.45);
+    --card-shadow-soft: rgba(139, 123, 255, 0.25);
+    --card-shadow-strong: rgba(106, 255, 234, 0.25);
 
-    /* ===== Cards ===== */
-    --card-bg-soft: rgba(255, 255, 255, 0.07);
-    --card-bg-strong: rgba(255, 255, 255, 0.12);
+    /* =========================
+       BADGES / LABELS
+    ========================= */
+    --badge-bg: rgba(255, 255, 255, 0.12);
+    --badge-text: #f0f4ff;
 
-    --card-shadow-soft: rgba(40, 60, 200, 0.16);
-    --card-shadow-strong: rgba(40, 60, 200, 0.26);
+    --badge-mint-bg: rgba(106, 255, 234, 0.22);
+    --badge-mint-text: #6affea;
 
-    /* ===== Badges ===== */
-    --badge-bg: rgba(255, 255, 255, 0.14);
-    --badge-text: #f4f9ff;
+    --badge-violet-bg: rgba(168, 139, 255, 0.25);
+    --badge-violet-text: #e6d9ff;
 
-    --badge-mint-bg: rgba(111, 255, 233, 0.22);
-    --badge-mint-text: #083c35;
+    /* =========================
+       STATS
+    ========================= */
+    --stat-bg: rgba(60, 70, 170, 0.45);
+    --stat-number: #6affea;
+    --stat-title: #e4e9ff;
 
-    --badge-blue-bg: rgba(143, 167, 255, 0.22);
-    --badge-blue-text: #0f1848;
+    /* =========================
+       DRAWER / MOBILE
+    ========================= */
+    --drawer-bg-main: #1a1e4f;
+    --drawer-bg-top: #151845;
+    --drawer-bg-bottom: #1f2360;
 
-    /* ===== Footer ===== */
-    --footer-bg-top: #0f1430;
-    --footer-bg-bottom: #151a33;
+    --drawer-glow-primary: rgba(106, 255, 234, 0.35);
+    --drawer-glow-secondary: rgba(139, 123, 255, 0.45);
 
-    --footer-link: #8fa7ff;
-    --footer-link-hover: #6fffe9;
+    /* =========================
+       FOOTER
+    ========================= */
+    --footer-bg-top: #14173a;
+    --footer-bg-bottom: #1b1f4d;
+
+    --footer-link: #a98bff;
+    --footer-link-hover: #6affea;
+
+    /* =========================
+       GLOWS (IMPORTANT)
+    ========================= */
+    --hero-glow-mint: rgba(106, 255, 234, 0.35);
+    --error-glow-primary: rgba(106, 255, 234, 0.55);
+    --error-glow-secondary: rgba(139, 123, 255, 0.45);
 }
+
 
 
 
