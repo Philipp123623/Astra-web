@@ -2950,7 +2950,6 @@ main.report-main {
 
 .dashboard-wrapper {
     padding: 32px 32px 0;
-    min-height: calc(100vh - var(--header-height));
     background: var(--bg-main);
 }
 
@@ -2976,6 +2975,7 @@ main.report-main {
     max-height: 820px;
 
     border-radius: 22px;
+    height: calc(100vh - var(--header-height) - 64px);
     padding: 26px 18px 22px;
 
     background: linear-gradient(
