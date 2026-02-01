@@ -36,8 +36,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         <!-- Language Switch -->
         <div class="lang-switch">
-            <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">DE</a>
-            <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">EN</a>
+            <button class="lang-btn" aria-label="Sprache wechseln">
+                🌐
+            </button>
+
+            <div class="lang-dropdown">
+                <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">🇩🇪 Deutsch</a>
+                <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">🇬🇧 English</a>
+            </div>
         </div>
 
 

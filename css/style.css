@@ -301,60 +301,122 @@ a:hover { color: #ffd799; }
 }
 
 /* =========================
-   LANGUAGE SWITCH – FIXED
+   LANGUAGE SWITCH – ICON
    ========================= */
 
 .lang-switch {
+    position: relative;
+
+    /* 🔒 Feste Breite → Header bewegt sich NIE */
+    width: 44px;
+    height: 44px;
+
     display: flex;
     align-items: center;
-    gap: 6px;
-
-    /* 🔒 FIX: feste Breite → Header bewegt sich NIE */
-    width: 74px;
-    justify-content: flex-end;
+    justify-content: center;
 
     margin-left: 18px;
 }
 
-.lang-switch a {
-    display: inline-flex;
+/* 🌍 Button */
+.lang-btn {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+
+    font-size: 1.2em;
+    background: rgba(255,255,255,0.10);
+    color: #eafcff;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 32px;
-    height: 26px;
-
-    font-size: 0.75em;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-
-    text-decoration: none;
-    color: #bcdcff;
-
-    border-radius: 8px;
-    background: rgba(255,255,255,0.08);
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,0.12),
+            0 0 18px rgba(101,230,206,0.25);
 
     transition:
-            background .18s ease,
-            color .18s ease,
-            box-shadow .18s ease,
+            background .2s ease,
+            box-shadow .2s ease,
             transform .12s ease;
 }
 
-.lang-switch a:hover {
-    background: rgba(101,230,206,0.22);
-    color: #ffffff;
+.lang-btn:hover {
+    background: rgba(101,230,206,0.25);
+    box-shadow:
+            0 0 0 2px rgba(101,230,206,0.35),
+            0 0 26px rgba(101,230,206,0.55);
     transform: translateY(-1px);
 }
 
-.lang-switch a.active {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
-    color: #223254;
+/* Dropdown */
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+
+    background: rgba(28,18,80,0.95);
+    backdrop-filter: blur(18px);
+
+    border-radius: 14px;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    min-width: 140px;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(.96);
 
     box-shadow:
-            0 0 0 2px rgba(101,230,206,0.35),
-            0 6px 18px rgba(101,230,206,0.45);
+            0 18px 48px rgba(0,0,0,.55),
+            inset 0 0 0 1px rgba(255,255,255,.08);
+
+    transition:
+            opacity .18s ease,
+            transform .18s cubic-bezier(.4,0,.2,1);
 }
+
+/* Show on hover */
+.lang-switch:hover .lang-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Links */
+.lang-dropdown a {
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-weight: 800;
+    font-size: .95em;
+
+    color: #cfefff;
+    background: transparent;
+
+    transition:
+            background .15s ease,
+            color .15s ease,
+            transform .12s ease;
+}
+
+.lang-dropdown a:hover {
+    background: rgba(101,230,206,0.22);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.lang-dropdown a.active {
+    background: linear-gradient(90deg,#65e6ce,#a7c
 
 
 .astra-logo {
@@ -2534,11 +2596,6 @@ main.legal-main {
 
     .astra-nav-toggle {
         display: flex;
-    }
-
-    .lang-switch {
-        width: 70px;
-        margin-left: 10px;
     }
 
 
