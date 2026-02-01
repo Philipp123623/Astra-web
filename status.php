@@ -211,7 +211,11 @@ if (file_exists($historyFile)) {
                     elseif ($p >= 98.0) $class = 'good';
                     elseif ($p >= 90.0) $class = 'warn';
                     else $class = 'bad';
-                    $tooltip = "{$dateStr}<br>{$t['uptime_label']}: ".round($p,2)."%<br>({$entry['online']}/{$entry['total']})";
+                    $tooltip =
+                        "<b>{$dateStr}</b><br>" .
+                        "{$t['status']}: {$t['online']}<br>" .
+                        "{$t['uptime_popup_title']} " . round($p, 2) . "%<br>" .
+                        "({$entry['online']}/{$entry['total']})";
                     echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
                 endforeach; ?>
             </div>
