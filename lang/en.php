@@ -1,0 +1,78 @@
+<?php
+return [
+
+    /* META */
+    'meta_title' => 'Astra | Discord Bot',
+    'meta_desc'  => 'Astra – all-in-one Discord bot with leveling, economy, moderation, tickets, mini-games & more.',
+
+    /* HERO */
+    'label_level' => 'Level & XP',
+    'label_mod'   => 'Moderation',
+    'label_eco'   => 'Economy & Games',
+
+    'hero_static' => 'Astra is',
+    'hero_title'  => 'The all-in-one toolkit for your Discord server!',
+    'hero_desc'   => 'Levels, XP, economy, moderation, tools & fun – customizable, reliable, blazing fast.',
+    'hero_cta'    => 'Start now with Astra on your server and become part of the first community!',
+
+    'invite_bot'     => 'Invite bot',
+    'support_server' => 'Support server',
+
+    /* BADGES */
+    'badge_xp'      => 'XP & Level System',
+    'badge_games'   => 'Casino & Mini Games',
+    'badge_tickets' => 'Tickets & Reaction Roles',
+    'badge_automod' => 'Automod & Logging',
+
+    /* STATS */
+    'servers'  => 'Servers',
+    'users'    => 'Users',
+    'commands' => 'Commands',
+    'channels' => 'Channels',
+
+    /* ABOUT */
+    'about_title' => 'About Astra',
+    'about_text'  => 'Astra is a modern, versatile Discord bot with many features:',
+    'about_list' => [
+        'Moderation, logging & automod',
+        'Level system with roles',
+        'Economy, casino, mini-games',
+        'Tickets, reaction roles, join roles',
+        'Welcome messages & info'
+    ],
+    'about_link' => 'Discover all features',
+
+    /* FEATURES */
+    'feature_level' => 'Level & XP',
+    'feature_level_desc' => 'Level system, XP, roles & cool level-up messages.',
+
+    'feature_eco' => 'Economy & Games',
+    'feature_eco_desc' => 'Casino, leaderboard, jobs, many games & more.',
+
+    'feature_mod' => 'Moderation & Automod',
+    'feature_mod_desc' => 'Kick, ban, warn, modlog, logging, automod & more.',
+
+    'feature_tools' => 'Tickets & Tools',
+    'feature_tools_desc' => 'Ticket system, reaction roles, reminders, global channels.',
+
+    /* FAQ */
+    'faq_title' => 'FAQ & Info',
+    'faq' => [
+        ['q' => 'How do I get support?', 'a' => 'Create a ticket in the #support channel.'],
+        ['q' => 'Does Astra cost anything?', 'a' => '100% free to use!'],
+        ['q' => 'Events & giveaways?', 'a' => 'Yes, regularly!'],
+        ['q' => 'How can I report bugs or features?', 'a' => 'Via #feedback or ticket.']
+    ],
+
+    /* TYPING */
+    'typing_words' => [
+        'modern.',
+        'reliable.',
+        'efficient.',
+        'modular.',
+        'stable.',
+        'innovative.'
+    ],
+
+];
+

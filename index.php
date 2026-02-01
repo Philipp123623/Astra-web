@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
+if (!in_array($lang, ['de','en'])) $lang = 'de';
+$_SESSION['lang'] = $lang;
+
+$t = require __DIR__ . "/lang/$lang.php";
+
 // Funktion um .env zu laden
 function loadEnv($path) {
     if (!file_exists($path)) {
@@ -104,36 +113,42 @@ if ($result->num_rows > 0) {
                 <circle cx="6%" cy="89%" r="41" fill="#60e9cb22"/>
             </svg>
         </div>
+
         <div class="astra-hero-content">
             <div>
                 <div class="astra-label-row">
-                    <span class="astra-label green">Level & XP</span>
-                    <span class="astra-label blue">Moderation</span>
-                    <span class="astra-label yellow">Economy & Games</span>
+                    <span class="astra-label green"><?= $t['label_level'] ?></span>
+                    <span class="astra-label blue"><?= $t['label_mod'] ?></span>
+                    <span class="astra-label yellow"><?= $t['label_eco'] ?></span>
                 </div>
+
                 <h1 class="hero-headline">
-                    <span class="headline-static">Astra ist</span>
+                    <span class="headline-static"><?= $t['hero_static'] ?></span>
                     <span id="typing-text" class="headline-dynamic"></span>
                 </h1>
 
                 <div class="astra-desc">
-                    <b>Das All-in-One Toolkit für deinen Discord-Server!</b><br>
-                    Level, XP, Economy, Moderation, Tools & Fun – individuell, zuverlässig, blitzschnell.
+                    <b><?= $t['hero_title'] ?></b><br>
+                    <?= $t['hero_desc'] ?>
                 </div>
+
                 <div class="astra-btn-row">
-                    <a href="/invite.php" class="astra-btn main">Bot einladen</a>
-                    <a href="/support.php" class="astra-btn outline">Support-Server</a>
+                    <a href="/invite.php" class="astra-btn main"><?= $t['invite_bot'] ?></a>
+                    <a href="/support.php" class="astra-btn outline"><?= $t['support_server'] ?></a>
                 </div>
+
                 <div class="astra-badges-row">
-                    <span class="astra-badge mint">XP & Level-System</span>
-                    <span class="astra-badge violet">Casino & Mini-Games</span>
-                    <span class="astra-badge yellow">Tickets & ReactionRoles</span>
-                    <span class="astra-badge blue">Automod & Logging</span>
+                    <span class="astra-badge mint"><?= $t['badge_xp'] ?></span>
+                    <span class="astra-badge violet"><?= $t['badge_games'] ?></span>
+                    <span class="astra-badge yellow"><?= $t['badge_tickets'] ?></span>
+                    <span class="astra-badge blue"><?= $t['badge_automod'] ?></span>
                 </div>
+
                 <div class="cta-absatz">
-                    <b>Starte jetzt mit Astra auf deinem Server – und werde Teil der ersten Community!</b>
+                    <b><?= $t['hero_cta'] ?></b>
                 </div>
             </div>
+
             <div>
                 <img src="/public/favicon_transparent.png" alt="Astra Logo" class="astra-hero-logo">
             </div>
@@ -143,20 +158,20 @@ if ($result->num_rows > 0) {
     <!-- STATS -->
     <section id="stats" class="astra-stats">
         <div class="stat-card">
-            <span class="stat-num" data-val="<?php echo $servercount; ?>">0</span>
-            <div class="stat-title">Server</div>
+            <span class="stat-num" data-val="<?= $servercount ?>">0</span>
+            <div class="stat-title"><?= $t['servers'] ?></div>
         </div>
         <div class="stat-card">
-            <span class="stat-num" data-val="<?php echo $usercount; ?>">0</span>
-            <div class="stat-title">User</div>
+            <span class="stat-num" data-val="<?= $usercount ?>">0</span>
+            <div class="stat-title"><?= $t['users'] ?></div>
         </div>
         <div class="stat-card">
-            <span class="stat-num" data-val="<?php echo $commandCount; ?>">0</span>
-            <div class="stat-title">Commands</div>
+            <span class="stat-num" data-val="<?= $commandCount ?>">0</span>
+            <div class="stat-title"><?= $t['commands'] ?></div>
         </div>
         <div class="stat-card">
-            <span class="stat-num" data-val="<?php echo $channelCount; ?>">0</span>
-            <div class="stat-title">Channels</div>
+            <span class="stat-num" data-val="<?= $channelCount ?>">0</span>
+            <div class="stat-title"><?= $t['channels'] ?></div>
         </div>
     </section>
 
@@ -166,59 +181,47 @@ if ($result->num_rows > 0) {
             <img src="/public/favicon_transparent.png" alt="Astra About" class="about-img">
         </div>
         <div>
-            <h2>Über Astra</h2>
-            <p>Astra ist ein moderner, vielseitiger Discord-Bot mit vielen Features:</p>
+            <h2><?= $t['about_title'] ?></h2>
+            <p><?= $t['about_text'] ?></p>
             <ul>
-                <li>Moderation, Logging & Automod</li>
-                <li>Levelsystem mit Rollen</li>
-                <li>Economy, Casino, Mini-Games</li>
-                <li>Tickets, ReactionRole, Joinrole</li>
-                <li>Willkommensnachrichten & Infos</li>
+                <?php foreach ($t['about_list'] as $item): ?>
+                    <li><?= $item ?></li>
+                <?php endforeach; ?>
             </ul>
-            <a href="https://astra-bot.de/commands" class="about-link">Alle Features entdecken</a>
+            <a href="/commands" class="about-link"><?= $t['about_link'] ?></a>
         </div>
     </section>
 
     <!-- FEATURES -->
     <section id="features" class="astra-features-grid">
         <div class="feature-card">
-            <div class="feature-title green">Level & XP</div>
-            <div>Levelsystem, XP, Rollen & coole Levelup-Nachrichten.</div>
+            <div class="feature-title green"><?= $t['feature_level'] ?></div>
+            <div><?= $t['feature_level_desc'] ?></div>
         </div>
         <div class="feature-card">
-            <div class="feature-title yellow">Economy & Games</div>
-            <div>Casino, Leaderboard, Jobs, viele Games & mehr.</div>
+            <div class="feature-title yellow"><?= $t['feature_eco'] ?></div>
+            <div><?= $t['feature_eco_desc'] ?></div>
         </div>
         <div class="feature-card">
-            <div class="feature-title blue">Moderation & Automod</div>
-            <div>Kick, Ban, Warn, Modlog, Logging, Automod, mehr.</div>
+            <div class="feature-title blue"><?= $t['feature_mod'] ?></div>
+            <div><?= $t['feature_mod_desc'] ?></div>
         </div>
         <div class="feature-card">
-            <div class="feature-title violet">Tickets & Tools</div>
-            <div>Ticketsystem, ReactionRoles, Reminder, globale Channel.</div>
+            <div class="feature-title violet"><?= $t['feature_tools'] ?></div>
+            <div><?= $t['feature_tools_desc'] ?></div>
         </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="astra-faq-section">
-        <h2>FAQ & Infos</h2>
+        <h2><?= $t['faq_title'] ?></h2>
         <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-question">Wie bekomme ich Support?</button>
-                <div class="faq-answer">Ticket im #support Channel, das Team hilft persönlich & schnell.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Kostet Astra etwas?</button>
-                <div class="faq-answer">100% kostenlos nutzbar!</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Events & Giveaways?</button>
-                <div class="faq-answer">Ja, regelmäßig!</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Wie kann ich Bugs oder Features melden?</button>
-                <div class="faq-answer">Im #feedback Channel oder per Ticket.</div>
-            </div>
+            <?php foreach ($t['faq'] as $faq): ?>
+                <div class="faq-item">
+                    <button class="faq-question"><?= $faq['q'] ?></button>
+                    <div class="faq-answer"><?= $faq['a'] ?></div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </section>
 </main>
