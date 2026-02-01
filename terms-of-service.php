@@ -1,8 +1,19 @@
+<?php
+
+session_start();
+
+$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
+if (!in_array($lang, ['de','en'])) $lang = 'de';
+$_SESSION['lang'] = $lang;
+
+$t = require __DIR__ . "/lang/$lang.php";
+?>
+
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8" />
-    <title>Nutzungsbedingungen | Astra Bot</title>
+    <title><?= $t['terms_title'] ?> | Astra Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
@@ -14,7 +25,7 @@
 
 <main class="legal-main">
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
     <section class="legal-hero-card">
         <div class="bubbles-bg">
             <svg width="100%" height="100%">
@@ -25,140 +36,108 @@
         </div>
 
         <div class="legal-hero-content">
-            <h1>Nutzungsbedingungen</h1>
+            <h1><?= $t['terms_title'] ?></h1>
 
-            <p class="legal-hero-desc">
-                Diese Nutzungsbedingungen regeln die Verwendung des Discord-Bots
-                <strong>„Astra“</strong> sowie der zugehörigen Website.
-            </p>
+            <p class="legal-hero-desc"><?= $t['terms_desc'] ?></p>
 
             <div class="legal-hero-meta">
-                <span>📜 Terms of Service</span>
-                <span>🤖 Discord Bot</span>
-                <span>🌐 Website</span>
-                <span>🇪🇺 EU / 🇩🇪 DE</span>
+                <span>📜 <?= $t['terms_meta_terms'] ?></span>
+                <span>🤖 <?= $t['terms_meta_bot'] ?></span>
+                <span>🌐 <?= $t['terms_meta_website'] ?></span>
+                <span>🇪🇺 <?= $t['terms_meta_law'] ?></span>
             </div>
         </div>
     </section>
 
-    <!-- ================= MAIN CARD ================= -->
+    <!-- MAIN CARD -->
     <section class="legal-main-card">
 
-        <!-- Einleitung -->
         <div class="legal-section">
-            <h2>📌 Geltungsbereich</h2>
-            <p class="legal-text">
-                Diese Nutzungsbedingungen gelten für alle Nutzer des Discord-Bots
-                <strong>Astra</strong> sowie für Besucher dieser Website.
-                Mit der Nutzung des Bots erklärst du dich mit diesen Bedingungen einverstanden.
-            </p>
+            <h2>📌 <?= $t['terms_scope_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_scope_desc'] ?></p>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Voraussetzungen -->
         <div class="legal-section">
-            <h2>✅ Nutzungsvoraussetzungen</h2>
+            <h2>✅ <?= $t['terms_requirements_title'] ?></h2>
             <ul class="legal-list">
-                <li>Du bist mindestens 13 Jahre alt (gemäß Discord ToS)</li>
-                <li>Du hältst dich an die Discord-Nutzungsbedingungen</li>
-                <li>Du nutzt Astra nicht für rechtswidrige Zwecke</li>
+                <li><?= $t['terms_req_1'] ?></li>
+                <li><?= $t['terms_req_2'] ?></li>
+                <li><?= $t['terms_req_3'] ?></li>
             </ul>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Bot-Nutzung -->
         <div class="legal-section">
-            <h2>🤖 Nutzung des Discord-Bots</h2>
-            <p class="legal-text">
-                Astra stellt Funktionen wie Moderation, Levelsysteme, Economy,
-                Spiele und weitere Tools bereit.
-                Die Nutzung erfolgt <strong>auf eigene Verantwortung</strong>.
-            </p>
-
+            <h2>🤖 <?= $t['terms_bot_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_bot_desc'] ?></p>
             <ul class="legal-list">
-                <li>Missbrauch, Exploits oder Manipulation sind untersagt</li>
-                <li>Automatisierte oder schädliche Nutzung ist verboten</li>
-                <li>Funktionen können jederzeit geändert oder entfernt werden</li>
+                <li><?= $t['terms_bot_1'] ?></li>
+                <li><?= $t['terms_bot_2'] ?></li>
+                <li><?= $t['terms_bot_3'] ?></li>
             </ul>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Verfügbarkeit -->
         <div class="legal-section">
-            <h2>⏱️ Verfügbarkeit</h2>
-            <p class="legal-text">
-                Es besteht <strong>kein Anspruch auf permanente Verfügbarkeit</strong>.
-                Wartungen, Updates oder technische Probleme können zu Ausfällen führen.
-            </p>
+            <h2>⏱️ <?= $t['terms_availability_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_availability_desc'] ?></p>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Haftung -->
         <div class="legal-section">
-            <h2>⚖️ Haftungsausschluss</h2>
-            <p class="legal-text">
-                Der Betreiber übernimmt keine Haftung für Schäden,
-                die durch die Nutzung oder Nichtverfügbarkeit des Bots entstehen,
-                soweit gesetzlich zulässig.
-            </p>
+            <h2>⚖️ <?= $t['terms_liability_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_liability_desc'] ?></p>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Sperrung -->
         <div class="legal-section">
-            <h2>🚫 Sperrung von Nutzern</h2>
-            <p class="legal-text">
-                Bei Verstößen gegen diese Nutzungsbedingungen kann der Zugriff
-                auf den Bot <strong>zeitweise oder dauerhaft eingeschränkt</strong> werden.
-            </p>
+            <h2>🚫 <?= $t['terms_block_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_block_desc'] ?></p>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Änderungen -->
         <div class="legal-section">
-            <h2>🔄 Änderungen der Bedingungen</h2>
-            <p class="legal-text">
-                Diese Nutzungsbedingungen können jederzeit angepasst werden.
-                Änderungen treten mit Veröffentlichung auf der Website in Kraft.
-            </p>
+            <h2>🔄 <?= $t['terms_changes_title'] ?></h2>
+            <p class="legal-text"><?= $t['terms_changes_desc'] ?></p>
         </div>
 
     </section>
 
-    <!-- ================= MINI CARDS ================= -->
+    <!-- MINI CARDS -->
     <section class="legal-mini-cards">
 
         <div class="legal-mini-card">
-            <h3>🤖 Astra Bot</h3>
+            <h3>🤖 <?= $t['terms_card_bot_title'] ?></h3>
             <ul>
-                <li>Kostenlos nutzbar</li>
-                <li>Kein Anspruch auf Verfügbarkeit</li>
-                <li>Funktionen ohne Garantie</li>
+                <li><?= $t['terms_card_bot_1'] ?></li>
+                <li><?= $t['terms_card_bot_2'] ?></li>
+                <li><?= $t['terms_card_bot_3'] ?></li>
             </ul>
         </div>
 
         <div class="legal-mini-card">
-            <h3>📜 Regeln</h3>
+            <h3>📜 <?= $t['terms_card_rules_title'] ?></h3>
             <ul>
-                <li>Discord ToS beachten</li>
-                <li>Kein Missbrauch</li>
-                <li>Respektvoller Umgang</li>
+                <li><?= $t['terms_card_rules_1'] ?></li>
+                <li><?= $t['terms_card_rules_2'] ?></li>
+                <li><?= $t['terms_card_rules_3'] ?></li>
             </ul>
         </div>
 
         <div class="legal-mini-card">
-            <h3>📩 Kontakt</h3>
+            <h3>📩 <?= $t['terms_card_contact_title'] ?></h3>
             <ul>
-                <li>Fragen per E-Mail</li>
-                <li>Feedback willkommen</li>
+                <li><?= $t['terms_card_contact_1'] ?></li>
+                <li><?= $t['terms_card_contact_2'] ?></li>
             </ul>
-            <span class="legal-chip">Support über Website</span>
+            <span class="legal-chip"><?= $t['terms_card_contact_note'] ?></span>
         </div>
 
     </section>

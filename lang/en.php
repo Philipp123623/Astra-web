@@ -200,6 +200,63 @@ return [
 
     'privacy_contact_note' => 'Request via email',
 
+    /* TERMS */
+    'terms_title' => 'Terms of Service',
+    'terms_desc' => 'These terms of service govern the use of the Astra Discord bot and the associated website.',
+
+    'terms_meta_terms' => 'Terms of Service',
+    'terms_meta_bot' => 'Discord Bot',
+    'terms_meta_website' => 'Website',
+    'terms_meta_law' => 'EU / DE',
+
+    'terms_scope_title' => 'Scope',
+    'terms_scope_desc' => 'These terms apply to all users of the Astra Discord bot and visitors of this website. By using the bot, you agree to these terms.',
+
+    'terms_requirements_title' => 'Usage Requirements',
+    'terms_req_1' => 'You are at least 13 years old (according to Discord ToS)',
+    'terms_req_2' => 'You comply with Discord’s Terms of Service',
+    'terms_req_3' => 'You do not use Astra for illegal purposes',
+
+    'terms_bot_title' => 'Use of the Discord Bot',
+    'terms_bot_desc' => 'Astra provides features such as moderation, leveling systems, economy, games, and other tools. Usage is at your own risk.',
+    'terms_bot_1' => 'Abuse, exploits, or manipulation are prohibited',
+    'terms_bot_2' => 'Automated or malicious usage is forbidden',
+    'terms_bot_3' => 'Features may be changed or removed at any time',
+
+    'terms_availability_title' => 'Availability',
+    'terms_availability_desc' => 'There is no entitlement to permanent availability. Maintenance, updates, or technical issues may cause downtime.',
+
+    'terms_liability_title' => 'Limitation of Liability',
+    'terms_liability_desc' => 'The operator is not liable for damages resulting from the use or unavailability of the bot, insofar as legally permitted.',
+
+    'terms_block_title' => 'User Suspension',
+    'terms_block_desc' => 'Violations of these terms may result in temporary or permanent restriction of access to the bot.',
+
+    'terms_changes_title' => 'Changes to the Terms',
+    'terms_changes_desc' => 'These terms may be updated at any time. Changes take effect upon publication on the website.',
+
+    'terms_card_bot_title' => 'Astra Bot',
+    'terms_card_bot_1' => 'Free to use',
+    'terms_card_bot_2' => 'No guarantee of availability',
+    'terms_card_bot_3' => 'Features without warranty',
+
+    'terms_card_rules_title' => 'Rules',
+    'terms_card_rules_1' => 'Follow Discord ToS',
+    'terms_card_rules_2' => 'No abuse',
+    'terms_card_rules_3' => 'Respectful behavior',
+
+    'terms_card_contact_title' => 'Contact',
+    'terms_card_contact_1' => 'Questions via email',
+    'terms_card_contact_2' => 'Feedback welcome',
+    'terms_card_contact_note' => 'Support via website',
+
+    /* ERROR 404 */
+    'error_404_code' => '404',
+    'error_404_title' => 'Page not found',
+    'error_404_desc' => 'The page you are looking for does not exist or has been moved.',
+    'error_404_home' => 'Back to home',
+    'error_404_support' => 'Support',
+
 
 
 ];

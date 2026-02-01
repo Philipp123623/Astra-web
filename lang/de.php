@@ -200,6 +200,62 @@ return [
 
     'privacy_contact_note' => 'Anfrage per E-Mail',
 
+    /* TERMS */
+    'terms_title' => 'Nutzungsbedingungen',
+    'terms_desc' => 'Diese Nutzungsbedingungen regeln die Verwendung des Discord-Bots „Astra“ sowie der zugehörigen Website.',
+
+    'terms_meta_terms' => 'Nutzungsbedingungen',
+    'terms_meta_bot' => 'Discord Bot',
+    'terms_meta_website' => 'Website',
+    'terms_meta_law' => 'EU / DE',
+
+    'terms_scope_title' => 'Geltungsbereich',
+    'terms_scope_desc' => 'Diese Nutzungsbedingungen gelten für alle Nutzer des Discord-Bots Astra sowie für Besucher dieser Website. Mit der Nutzung des Bots erklärst du dich mit diesen Bedingungen einverstanden.',
+
+    'terms_requirements_title' => 'Nutzungsvoraussetzungen',
+    'terms_req_1' => 'Du bist mindestens 13 Jahre alt (gemäß Discord ToS)',
+    'terms_req_2' => 'Du hältst dich an die Discord-Nutzungsbedingungen',
+    'terms_req_3' => 'Du nutzt Astra nicht für rechtswidrige Zwecke',
+
+    'terms_bot_title' => 'Nutzung des Discord-Bots',
+    'terms_bot_desc' => 'Astra stellt Funktionen wie Moderation, Levelsysteme, Economy, Spiele und weitere Tools bereit. Die Nutzung erfolgt auf eigene Verantwortung.',
+    'terms_bot_1' => 'Missbrauch, Exploits oder Manipulation sind untersagt',
+    'terms_bot_2' => 'Automatisierte oder schädliche Nutzung ist verboten',
+    'terms_bot_3' => 'Funktionen können jederzeit geändert oder entfernt werden',
+
+    'terms_availability_title' => 'Verfügbarkeit',
+    'terms_availability_desc' => 'Es besteht kein Anspruch auf permanente Verfügbarkeit. Wartungen, Updates oder technische Probleme können zu Ausfällen führen.',
+
+    'terms_liability_title' => 'Haftungsausschluss',
+    'terms_liability_desc' => 'Der Betreiber übernimmt keine Haftung für Schäden, die durch die Nutzung oder Nichtverfügbarkeit des Bots entstehen, soweit gesetzlich zulässig.',
+
+    'terms_block_title' => 'Sperrung von Nutzern',
+    'terms_block_desc' => 'Bei Verstößen gegen diese Nutzungsbedingungen kann der Zugriff auf den Bot zeitweise oder dauerhaft eingeschränkt werden.',
+
+    'terms_changes_title' => 'Änderungen der Bedingungen',
+    'terms_changes_desc' => 'Diese Nutzungsbedingungen können jederzeit angepasst werden. Änderungen treten mit Veröffentlichung auf der Website in Kraft.',
+
+    'terms_card_bot_title' => 'Astra Bot',
+    'terms_card_bot_1' => 'Kostenlos nutzbar',
+    'terms_card_bot_2' => 'Kein Anspruch auf Verfügbarkeit',
+    'terms_card_bot_3' => 'Funktionen ohne Garantie',
+
+    'terms_card_rules_title' => 'Regeln',
+    'terms_card_rules_1' => 'Discord ToS beachten',
+    'terms_card_rules_2' => 'Kein Missbrauch',
+    'terms_card_rules_3' => 'Respektvoller Umgang',
+
+    'terms_card_contact_title' => 'Kontakt',
+    'terms_card_contact_1' => 'Fragen per E-Mail',
+    'terms_card_contact_2' => 'Feedback willkommen',
+    'terms_card_contact_note' => 'Support über Website',
+
+    /* ERROR 404 */
+    'error_404_code' => '404',
+    'error_404_title' => 'Seite nicht gefunden',
+    'error_404_desc' => 'Die Seite, die du suchst, existiert nicht oder wurde verschoben.',
+    'error_404_home' => 'Zur Startseite',
+    'error_404_support' => 'Support',
 
 
 ];

@@ -1,5 +1,17 @@
+<?php
+
+session_start();
+
+$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
+if (!in_array($lang, ['de','en'])) $lang = 'de';
+$_SESSION['lang'] = $lang;
+
+$t = require __DIR__ . "/lang/$lang.php";
+?>
+
 <?php include "includes/header.php"; ?>
 <script>document.body.classList.add('error-layout');</script>
+
 <main class="error-page">
 
     <section class="error-hero-card">
@@ -13,16 +25,21 @@
         </div>
 
         <div class="error-hero-content">
-            <span class="error-code">404</span>
-            <h1>Seite nicht gefunden</h1>
+            <span class="error-code"><?= $t['error_404_code'] ?></span>
+
+            <h1><?= $t['error_404_title'] ?></h1>
+
             <p>
-                Die Seite, die du suchst, existiert nicht<br>
-                oder wurde verschoben.
+                <?= nl2br($t['error_404_desc']) ?>
             </p>
 
             <div class="error-actions">
-                <a href="/" class="astra-btn main">Zur Startseite</a>
-                <a href="/support" class="astra-btn outline">Support</a>
+                <a href="/" class="astra-btn main">
+                    <?= $t['error_404_home'] ?>
+                </a>
+                <a href="/support" class="astra-btn outline">
+                    <?= $t['error_404_support'] ?>
+                </a>
             </div>
         </div>
     </section>
@@ -30,4 +47,3 @@
 </main>
 
 <?php include "includes/footer.php"; ?>
-
