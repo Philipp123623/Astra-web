@@ -116,6 +116,7 @@ return [
     'uptime_12h_title' => 'Bot Uptime (last 12h)',
     'uptime_30d_title' => 'Daily Uptime (last 30 days)',
     'uptime_legend'    => 'Green = Online, Red = Offline. Each bar = 10 minutes — or 1 day.',
+    'uptime_popup_title' => 'Uptime so far:',
 
 
 ];
