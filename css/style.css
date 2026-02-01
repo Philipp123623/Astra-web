@@ -2712,6 +2712,15 @@ main.legal-main {
         display: flex;
     }
 
+    /* Language Icon IM Header verstecken */
+    .astra-header .lang-switch {
+        display: none;
+    }
+
+    body.nav-open .astra-header .lang-switch {
+        display: flex;
+    }
+
 
     /* =====================================================
        HERO / CONTENT
