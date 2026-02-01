@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 
 <!DOCTYPE html>
-<html lang="<?= htmlspecialchars($lang) ?>">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <title><?= $t['privacy_title'] ?> | Astra Bot</title>

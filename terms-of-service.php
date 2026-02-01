@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="<?= $lang ?>">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <title><?= $t['terms_title'] ?> | Astra Bot</title>

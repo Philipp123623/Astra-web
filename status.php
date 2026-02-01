@@ -101,7 +101,7 @@ if (file_exists($historyFile)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?= $lang ?>">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <title>Status | Astra Bot</title>
