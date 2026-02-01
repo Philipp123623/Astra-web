@@ -99,14 +99,23 @@ return [
     'filter_info'     => 'Info',
 
     /* STATUS PAGE */
-    'status_title'   => 'Status | Astra Bot',
+    'booting' => 'Booting Astra',
+    'online'  => 'Online',
+    'offline' => 'Offline',
+
+    /* STATUS */
     'status_heading' => 'Service Status',
+    'status_aria'    => 'Service Status Overview',
     'status_bot'     => 'Bot',
-    'online'         => 'Online',
-    'offline'        => 'Offline',
-    'last_12h'       => 'Last 12 hours',
-    'last_30d'       => 'Last 30 days',
-    'uptime_legend'  => 'Green = Online, Red = Offline'
+
+    /* TABS */
+    'last_12h' => 'Last 12h',
+    'last_30d' => 'Last 30 Days',
+
+    /* UPTIME */
+    'uptime_12h_title' => 'Bot Uptime (last 12h)',
+    'uptime_30d_title' => 'Daily Uptime (last 30 days)',
+    'uptime_legend'    => 'Green = Online, Red = Offline. Each bar = 10 minutes — or 1 day.',
 
 
 ];

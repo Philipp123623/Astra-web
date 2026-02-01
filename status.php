@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
+if (!in_array($lang, ['de','en'])) $lang = 'de';
+$_SESSION['lang'] = $lang;
+
+$t = require __DIR__ . "/lang/$lang.php";
+
 // Zeitzone setzen
 date_default_timezone_set('Europe/Berlin');
 
@@ -96,7 +105,7 @@ if (file_exists($historyFile)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8" />
     <title>Status | Astra Bot</title>
@@ -126,7 +135,7 @@ if (file_exists($historyFile)) {
 
 <?php include 'includes/header.php'; ?>
 
-<main class="astra-status-main" role="main" aria-label="Service Status Übersicht">
+<main class="astra-status-main" role="main" aria-label="<?= $t['status_aria'] ?>">
     <section class="astra-status-card" aria-labelledby="service-status-title">
         <div class="status-bubbles-bg" aria-hidden="true">
             <svg width="100%" height="100%" role="img" focusable="false" aria-hidden="true">
@@ -137,35 +146,55 @@ if (file_exists($historyFile)) {
             </svg>
         </div>
 
-        <h1 id="service-status-title">Service Status</h1>
+        <h1 id="service-status-title"><?= $t['status_heading'] ?></h1>
 
         <ul class="status-list" role="list">
             <li class="status-row">
-                <span class="status-label"><span class="status-icon" aria-hidden="true">🤖</span> Bot</span>
-                <span class="status-badge <?php echo $bot_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
-                    <?php echo $bot_online ? 'Online' : 'Offline'; ?>
+                <span class="status-label">
+                    <span class="status-icon" aria-hidden="true">🤖</span>
+                    <?= $t['status_bot'] ?>
+                </span>
+                <span class="status-badge <?= $bot_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
+                    <?= $bot_online ? $t['online'] : $t['offline']; ?>
                 </span>
             </li>
             <li class="status-row">
-                <span class="status-label"><span class="status-icon" aria-hidden="true">🗄️</span> MySQL</span>
-                <span class="status-badge <?php echo $mysql_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
-                    <?php echo $mysql_online ? 'Online' : 'Offline'; ?>
+                <span class="status-label">
+                    <span class="status-icon" aria-hidden="true">🗄️</span>
+                    MySQL
+                </span>
+                <span class="status-badge <?= $mysql_online ? 'ok' : 'err'; ?>" role="status" aria-live="polite">
+                    <?= $mysql_online ? $t['online'] : $t['offline']; ?>
                 </span>
             </li>
         </ul>
 
-        <div class="status-tabs-row" role="tablist" aria-label="Status Zeitraum auswählen">
-            <button role="tab" aria-selected="true" aria-controls="uptime-detail" id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">Letzte 12h</button>
-            <button role="tab" aria-selected="false" aria-controls="uptime-tage" id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">Letzte 30 Tage</button>
+        <div class="status-tabs-row" role="tablist" aria-label="<?= $t['status_tab_aria'] ?>">
+            <button role="tab"
+                    aria-selected="true"
+                    aria-controls="uptime-detail"
+                    id="tab-btn-detail"
+                    class="status-tab-btn active"
+                    onclick="switchTab('detail')">
+                <?= $t['last_12h'] ?>
+            </button>
+            <button role="tab"
+                    aria-selected="false"
+                    aria-controls="uptime-tage"
+                    id="tab-btn-tage"
+                    class="status-tab-btn"
+                    onclick="switchTab('tage')">
+                <?= $t['last_30d'] ?>
+            </button>
         </div>
 
         <div class="uptime-chart" role="tabpanel" id="uptime-detail" aria-labelledby="tab-btn-detail">
-            <h2 class="uptime-chart-title" id="uptime-title-detail">Bot-Uptime Verlauf (letzte 12h)</h2>
+            <h2 class="uptime-chart-title"><?= $t['uptime_12h_title'] ?></h2>
             <div class="uptime-bar-row" id="uptimeBarRowDetail">
                 <?php foreach ($history_12h as $idx => $entry):
                     $class = $entry['status'] ? 'online' : 'offline';
                     $ts = $entry['timestamp'];
-                    $statusStr = $entry['status'] ? 'Online' : 'Offline';
+                    $statusStr = $entry['status'] ? $t['online'] : $t['offline'];
                     $dateStr = date("d.m. H:i", $ts);
                     echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'" tabindex="0"></div>';
                 endforeach; ?>
@@ -173,7 +202,7 @@ if (file_exists($historyFile)) {
         </div>
 
         <div class="uptime-chart" role="tabpanel" id="uptime-tage" aria-labelledby="tab-btn-tage" style="display:none;">
-            <h2 class="uptime-chart-title" id="uptime-title-tage">Tages-Uptime (letzte 30 Tage)</h2>
+            <h2 class="uptime-chart-title"><?= $t['uptime_30d_title'] ?></h2>
             <div class="uptime-bar-row-day" id="uptimeBarRowTage">
                 <?php foreach ($history_30d as $entry):
                     $p = $entry['percent'];
@@ -182,44 +211,51 @@ if (file_exists($historyFile)) {
                     elseif ($p >= 98.0) $class = 'good';
                     elseif ($p >= 90.0) $class = 'warn';
                     else $class = 'bad';
-                    $tooltip = "{$dateStr} <br>Uptime: ".round($p,2)."%<br>({$entry['online']}/{$entry['total']})";
+                    $tooltip = "{$dateStr}<br>{$t['uptime_label']}: ".round($p,2)."%<br>({$entry['online']}/{$entry['total']})";
                     echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
                 endforeach; ?>
             </div>
         </div>
 
-        <p class="uptime-legend" aria-live="polite">Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten — oder 1 Tag.</p>
+        <p class="uptime-legend" aria-live="polite"><?= $t['uptime_legend'] ?></p>
 
         <div id="uptime-tooltip" style="display:none;" role="tooltip" aria-hidden="true">
             <div class="uptime-tooltip-bubble">
-                <button type="button" class="uptime-tooltip-close" aria-label="Schließen">&times;</button>
+                <button type="button" class="uptime-tooltip-close" aria-label="<?= $t['close'] ?>">&times;</button>
                 <div class="uptime-tooltip-content"></div>
                 <div class="uptime-tooltip-arrow"></div>
             </div>
         </div>
 
-        <div class="stats-box-row" role="list" aria-label="Statistik Übersicht">
+        <div class="stats-box-row" role="list" aria-label="<?= $t['stats_aria'] ?>">
             <div class="stat-box" role="listitem">
-                <div class="stat-head">Server</div>
-                <div class="stat-num"><?php echo htmlspecialchars($stats['servercount']); ?></div>
+                <div class="stat-head"><?= $t['servers'] ?></div>
+                <div class="stat-num"><?= htmlspecialchars($stats['servercount']); ?></div>
             </div>
             <div class="stat-box" role="listitem">
-                <div class="stat-head">User</div>
-                <div class="stat-num"><?php echo htmlspecialchars($stats['usercount']); ?></div>
+                <div class="stat-head"><?= $t['users'] ?></div>
+                <div class="stat-num"><?= htmlspecialchars($stats['usercount']); ?></div>
             </div>
             <div class="stat-box" role="listitem">
-                <div class="stat-head">Commands</div>
-                <div class="stat-num"><?php echo htmlspecialchars($stats['commandCount']); ?></div>
+                <div class="stat-head"><?= $t['commands'] ?></div>
+                <div class="stat-num"><?= htmlspecialchars($stats['commandCount']); ?></div>
             </div>
             <div class="stat-box" role="listitem">
-                <div class="stat-head">Channels</div>
-                <div class="stat-num"><?php echo htmlspecialchars($stats['channelCount']); ?></div>
+                <div class="stat-head"><?= $t['channels'] ?></div>
+                <div class="stat-num"><?= htmlspecialchars($stats['channelCount']); ?></div>
             </div>
         </div>
     </section>
 </main>
 
+
 <?php include 'includes/footer.php'; ?>
+
+<script>
+    const LANG_ONLINE  = "<?= $t['online'] ?>";
+    const LANG_OFFLINE = "<?= $t['offline'] ?>";
+</script>
+
 
 <script>
     (function () {
@@ -319,7 +355,7 @@ if (file_exists($historyFile)) {
 
                     showTooltipHTML(bar, `
                         <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
-                        Status: <span style="font-weight:700;color:${status === 'Online' ? '#65e6ce' : '#ff7272'}">${status}</span><br>
+                        Status: <span style="font-weight:700;color:${status === LANG_ONLINE ? '#65e6ce' : '#ff7272'}">${status}</span><br>
                         Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
                     `);
                 }
@@ -334,7 +370,7 @@ if (file_exists($historyFile)) {
 
                 showTooltipHTML(bar, `
                     <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
-                    Status: <span style="font-weight:700;color:${status === 'Online' ? '#65e6ce' : '#ff7272'}">${status}</span><br>
+                    Status: <span style="font-weight:700;color:${status === LANG_ONLINE ? '#65e6ce' : '#ff7272'}">${status}</span><br>
                     Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
                 `, true);
 
