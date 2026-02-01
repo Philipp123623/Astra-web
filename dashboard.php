@@ -13,14 +13,14 @@
 
 <div class="dashboard">
 
-    <!-- ========== SIDEBAR ========== -->
+    <!-- SIDEBAR -->
     <aside class="dashboard-sidebar">
 
-        <div class="sidebar-logo">
-            <span>Astra</span>
+        <div class="dashboard-logo">
+            Astra<span>Bot</span>
         </div>
 
-        <nav class="sidebar-nav">
+        <nav class="dashboard-nav">
             <a class="active">Overview</a>
             <a>Servers</a>
             <a>Commands</a>
@@ -28,60 +28,59 @@
             <a>Settings</a>
         </nav>
 
-        <div class="sidebar-footer">
+        <div class="dashboard-sidebar-footer">
             <span>Status</span>
-            <strong class="status-online">Online</strong>
+            <span class="dashboard-status">Online</span>
         </div>
 
     </aside>
 
-    <!-- ========== CONTENT ========== -->
+    <!-- CONTENT -->
     <main class="dashboard-content">
 
-        <!-- Header -->
         <header class="dashboard-header">
             <h1>Overview</h1>
 
             <div class="dashboard-actions">
-                <button class="btn-secondary">Refresh</button>
-                <button class="btn-primary">Invite Bot</button>
+                <button class="dashboard-btn secondary">Refresh</button>
+                <button class="dashboard-btn primary">Invite Bot</button>
             </div>
         </header>
 
-        <!-- Stats -->
+        <!-- STATS -->
         <section class="dashboard-stats">
 
-            <div class="stat-card">
+            <div class="dashboard-stat">
                 <span>Servers</span>
                 <strong>12</strong>
             </div>
 
-            <div class="stat-card">
+            <div class="dashboard-stat">
                 <span>Users</span>
                 <strong>8.420</strong>
             </div>
 
-            <div class="stat-card">
+            <div class="dashboard-stat">
                 <span>Uptime</span>
                 <strong>99.9%</strong>
             </div>
 
-            <div class="stat-card">
+            <div class="dashboard-stat">
                 <span>Latency</span>
                 <strong>42ms</strong>
             </div>
 
         </section>
 
-        <!-- Panels -->
+        <!-- PANELS -->
         <section class="dashboard-panels">
 
-            <div class="panel">
+            <div class="dashboard-panel">
                 <h3>System Status</h3>
                 <p>All systems operational. No incidents reported.</p>
             </div>
 
-            <div class="panel">
+            <div class="dashboard-panel">
                 <h3>Recent Activity</h3>
                 <ul>
                     <li>Bot joined new server</li>
@@ -95,6 +94,7 @@
     </main>
 
 </div>
+
 <?php include "includes/footer.php"; ?>
 </body>
 </html>
