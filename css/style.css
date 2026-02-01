@@ -309,12 +309,23 @@ a:hover { color: #ffd799; }
 
 .lang-switch {
     position: relative;
+    isolation: isolate;        /* 🔥 trennt Render-Layer */
+    transform: none !important;
     width: 44px;
     height: 44px;
     margin-left: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10030;     /* über Hamburger */
+    pointer-events: auto;
+}
+
+/* 🔒 NAV-OPEN ISOLATION – PFLICHT */
+body.nav-open .lang-switch,
+body.nav-open .lang-switch * {
+    transform: none !important;
+    animation: none !important;
 }
 
 /* =========================
@@ -652,6 +663,13 @@ a:hover { color: #ffd799; }
     z-index: 10020;
 }
 
+.astra-nav-toggle {
+    transform: translateY(-50%); /* erlaubt */
+}
+
+body.nav-open .astra-nav-toggle {
+    transform: translateY(-50%) !important;
+}
 
 .astra-nav-toggle span {
     width: 26px;
