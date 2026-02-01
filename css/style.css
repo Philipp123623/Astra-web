@@ -304,7 +304,7 @@ a:hover { color: #ffd799; }
 
 /* =========================
    ASTRA LANGUAGE SWITCH
-   CLEAN & CLEAR
+   CLEAN & POLISHED
    ========================= */
 
 .lang-switch {
@@ -335,8 +335,8 @@ a:hover { color: #ffd799; }
     justify-content: center;
 
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.12),
-            0 4px 16px rgba(0,0,0,.35);
+            inset 0 0 0 1px rgba(255,255,255,.14),
+            0 4px 18px rgba(0,0,0,.35);
 
     transition:
             background .2s ease,
@@ -349,8 +349,9 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .lang-core {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
+
     stroke-linecap: round;
     stroke-linejoin: round;
 
@@ -362,14 +363,14 @@ a:hover { color: #ffd799; }
 .globe {
     fill: none;
     stroke: #ffffff;
-    stroke-width: 1.6;
+    stroke-width: 1.8;
 }
 
 .line {
     fill: none;
-    stroke: #a7c8fd;
-    stroke-width: 1.2;
-    opacity: .9;
+    stroke: #b9d7ff;
+    stroke-width: 1.3;
+    opacity: .95;
 }
 
 /* =========================
@@ -381,14 +382,14 @@ a:hover { color: #ffd799; }
 
     box-shadow:
             inset 0 0 0 1px rgba(101,230,206,.35),
-            0 6px 22px rgba(101,230,206,.45);
+            0 6px 24px rgba(101,230,206,.45);
 
     transform: translateY(-1px);
 }
 
 .lang-btn:hover .lang-core {
-    transform: rotate(180deg) scale(1.05);
-    filter: drop-shadow(0 0 6px rgba(101,230,206,.9));
+    transform: rotate(180deg) scale(1.08);
+    filter: drop-shadow(0 0 8px rgba(101,230,206,.9));
 }
 
 /* =========================
@@ -396,8 +397,8 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .lang-switch.open .lang-core {
-    transform: rotate(360deg) scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(101,230,206,1));
+    transform: rotate(360deg) scale(1.12);
+    filter: drop-shadow(0 0 12px rgba(101,230,206,1));
 }
 
 /* =========================
@@ -409,10 +410,10 @@ a:hover { color: #ffd799; }
     top: calc(100% + 10px);
     right: 0;
 
-    min-width: 140px;
+    min-width: 150px;
     padding: 6px;
 
-    background: rgba(20,20,40,.95);
+    background: rgba(20,20,40,.96);
     backdrop-filter: blur(14px);
 
     border-radius: 12px;
@@ -456,7 +457,7 @@ a:hover { color: #ffd799; }
 
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 
     transition:
             background .15s ease,

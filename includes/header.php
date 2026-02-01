@@ -27,18 +27,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </ul>
         </nav>
 
-        <!-- Hamburger Button -->
+        <!-- Hamburger -->
         <button class="astra-nav-toggle" aria-label="<?= $t['nav_menu'] ?>">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
 
         <!-- Language Switch -->
-
         <div class="lang-switch" id="langSwitch">
             <button class="lang-btn" aria-label="Switch language">
                 <svg class="lang-core" viewBox="0 0 24 24" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="globeGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#65e6ce"/>
+                        </linearGradient>
+                    </defs>
+
                     <circle cx="12" cy="12" r="9" class="globe"/>
                     <path d="M3 12h18" class="line"/>
                     <path d="M12 3c3.5 4 3.5 14 0 18" class="line"/>
@@ -47,12 +51,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </button>
 
             <div class="lang-dropdown">
-                <a href="?lang=de" class="active">🇩🇪 Deutsch</a>
-                <a href="?lang=en">🇬🇧 English</a>
+                <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">
+                    <span class="flag de"></span>
+                    Deutsch
+                </a>
+                <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">
+                    <span class="flag en"></span>
+                    English
+                </a>
             </div>
         </div>
-
-
 
     </div>
 </header>
@@ -120,7 +128,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const langSwitch = document.querySelector('.lang-switch');
+        const langSwitch = document.getElementById('langSwitch');
         if (!langSwitch) return;
 
         const btn = langSwitch.querySelector('.lang-btn');
