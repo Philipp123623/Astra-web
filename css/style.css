@@ -479,76 +479,51 @@ a:hover { color: #ffd799; }
 }
 
 /* =========================
-   DE / EN LANGUAGE BADGES
+   DE / EN TEXT ICONS
+   CLEAN – NO BOX
    ========================= */
-
-.lang-badge {
-    min-width: 42px;
-    height: 24px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.12);
-    box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.25);
-
-    transition:
-            background .15s ease,
-            box-shadow .15s ease,
-            transform .12s ease;
-}
-
-/* SVG */
 
 .lang-text-icon {
     width: 32px;
-    height: 18px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
 }
+
+/* 🔥 BOX KOMPLETT ENTFERNT */
+.lang-text-icon rect {
+    display: none;
+}
+
+/* TEXT STYLE */
 
 .lang-text-icon text {
     font-size: 12px;
     font-weight: 800;
-    letter-spacing: .12em;
+    letter-spacing: .14em;
 
-    fill: #ffffff;
+    fill: rgba(255,255,255,.85);
 
     text-anchor: middle;
     dominant-baseline: middle;
+
+    transition:
+            fill .15s ease,
+            transform .15s ease;
 }
 
 /* =========================
    HOVER
    ========================= */
 
-.lang-dropdown a:hover .lang-badge {
-    background: rgba(101,230,206,.25);
-    box-shadow:
-            inset 0 0 0 1px rgba(101,230,206,.55),
-            0 0 12px rgba(101,230,206,.35);
-
-    transform: scale(1.05);
-}
-
 .lang-dropdown a:hover .lang-text-icon text {
-    fill: #ffffff;
+    fill: #65e6ce;
+    transform: scale(1.05);
 }
 
 /* =========================
    ACTIVE
    ========================= */
-
-.lang-dropdown a.active .lang-badge {
-    background: linear-gradient(90deg,#65e6ce,#7bdcff);
-    box-shadow:
-            0 0 0 1px rgba(101,230,206,.8),
-            0 0 18px rgba(101,230,206,.6);
-
-    transform: scale(1.08);
-}
 
 .lang-dropdown a.active .lang-text-icon text {
     fill: #1a2333;
