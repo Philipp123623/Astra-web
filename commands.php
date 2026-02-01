@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="aurora-mint">
 <head>
     <meta charset="UTF-8" />
     <title>Commands | Astra Bot</title>
