@@ -226,12 +226,8 @@ if (file_exists($historyFile)) {
                         $statusColor = '#ff7272';
                     }
 
-                    $tooltip = "
-        <b>{$dateStr}</b><br>
-        Status: <span style='font-weight:700;color:{$statusColor}'>{$statusText}</span><br>
-        {$t['uptime_popup_title']} <span style='color:#90e3e7'>".round($p,2)."%</span><br>
-        ({$entry['online']}/{$entry['total']})
-    ";
+                    $tooltip = "<b>{$dateStr}</b><br>Status: <span style='font-weight:700;color:{$statusColor}'>{$statusText}</span><br>{$t['uptime_popup_title']} <span style='color:#90e3e7'>".round($p,2)."%</span>";
+
 
                     echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
                 endforeach; ?>
