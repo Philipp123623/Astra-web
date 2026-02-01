@@ -13,12 +13,9 @@
 <!-- ASTRA LOADER -->
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
-
-    <!-- Floating bubbles -->
     <div class="astra-loader-bubbles">
         <span></span><span></span><span></span><span></span><span></span>
     </div>
-
     <div class="astra-loader-core">
         <div class="astra-loader-ring"></div>
         <img src="/public/favicon_transparent.png" class="astra-loader-logo" alt="Astra">
@@ -26,15 +23,12 @@
     </div>
 </div>
 
-
 <?php include 'includes/header.php'; ?>
 
 <main class="commands-main">
 
     <!-- HERO -->
     <section class="commands-hero-card">
-
-        <!-- BUBBLES -->
         <div class="bubbles-bg">
             <svg width="100%" height="100%">
                 <circle cx="12%" cy="18%" r="42" fill="#65e6ce33"/>
@@ -47,22 +41,19 @@
         <div class="commands-hero-content">
             <div class="commands-hero-text">
                 <div class="astra-label-row">
-                    <span class="astra-label green">Slash Commands</span>
-                    <span class="astra-label blue">Live System</span>
-                    <span class="astra-label yellow">v2.0</span>
+                    <span class="astra-label green"><?= $t['cmd_label_slash'] ?></span>
+                    <span class="astra-label blue"><?= $t['cmd_label_live'] ?></span>
+                    <span class="astra-label yellow"><?= $t['cmd_label_version'] ?></span>
                 </div>
 
-                <h1>Astra Commands</h1>
-                <p class="astra-desc">
-                    Alle verfügbaren Commands von Astra – übersichtlich,
-                    durchsuchbar und ständig erweitert.
-                </p>
+                <h1><?= $t['cmd_title'] ?></h1>
+                <p class="astra-desc"><?= $t['cmd_desc'] ?></p>
 
                 <div class="astra-badges-row">
-                    <span class="astra-badge mint">Moderation</span>
-                    <span class="astra-badge blue">Level & XP</span>
-                    <span class="astra-badge violet">Economy</span>
-                    <span class="astra-badge yellow">Fun</span>
+                    <span class="astra-badge mint"><?= $t['cmd_badge_mod'] ?></span>
+                    <span class="astra-badge blue"><?= $t['cmd_badge_level'] ?></span>
+                    <span class="astra-badge violet"><?= $t['cmd_badge_eco'] ?></span>
+                    <span class="astra-badge yellow"><?= $t['cmd_badge_fun'] ?></span>
                 </div>
             </div>
         </div>
@@ -71,32 +62,27 @@
     <!-- COMMANDS PANEL -->
     <section class="commands-panel-card">
 
-        <!-- SEARCH -->
         <input
                 id="commandSearch"
                 class="commands-search"
                 type="text"
-                placeholder="Suche nach einem Command oder Feature …"
-                data-placeholder="Suche nach einem Command oder Feature …"
+                placeholder="<?= $t['cmd_search'] ?>"
+                data-placeholder="<?= $t['cmd_search'] ?>"
         />
 
-        <!-- FILTERS -->
         <div class="commands-filters">
-            <button class="active" data-filter="all">Alle</button>
-            <button data-filter="Moderation">Moderation</button>
-            <button data-filter="Levelsystem">Level</button>
-            <button data-filter="Economy">Economy</button>
-            <button data-filter="Fun">Fun</button>
-            <button data-filter="Einstellungen">Settings</button>
-            <button data-filter="Informationen">Info</button>
+            <button class="active" data-filter="all"><?= $t['filter_all'] ?></button>
+            <button data-filter="Moderation"><?= $t['filter_mod'] ?></button>
+            <button data-filter="Levelsystem"><?= $t['filter_level'] ?></button>
+            <button data-filter="Economy"><?= $t['filter_eco'] ?></button>
+            <button data-filter="Fun"><?= $t['filter_fun'] ?></button>
+            <button data-filter="Einstellungen"><?= $t['filter_settings'] ?></button>
+            <button data-filter="Informationen"><?= $t['filter_info'] ?></button>
         </div>
 
-
-        <!-- ACCORDION (DYNAMIC) -->
         <div class="commands-accordion" id="commandsAccordion"></div>
 
     </section>
-
 </main>
 
 <?php include 'includes/footer.php'; ?>

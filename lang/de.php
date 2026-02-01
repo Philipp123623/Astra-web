@@ -74,4 +74,28 @@ return [
         'innovativ.'
     ],
 
+    /* COMMANDS PAGE */
+    'cmd_label_slash'   => 'Slash Commands',
+    'cmd_label_live'    => 'Live System',
+    'cmd_label_version' => 'v2.0',
+
+    'cmd_title' => 'Astra Commands',
+    'cmd_desc'  => 'Alle verfügbaren Commands von Astra – übersichtlich, durchsuchbar und ständig erweitert.',
+
+    'cmd_badge_mod'   => 'Moderation',
+    'cmd_badge_level' => 'Level & XP',
+    'cmd_badge_eco'   => 'Economy',
+    'cmd_badge_fun'   => 'Fun',
+
+    'cmd_search' => 'Suche nach einem Command oder Feature …',
+
+    /* FILTERS */
+    'filter_all'      => 'Alle',
+    'filter_mod'      => 'Moderation',
+    'filter_level'    => 'Level',
+    'filter_eco'      => 'Economy',
+    'filter_fun'      => 'Fun',
+    'filter_settings' => 'Settings',
+    'filter_info'     => 'Info',
+
 ];
