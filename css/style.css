@@ -4076,6 +4076,263 @@ main.legal-main {
     --legal-shadow-dark: rgba(0, 0, 0, 0.55);
     --legal-glow-soft: rgba(106, 255, 234, 0.25);
 }
+/* =========================================================
+   AURORA VIOLET – FULL THEME OVERRIDE (ALL PAGES)
+   ========================================================= */
+:root[data-theme="aurora-violet"] {
+
+    /* =========================
+       LAYOUT
+    ========================= */
+    --header-height: 68px;
+    --header-height-mobile: 56px;
+
+    /* =========================
+       GLOBAL BACKGROUNDS
+    ========================= */
+    --bg-main: #140f2e;
+
+    /* =========================
+       TEXT SYSTEM
+    ========================= */
+    --text-main: #f2edff;
+    --text-heading: #ffffff;
+    --text-muted: #c8bde6;
+    --text-soft: #9a8fc0;
+
+    --text-link: #b78cff;
+    --text-link-hover: #e1ccff;
+
+    /* =========================
+       SCROLLBAR
+    ========================= */
+    --scrollbar-bg: #0f0b24;
+    --scrollbar-thumb: linear-gradient(180deg, #b78cff, #7f8cff);
+
+    /* =========================
+       SELECTION
+    ========================= */
+    --selection-bg: rgba(183, 140, 255, 0.45);
+    --selection-text: #140a28;
+
+    /* =========================
+       ACCENTS
+    ========================= */
+    --accent-primary: #b78cff;
+    --accent-secondary: #7f8cff;
+    --accent-green-soft: #e1ccff;
+
+    /* =========================
+       LOADER
+    ========================= */
+    --loader-bg-main: #0f0b24;
+    --loader-bg-gradient-end: #1a143d;
+
+    --loader-accent-primary: #b78cff;
+    --loader-accent-secondary: #7f8cff;
+    --loader-accent-violet: #c18bff;
+
+    --loader-text: rgba(245, 235, 255, 0.9);
+
+    --loader-glow-primary: rgba(183, 140, 255, 0.85);
+    --loader-glow-primary-soft: rgba(183, 140, 255, 0.45);
+    --loader-glow-violet: rgba(127, 140, 255, 0.55);
+    --loader-glow-violet-soft: rgba(127, 140, 255, 0.35);
+
+    /* =========================
+       HEADER / NAV
+    ========================= */
+    --header-bg: rgba(20, 15, 46, 0.88);
+    --header-shadow: rgba(183, 140, 255, 0.35);
+
+    --nav-link: #eee6ff;
+    --nav-link-active: #b78cff;
+
+    --nav-btn-gradient-start: #b78cff;
+    --nav-btn-gradient-end: #7f8cff;
+    --nav-btn-text: #190a33;
+    --nav-btn-shadow: rgba(183, 140, 255, 0.35);
+    --nav-btn-shadow-hover: rgba(183, 140, 255, 0.55);
+
+    /* =========================
+       ICONS
+    ========================= */
+    --icon-main: #ffffff;
+    --icon-secondary: #b9a9ff;
+
+    /* =========================
+       LOGO
+    ========================= */
+    --logo-bg: #1a1440;
+    --logo-shadow: rgba(183, 140, 255, 0.35);
+    --logo-text: #ffffff;
+    --logo-accent: #b78cff;
+
+    /* =========================
+       MOBILE DRAWER
+    ========================= */
+    --drawer-bg-main: #19133d;
+    --drawer-bg-top: #140f2e;
+    --drawer-bg-bottom: #2a1f5e;
+
+    --drawer-glow-primary: rgba(183, 140, 255, 0.45);
+    --drawer-glow-secondary: rgba(127, 140, 255, 0.35);
+    --drawer-glow-tertiary: rgba(225, 204, 255, 0.25);
+
+    --drawer-shadow-main: rgba(0, 0, 0, 0.65);
+    --drawer-border: rgba(255, 255, 255, 0.08);
+
+    --drawer-title: rgba(255, 255, 255, 0.55);
+
+    --drawer-link: #f2edff;
+    --drawer-link-hover-bg: rgba(183, 140, 255, 0.18);
+    --drawer-link-active: #b78cff;
+
+    --drawer-link-border: rgba(183, 140, 255, 0.45);
+    --drawer-link-glow: rgba(183, 140, 255, 0.55);
+
+    --drawer-cta-bg-start: #b78cff;
+    --drawer-cta-bg-end: #7f8cff;
+    --drawer-cta-text: #190a33;
+    --drawer-cta-glow: rgba(183, 140, 255, 0.65);
+
+    /* =========================
+       HERO
+    ========================= */
+    --hero-bg-start: #1a143d;
+    --hero-bg-mid: #332a66;
+    --hero-bg-end: #b78cff;
+
+    --hero-shadow: rgba(183, 140, 255, 0.45);
+
+    --hero-text-main: #ffffff;
+    --hero-text-muted: #e5d9ff;
+
+    --hero-accent: #b78cff;
+    --hero-accent-secondary: #7f8cff;
+    --hero-accent-warm: #ffe6ff;
+
+    --hero-btn-main-start: #b78cff;
+    --hero-btn-main-end: #7f8cff;
+    --hero-btn-text-dark: #190a33;
+    --hero-btn-shadow: rgba(183, 140, 255, 0.45);
+    --hero-btn-hover-shadow: rgba(183, 140, 255, 0.75);
+
+    /* =========================
+       CARDS / PANELS
+    ========================= */
+    --card-bg-soft: rgba(55, 45, 95, 0.55);
+    --card-bg-strong: rgba(75, 60, 125, 0.65);
+
+    --card-shadow-soft: rgba(183, 140, 255, 0.18);
+    --card-shadow-strong: rgba(183, 140, 255, 0.35);
+
+    /* =========================
+       BADGES / LABELS
+    ========================= */
+    --badge-bg: rgba(255, 255, 255, 0.14);
+    --badge-text: #f6f2ff;
+
+    --badge-mint-bg: rgba(183, 140, 255, 0.28);
+    --badge-mint-text: #b78cff;
+
+    --badge-blue-bg: rgba(127, 140, 255, 0.25);
+    --badge-blue-text: #eef0ff;
+
+    /* =========================
+       STATS
+    ========================= */
+    --stat-bg: rgba(90, 75, 130, 0.45);
+    --stat-number: #b78cff;
+    --stat-title: #efe8ff;
+
+    /* =========================
+       FAQ / FEATURES
+    ========================= */
+    --faq-bg: rgba(75, 60, 125, 0.45);
+    --faq-bg-active: rgba(183, 140, 255, 0.22);
+    --faq-question: #b78cff;
+
+    --feature-hover-shadow: rgba(183, 140, 255, 0.45);
+
+    /* =========================
+       COMMANDS PAGE
+    ========================= */
+    --commands-hero-bg-start: #1a143d;
+    --commands-hero-bg-mid: #332a66;
+    --commands-hero-bg-end: #b78cff;
+    --commands-hero-shadow: rgba(183, 140, 255, 0.45);
+
+    --commands-panel-bg-top: rgba(75, 60, 125, 0.55);
+    --commands-panel-bg-bottom: rgba(55, 45, 95, 0.65);
+    --commands-panel-shadow-main: rgba(183, 140, 255, 0.28);
+    --commands-panel-shadow-inset: rgba(255, 255, 255, 0.06);
+
+    --search-bg-start: rgba(40, 30, 80, 0.95);
+    --search-bg-mid: rgba(90, 75, 130, 0.95);
+    --search-bg-end: rgba(40, 30, 80, 0.95);
+
+    --search-text: #f7f2ff;
+    --search-text-preview: rgba(230, 220, 255, 0.6);
+    --search-border: rgba(183, 140, 255, 0.6);
+    --search-accent: #b78cff;
+
+    --search-glow-soft: rgba(183, 140, 255, 0.45);
+    --search-glow-strong: rgba(183, 140, 255, 0.9);
+
+    --accordion-bg-top: rgba(65, 55, 115, 0.55);
+    --accordion-bg-bottom: rgba(45, 35, 85, 0.65);
+    --accordion-shadow: rgba(183, 140, 255, 0.3);
+    --accordion-title: #b78cff;
+
+    --command-text-main: #f2edff;
+    --command-text-muted: #c8bde6;
+    --command-name: #7f8cff;
+    --command-strong: #b78cff;
+
+    /* =========================
+       STATUS / REPORT
+    ========================= */
+    --status-hero-bg-start: #1a143d;
+    --status-hero-bg-mid: #332a66;
+    --status-hero-bg-end: #b78cff;
+
+    --status-title: #b78cff;
+    --status-title-glow: rgba(183, 140, 255, 0.65);
+
+    --status-text-main: #f2edff;
+    --status-text-muted: #c8bde6;
+
+    --status-ok-start: #b78cff;
+    --status-ok-end: #7f8cff;
+    --status-ok-text: #190a33;
+
+    --status-err-start: #ff7b9d;
+    --status-err-end: #ffb3c7;
+    --status-err-text: #3a0b1c;
+
+    --status-warn-start: #ffd479;
+    --status-warn-end: #ffb347;
+    --status-warn-text: #3a2408;
+
+    /* =========================
+       FOOTER / LEGAL
+    ========================= */
+    --footer-bg-top: #140f2e;
+    --footer-bg-bottom: #1a143d;
+
+    --footer-text-main: #f2edff;
+    --footer-text-muted: #c8bde6;
+    --footer-text-soft: #9a8fc0;
+
+    --footer-link: #7f8cff;
+    --footer-link-hover: #b78cff;
+
+    --legal-card-bg-top: rgba(65, 55, 115, 0.65);
+    --legal-card-bg-bottom: rgba(45, 35, 85, 0.75);
+    --legal-shadow-dark: rgba(0, 0, 0, 0.55);
+    --legal-glow-soft: rgba(183, 140, 255, 0.25);
+}
 
 
 
