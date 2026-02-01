@@ -152,6 +152,54 @@ return [
     'imprint_scope_bot' => 'Discord-Bot „Astra“',
     'imprint_scope_note' => 'Nicht-kommerzielles Projekt · keine Gewinnerzielungsabsicht',
 
+    /* PRIVACY */
+    'privacy_title' => 'Datenschutzerklärung',
+    'privacy_desc' => 'Transparente Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO für den Discord-Bot Astra und diese Website.',
+
+    'privacy_meta_gdpr' => 'DSGVO',
+    'privacy_meta_bot' => 'Discord Bot',
+    'privacy_meta_website' => 'Website',
+    'privacy_meta_law' => 'EU-Recht',
+
+    'privacy_responsible_title' => 'Verantwortlicher',
+    'privacy_name' => 'Name',
+    'privacy_address' => 'Adresse',
+    'privacy_email' => 'E-Mail',
+
+    'privacy_data_title' => 'Erhobene Daten',
+    'privacy_data_desc' => 'Astra verarbeitet ausschließlich Daten, die für den technischen Betrieb und die Bereitstellung der Bot-Funktionen erforderlich sind.',
+    'privacy_data_1' => 'Discord User-ID',
+    'privacy_data_2' => 'Server-ID (Guild-ID)',
+    'privacy_data_3' => 'Nachrichten- & Befehls-Metadaten',
+    'privacy_data_4' => 'Konfigurations- & Systemeinstellungen',
+
+    'privacy_purpose_title' => 'Zweck der Verarbeitung',
+    'privacy_purpose_desc' => 'Sicherstellung von Funktionalität, Stabilität, Sicherheit, Weiterentwicklung sowie Fehleranalyse des Bots.',
+
+    'privacy_storage_title' => 'Speicherdauer',
+    'privacy_storage_desc' => 'Personenbezogene Daten werden nur so lange gespeichert, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.',
+
+    'privacy_security_title' => 'Datensicherheit',
+    'privacy_security_desc' => 'Es werden geeignete technische und organisatorische Maßnahmen eingesetzt, um Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.',
+
+    'privacy_bot_title' => 'Discord Bot',
+    'privacy_bot_1' => 'Keine privaten Nachrichten',
+    'privacy_bot_2' => 'Keine Weitergabe an Dritte',
+    'privacy_bot_3' => 'Keine Profilbildung',
+
+    'privacy_website_title' => 'Website',
+    'privacy_website_1' => 'IP-Adresse (anonymisiert)',
+    'privacy_website_2' => 'Datum & Uhrzeit',
+    'privacy_website_3' => 'User-Agent / Browser',
+
+    'privacy_rights_title' => 'Deine Rechte',
+    'privacy_rights_1' => 'Auskunft',
+    'privacy_rights_2' => 'Berichtigung',
+    'privacy_rights_3' => 'Löschung',
+    'privacy_rights_4' => 'Widerspruch',
+
+    'privacy_contact_note' => 'Anfrage per E-Mail',
+
 
 
 ];

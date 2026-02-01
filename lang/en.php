@@ -152,6 +152,54 @@ return [
     'imprint_scope_bot' => 'Discord bot “Astra”',
     'imprint_scope_note' => 'Non-commercial project · no profit intention',
 
+    /* PRIVACY */
+    'privacy_title' => 'Privacy Policy',
+    'privacy_desc' => 'Transparent information on the processing of personal data in accordance with GDPR for the Astra Discord bot and this website.',
+
+    'privacy_meta_gdpr' => 'GDPR',
+    'privacy_meta_bot' => 'Discord Bot',
+    'privacy_meta_website' => 'Website',
+    'privacy_meta_law' => 'EU Law',
+
+    'privacy_responsible_title' => 'Responsible Party',
+    'privacy_name' => 'Name',
+    'privacy_address' => 'Address',
+    'privacy_email' => 'Email',
+
+    'privacy_data_title' => 'Collected Data',
+    'privacy_data_desc' => 'Astra processes only data that is required for technical operation and bot functionality.',
+    'privacy_data_1' => 'Discord user ID',
+    'privacy_data_2' => 'Server ID (Guild ID)',
+    'privacy_data_3' => 'Message & command metadata',
+    'privacy_data_4' => 'Configuration & system settings',
+
+    'privacy_purpose_title' => 'Purpose of Processing',
+    'privacy_purpose_desc' => 'Ensuring functionality, stability, security, further development, and error analysis of the bot.',
+
+    'privacy_storage_title' => 'Data Retention',
+    'privacy_storage_desc' => 'Personal data is stored only as long as necessary for the respective purpose or legal obligations apply.',
+
+    'privacy_security_title' => 'Data Security',
+    'privacy_security_desc' => 'Appropriate technical and organizational measures are implemented to protect data against loss, misuse, and unauthorized access.',
+
+    'privacy_bot_title' => 'Discord Bot',
+    'privacy_bot_1' => 'No private messages',
+    'privacy_bot_2' => 'No data sharing with third parties',
+    'privacy_bot_3' => 'No profiling',
+
+    'privacy_website_title' => 'Website',
+    'privacy_website_1' => 'IP address (anonymized)',
+    'privacy_website_2' => 'Date & time',
+    'privacy_website_3' => 'User agent / browser',
+
+    'privacy_rights_title' => 'Your Rights',
+    'privacy_rights_1' => 'Access',
+    'privacy_rights_2' => 'Rectification',
+    'privacy_rights_3' => 'Deletion',
+    'privacy_rights_4' => 'Objection',
+
+    'privacy_contact_note' => 'Request via email',
+
 
 
 ];

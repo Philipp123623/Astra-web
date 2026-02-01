@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8" />
-    <title>Datenschutzerklärung | Astra Bot</title>
+    <title><?= $t['privacy_title'] ?> | Astra Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/public/favicon_transparent.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
 
 <main class="legal-main">
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
     <section class="legal-hero-card">
         <div class="bubbles-bg">
             <svg width="100%" height="100%">
@@ -25,40 +25,37 @@
         </div>
 
         <div class="legal-hero-content">
-            <h1>Datenschutzerklärung</h1>
-            <p class="legal-hero-desc">
-                Transparente Informationen zur Verarbeitung personenbezogener Daten
-                gemäß DSGVO für den Discord-Bot <strong>Astra</strong> und diese Website.
-            </p>
+            <h1><?= $t['privacy_title'] ?></h1>
+            <p class="legal-hero-desc"><?= $t['privacy_desc'] ?></p>
 
             <div class="legal-hero-meta">
-                <span>🔐 DSGVO</span>
-                <span>🤖 Discord Bot</span>
-                <span>🌐 Website</span>
-                <span>🇪🇺 EU-Recht</span>
+                <span>🔐 <?= $t['privacy_meta_gdpr'] ?></span>
+                <span>🤖 <?= $t['privacy_meta_bot'] ?></span>
+                <span>🌐 <?= $t['privacy_meta_website'] ?></span>
+                <span>🇪🇺 <?= $t['privacy_meta_law'] ?></span>
             </div>
         </div>
     </section>
 
-    <!-- ================= MAIN CARD ================= -->
+    <!-- MAIN -->
     <section class="legal-main-card">
 
-        <!-- Verantwortlicher -->
+        <!-- RESPONSIBLE -->
         <div class="legal-section">
-            <h2>👤 Verantwortlicher</h2>
+            <h2>👤 <?= $t['privacy_responsible_title'] ?></h2>
 
             <div class="legal-grid">
-                <div class="legal-label">Name</div>
+                <div class="legal-label"><?= $t['privacy_name'] ?></div>
                 <div class="legal-value">Stüve, Philipp Lukas</div>
 
-                <div class="legal-label">Adresse</div>
+                <div class="legal-label"><?= $t['privacy_address'] ?></div>
                 <div class="legal-value">
                     Berliner Straße 25<br>
                     63477 Maintal<br>
                     Deutschland
                 </div>
 
-                <div class="legal-label">E-Mail</div>
+                <div class="legal-label"><?= $t['privacy_email'] ?></div>
                 <div class="legal-value">
                     <a href="mailto:support@astra-bot.de">support@astra-bot.de</a>
                 </div>
@@ -67,88 +64,75 @@
 
         <div class="legal-divider"></div>
 
-        <!-- Erhobene Daten -->
+        <!-- DATA -->
         <div class="legal-section">
-            <h2>📊 Erhobene Daten</h2>
-            <p class="legal-text">
-                Astra verarbeitet ausschließlich Daten, die für den technischen Betrieb
-                und die Bereitstellung der Bot-Funktionen erforderlich sind.
-            </p>
+            <h2>📊 <?= $t['privacy_data_title'] ?></h2>
+            <p class="legal-text"><?= $t['privacy_data_desc'] ?></p>
 
             <ul class="legal-list">
-                <li>Discord User-ID</li>
-                <li>Server-ID (Guild-ID)</li>
-                <li>Nachrichten- & Befehls-Metadaten</li>
-                <li>Konfigurations- & Systemeinstellungen</li>
+                <li><?= $t['privacy_data_1'] ?></li>
+                <li><?= $t['privacy_data_2'] ?></li>
+                <li><?= $t['privacy_data_3'] ?></li>
+                <li><?= $t['privacy_data_4'] ?></li>
             </ul>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Zweck -->
+        <!-- PURPOSE -->
         <div class="legal-section">
-            <h2>🎯 Zweck der Verarbeitung</h2>
-            <p class="legal-text">
-                Sicherstellung von Funktionalität, Stabilität, Sicherheit,
-                Weiterentwicklung sowie Fehleranalyse des Bots.
-            </p>
+            <h2>🎯 <?= $t['privacy_purpose_title'] ?></h2>
+            <p class="legal-text"><?= $t['privacy_purpose_desc'] ?></p>
         </div>
 
         <div class="legal-divider"></div>
 
-        <!-- Speicher & Sicherheit -->
+        <!-- STORAGE & SECURITY -->
         <div class="legal-section legal-two-col">
             <div>
-                <h2>🗑️ Speicherdauer</h2>
-                <p class="legal-text">
-                    Personenbezogene Daten werden nur so lange gespeichert,
-                    wie dies für den jeweiligen Zweck erforderlich ist
-                    oder gesetzliche Aufbewahrungspflichten bestehen.
-                </p>
+                <h2>🗑️ <?= $t['privacy_storage_title'] ?></h2>
+                <p class="legal-text"><?= $t['privacy_storage_desc'] ?></p>
             </div>
 
             <div>
-                <h2>🔒 Datensicherheit</h2>
-                <p class="legal-text">
-                    Es werden geeignete technische und organisatorische Maßnahmen
-                    eingesetzt, um Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.
-                </p>
+                <h2>🔒 <?= $t['privacy_security_title'] ?></h2>
+                <p class="legal-text"><?= $t['privacy_security_desc'] ?></p>
             </div>
         </div>
 
     </section>
 
-    <!-- ================= SMALL CARDS ================= -->
+    <!-- MINI CARDS -->
     <section class="legal-mini-cards">
 
         <div class="legal-mini-card">
-            <h3>🤖 Discord Bot</h3>
+            <h3>🤖 <?= $t['privacy_bot_title'] ?></h3>
             <ul>
-                <li>Keine privaten Nachrichten</li>
-                <li>Keine Weitergabe an Dritte</li>
-                <li>Keine Profilbildung</li>
+                <li><?= $t['privacy_bot_1'] ?></li>
+                <li><?= $t['privacy_bot_2'] ?></li>
+                <li><?= $t['privacy_bot_3'] ?></li>
             </ul>
             <span class="legal-chip">Art. 6 Abs. 1 lit. b DSGVO</span>
         </div>
 
         <div class="legal-mini-card">
-            <h3>🌐 Website</h3>
+            <h3>🌐 <?= $t['privacy_website_title'] ?></h3>
             <ul>
-                <li>IP-Adresse (anonymisiert)</li>
-                <li>Datum & Uhrzeit</li>
-                <li>User-Agent / Browser</li>
+                <li><?= $t['privacy_website_1'] ?></li>
+                <li><?= $t['privacy_website_2'] ?></li>
+                <li><?= $t['privacy_website_3'] ?></li>
             </ul>
         </div>
 
         <div class="legal-mini-card">
-            <h3>⚖️ Deine Rechte</h3>
+            <h3>⚖️ <?= $t['privacy_rights_title'] ?></h3>
             <ul>
-                <li>Auskunft</li>
-                <li>Berichtigung</li>
-                <li>Löschung</li>
-                <li>Widerspruch</li>
+                <li><?= $t['privacy_rights_1'] ?></li>
+                <li><?= $t['privacy_rights_2'] ?></li>
+                <li><?= $t['privacy_rights_3'] ?></li>
+                <li><?= $t['privacy_rights_4'] ?></li>
             </ul>
-            <span class="legal-chip">📩 Anfrage per E-Mail</span>
+            <span class="legal-chip">📩 <?= $t['privacy_contact_note'] ?></span>
         </div>
 
     </section>
