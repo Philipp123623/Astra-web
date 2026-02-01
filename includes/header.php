@@ -122,6 +122,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         <a href="https://astra-bot.de/invite" class="nav-btn"><?= $t['nav_invite'] ?></a>
     </div>
+
+    <div class="astra-nav-lang">
+        <span class="astra-nav-lang-title"><?= $t['nav_language'] ?? 'Language' ?></span>
+
+        <div class="astra-nav-lang-list">
+            <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">Deutsch</a>
+            <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">English</a>
+            <a href="?lang=fr" class="<?= $lang === 'fr' ? 'active' : '' ?>">Français</a>
+            <a href="?lang=es" class="<?= $lang === 'es' ? 'active' : '' ?>">Español</a>
+        </div>
+    </div>
+
 </nav>
 
 

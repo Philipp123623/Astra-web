@@ -2714,8 +2714,8 @@ main.legal-main {
 
 
     /* =====================================================
-   HERO / CONTENT
-   ===================================================== */
+       HERO / CONTENT
+       ===================================================== */
 
     .astra-hero-card,
     .commands-hero-card,
@@ -2772,8 +2772,6 @@ main.legal-main {
         font-size: clamp(1.9rem, 6vw, 2.3rem);
         line-height: 1.15;
     }
-
-
 
 
     /* =====================================================
@@ -2854,8 +2852,8 @@ main.legal-main {
     }
 
     /* =====================================================
-   LEGAL PAGES – MOBILE FIX
-   ===================================================== */
+       LEGAL PAGES – MOBILE FIX
+       ===================================================== */
 
     .legal-grid,
     .legal-two-col,
@@ -2883,7 +2881,6 @@ main.legal-main {
     }
 
 
-
     /* =====================================================
        FOOTER
        ===================================================== */
@@ -2906,11 +2903,67 @@ main.legal-main {
     .commands-filters button {
         max-width: 100%;
         white-space: normal;
-    }
-    .astra-label,
-    .commands-filters button {
         text-align: center;
     }
+
+
+    /* =========================
+   MOBILE LANGUAGE SWITCH
+   ========================= */
+
+    .astra-nav-lang {
+        margin: 24px 24px 12px;
+    }
+
+    .astra-nav-lang-title {
+        display: block;
+        font-size: .75em;
+        font-weight: 900;
+        letter-spacing: .25em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.45);
+        margin-bottom: 14px;
+    }
+
+    .astra-nav-lang-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .astra-nav-lang-list a {
+        padding: 14px 0;
+        text-align: center;
+
+        border-radius: 14px;
+        font-weight: 800;
+        text-decoration: none;
+
+        background: rgba(255,255,255,.08);
+        color: #eafcff;
+
+        transition:
+                background .18s ease,
+                color .18s ease,
+                transform .15s ease,
+                box-shadow .18s ease;
+    }
+
+    .astra-nav-lang-list a:hover {
+        background: rgba(255,255,255,.14);
+    }
+
+    .astra-nav-lang-list a.active {
+        background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+        color: #223254;
+
+        box-shadow:
+                0 0 0 2px rgba(101,230,206,.45),
+                0 8px 28px rgba(101,230,206,.45);
+
+        transform: scale(1.05);
+    }
+
 }
 
 
