@@ -1,17 +1,23 @@
 <?php
-
 session_start();
 
+/* =====================
+   LANGUAGE HANDLING
+===================== */
 $lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
 if (!in_array($lang, ['de','en'])) $lang = 'de';
 $_SESSION['lang'] = $lang;
 
 $t = require __DIR__ . "/lang/$lang.php";
 
-// Zeitzone setzen
+/* =====================
+   TIMEZONE
+===================== */
 date_default_timezone_set('Europe/Berlin');
 
-// Funktion zum Laden der .env-Datei
+/* =====================
+   ENV LOADER
+===================== */
 function loadEnv(string $path): array {
     if (!file_exists($path)) {
         die(".env Datei nicht gefunden!");
@@ -29,7 +35,9 @@ function loadEnv(string $path): array {
 
 $env = loadEnv(__DIR__ . '/.env');
 
-// Datenbank-Verbindung herstellen
+/* =====================
+   DATABASE
+===================== */
 $conn = @new mysqli(
     $env['DB_SERVER'] ?? '',
     $env['DB_USER'] ?? '',
@@ -38,7 +46,9 @@ $conn = @new mysqli(
 );
 $mysql_online = ($conn && !$conn->connect_error);
 
-// Statistiken aus der Datenbank laden
+/* =====================
+   STATS
+===================== */
 $stats = [
     'servercount' => '-',
     'usercount' => '-',
@@ -53,7 +63,9 @@ if ($mysql_online) {
     $conn->close();
 }
 
-// Bot Status prüfen
+/* =====================
+   BOT STATUS
+===================== */
 $bot_online = false;
 try {
     $json = @file_get_contents('http://localhost:5000/status');
@@ -61,17 +73,17 @@ try {
         $data = json_decode($json, true);
         $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
     }
-} catch (Exception $e) {
-    // Fehler ignorieren, $bot_online bleibt false
-}
+} catch (Exception $e) {}
 
-// Status Historie laden (letzte 12h und 30 Tage)
+/* =====================
+   HISTORY
+===================== */
 $historyFile = __DIR__ . '/status_history_bot.txt';
 
 $history_12h = [];
 if (file_exists($historyFile)) {
     $lines = file($historyFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $lines = array_slice($lines, -72); // Letzte 12 Stunden (12*6 = 72 * 10min Intervalle)
+    $lines = array_slice($lines, -72);
     foreach ($lines as $line) {
         if (strpos($line, ':') === false) continue;
         list($ts, $st) = explode(':', $line, 2);
@@ -91,7 +103,6 @@ if (file_exists($historyFile)) {
         $daily[$tag]['total']++;
         if ((int)$st === 1) $daily[$tag]['online']++;
     }
-    // Nur letzte 30 Tage behalten
     $daily = array_slice($daily, -30, 30, true);
     foreach ($daily as $tag => $data) {
         $percent = ($data['total'] > 0) ? ($data['online'] / $data['total'] * 100) : 0;
@@ -105,7 +116,7 @@ if (file_exists($historyFile)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8" />
     <title>Status | Astra Bot</title>
@@ -119,37 +130,32 @@ if (file_exists($historyFile)) {
 <!-- ASTRA LOADER -->
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>
-
-    <!-- Floating bubbles -->
     <div class="astra-loader-bubbles">
         <span></span><span></span><span></span><span></span><span></span>
     </div>
-
     <div class="astra-loader-core">
         <div class="astra-loader-ring"></div>
         <img src="/public/favicon_transparent.png" class="astra-loader-logo" alt="Astra">
-        <span class="astra-loader-text">Booting Astra</span>
+        <span class="astra-loader-text"><?= $t['booting'] ?></span>
     </div>
 </div>
 
-
-
 <?php include 'includes/header.php'; ?>
 
-<main class="astra-status-main">
-    <section class="astra-status-card">
+<main class="astra-status-main" role="main" aria-label="<?= $t['status_aria'] ?>">
+    <section class="astra-status-card" aria-labelledby="service-status-title">
 
-        <h1><?= $t['status_heading'] ?></h1>
+        <h1 id="service-status-title"><?= $t['status_heading'] ?></h1>
 
         <ul class="status-list">
-            <li>
-                <span>🤖 <?= $t['status_bot'] ?></span>
+            <li class="status-row">
+                <span class="status-label">🤖 <?= $t['status_bot'] ?></span>
                 <span class="status-badge <?= $bot_online ? 'ok' : 'err' ?>">
             <?= $bot_online ? $t['online'] : $t['offline'] ?>
         </span>
             </li>
-            <li>
-                <span>🗄️ MySQL</span>
+            <li class="status-row">
+                <span class="status-label">🗄️ MySQL</span>
                 <span class="status-badge <?= $mysql_online ? 'ok' : 'err' ?>">
             <?= $mysql_online ? $t['online'] : $t['offline'] ?>
         </span>
@@ -157,8 +163,12 @@ if (file_exists($historyFile)) {
         </ul>
 
         <div class="status-tabs-row">
-            <button class="status-tab-btn active" onclick="switchTab('detail')"><?= $t['last_12h'] ?></button>
-            <button class="status-tab-btn" onclick="switchTab('tage')"><?= $t['last_30d'] ?></button>
+            <button id="tab-btn-detail" class="status-tab-btn active" onclick="switchTab('detail')">
+                <?= $t['last_12h'] ?>
+            </button>
+            <button id="tab-btn-tage" class="status-tab-btn" onclick="switchTab('tage')">
+                <?= $t['last_30d'] ?>
+            </button>
         </div>
 
         <p class="uptime-legend"><?= $t['uptime_legend'] ?></p>
