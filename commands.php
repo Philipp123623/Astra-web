@@ -271,5 +271,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     });
 </script>
 
+<script>
+    const searchInput = document.getElementById('commandSearch');
+    const originalPlaceholder = searchInput.dataset.placeholder;
+
+    searchInput.addEventListener('focus', () => {
+        searchInput.placeholder = '';
+    });
+
+    searchInput.addEventListener('blur', () => {
+        if (searchInput.value.trim() === '') {
+            searchInput.placeholder = originalPlaceholder;
+        }
+    });
+</script>
+
 </body>
 </html>
