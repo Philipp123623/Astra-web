@@ -1,17 +1,15 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-session_start();
-
-$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
-if (!in_array($lang, ['de','en'])) $lang = 'de';
-$_SESSION['lang'] = $lang;
-
-$t = require __DIR__ . "/lang/$lang.php";
+echo 'ROOT: ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
+echo 'LANG FILE EXISTS: ';
+var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php'));
+die();
 ?>
 
-
 <!DOCTYPE html>
-<html lang="<?= $lang ?>">
+<html lang="<?= htmlspecialchars($lang) ?>">
 <head>
     <meta charset="UTF-8" />
     <title><?= $t['privacy_title'] ?> | Astra Bot</title>
