@@ -3731,29 +3731,29 @@ main.legal-main {
 
 }
 
-:root[data-theme="midnight-bright"] {
+:root[data-theme="midnight-cool"] {
     /* ===== Backgrounds ===== */
-    --bg-main: #161b3a;
+    --bg-main: #151a33;
 
     /* ===== Text ===== */
-    --text-main: #eef6ff;
+    --text-main: #edf4ff;
     --text-heading: #ffffff;
-    --text-muted: #dbe7ff;
-    --text-soft: #c7d6ff;
+    --text-muted: #cdd9ff;
+    --text-soft: #b8c8ff;
 
     --text-link: #6fffe9;
     --text-link-hover: #ffe08a;
 
     /* ===== Scrollbar ===== */
-    --scrollbar-bg: #202662;
-    --scrollbar-thumb: #4f5dff;
+    --scrollbar-bg: #1f2550;
+    --scrollbar-thumb: #5b6dff;
 
     /* ===== Selection ===== */
     --selection-bg: #6fffe9;
-    --selection-text: #0f1433;
+    --selection-text: #0d122b;
 
     /* ===== Header / Nav ===== */
-    --header-bg: #14194a;
+    --header-bg: #111633;
     --header-shadow: rgba(111, 255, 233, 0.18);
 
     /* ===== Accents ===== */
@@ -3762,49 +3762,56 @@ main.legal-main {
     --accent-green-soft: #8dfff0;
 
     /* ===== Logo / Nav ===== */
-    --logo-bg: #12174a;
+    --logo-bg: #0f1430;
     --nav-link: #e6eeff;
     --nav-link-active: #6fffe9;
 
     /* ===== Drawer ===== */
-    --drawer-bg-main: #161b3a;
-    --drawer-bg-top: #12174a;
-    --drawer-bg-bottom: #1d2260;
+    --drawer-bg-main: #151a33;
+    --drawer-bg-top: #0f1430;
+    --drawer-bg-bottom: #1e2455;
 
-    --drawer-overlay-bg: rgba(6, 8, 30, 0.65);
+    --drawer-overlay-bg: rgba(8, 10, 35, 0.65);
 
     /* ===== Hero ===== */
-    --hero-bg-start: #161b3a;
-    --hero-bg-mid: #2f3db8;
+    --hero-bg-start: #151a33;
+    --hero-bg-mid: #2a38a8;
     --hero-bg-end: #6fffe9;
 
-    --hero-text-muted: #dce8ff;
-    --hero-shadow: rgba(120, 140, 255, 0.24);
+    --hero-text-muted: #dbe7ff;
+    --hero-shadow: rgba(110, 130, 255, 0.25);
+
+    /* ===== Buttons ===== */
+    --hero-btn-main-start: #6fffe9;
+    --hero-btn-main-end: #8fa7ff;
+    --hero-btn-shadow: rgba(111, 255, 233, 0.28);
+    --hero-btn-hover-shadow: rgba(111, 255, 233, 0.45);
 
     /* ===== Cards ===== */
-    --card-bg-soft: rgba(255, 255, 255, 0.08);
-    --card-bg-strong: rgba(255, 255, 255, 0.14);
+    --card-bg-soft: rgba(255, 255, 255, 0.07);
+    --card-bg-strong: rgba(255, 255, 255, 0.12);
 
-    --card-shadow-soft: rgba(40, 60, 200, 0.18);
-    --card-shadow-strong: rgba(40, 60, 200, 0.28);
+    --card-shadow-soft: rgba(40, 60, 200, 0.16);
+    --card-shadow-strong: rgba(40, 60, 200, 0.26);
 
     /* ===== Badges ===== */
     --badge-bg: rgba(255, 255, 255, 0.14);
     --badge-text: #f4f9ff;
 
     --badge-mint-bg: rgba(111, 255, 233, 0.22);
-    --badge-mint-text: #0a3f38;
+    --badge-mint-text: #083c35;
 
     --badge-blue-bg: rgba(143, 167, 255, 0.22);
-    --badge-blue-text: #121a4f;
+    --badge-blue-text: #0f1848;
 
     /* ===== Footer ===== */
-    --footer-bg-top: #12174a;
-    --footer-bg-bottom: #161b3a;
+    --footer-bg-top: #0f1430;
+    --footer-bg-bottom: #151a33;
 
     --footer-link: #8fa7ff;
     --footer-link-hover: #6fffe9;
 }
+
 
 
 
