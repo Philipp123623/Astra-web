@@ -1,12 +1,8 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+?>
 
-session_start();
-
-$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'de';
-if (!in_array($lang, ['de','en'])) $lang = 'de';
-$_SESSION['lang'] = $lang;
-
-$t = require __DIR__ . "/lang/$lang.php";
+<?php
 
 // Zeitzone setzen
 date_default_timezone_set('Europe/Berlin');

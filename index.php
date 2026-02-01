@@ -1,9 +1,8 @@
 <?php
-
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+?>
 
-
+<?php
 // Funktion um .env zu laden
 function loadEnv($path) {
     if (!file_exists($path)) {

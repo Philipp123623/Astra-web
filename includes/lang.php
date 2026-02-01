@@ -28,5 +28,5 @@ if (!in_array($lang, $availableLangs)) {
 /**
  * Sprachdatei laden
  */
-$t = require __DIR__ . "/lang/$lang.php";
+$t = require $_SERVER['DOCUMENT_ROOT'] . "/lang/$lang.php";
 
