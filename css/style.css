@@ -3731,55 +3731,83 @@ main.legal-main {
 
 }
 
+:root[data-theme="aurora-light"] {
+    /* ===== Base Backgrounds ===== */
+    --bg-main: #3a3f9f;
 
-:root[data-theme="aurora"] {
-    /* Backgrounds */
-    --bg-main: #0b1024;
-
-    /* Text */
-    --text-main: #eaf6ff;
+    /* ===== Text ===== */
+    --text-main: #f7fbff;
     --text-heading: #ffffff;
-    --text-link: #5fffe0;
-    --text-link-hover: #ffd37a;
+    --text-link: #7dffe8;
+    --text-link-hover: #ffe29a;
 
-    /* Scrollbar */
-    --scrollbar-bg: #12183a;
-    --scrollbar-thumb: #2a3cff;
+    /* ===== Scrollbar ===== */
+    --scrollbar-bg: #4a4fc2;
+    --scrollbar-thumb: #6b7cff;
 
-    /* Selection */
-    --selection-bg: #5fffe0;
-    --selection-text: #0b1024;
+    /* ===== Selection ===== */
+    --selection-bg: #7dffe8;
+    --selection-text: #1a1f55;
 
-    /* Header */
-    --header-bg: #0d1330;
-    --header-shadow: rgba(95, 255, 224, 0.18);
+    /* ===== Header / Nav ===== */
+    --header-bg: #2f348f;
+    --header-shadow: rgba(125, 255, 232, 0.22);
 
-    /* Accents */
-    --accent-primary: #5fffe0;
-    --accent-secondary: #7aa2ff;
-    --accent-green-soft: #8ffff0;
+    /* ===== Accents ===== */
+    --accent-primary: #7dffe8;
+    --accent-secondary: #9bb6ff;
+    --accent-green-soft: #9dffef;
 
-    /* Logo / Nav */
-    --logo-bg: #0a0f28;
-    --nav-link: #dbe7ff;
-    --nav-link-active: #5fffe0;
+    /* ===== Logo / Nav ===== */
+    --logo-bg: #2a2f80;
+    --nav-link: #eef3ff;
+    --nav-link-active: #7dffe8;
 
-    /* Hero */
-    --hero-bg-start: #0b1024;
-    --hero-bg-mid: #1a2a6c;
-    --hero-bg-end: #5fffe0;
-    --hero-text-muted: #d2e6ff;
+    /* ===== Hero ===== */
+    --hero-bg-start: #3a3f9f;
+    --hero-bg-mid: #6b7cff;
+    --hero-bg-end: #7dffe8;
 
-    /* Cards */
-    --card-bg-soft: rgba(20, 28, 70, .35);
-    --card-bg-strong: rgba(30, 40, 95, .5);
+    --hero-text-muted: #e3ecff;
+    --hero-shadow: rgba(120, 140, 255, 0.28);
 
-    /* Footer */
-    --footer-bg-top: #080c1e;
-    --footer-bg-bottom: #0b1024;
-    --footer-link: #7aa2ff;
-    --footer-link-hover: #5fffe0;
+    /* ===== Buttons ===== */
+    --hero-btn-main-start: #7dffe8;
+    --hero-btn-main-end: #9bb6ff;
+    --hero-btn-shadow: rgba(125, 255, 232, 0.28);
+    --hero-btn-hover-shadow: rgba(125, 255, 232, 0.45);
+
+    /* ===== Cards ===== */
+    --card-bg-soft: rgba(255, 255, 255, 0.14);
+    --card-bg-strong: rgba(255, 255, 255, 0.22);
+    --card-shadow-soft: rgba(80, 90, 200, 0.18);
+    --card-shadow-strong: rgba(80, 90, 200, 0.28);
+
+    /* ===== Badges ===== */
+    --badge-bg: rgba(255, 255, 255, 0.22);
+    --badge-text: #f7fbff;
+
+    --badge-mint-bg: rgba(125, 255, 232, 0.28);
+    --badge-mint-text: #0d3f3a;
+
+    --badge-blue-bg: rgba(155, 182, 255, 0.28);
+    --badge-blue-text: #1a235f;
+
+    /* ===== Drawer ===== */
+    --drawer-bg-main: #353a9a;
+    --drawer-bg-top: #2b307f;
+    --drawer-bg-bottom: #3f45b2;
+
+    --drawer-overlay-bg: rgba(10, 12, 40, 0.55);
+
+    /* ===== Footer ===== */
+    --footer-bg-top: #2b307f;
+    --footer-bg-bottom: #353a9a;
+
+    --footer-link: #9bb6ff;
+    --footer-link-hover: #7dffe8;
 }
+
 
 
 
