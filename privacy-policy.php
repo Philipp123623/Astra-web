@@ -1,12 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-echo 'ROOT: ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
-echo 'LANG FILE EXISTS: ';
-var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php'));
-die();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+die('DIESE DATEI IST ES — ' . __FILE__);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($lang) ?>">
