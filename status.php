@@ -379,9 +379,8 @@ if (file_exists($historyFile)) {
             });
         });
 
-        // Events für 30 Tage Balken
         bars30d.forEach((bar) => {
-            // Original-Tooltip sichern
+
             bar.dataset.tooltip = bar.getAttribute('title') || '';
             bar.removeAttribute('title');
 
@@ -390,13 +389,16 @@ if (file_exists($historyFile)) {
             }
 
             bar.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 700 && !tooltipPermanent) {
+                if (window.innerWidth > 700) {
+                    tooltipPermanent = false; // 👈 FIX
                     showTooltipHTML(bar, getTooltipHTML(bar));
                 }
             });
+
             bar.addEventListener('mouseleave', () => {
-                if (window.innerWidth > 700 && !tooltipPermanent) tooltip.style.display = 'none';
+                if (window.innerWidth > 700) tooltip.style.display = 'none';
             });
+
             bar.addEventListener('touchstart', (e) => {
                 showTooltipHTML(bar, getTooltipHTML(bar), true);
                 e.preventDefault();
