@@ -118,7 +118,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             <div class="theme-dropdown">
                 <button data-theme="default">Default</button>
                 <button data-theme="aurora-mint">Aurora Mint</button>
-                <button data-theme="aurora-deep-purple">Aurora Violet</button>
+                <button data-theme="aurora-deep-purple">Aurora Purple</button>
                 <button data-theme="midnight">Midnight</button>
             </div>
 
