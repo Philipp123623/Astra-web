@@ -1,3 +1,8 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+?>
+
+
 <header class="astra-header">
     <div class="astra-header-inner">
 
@@ -31,9 +36,10 @@
 
         <!-- Language Switch -->
         <div class="lang-switch">
-            <a href="?lang=de">🇩🇪 DE</a>
-            <a href="?lang=en">🇬🇧 EN</a>
+            <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">DE</a>
+            <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">EN</a>
         </div>
+
 
     </div>
 </header>
