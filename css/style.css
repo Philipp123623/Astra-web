@@ -148,6 +148,146 @@
     --drawer-overlay-bg: rgba(6, 4, 24, .7);
     --drawer-glow-quaternary: rgba(124, 65, 238, .30);
 
+
+    /* =========================
+   HERO / CONTENT TOKENS
+   ========================= */
+
+    /* Hero background */
+    --hero-bg-start: #251f5b;
+    --hero-bg-mid: #362897;
+    --hero-bg-end: #3fd6dd;
+    --hero-shadow: rgba(91, 101, 255, .17);
+
+    /* Hero text */
+    --hero-text-main: #ffffff;
+    --hero-text-muted: #d7f3ff;
+    --hero-accent: #65e6ce;
+    --hero-accent-secondary: #a7c8fd;
+    --hero-accent-warm: #ffd799;
+
+    /* Labels */
+    --label-bg-default: #313a70;
+    --label-text-default: #b7faf8;
+    --label-green-start: #65e6ce;
+    --label-green-end: #91f4e3;
+    --label-blue-start: #8fd6fc;
+    --label-blue-end: #8b6efd;
+    --label-yellow-start: #ffd799;
+    --label-yellow-end: #ffb2d6;
+    --label-shadow: rgba(93, 232, 255, .09);
+
+    /* Buttons */
+    --hero-btn-main-start: #60e9cb;
+    --hero-btn-main-end: #a7c8fd;
+    --hero-btn-text-dark: #223254;
+    --hero-btn-outline: #a7c8fd;
+    --hero-btn-shadow: rgba(93, 232, 255, .16);
+    --hero-btn-hover-shadow: rgba(128, 255, 212, .13);
+
+    /* Badges */
+    --badge-bg: rgba(255, 255, 255, .09);
+    --badge-text: #bbf7ff;
+    --badge-mint-bg: rgba(80, 255, 255, .13);
+    --badge-mint-text: #70ffeb;
+    --badge-violet-bg: rgba(140, 110, 255, .16);
+    --badge-violet-text: #eedaff;
+    --badge-yellow-bg: rgba(255, 240, 200, .15);
+    --badge-yellow-text: #ffd799;
+    --badge-blue-bg: rgba(130, 170, 255, .14);
+    --badge-blue-text: #a7c8fd;
+
+    /* Cards */
+    --card-bg-soft: rgba(41, 49, 101, .31);
+    --card-bg-strong: rgba(42, 50, 111, .45);
+    --card-shadow-soft: rgba(91, 101, 255, .15);
+    --card-shadow-strong: rgba(91, 101, 255, .12);
+
+    /* Stats */
+    --stat-bg: rgba(56, 65, 139, .36);
+    --stat-number: #6cfadd;
+    --stat-title: #e0e7ff;
+
+    /* About */
+    --about-title: #7dfad7;
+    --about-text: #cdf5f6;
+    --about-link: #66e6d3;
+    --about-link-hover: #2df4c7;
+
+    /* Features */
+    --feature-hover-shadow: rgba(101, 230, 206, .23);
+
+    /* FAQ */
+    --faq-bg: rgba(46, 53, 110, .33);
+    --faq-bg-active: rgba(101, 230, 206, .16);
+    --faq-question: #66e6d3;
+    --faq-shadow: rgba(91, 101, 255, .13);
+    --faq-shadow-hover: rgba(97, 245, 197, .13);
+
+
+    /* =========================
+   COMMANDS PAGE TOKENS
+   ========================= */
+
+    /* Hero */
+    --commands-hero-bg-start: #251f5b;
+    --commands-hero-bg-mid: #362897;
+    --commands-hero-bg-end: #3fd6dd;
+    --commands-hero-shadow: rgba(91, 101, 255, .28);
+
+    /* Panels */
+    --commands-panel-bg-top: rgba(42, 50, 111, .55);
+    --commands-panel-bg-bottom: rgba(32, 38, 90, .45);
+    --commands-panel-radius: 30px;
+    --commands-panel-shadow-main: rgba(91, 101, 255, .14);
+    --commands-panel-shadow-inset: rgba(255, 255, 255, .04);
+
+    /* Search */
+    --search-bg-start: rgba(40, 45, 110, 0.95);
+    --search-bg-mid: rgba(55, 65, 140, 0.95);
+    --search-bg-end: rgba(40, 45, 110, 0.95);
+
+    --search-text: #ffffff;
+    --search-text-preview: rgba(255, 255, 255, 0.55);
+
+    --search-border: rgba(101, 230, 206, 0.35);
+    --search-accent: #65e6ce;
+
+    --search-glow-soft: rgba(101, 230, 206, 0.35);
+    --search-glow-strong: rgba(101, 230, 206, 0.85);
+
+    --search-shadow-dark: rgba(0, 0, 0, 0.55);
+    --search-shadow-focus-dark: rgba(0, 0, 0, 0.75);
+
+    /* Filters */
+    --filter-bg: rgba(255, 255, 255, .08);
+    --filter-bg-hover: rgba(255, 255, 255, .12);
+    --filter-active-start: #65e6ce;
+    --filter-active-end: #a7c8fd;
+    --filter-active-text: #223254;
+    --filter-active-shadow: rgba(101, 230, 206, .35);
+    --filter-text: #cfefff;
+
+    /* Accordion */
+    --accordion-bg-top: rgba(46, 53, 110, .35);
+    --accordion-bg-bottom: rgba(40, 45, 95, .30);
+    --accordion-radius: 22px;
+    --accordion-shadow: rgba(0, 0, 0, 0.25);
+    --accordion-title: #65e6ce;
+
+    /* Command items */
+    --command-text-main: #eafcff;
+    --command-text-muted: #d7f3ff;
+    --command-name: #8bb7ff;
+    --command-strong: #a7c8fd;
+
+    --command-divider: rgba(101, 230, 206, 0.35);
+    --command-divider-glow: rgba(101, 230, 206, 0.35);
+
+    /* Usage / Code */
+    --usage-bg: rgba(0, 0, 0, 0.35);
+    --usage-text: #65e6ce;
+
 }
 
 
@@ -1306,7 +1446,7 @@ body.nav-open .astra-nav-mobile-overlay {
 }
 
 .headline-static {
-    color: #ffffff;
+    color: var(--hero-text-main);
 }
 
 /* Dynamisches Wort */
@@ -1314,7 +1454,7 @@ body.nav-open .astra-nav-mobile-overlay {
     position: relative;
     margin-left: 10px;
     font-weight: 900;
-    color: #65e6ce;
+    color: var(--hero-accent);
 }
 
 /* Cursor IMMER direkt hinter dem Text */
@@ -1322,7 +1462,7 @@ body.nav-open .astra-nav-mobile-overlay {
     content: "|";
     margin-left: 4px;
     animation: blink 1s steps(1) infinite;
-    color: #65e6ce;
+    color: var(--hero-accent);
 }
 
 @keyframes blink {
@@ -1331,12 +1471,16 @@ body.nav-open .astra-nav-mobile-overlay {
     }
 }
 
-
 .astra-hero-card {
     position: relative;
-    background: linear-gradient(115deg, #251f5b 0%, #362897 65%, #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--hero-bg-start) 0%,
+            var(--hero-bg-mid) 65%,
+            var(--hero-bg-end) 160%
+    );
     border-radius: 38px;
-    box-shadow: 0 12px 48px #5b65ff2a;
+    box-shadow: 0 12px 48px var(--hero-shadow);
     overflow: hidden;
     min-height: 370px;
 }
@@ -1358,12 +1502,12 @@ body.nav-open .astra-nav-mobile-overlay {
     z-index: 1;
 }
 
-.astra-hero-content>div:first-child {
+.astra-hero-content > div:first-child {
     flex: 2 1 340px;
     min-width: 260px;
 }
 
-.astra-hero-content>div:last-child {
+.astra-hero-content > div:last-child {
     flex: 1 1 220px;
     min-width: 150px;
     text-align: center;
@@ -1373,7 +1517,9 @@ body.nav-open .astra-nav-mobile-overlay {
     width: 186px;
     max-width: 99%;
     border-radius: 26px;
-    box-shadow: 0 8px 52px #60e9cb77, 0 0 64px 2px #7c41ee35;
+    box-shadow:
+            0 8px 52px rgba(96, 233, 203, .47),
+            0 0 64px 2px rgba(124, 65, 238, .35);
     margin: 0 auto 0 auto;
 }
 
@@ -1389,24 +1535,36 @@ body.nav-open .astra-nav-mobile-overlay {
     font-size: 1em;
     border-radius: 13px;
     padding: 7px 19px;
-    box-shadow: 0 2px 8px #5de8ff18;
-    background: #313a70;
-    color: #b7faf8;
+    box-shadow: 0 2px 8px var(--label-shadow);
+    background: var(--label-bg-default);
+    color: var(--label-text-default);
     letter-spacing: .2px;
 }
 
 .astra-label.green {
-    background: linear-gradient(90deg, #65e6ce, #91f4e3);
+    background: linear-gradient(
+            90deg,
+            var(--label-green-start),
+            var(--label-green-end)
+    );
     color: #262;
 }
 
 .astra-label.blue {
-    background: linear-gradient(90deg, #8fd6fc, #8b6efd 80%);
+    background: linear-gradient(
+            90deg,
+            var(--label-blue-start),
+            var(--label-blue-end) 80%
+    );
     color: #fff;
 }
 
 .astra-label.yellow {
-    background: linear-gradient(90deg, #ffd799, #ffb2d6 80%);
+    background: linear-gradient(
+            90deg,
+            var(--label-yellow-start),
+            var(--label-yellow-end) 80%
+    );
     color: #874d01;
 }
 
@@ -1431,29 +1589,33 @@ body.nav-open .astra-nav-mobile-overlay {
     padding: 14px 38px;
     text-decoration: none;
     transition: filter .14s, background .18s, color .18s;
-    box-shadow: 0 2px 18px #5de8ff28;
+    box-shadow: 0 2px 18px var(--hero-btn-shadow);
     border: none;
     cursor: pointer;
     letter-spacing: .5px;
 }
 
 .astra-btn.main {
-    background: linear-gradient(90deg, #60e9cb, #a7c8fd);
-    color: #223254;
+    background: linear-gradient(
+            90deg,
+            var(--hero-btn-main-start),
+            var(--hero-btn-main-end)
+    );
+    color: var(--hero-btn-text-dark);
 }
 
 .astra-btn.main:hover {
-    filter: brightness(1.09) drop-shadow(0 2px 8px #80ffd422);
+    filter: brightness(1.09) drop-shadow(0 2px 8px var(--hero-btn-hover-shadow));
 }
 
 .astra-btn.outline {
     background: transparent;
-    border: 2px solid #a7c8fd;
-    color: #a7c8fd;
+    border: 2px solid var(--hero-btn-outline);
+    color: var(--hero-btn-outline);
 }
 
 .astra-btn.outline:hover {
-    background: #3fd6dd12;
+    background: rgba(63, 214, 221, .07);
     color: #fff;
 }
 
@@ -1471,47 +1633,47 @@ body.nav-open .astra-nav-mobile-overlay {
     padding: 7px 16px;
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.09);
-    color: #bbf7ff;
+    background: var(--badge-bg);
+    color: var(--badge-text);
 }
 
 .astra-badge.mint {
-    background: rgba(80, 255, 255, 0.13);
-    color: #70ffeb;
+    background: var(--badge-mint-bg);
+    color: var(--badge-mint-text);
 }
 
 .astra-badge.violet {
-    background: rgba(140, 110, 255, 0.16);
-    color: #eedaff;
+    background: var(--badge-violet-bg);
+    color: var(--badge-violet-text);
 }
 
 .astra-badge.yellow {
-    background: rgba(255, 240, 200, 0.15);
-    color: #ffd799;
+    background: var(--badge-yellow-bg);
+    color: var(--badge-yellow-text);
 }
 
 .astra-badge.blue {
-    background: rgba(130, 170, 255, 0.14);
-    color: #a7c8fd;
+    background: var(--badge-blue-bg);
+    color: var(--badge-blue-text);
 }
 
 .cta-absatz {
     margin-top: 15px;
-    color: #f9faff;
+    color: var(--hero-text-main);
     font-size: 1.14em;
     font-weight: 700;
-    text-shadow: 0 2px 9px #251f5b22;
+    text-shadow: 0 2px 9px rgba(37, 31, 91, .13);
 }
 
 .highlight {
-    color: #65e6ce;
+    color: var(--hero-accent);
     font-weight: 800;
-    text-shadow: 0 2px 9px #60e9cb66;
+    text-shadow: 0 2px 9px rgba(96, 233, 203, .4);
 }
 
 .astra-desc {
     font-size: 1.14em;
-    color: #d7f3ff;
+    color: var(--hero-text-muted);
     font-weight: 500;
     margin-bottom: 4px;
     line-height: 1.38;
@@ -1528,12 +1690,12 @@ body.nav-open .astra-nav-mobile-overlay {
 }
 
 .stat-card {
-    background: rgba(56, 65, 139, 0.36);
+    background: var(--stat-bg);
     border-radius: 23px;
     min-width: 180px;
     text-align: center;
     padding: 32px 0 21px 0;
-    box-shadow: 0 4px 30px #5b65ff15;
+    box-shadow: 0 4px 30px var(--card-shadow-soft);
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 16px;
 }
@@ -1541,15 +1703,14 @@ body.nav-open .astra-nav-mobile-overlay {
 .stat-num {
     font-size: 2.3em;
     font-weight: 900;
-    color: #6cfadd;
+    color: var(--stat-number);
     display: block;
     letter-spacing: .7px;
     margin-bottom: 7px;
-    text-shadow: 0 2px 8px #65e6ce26;
 }
 
 .stat-title {
-    color: #e0e7ff;
+    color: var(--stat-title);
     font-size: 1.15em;
     font-weight: 700;
     letter-spacing: 0.6px;
@@ -1558,40 +1719,40 @@ body.nav-open .astra-nav-mobile-overlay {
 
 /* ABOUT CARD */
 .astra-about-card {
-    background: rgba(42, 50, 111, 0.45);
+    background: var(--card-bg-strong);
     border-radius: 25px;
     margin: 40px auto 30px auto;
     padding: 42px 46px 38px 38px;
     display: flex;
     gap: 38px;
     align-items: center;
-    box-shadow: 0 8px 40px #5b65ff12;
+    box-shadow: 0 8px 40px var(--card-shadow-strong);
     max-width: 950px;
 }
 
 .astra-about-card h2 {
     font-size: 2.1em;
     font-weight: 800;
-    color: #7dfad7;
+    color: var(--about-title);
     margin-bottom: 14px;
 }
 
 .astra-about-card ul {
     margin: 0 0 12px 22px;
-    color: #cdf5f6;
+    color: var(--about-text);
     font-size: 1.14em;
     line-height: 1.58;
 }
 
 .about-link {
-    color: #66e6d3;
+    color: var(--about-link);
     font-weight: 700;
     text-decoration: underline;
     transition: color 0.16s;
 }
 
 .about-link:hover {
-    color: #2df4c7;
+    color: var(--about-link-hover);
 }
 
 .about-img-wrap {
@@ -1605,10 +1766,10 @@ body.nav-open .astra-nav-mobile-overlay {
     border-radius: 22px;
     object-fit: cover;
     background: #2d2473;
-    box-shadow: 0 4px 24px #70ffeb22;
+    box-shadow: 0 4px 24px rgba(112, 255, 235, .13);
 }
 
-.astra-about-card>div:last-child {
+.astra-about-card > div:last-child {
     flex: 3 1 270px;
     min-width: 200px;
 }
@@ -1625,18 +1786,18 @@ body.nav-open .astra-nav-mobile-overlay {
 }
 
 .feature-card {
-    background: rgba(41, 49, 101, 0.31);
+    background: var(--card-bg-soft);
     border-radius: 17px;
     padding: 26px 20px 18px 20px;
     color: #eefaff;
-    box-shadow: 0 4px 30px #5b65ff13;
+    box-shadow: 0 4px 30px var(--card-shadow-soft);
     font-size: 1.13em;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .feature-card:hover {
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 40px #65e6ce23;
+    box-shadow: 0 10px 40px var(--feature-hover-shadow);
 }
 
 .feature-title {
@@ -1645,21 +1806,10 @@ body.nav-open .astra-nav-mobile-overlay {
     margin-bottom: 8px;
 }
 
-.feature-title.green {
-    color: #7dfad7;
-}
-
-.feature-title.yellow {
-    color: #ffd299;
-}
-
-.feature-title.blue {
-    color: #8bb7ff;
-}
-
-.feature-title.violet {
-    color: #f7bfff;
-}
+.feature-title.green { color: #7dfad7; }
+.feature-title.yellow { color: #ffd299; }
+.feature-title.blue { color: #8bb7ff; }
+.feature-title.violet { color: #f7bfff; }
 
 /* FAQ */
 .astra-faq-section {
@@ -1671,7 +1821,7 @@ body.nav-open .astra-nav-mobile-overlay {
 .astra-faq-section h2 {
     font-size: 1.58em;
     font-weight: 900;
-    color: #7dfad7;
+    color: var(--about-title);
     margin-bottom: 18px;
 }
 
@@ -1682,22 +1832,23 @@ body.nav-open .astra-nav-mobile-overlay {
 }
 
 .faq-item {
-    background: rgba(46, 53, 110, 0.33);
+    background: var(--faq-bg);
     border-radius: 15px;
-    box-shadow: 0 2px 13px #5b65ff13;
-    transition: box-shadow .16s;
+    box-shadow: 0 2px 13px var(--faq-shadow);
+    transition: box-shadow .16s, background .16s;
 }
 
-.faq-item.open, .faq-item:hover {
-    background: rgba(101, 230, 206, 0.16);
-    box-shadow: 0 8px 35px #61f5c520;
+.faq-item.open,
+.faq-item:hover {
+    background: var(--faq-bg-active);
+    box-shadow: 0 8px 35px var(--faq-shadow-hover);
 }
 
 .faq-question {
     background: none;
     border: none;
     font-size: 1.13em;
-    color: #66e6d3;
+    color: var(--faq-question);
     font-weight: 800;
     padding: 18px 25px 16px 25px;
     width: 100%;
@@ -1723,7 +1874,6 @@ body.nav-open .astra-nav-mobile-overlay {
     padding: 15px 25px;
 }
 
-
 /* =========================
    COMMANDS PAGE – ASTRA FINAL
    ========================= */
@@ -1738,12 +1888,14 @@ main.commands-main {
 
 .commands-hero-card {
     position: relative;
-    background: linear-gradient(115deg,
-    #251f5b 0%,
-    #362897 65%,
-    #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--commands-hero-bg-start) 0%,
+            var(--commands-hero-bg-mid) 65%,
+            var(--commands-hero-bg-end) 160%
+    );
     border-radius: 38px;
-    box-shadow: 0 14px 54px rgba(91, 101, 255, .28);
+    box-shadow: 0 14px 54px var(--commands-hero-shadow);
     overflow: hidden;
     margin-bottom: 42px;
 }
@@ -1772,14 +1924,16 @@ main.commands-main {
    ========================= */
 
 .commands-panel-card {
-    background: linear-gradient(180deg,
-    rgba(42, 50, 111, .55),
-    rgba(32, 38, 90, .45));
-    border-radius: 30px;
+    background: linear-gradient(
+            180deg,
+            var(--commands-panel-bg-top),
+            var(--commands-panel-bg-bottom)
+    );
+    border-radius: var(--commands-panel-radius);
     padding: 46px 46px 54px;
     box-shadow:
-            0 10px 40px rgba(91, 101, 255, .14),
-            inset 0 1px 0 rgba(255, 255, 255, .04);
+            0 10px 40px var(--commands-panel-shadow-main),
+            inset 0 1px 0 var(--commands-panel-shadow-inset);
 }
 
 /* =========================
@@ -1793,29 +1947,29 @@ main.commands-main {
 
     height: 56px;
     padding: 0 22px;
-
     border-radius: 999px;
 
-    background:
-            linear-gradient(120deg,
-            rgba(40, 45, 110, 0.95),
-            rgba(55, 65, 140, 0.95),
-            rgba(40, 45, 110, 0.95));
+    background: linear-gradient(
+            120deg,
+            var(--search-bg-start),
+            var(--search-bg-mid),
+            var(--search-bg-end)
+    );
     background-size: 200% 200%;
 
-    color: #ffffff;
+    color: var(--search-text);
     font-size: 1.05em;
     font-weight: 600;
     letter-spacing: .2px;
 
-    border: 2px solid rgba(101, 230, 206, 0.35);
+    border: 2px solid var(--search-border);
     outline: none;
 
     box-shadow:
             0 0 0 1px rgba(101, 230, 206, 0.25),
-            0 0 18px rgba(101, 230, 206, 0.35),
+            0 0 18px var(--search-glow-soft),
             inset 0 0 14px rgba(101, 230, 206, 0.12),
-            0 18px 50px rgba(0, 0, 0, 0.55);
+            0 18px 50px var(--search-shadow-dark);
 
     animation: idleGlow 6s ease-in-out infinite;
 
@@ -1829,38 +1983,26 @@ main.commands-main {
    ========================= */
 
 .commands-search.is-preview {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--search-text-preview);
     font-weight: 600;
-    /* GLEICH wie Original */
     text-shadow: none;
 }
 
-
 .commands-search.is-preview:focus {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--search-text-preview);
     font-weight: 600;
     box-shadow:
             0 0 0 1px rgba(101, 230, 206, 0.25),
-            0 0 18px rgba(101, 230, 206, 0.35),
+            0 0 18px var(--search-glow-soft),
             inset 0 0 14px rgba(101, 230, 206, 0.12),
-            0 18px 50px rgba(0, 0, 0, 0.55);
+            0 18px 50px var(--search-shadow-dark);
 }
-
-
 
 /* ===== Idle animation ===== */
 @keyframes idleGlow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* =========================
@@ -1868,14 +2010,14 @@ main.commands-main {
    ========================= */
 
 .commands-search:focus {
-    border-color: #65e6ce;
+    border-color: var(--search-accent);
 
     box-shadow:
             0 0 0 2px rgba(101, 230, 206, 0.9),
-            0 0 40px rgba(101, 230, 206, 0.85),
+            0 0 40px var(--search-glow-strong),
             0 0 80px rgba(101, 230, 206, 0.55),
             inset 0 0 24px rgba(101, 230, 206, 0.35),
-            0 30px 80px rgba(0, 0, 0, 0.75);
+            0 30px 80px var(--search-shadow-focus-dark);
 
     animation:
             focusPulse 1.2s ease-out,
@@ -1889,17 +2031,15 @@ main.commands-main {
                 0 0 0 0 rgba(101, 230, 206, 0.0),
                 0 0 0 rgba(101, 230, 206, 0.0);
     }
-
     60% {
         box-shadow:
                 0 0 0 6px rgba(101, 230, 206, 0.8),
                 0 0 60px rgba(101, 230, 206, 1);
     }
-
     100% {
         box-shadow:
                 0 0 0 2px rgba(101, 230, 206, 0.9),
-                0 0 40px rgba(101, 230, 206, 0.85);
+                0 0 40px var(--search-glow-strong);
     }
 }
 
@@ -1908,7 +2048,7 @@ main.commands-main {
    ========================= */
 
 .commands-search {
-    caret-color: #65e6ce;
+    caret-color: var(--search-accent);
 }
 
 .commands-search::placeholder {
@@ -1934,7 +2074,6 @@ main.commands-main {
     }
 }
 
-
 /* =========================
    FILTERS
    ========================= */
@@ -1952,8 +2091,8 @@ main.commands-main {
     border-radius: 18px;
     border: none;
 
-    background: rgba(255, 255, 255, .08);
-    color: #cfefff;
+    background: var(--filter-bg);
+    color: var(--filter-text);
 
     font-weight: 800;
     cursor: pointer;
@@ -1965,59 +2104,52 @@ main.commands-main {
 }
 
 .commands-filters button:hover {
-    background: rgba(255, 255, 255, .12);
+    background: var(--filter-bg-hover);
 }
 
 .commands-filters button.active {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
-    box-shadow: 0 6px 22px rgba(101, 230, 206, .35);
+    background: linear-gradient(
+            90deg,
+            var(--filter-active-start),
+            var(--filter-active-end)
+    );
+    color: var(--filter-active-text);
+    box-shadow: 0 6px 22px var(--filter-active-shadow);
 }
 
 /* =========================
    ACCORDION
    ========================= */
 
-/* =========================
-   ACCORDION – CLEAN (NO WEIRD OUTLINES)
-   ========================= */
-
 .command-category {
-    background: linear-gradient(180deg,
-    rgba(46, 53, 110, .35),
-    rgba(40, 45, 95, .30));
-    border-radius: 22px;
+    background: linear-gradient(
+            180deg,
+            var(--accordion-bg-top),
+            var(--accordion-bg-bottom)
+    );
+    border-radius: var(--accordion-radius);
     margin-bottom: 22px;
     overflow: hidden;
-
     border: none;
-    box-shadow:
-            0 10px 36px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 36px var(--accordion-shadow);
 }
 
-/* Header */
 .command-category-header {
     width: 100%;
     padding: 22px 28px;
-
     font-size: 1.15em;
     font-weight: 900;
-    color: #65e6ce;
-
+    color: var(--accordion-title);
     background: transparent;
     border: none;
     outline: none;
-
     cursor: pointer;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    box-shadow: none;
 }
 
-/* Remove focus outline completely */
 .command-category-header:focus {
     outline: none;
 }
@@ -2036,10 +2168,6 @@ main.commands-main {
    COMMAND ITEM
    ========================= */
 
-/* =========================
-   COMMAND ITEM – GRID LAYOUT
-   ========================= */
-
 .command-item {
     display: grid;
     grid-template-columns: minmax(140px, 220px) 1fr auto;
@@ -2047,7 +2175,7 @@ main.commands-main {
     align-items: center;
     padding: 22px 28px;
     position: relative;
-    color: #eafcff;
+    color: var(--command-text-main);
 }
 
 .command-item::after {
@@ -2056,52 +2184,37 @@ main.commands-main {
     left: 28px;
     right: 28px;
     bottom: 0;
-
     height: 1px;
-    background: linear-gradient(90deg,
-    transparent,
-    rgba(101, 230, 206, 0.35),
-    transparent);
-
+    background: linear-gradient(
+            90deg,
+            transparent,
+            var(--command-divider),
+            transparent
+    );
     opacity: 0.6;
-    box-shadow: 0 0 12px rgba(101, 230, 206, 0.35);
+    box-shadow: 0 0 12px var(--command-divider-glow);
 }
-
-
-
-.command-item:first-child::before {
-    display: none;
-}
-
-
 
 /* COMMAND NAME */
 .cmd-name {
     font-weight: 900;
-    color: #8bb7ff;
+    color: var(--command-name);
     font-size: 1.05em;
     white-space: normal;
     word-break: break-word;
 }
 
-/* DESCRIPTION – wraps clean */
 .cmd-desc {
     font-size: 1em;
     line-height: 1.45;
-    color: #d7f3ff;
-
+    color: var(--command-text-muted);
     word-break: break-word;
 }
 
-.command-category-header {
-    user-select: none;
-}
-
-/* USAGE CHIP */
 .cmd-usage {
     justify-self: end;
-    background: rgba(0, 0, 0, 0.35);
-    color: #65e6ce;
+    background: var(--usage-bg);
+    color: var(--usage-text);
     padding: 6px 14px;
     border-radius: 999px;
     font-family: monospace;
@@ -2109,26 +2222,21 @@ main.commands-main {
     white-space: nowrap;
 }
 
-
-.command-item.no-usage {
-    grid-template-columns: minmax(140px, 220px) 1fr;
-}
-
 .command-item strong {
-    color: #a7c8fd;
+    color: var(--command-strong);
     font-size: 1.05em;
 }
 
 .command-item p {
     margin: 6px 0 8px;
-    color: #d7f3ff;
+    color: var(--command-text-muted);
 }
 
 .command-item code {
-    background: rgba(0, 0, 0, .35);
+    background: var(--usage-bg);
     padding: 6px 14px;
     border-radius: 12px;
-    color: #65e6ce;
+    color: var(--usage-text);
 }
 
 /* =========================
