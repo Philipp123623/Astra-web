@@ -2962,6 +2962,7 @@ main.report-main {
     grid-template-columns: 240px 1fr;
     gap: 32px;
     align-items: start;
+    padding-bottom: 120px;
 }
 
 /* =========================================================
@@ -2972,12 +2973,11 @@ main.report-main {
     position: sticky;
     top: calc(var(--header-height) + 32px);
 
-    min-height: calc(100vh - var(--header-height) - 32px - 32px);
+    height: fit-content;
 
-    border-radius: 22px;
-    height: auto;        /* ✅ natürlich wachsen */
     padding: 26px 18px 22px;
 
+    border-radius: 22px;
     background: linear-gradient(
             180deg,
             var(--drawer-bg-top),
@@ -2994,6 +2994,7 @@ main.report-main {
     display: flex;
     flex-direction: column;
 }
+
 
 /* =========================================================
    LOGO
