@@ -2670,6 +2670,7 @@ main.legal-main {
    Gilt für Handys & Tablets (≤ 900px)
    ========================================================= */
 
+
 @media (max-width: 1256px) {
 
     /* =====================================================
@@ -2696,12 +2697,10 @@ main.legal-main {
         overflow-x: visible;
     }
 
-    /* Desktop-Startabstände komplett neutralisieren */
     main > *:first-child,
     main > *:first-child > *:first-child {
         margin-top: 0 !important;
     }
-
 
     /* =====================================================
        HEADER – MOBILE FIXED BAR
@@ -2747,37 +2746,32 @@ main.legal-main {
         display: flex;
     }
 
+    /* =====================================================
+       LANGUAGE SWITCH – KOMPLETT AUS DEM MOBILE HEADER
+       ===================================================== */
+
     .astra-header .lang-switch {
-        display: flex;              /* BLEIBT IM LAYOUT */
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
+        display: none !important;
     }
 
-    body.nav-open .astra-header .lang-switch {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    /* Keine Hover-/Click-Animationen */
+    /* Sicherheit: alle Animationen im Mobile tot */
     .lang-switch,
     .lang-switch * {
-        transition: none !important;
         animation: none !important;
+        transition: none !important;
         transform: none !important;
         filter: none !important;
+        pointer-events: none !important;
     }
 
-    /* Open-State komplett neutralisieren */
-    .lang-switch.open .lang-core {
-        transform: none !important;
-        filter: none !important;
-    }
+    /* =====================================================
+       TAP HIGHLIGHT CLEANUP
+       ===================================================== */
 
-    .lang-switch.open .lang-dropdown {
-        opacity: 1;            /* sichtbar, falls benötigt */
-        transform: none;
+    .lang-btn,
+    .astra-nav-toggle,
+    .astra-nav-toggle * {
+        -webkit-tap-highlight-color: transparent;
     }
 
 
