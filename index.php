@@ -379,5 +379,8 @@ if ($result->num_rows > 0) {
 
     loop();
 </script>
+<script>
+    const words = <?= json_encode($t['typing_words']) ?>;
+</script>
 </body>
 </html>
