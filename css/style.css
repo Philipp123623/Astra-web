@@ -803,39 +803,47 @@ a:hover {
     /* ⛔ kein Zeilenumbruch */
 }
 
-/* =========================
-   ASTRA LANGUAGE SWITCH
-   CLEAN & POLISHED
-   ========================= */
+/* =========================================================
+   ASTRA ACTION BUTTON BASE (LANG + THEME)
+========================================================= */
 
-.lang-switch {
+.lang-switch,
+.theme-switch {
     position: relative;
     isolation: isolate;
-    /* 🔥 trennt Render-Layer */
-    transform: none !important;
     width: 44px;
     height: 44px;
-    margin-left: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10030;
-    /* über Hamburger */
     pointer-events: auto;
 }
 
-/* 🔒 NAV-OPEN ISOLATION – PFLICHT */
+.lang-switch {
+    margin-left: 18px;
+    z-index: 10030;
+}
+
+.theme-switch {
+    margin-left: 14px;
+    z-index: 10020;
+}
+
+/* 🔒 NAV-OPEN ISOLATION */
 body.nav-open .lang-switch,
-body.nav-open .lang-switch * {
+body.nav-open .lang-switch *,
+body.nav-open .theme-switch,
+body.nav-open .theme-switch * {
     transform: none !important;
     animation: none !important;
 }
 
-/* =========================
-   BUTTON
-   ========================= */
+/* =========================================================
+   BUTTON (IDENTICAL LOOK)
+========================================================= */
 
-.lang-btn {
+.lang-btn,
+.theme-btn {
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -847,7 +855,6 @@ body.nav-open .lang-switch * {
             inset 0 0 0 1px var(--lang-btn-border),
             0 4px 18px var(--lang-btn-shadow);
 
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -858,14 +865,23 @@ body.nav-open .lang-switch * {
             transform .15s ease;
 }
 
-/* =========================
-   BUTTON ICON
-   ========================= */
+/* HOVER – IDENTICAL */
+.lang-btn:hover,
+.theme-btn:hover {
+    background: rgba(101,230,206,.18);
+    box-shadow:
+            inset 0 0 0 1px var(--lang-accent-soft),
+            0 6px 24px var(--lang-accent);
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   LANGUAGE ICON
+========================================================= */
 
 .lang-core {
     width: 26px;
     height: 26px;
-
     stroke-linecap: round;
     stroke-linejoin: round;
 
@@ -887,221 +903,19 @@ body.nav-open .lang-switch * {
     opacity: .95;
 }
 
-/* =========================
-   BUTTON HOVER
-   ========================= */
-
-.lang-btn:hover {
-    background: rgba(101, 230, 206, .18); /* absichtlich halb-fix */
-    box-shadow:
-            inset 0 0 0 1px var(--lang-accent-soft),
-            0 6px 24px var(--lang-accent);
-
-    transform: translateY(-1px);
-}
-
 .lang-btn:hover .lang-core {
     transform: rotate(180deg) scale(1.08);
     filter: drop-shadow(0 0 8px var(--lang-accent-strong));
 }
-
-/* =========================
-   OPEN STATE
-   ========================= */
 
 .lang-switch.open .lang-core {
     transform: rotate(360deg) scale(1.12);
     filter: drop-shadow(0 0 12px var(--lang-accent-max));
 }
 
-/* =========================
-   DROPDOWN
-   ========================= */
-
-.lang-dropdown {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 0;
-
-    min-width: 180px;
-    padding: 8px;
-
-    background: linear-gradient(
-            180deg,
-            var(--lang-dropdown-bg-top),
-            var(--lang-dropdown-bg-bottom)
-    );
-    backdrop-filter: blur(16px);
-
-    border-radius: 14px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-6px) scale(.97);
-
-    box-shadow:
-            0 22px 48px rgba(0, 0, 0, .65),
-            inset 0 0 0 1px rgba(255, 255, 255, .08);
-
-    transition:
-            opacity .18s ease,
-            transform .18s ease;
-}
-
-.lang-switch.open .lang-dropdown {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-}
-
-/* =========================
-   DROPDOWN LINKS
-   ========================= */
-
-.lang-dropdown a {
-    padding: 12px 14px;
-    border-radius: 12px;
-
-    font-weight: 700;
-    font-size: .95em;
-    text-decoration: none;
-
-    color: var(--lang-dropdown-text);
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    transition:
-            background .15s ease,
-            color .15s ease,
-            transform .12s ease;
-}
-
-.lang-dropdown a:hover {
-    background: rgba(101, 230, 206, .22);
-    color: var(--lang-dropdown-text-hover);
-    transform: translateX(4px);
-}
-
-.lang-dropdown a.active {
-    background: linear-gradient(
-            90deg,
-            var(--lang-accent),
-            #7bdcff
-    );
-    color: var(--lang-dropdown-text-active);
-
-}
-
-/* =========================
-   DE / EN TEXT ICONS
-   CLEAN – NO BOX
-   ========================= */
-
-.lang-text-icon {
-    width: 32px;
-    height: 20px;
-    flex-shrink: 0;
-    display: block;
-}
-
-/* 🔥 BOX KOMPLETT ENTFERNT */
-.lang-text-icon rect {
-    display: none;
-}
-
-/* TEXT STYLE */
-
-.lang-text-icon text {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .14em;
-
-    fill: rgba(255, 255, 255, .85); /* bewusst fix */
-
-    text-anchor: middle;
-    dominant-baseline: middle;
-
-    transition:
-            fill .15s ease,
-            transform .15s ease;
-}
-
-/* =========================
-   HOVER
-   ========================= */
-
-.lang-dropdown a:hover .lang-text-icon text {
-    fill: var(--lang-accent);
-    transform: scale(1.05);
-}
-
-/* =========================
-   ACTIVE
-   ========================= */
-
-.lang-dropdown a.active .lang-text-icon text {
-    fill: #1a2333;
-}
-
-
-/* =========================
-   THEME SWITCH (DESKTOP)
-========================= */
-
-.theme-switch {
-    position: relative;
-    width: 44px;
-    height: 44px;
-    margin-left: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10020;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.theme-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    cursor: pointer;
-
-    background: rgba(255,255,255,0.08);
-    box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.14),
-            0 4px 18px rgba(0,0,0,0.35);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition:
-            background .2s ease,
-            box-shadow .2s ease,
-            transform .15s ease;
-}
-
-.theme-btn:hover {
-    background: rgba(106,255,234,.18);
-    box-shadow:
-            inset 0 0 0 1px rgba(106,255,234,.35),
-            0 6px 24px rgba(106,255,234,.45);
-
-    transform: translateY(-1px);
-}
-
-/* =========================
-   SVG ICON
-========================= */
+/* =========================================================
+   THEME ICON
+========================================================= */
 
 .theme-core {
     width: 22px;
@@ -1127,10 +941,11 @@ body.nav-open .lang-switch * {
     opacity: .75;
 }
 
-/* =========================
-   DROPDOWN (1:1 LANG STYLE)
-========================= */
+/* =========================================================
+   DROPDOWNS (SHARED LOOK)
+========================================================= */
 
+.lang-dropdown,
 .theme-dropdown {
     position: absolute;
     top: calc(100% + 12px);
@@ -1165,16 +980,18 @@ body.nav-open .lang-switch * {
             transform .18s ease;
 }
 
+.lang-switch.open .lang-dropdown,
 .theme-switch.open .theme-dropdown {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scale(1);
 }
 
-/* =========================
+/* =========================================================
    DROPDOWN ITEMS
-========================= */
+========================================================= */
 
+.lang-dropdown a,
 .theme-dropdown button {
     all: unset;
     cursor: pointer;
@@ -1197,12 +1014,14 @@ body.nav-open .lang-switch * {
             transform .12s ease;
 }
 
+.lang-dropdown a:hover,
 .theme-dropdown button:hover {
     background: rgba(101,230,206,.22);
     color: var(--lang-dropdown-text-hover);
     transform: translateX(4px);
 }
 
+.lang-dropdown a.active,
 .theme-dropdown button.active {
     background: linear-gradient(
             90deg,
@@ -1212,9 +1031,45 @@ body.nav-open .lang-switch * {
     color: var(--lang-dropdown-text-active);
 }
 
-/* =========================
+/* =========================================================
+   LANG TEXT ICONS
+========================================================= */
+
+.lang-text-icon {
+    width: 32px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.lang-text-icon rect {
+    display: none;
+}
+
+.lang-text-icon text {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    fill: rgba(255,255,255,.85);
+    text-anchor: middle;
+    dominant-baseline: middle;
+    transition:
+            fill .15s ease,
+            transform .15s ease;
+}
+
+.lang-dropdown a:hover .lang-text-icon text {
+    fill: var(--lang-accent);
+    transform: scale(1.05);
+}
+
+.lang-dropdown a.active .lang-text-icon text {
+    fill: #1a2333;
+}
+
+/* =========================================================
    THEME CHANGE ANIMATION
-========================= */
+========================================================= */
 
 :root.theme-animating .theme-core {
     animation: aurora-core 1.4s cubic-bezier(.4,0,.2,1);
@@ -1228,53 +1083,31 @@ body.nav-open .lang-switch * {
     animation: aurora-rays 1.6s cubic-bezier(.4,0,.2,1);
 }
 
-
-/* =========================
+/* =========================================================
    KEYFRAMES
-========================= */
+========================================================= */
 
 @keyframes aurora-core {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    35% {
-        transform: rotate(140deg) scale(1.18);
-    }
-    70% {
-        transform: rotate(300deg) scale(0.96);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
+    0% { transform: rotate(0deg) scale(1); }
+    35% { transform: rotate(140deg) scale(1.18); }
+    70% { transform: rotate(300deg) scale(.96); }
+    100% { transform: rotate(360deg) scale(1); }
 }
 
 @keyframes aurora-pulse {
-    0% {
-        filter: drop-shadow(0 0 6px rgba(106,255,234,0.5));
-    }
+    0% { filter: drop-shadow(0 0 6px rgba(106,255,234,.5)); }
     40% {
         filter:
-                drop-shadow(0 0 18px rgba(106,255,234,0.95))
-                drop-shadow(0 0 32px rgba(122,162,255,0.55));
+                drop-shadow(0 0 18px rgba(106,255,234,.95))
+                drop-shadow(0 0 32px rgba(122,162,255,.55));
     }
-    100% {
-        filter: drop-shadow(0 0 6px rgba(106,255,234,0.6));
-    }
+    100% { filter: drop-shadow(0 0 6px rgba(106,255,234,.6)); }
 }
 
 @keyframes aurora-rays {
-    0% {
-        transform: rotate(0deg);
-        opacity: .4;
-    }
-    50% {
-        transform: rotate(-120deg);
-        opacity: 1;
-    }
-    100% {
-        transform: rotate(-240deg);
-        opacity: .75;
-    }
+    0% { transform: rotate(0deg); opacity: .4; }
+    50% { transform: rotate(-120deg); opacity: 1; }
+    100% { transform: rotate(-240deg); opacity: .75; }
 }
 
 
