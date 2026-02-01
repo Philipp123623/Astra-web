@@ -371,7 +371,7 @@ if (file_exists($historyFile)) {
                 showTooltipHTML(bar, `
                     <b style="font-size:1.06em;letter-spacing:0.01em;">${time}</b><br>
                     Status: <span style="font-weight:700;color:${status === LANG_ONLINE ? '#65e6ce' : '#ff7272'}">${status}</span><br>
-                    Uptime bis hier: <span style="color:#90e3e7">${upPercent}%</span>
+                    "Uptime bis hier:" <span style="color:#90e3e7">${upPercent}%</span>
                 `, true);
 
                 e.preventDefault();
