@@ -3731,119 +3731,141 @@ main.legal-main {
 
 }
 
-:root[data-theme="aurora-bright"] {
+:root[data-theme="aurora-mint"] {
 
     /* =========================
-       CORE BACKGROUND
+       GLOBAL BACKGROUND
     ========================= */
-    --bg-main: #171a3a;
+    --bg-main: #14172e;
 
     /* =========================
-       TEXT
+       TEXT SYSTEM (ruhiger & edler)
     ========================= */
-    --text-main: #f6f8ff;
+    --text-main: #eefcff;
     --text-heading: #ffffff;
-    --text-muted: #cfd6ff;
-    --text-soft: #b9c3ff;
+    --text-muted: #bcd7e6;
+    --text-soft: #9fb7cc;
 
     --text-link: #6affea;
-    --text-link-hover: #b388ff;
+    --text-link-hover: #b6fff3;
 
     /* =========================
-       ACCENTS (AURORA CORE)
+       AURORA ACCENTS
     ========================= */
     --accent-primary: #6affea;
-    --accent-secondary: #8b7bff;
-    --accent-green-soft: #9dffee;
+    --accent-secondary: #7aa2ff;
+    --accent-green-soft: #b6fff3;
 
     /* =========================
        HEADER / NAV
     ========================= */
-    --header-bg: rgba(23, 26, 58, 0.85);
-    --header-shadow: rgba(139, 123, 255, 0.25);
+    --header-bg: rgba(20, 23, 46, 0.85);
+    --header-shadow: rgba(106, 255, 234, 0.25);
 
-    --nav-link: #e3e8ff;
+    --nav-link: #dfefff;
     --nav-link-active: #6affea;
 
     /* =========================
-       HERO
+       HERO (AURORA FLOW)
     ========================= */
-    --hero-bg-start: #1b1f4d;
-    --hero-bg-mid: #2d2f7a;
-    --hero-bg-end: #5dffe8;
+    --hero-bg-start: #161a38;
+    --hero-bg-mid: #243c5f;
+    --hero-bg-end: #6affea;
 
-    --hero-shadow: rgba(139, 123, 255, 0.35);
+    --hero-shadow: rgba(106, 255, 234, 0.35);
 
     --hero-text-main: #ffffff;
-    --hero-text-muted: #dbe3ff;
+    --hero-text-muted: #d2f2ff;
 
     --hero-accent: #6affea;
-    --hero-accent-secondary: #a98bff;
-    --hero-accent-warm: #ffd6a6;
+    --hero-accent-secondary: #9cbcff;
+    --hero-accent-warm: #ffe6b3;
 
     /* =========================
-       BUTTONS
+       BUTTONS (GLASS + GLOW)
     ========================= */
     --hero-btn-main-start: #6affea;
-    --hero-btn-main-end: #8b7bff;
-    --hero-btn-text-dark: #1b1f3f;
-    --hero-btn-shadow: rgba(106, 255, 234, 0.35);
-    --hero-btn-hover-shadow: rgba(139, 123, 255, 0.45);
+    --hero-btn-main-end: #9cbcff;
+    --hero-btn-text-dark: #0f1f2a;
+
+    --hero-btn-shadow: rgba(106, 255, 234, 0.45);
+    --hero-btn-hover-shadow: rgba(106, 255, 234, 0.7);
 
     /* =========================
-       CARDS
+       CARDS (KEY CHANGE)
     ========================= */
-    --card-bg-soft: rgba(40, 45, 110, 0.55);
-    --card-bg-strong: rgba(50, 55, 140, 0.65);
+    --card-bg-soft: rgba(40, 65, 90, 0.45);
+    --card-bg-strong: rgba(55, 90, 120, 0.55);
 
-    --card-shadow-soft: rgba(139, 123, 255, 0.25);
-    --card-shadow-strong: rgba(106, 255, 234, 0.25);
+    --card-shadow-soft: rgba(106, 255, 234, 0.18);
+    --card-shadow-strong: rgba(106, 255, 234, 0.35);
 
     /* =========================
        BADGES / LABELS
     ========================= */
-    --badge-bg: rgba(255, 255, 255, 0.12);
-    --badge-text: #f0f4ff;
+    --badge-bg: rgba(255, 255, 255, 0.14);
+    --badge-text: #f0fcff;
 
-    --badge-mint-bg: rgba(106, 255, 234, 0.22);
+    --badge-mint-bg: rgba(106, 255, 234, 0.28);
     --badge-mint-text: #6affea;
 
-    --badge-violet-bg: rgba(168, 139, 255, 0.25);
-    --badge-violet-text: #e6d9ff;
+    --badge-blue-bg: rgba(122, 162, 255, 0.25);
+    --badge-blue-text: #dfe8ff;
 
     /* =========================
-       STATS
+       STATS / NUMBERS
     ========================= */
-    --stat-bg: rgba(60, 70, 170, 0.45);
+    --stat-bg: rgba(60, 95, 125, 0.45);
     --stat-number: #6affea;
-    --stat-title: #e4e9ff;
+    --stat-title: #e6f6ff;
 
     /* =========================
        DRAWER / MOBILE
     ========================= */
-    --drawer-bg-main: #1a1e4f;
-    --drawer-bg-top: #151845;
-    --drawer-bg-bottom: #1f2360;
+    --drawer-bg-main: #161a38;
+    --drawer-bg-top: #12162f;
+    --drawer-bg-bottom: #1e2e4a;
 
-    --drawer-glow-primary: rgba(106, 255, 234, 0.35);
-    --drawer-glow-secondary: rgba(139, 123, 255, 0.45);
+    --drawer-glow-primary: rgba(106, 255, 234, 0.45);
+    --drawer-glow-secondary: rgba(122, 162, 255, 0.35);
+
+    /* =========================
+       FAQ / PANELS
+    ========================= */
+    --faq-bg: rgba(50, 80, 110, 0.45);
+    --faq-bg-active: rgba(106, 255, 234, 0.22);
+    --faq-question: #6affea;
+
+    /* =========================
+       GLOWS / ANIMATIONS (WICHTIG)
+    ========================= */
+    --hero-glow-mint: rgba(106, 255, 234, 0.45);
+
+    --loader-glow-primary: rgba(106, 255, 234, 0.75);
+    --loader-glow-primary-soft: rgba(106, 255, 234, 0.4);
+
+    --error-glow-primary: rgba(106, 255, 234, 0.55);
+    --error-glow-secondary: rgba(122, 162, 255, 0.45);
 
     /* =========================
        FOOTER
     ========================= */
-    --footer-bg-top: #14173a;
-    --footer-bg-bottom: #1b1f4d;
+    --footer-bg-top: #12162f;
+    --footer-bg-bottom: #161a38;
 
-    --footer-link: #a98bff;
+    --footer-text-main: #eafcff;
+    --footer-text-muted: #bcd7e6;
+    --footer-link: #9cbcff;
     --footer-link-hover: #6affea;
 
     /* =========================
-       GLOWS (IMPORTANT)
+       CHIPS
     ========================= */
-    --hero-glow-mint: rgba(106, 255, 234, 0.35);
-    --error-glow-primary: rgba(106, 255, 234, 0.55);
-    --error-glow-secondary: rgba(139, 123, 255, 0.45);
+    --chip-bg: rgba(106, 255, 234, 0.22);
+    --chip-border: rgba(106, 255, 234, 0.45);
+    --chip-text: #eafffb;
 }
+
 
 
 
