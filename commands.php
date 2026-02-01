@@ -138,7 +138,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
             const categoryEl = document.createElement('div');
             categoryEl.className = 'command-category';
-            categoryEl.dataset.category = category;
+            categoryEl.dataset.filterKey = catData.key;
 
             const body = document.createElement('div');
             body.className = 'command-category-body';
@@ -167,7 +167,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
             categoryEl.innerHTML = `
                 <button class="command-category-header">
-                    ${getIcon(category)} ${category}
+                    ${getIcon(catData.key)} ${category}
                     <span>${count} Commands</span>
                 </button>
             `;
@@ -182,23 +182,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     /* ============================
        ICONS
     ============================ */
-    function getIcon(cat) {
+    function getIcon(key) {
         const icons = {
-            Moderation: '🛡️',
-            Levelsystem: '📈',
-            Economy: '💰',
-            Fun: '🎉',
-            Einstellungen: '⚙️',
-            Informationen: 'ℹ️',
-            Gewinnspiele: '🎁',
-            Ticket: '🎫',
-            Automoderation: '🤖',
-            Nachrichten: '💬',
-            Minigames: '🕹️',
-            Backups: '🗄️',
-            Geburtstage: '🎂'
+            moderation: '🛡️',
+            level: '📈',
+            economy: '💰',
+            fun: '🎉',
+            settings: '⚙️',
+            information: 'ℹ️',
+            giveaways: '🎁',
+            ticket: '🎫',
+            automoderation: '🤖',
+            messages: '💬',
+            minigames: '🕹️',
+            backups: '🗄️',
+            birthdays: '🎂'
         };
-        return icons[cat] || '📘';
+        return icons[key] || '📘';
     }
 
     /* ============================
@@ -223,18 +223,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     ============================ */
     document.querySelectorAll('.commands-filters button').forEach(btn => {
         btn.addEventListener('click', () => {
+
             document.querySelectorAll('.commands-filters button')
                 .forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const filter = btn.dataset.filter;
+            const filterKey = btn.dataset.filterKey;
 
             document.querySelectorAll('.command-category').forEach(cat => {
-                const isMatch = filter === 'all' || cat.dataset.filterKey === filterKey;
+                const isMatch =
+                    filterKey === 'all' ||
+                    cat.dataset.filterKey === filterKey;
 
                 cat.style.display = isMatch ? '' : 'none';
 
-                if (filter === 'all') {
+                if (filterKey === 'all') {
                     cat.classList.remove('open');
                 } else {
                     cat.classList.toggle('open', isMatch);
