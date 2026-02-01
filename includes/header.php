@@ -175,123 +175,124 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 <!-- ======================
      MOBILE MENU SCRIPT
-     ====================== -->
+====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-        /* =========================
-           MOBILE MENU
-        ========================= */
-
-        const toggle = document.querySelector('.astra-nav-toggle');
+        const toggle   = document.querySelector('.astra-nav-toggle');
         const closeBtn = document.querySelector('.astra-nav-close');
-        const overlay = document.querySelector('.astra-nav-mobile-overlay');
+        const overlay  = document.querySelector('.astra-nav-mobile-overlay');
 
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                document.body.classList.add('nav-open');
-            });
+        if (!toggle) return;
 
-            closeBtn?.addEventListener('click', () => {
-                document.body.classList.remove('nav-open');
-            });
+        toggle.addEventListener('click', () => {
+            document.body.classList.add('nav-open');
+        });
 
-            overlay?.addEventListener('click', () => {
-                document.body.classList.remove('nav-open');
-            });
-        }
+        closeBtn?.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
 
-        /* =========================
-           DROPDOWNS (LANG + THEME)
-        ========================= */
-
+        overlay?.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
+    });
+</script>
+<!-- ======================
+     DROPDOWNS (LANG + THEME)
+====================== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         const langSwitch  = document.getElementById('langSwitch');
         const themeSwitch = document.getElementById('themeSwitch');
 
-        function closeAllDropdowns() {
+        function closeAll() {
             langSwitch?.classList.remove('open');
             themeSwitch?.classList.remove('open');
         }
 
-        // Language toggle
+        // LANGUAGE
         if (langSwitch) {
             const btn = langSwitch.querySelector('.lang-btn');
             btn.addEventListener('click', e => {
                 e.stopPropagation();
                 const wasOpen = langSwitch.classList.contains('open');
-                closeAllDropdowns();
+                closeAll();
                 if (!wasOpen) langSwitch.classList.add('open');
             });
         }
 
-        // Theme dropdown toggle
+        // THEME
         if (themeSwitch) {
             const btn = themeSwitch.querySelector('.theme-btn');
             btn.addEventListener('click', e => {
                 e.stopPropagation();
                 const wasOpen = themeSwitch.classList.contains('open');
-                closeAllDropdowns();
+                closeAll();
                 if (!wasOpen) themeSwitch.classList.add('open');
             });
         }
 
-        // Click outside closes all
-        document.addEventListener('click', closeAllDropdowns);
-
-        /* =========================
-           THEME SELECTION + ANIMATION
-        ========================= */
-
-        if (themeSwitch) {
-            const root = document.documentElement;
-            const STORAGE_KEY = 'astra-theme';
-            const items = themeSwitch.querySelectorAll('[data-theme]');
-
-            // INIT – nur setzen, KEINE Animation
-            const savedTheme = localStorage.getItem(STORAGE_KEY);
-            if (savedTheme && savedTheme !== 'default') {
-                root.setAttribute('data-theme', savedTheme);
-            }
-
-            function updateActive(theme) {
-                items.forEach(el =>
-                    el.classList.toggle('active', el.dataset.theme === theme)
-                );
-            }
-
-            updateActive(savedTheme || 'default');
-
-            // Theme auswählen
-            items.forEach(item => {
-                item.addEventListener('click', e => {
-                    e.stopPropagation();
-
-                    const theme = item.dataset.theme;
-
-                    // 🔥 Animation explizit triggern
-                    root.classList.add('theme-animating');
-
-                    if (theme === 'default') {
-                        root.removeAttribute('data-theme');
-                        localStorage.removeItem(STORAGE_KEY);
-                    } else {
-                        root.setAttribute('data-theme', theme);
-                        localStorage.setItem(STORAGE_KEY, theme);
-                    }
-
-                    updateActive(theme);
-                    closeAllDropdowns();
-
-                    // 🔥 Animation nach Ende entfernen
-                    setTimeout(() => {
-                        root.classList.remove('theme-animating');
-                    }, 1700);
-                });
-            });
-        }
-
+        // CLICK OUTSIDE
+        document.addEventListener('click', closeAll);
     });
 </script>
+<!-- ======================
+     THEME SELECTION + ANIMATION
+====================== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (!themeSwitch) return;
+
+        const root = document.documentElement;
+        const STORAGE_KEY = 'astra-theme';
+        const items = themeSwitch.querySelectorAll('[data-theme]');
+
+        // INIT – OHNE Animation
+        const savedTheme = localStorage.getItem(STORAGE_KEY);
+        if (savedTheme && savedTheme !== 'default') {
+            root.setAttribute('data-theme', savedTheme);
+        }
+
+        function updateActive(theme) {
+            items.forEach(el =>
+                el.classList.toggle('active', el.dataset.theme === theme)
+            );
+        }
+
+        updateActive(savedTheme || 'default');
+
+        // THEME CLICK
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                e.stopPropagation();
+
+                const theme = item.dataset.theme;
+
+                // 🔥 Animation sicher neu starten
+                root.classList.remove('theme-animating');
+                void root.offsetWidth; // reflow erzwingen
+                root.classList.add('theme-animating');
+
+                if (theme === 'default') {
+                    root.removeAttribute('data-theme');
+                    localStorage.removeItem(STORAGE_KEY);
+                } else {
+                    root.setAttribute('data-theme', theme);
+                    localStorage.setItem(STORAGE_KEY, theme);
+                }
+
+                updateActive(theme);
+
+                // 🔥 Animation cleanup
+                setTimeout(() => {
+                    root.classList.remove('theme-animating');
+                }, 1700);
+            });
+        });
+    });
+</script>
+
 
 
 
