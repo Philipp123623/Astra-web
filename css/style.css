@@ -1448,6 +1448,15 @@ main.commands-main {
             border-color 260ms ease;
 }
 
+/* =========================
+   SEARCH PREVIEW STATE
+   ========================= */
+
+.commands-search.is-preview {
+    color: rgba(255,255,255,0.55); /* exakt Placeholder-Look */
+}
+
+
 /* ===== Idle animation ===== */
 @keyframes idleGlow {
     0%   { background-position: 0% 50%; }
