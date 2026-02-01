@@ -34,6 +34,7 @@ html, body {
 body {
     overflow-y: auto !important;
     padding-top: calc(var(--header-height) + 32px);
+    scrollbar-gutter: stable;
 }
 
 
