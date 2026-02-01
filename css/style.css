@@ -3054,3 +3054,21 @@ main.legal-main {
     }
 
 }
+
+/* =========================================
+   FIX: 1-FRAME FLASH BEIM NAV-OPEN
+   ========================================= */
+
+body.nav-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: calc(var(--header-height) + 40px);
+    background: #221c50; /* exakt deine Body-Farbe */
+
+    z-index: 9998; /* UNTER Header (1000), ÜBER Main */
+    pointer-events: none;
+}
