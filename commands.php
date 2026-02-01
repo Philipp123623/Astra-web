@@ -140,13 +140,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             categoryEl.className = 'command-category';
             categoryEl.dataset.filterKey = key;
 
-            // ✅ HEADER (nur einmal!)
             categoryEl.innerHTML = `
-            <button class="command-category-header">
-                ${getIcon(key)} ${catData.title}
-                <span>${count} Commands</span>
-            </button>
-        `;
+                <button class="command-category-header">
+                    ${getIcon(key)} ${catData.title}
+                    <span>${count} Commands</span>
+                </button>
+            `;
 
             const body = document.createElement('div');
             body.className = 'command-category-body';
@@ -156,10 +155,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 item.className = 'command-item';
 
                 item.innerHTML = `
-                <div class="cmd-name">${cmd.name}</div>
-                <div class="cmd-desc">${cmd.description}</div>
-                <div class="cmd-usage">${cmd.usage}</div>
-            `;
+                    <div class="cmd-name">${cmd.name}</div>
+                    <div class="cmd-desc">${cmd.description}</div>
+                    <div class="cmd-usage">${cmd.usage}</div>
+                `;
 
                 body.appendChild(item);
             });
@@ -170,7 +169,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         initAccordion();
     }
-
 
     /* ============================
        ICONS
@@ -240,7 +238,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     });
 
     /* ============================
-       SEARCH
+       SEARCH (FILTER LOGIC)
     ============================ */
     document.getElementById('commandSearch').addEventListener('input', e => {
         const val = e.target.value.toLowerCase().trim();
@@ -272,6 +270,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 </script>
 
 <script>
+    /* ============================
+       SEARCH PREVIEW (FIXED)
+    ============================ */
     const search = document.getElementById('commandSearch');
     const previewText = search.placeholder;
 
@@ -280,6 +281,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     function typeText(text, speed = 35) {
         let i = 0;
         search.value = '';
+        search.classList.add('is-preview'); // 🔥 DAS WAR DER FEHLER
 
         typingTimer = setInterval(() => {
             if (i >= text.length) {
@@ -291,9 +293,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         }, speed);
     }
 
+    // Initial Preview
+    typeText(previewText);
+
+    // Sobald User tippt → Preview aus
+    search.addEventListener('input', () => {
+        search.classList.remove('is-preview');
+    });
+
     // FOCUS → Preview weg
     search.addEventListener('focus', () => {
         clearInterval(typingTimer);
+        search.classList.remove('is-preview'); // 🔥 WICHTIG
         search.classList.add('hide-placeholder');
 
         if (search.value === previewText) {
@@ -310,6 +321,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         }
     });
 </script>
+
 
 
 </body>
