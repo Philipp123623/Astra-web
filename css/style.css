@@ -304,7 +304,7 @@ a:hover { color: #ffd799; }
 
 /* =========================
    ASTRA LANGUAGE SWITCH
-   QUANTUM / INTERSTELLAR
+   CLEAN & CLEAR
    ========================= */
 
 .lang-switch {
@@ -324,123 +324,80 @@ a:hover { color: #ffd799; }
 .lang-btn {
     width: 44px;
     height: 44px;
-    border-radius: 14px;
+    border-radius: 12px;
     border: none;
     cursor: pointer;
 
-    background:
-            radial-gradient(circle at 30% 30%, rgba(101,230,206,.45), transparent 60%),
-            linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    background: rgba(255,255,255,.08);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.18),
-            0 0 24px rgba(101,230,206,.45),
-            0 0 48px rgba(124,65,238,.35);
+            inset 0 0 0 1px rgba(255,255,255,.12),
+            0 4px 16px rgba(0,0,0,.35);
 
     transition:
-            background .25s ease,
-            box-shadow .25s ease,
+            background .2s ease,
+            box-shadow .2s ease,
             transform .15s ease;
 }
 
 /* =========================
-   CORE SVG
+   ICON
    ========================= */
 
 .lang-core {
-    width: 26px;
-    height: 26px;
-    overflow: visible;
+    width: 22px;
+    height: 22px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 
-    filter:
-            drop-shadow(0 0 10px rgba(101,230,206,.8))
-            drop-shadow(0 0 28px rgba(124,65,238,.6));
-
-    animation: coreFloat 5s ease-in-out infinite;
+    transition:
+            transform .35s ease,
+            filter .25s ease;
 }
 
-/* =========================
-   QUANTUM ELEMENTS
-   ========================= */
-
-.q-core {
-    fill: radial-gradient(circle at 30% 30%, #ffffff, #65e6ce 45%, #4b1fff);
-    animation: corePulse 2.6s ease-in-out infinite;
-}
-
-.q-ring {
+.globe {
     fill: none;
-    stroke: #65e6ce;
-    stroke-width: 1.4;
-    opacity: .6;
-    stroke-dasharray: 8 6;
-    animation: ringSpin 6s linear infinite;
+    stroke: #ffffff;
+    stroke-width: 1.6;
 }
 
-.q-pulse {
+.line {
     fill: none;
     stroke: #a7c8fd;
-    stroke-width: 1;
-    opacity: .55;
-    animation: pulseExpand 2.4s ease-out infinite;
-}
-
-.q-lat {
-    fill: none;
-    stroke: rgba(255,255,255,.65);
-    stroke-width: .9;
-    transform-origin: 50% 50%;
-    animation: latSpin 4.5s linear infinite;
-}
-
-.q-lat.flip {
-    transform: rotate(90deg);
-    animation-duration: 6.5s;
-}
-
-.q-orbit {
-    fill: none;
-    stroke: rgba(124,65,238,.9);
-    stroke-width: 1;
-    stroke-dasharray: 2 10;
-    animation: orbitSpin 3.2s linear infinite reverse;
+    stroke-width: 1.2;
+    opacity: .9;
 }
 
 /* =========================
-   HOVER – WARP MODE
+   HOVER
    ========================= */
 
 .lang-btn:hover {
-    background:
-            radial-gradient(circle at 30% 30%, rgba(101,230,206,.75), transparent 65%),
-            linear-gradient(145deg, rgba(101,230,206,.28), rgba(124,65,238,.18));
+    background: rgba(101,230,206,.18);
 
     box-shadow:
-            0 0 0 2px rgba(101,230,206,.55),
-            0 0 42px rgba(101,230,206,.9),
-            0 0 86px rgba(124,65,238,.75);
+            inset 0 0 0 1px rgba(101,230,206,.35),
+            0 6px 22px rgba(101,230,206,.45);
 
-    transform: translateY(-1px) scale(1.03);
+    transform: translateY(-1px);
 }
 
 .lang-btn:hover .lang-core {
-    animation: warpShake .35s ease-in-out infinite;
+    transform: rotate(180deg) scale(1.05);
+    filter: drop-shadow(0 0 6px rgba(101,230,206,.9));
 }
 
 /* =========================
-   OPEN STATE – HYPERSPACE
+   OPEN STATE
    ========================= */
 
 .lang-switch.open .lang-core {
-    animation: hyperSpin .9s linear infinite;
-
-    filter:
-            drop-shadow(0 0 18px rgba(101,230,206,1))
-            drop-shadow(0 0 56px rgba(124,65,238,1));
+    transform: rotate(360deg) scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(101,230,206,1));
 }
 
 /* =========================
@@ -449,38 +406,38 @@ a:hover { color: #ffd799; }
 
 .lang-dropdown {
     position: absolute;
-    top: calc(100% + 14px);
+    top: calc(100% + 10px);
     right: 0;
 
-    min-width: 160px;
-    padding: 8px;
+    min-width: 140px;
+    padding: 6px;
 
-    background: rgba(18,14,46,.97);
-    backdrop-filter: blur(22px);
+    background: rgba(20,20,40,.95);
+    backdrop-filter: blur(14px);
 
-    border-radius: 18px;
+    border-radius: 12px;
 
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-8px) scale(.94);
+    transform: translateY(-6px);
 
     box-shadow:
-            0 28px 70px rgba(0,0,0,.7),
+            0 18px 40px rgba(0,0,0,.6),
             inset 0 0 0 1px rgba(255,255,255,.08);
 
     transition:
-            opacity .2s ease,
-            transform .22s cubic-bezier(.4,0,.2,1);
+            opacity .15s ease,
+            transform .15s ease;
 }
 
 .lang-switch.open .lang-dropdown {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
 /* =========================
@@ -488,81 +445,32 @@ a:hover { color: #ffd799; }
    ========================= */
 
 .lang-dropdown a {
-    padding: 12px 15px;
-    border-radius: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
 
-    font-weight: 900;
-    font-size: .95em;
+    font-weight: 700;
+    font-size: .9em;
     text-decoration: none;
 
-    color: #d8f6ff;
+    color: #e6f4ff;
 
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     transition:
             background .15s ease,
-            color .15s ease,
-            transform .12s ease,
-            box-shadow .15s ease;
+            color .15s ease;
 }
 
 .lang-dropdown a:hover {
-    background: rgba(101,230,206,.3);
+    background: rgba(101,230,206,.25);
     color: #ffffff;
-    transform: translateX(6px);
 }
 
 .lang-dropdown a.active {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
-    color: #1d2940;
-
-    box-shadow:
-            0 0 0 2px rgba(101,230,206,.55),
-            0 0 26px rgba(101,230,206,.7);
-}
-
-/* =========================
-   ANIMATIONS
-   ========================= */
-
-@keyframes coreFloat {
-    0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-3px); }
-}
-
-@keyframes ringSpin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes orbitSpin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes latSpin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes corePulse {
-    0%,100% { transform: scale(1); opacity: .9; }
-    50%     { transform: scale(1.18); opacity: 1; }
-}
-
-@keyframes pulseExpand {
-    0%   { r: 32; opacity: .6; }
-    100% { r: 46; opacity: 0; }
-}
-
-@keyframes warpShake {
-    0%,100% { transform: translate(0,0); }
-    25%     { transform: translate(1px,-1px); }
-    50%     { transform: translate(-1px,1px); }
-    75%     { transform: translate(1px,1px); }
-}
-
-@keyframes hyperSpin {
-    to { transform: rotate(1080deg); }
+    background: rgba(101,230,206,.9);
+    color: #1a2333;
 }
 
 
