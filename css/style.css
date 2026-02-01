@@ -298,6 +298,8 @@ a:hover { color: #ffd799; }
     justify-content: space-between;
     height: 68px;
     padding: 0 38px;
+    flex-shrink: 0;          /* ⛔ darf nicht schrumpfen */
+    white-space: nowrap;     /* ⛔ kein Zeilenumbruch */
 }
 
 /* =========================
@@ -444,6 +446,8 @@ a:hover { color: #ffd799; }
     font-weight: 800;
     color: #fff;
     letter-spacing: 1px;
+    white-space: nowrap;
+    line-height: 1;
 }
 
 .astra-logo-text span {
