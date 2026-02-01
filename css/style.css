@@ -761,6 +761,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 }
 
 .astra-nav-mobile-scroll {
+
+    background: red;
     position: relative;
     z-index: 1;
     flex: 1;
