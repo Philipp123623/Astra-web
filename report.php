@@ -115,39 +115,64 @@ include "includes/header.php";
             </svg>
         </div>
 
-        <!-- CONTENT -->
         <div class="report-content">
-            <h1>Problem melden</h1>
+            <h1><?= $t['report_title'] ?></h1>
+
             <p class="report-desc">
-                Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.
+                <?= $t['report_desc'] ?>
             </p>
 
             <!-- TYPE SELECT -->
             <div class="astra-problem-types">
-                <button class="astra-problem-chip selected" data-type="Nutzer">👤 Nutzer</button>
-                <button class="astra-problem-chip" data-type="Webseite">💻 Webseite</button>
-                <button class="astra-problem-chip" data-type="Discord">🤖 Discord</button>
+                <button class="astra-problem-chip selected" data-type="Nutzer">
+                    👤 <?= $t['report_button_user'] ?>
+                </button>
+                <button class="astra-problem-chip" data-type="Webseite">
+                    💻 <?= $t['report_button_website'] ?>
+                </button>
+                <button class="astra-problem-chip" data-type="Discord">
+                    🤖 <?= $t['report_button_discord'] ?>
+                </button>
             </div>
 
             <!-- FORM -->
-            <form class="astra-form">
+            <form class="astra-form" id="astra-report-form">
 
-                <label>Beschreibung des Problems*</label>
-                <textarea placeholder="Beschreibe dein Problem möglichst genau..."></textarea>
+                <input type="hidden" name="type" id="astra-report-type" value="">
 
-                <label>Dein Discord-Name (optional)</label>
-                <input type="text" placeholder="z. B. User#1234">
+                <label><?= $t['report_problem_desc'] ?></label>
+                <textarea
+                        name="desc"
+                        placeholder="<?= $t['report_problem_input_preview'] ?>"
+                        required
+                ></textarea>
 
-                <label>E-Mail (optional, falls Rückfrage)</label>
-                <input type="email" placeholder="Optional">
+                <label><?= $t['report_discord_name_desc'] ?></label>
+                <input
+                        type="text"
+                        name="discord"
+                        placeholder="<?= $t['report_discord_input_preview'] ?>"
+                >
 
-                <button type="submit" class="webseite">Absenden</button>
+                <label><?= $t['report_email_desc'] ?></label>
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="<?= $t['report_email_input_preview'] ?>"
+                >
 
-                <div class="astra-msg-success">✔ Nachricht wurde gesendet</div>
-                <div class="astra-msg-error">✖ Fehler beim Senden</div>
+                <button type="submit" class="webseite" id="astra-submit-btn">
+                    <?= $t['report_button_send'] ?>
+                </button>
+
+                <div class="astra-msg-success" id="astra-report-success">
+                    ✔ <?= $t['report_button_send'] ?>
+                </div>
+                <div class="astra-msg-error" id="astra-report-error"></div>
 
             </form>
         </div>
+
 
     </section>
 

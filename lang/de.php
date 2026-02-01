@@ -119,4 +119,19 @@ return [
     'uptime_legend'    => 'Grün = Online, Rot = Offline. Jeder Balken = 10 Minuten — oder 1 Tag.',
     'uptime_popup_title' => 'Uptime bis hier:',
 
+    /* REPORT */
+    'report_title' => 'Problem melden',
+    'report_desc' => 'Dein Anliegen wird vertraulich und direkt an das Astra-Team weitergeleitet.',
+    'report_button_user' => 'Nutzer',
+    'report_button_website' => 'Webseite',
+    'report_button_discord' => 'Discord',
+    'report_problem_desc' => 'Beschreibung des Problems*',
+    'report_problem_input_preview' => 'Beschreibe dein Problem möglichst genau...',
+    'report_discord_name_desc' => 'Dein Discord-Name (optional)',
+    'report_discord_input_preview' => 'z.B. User#1234',
+    'report_email_desc' => 'E-Mail (optional, falls Rückfrage)',
+    'report_email_input_preview' => 'Optional',
+    'report_button_send' => 'Absenden',
+
+
 ];
