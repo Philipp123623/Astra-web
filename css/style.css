@@ -3055,4 +3055,7 @@ body.nav-open {
     height: 100%;
     overflow: hidden;
     overscroll-behavior: none;
+
+    /* 🔥 DAS IST DER FIX */
+    padding-top: 0 !important;
 }
