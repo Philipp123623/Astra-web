@@ -75,6 +75,79 @@
     --lang-dropdown-text-active: #1a2333;
     --lang-dropdown-text-hover: #ffffff;
 
+
+    /* =========================
+   LOGO / NAVBAR TOKENS
+   ========================= */
+
+    /* Logo */
+    --logo-bg: #18103d;
+    --logo-shadow: rgba(101, 230, 206, .2);
+    --logo-text: #ffffff;
+    --logo-accent: #65e6ce;
+
+    /* Navbar links */
+    --nav-link: #e4eaff;
+    --nav-link-active: #65e6ce;
+
+    /* Nav button (CTA) */
+    --nav-btn-gradient-start: #65e6ce;
+    --nav-btn-gradient-end: #a7c8fd;
+    --nav-btn-text: #223254;
+    --nav-btn-shadow: rgba(93, 232, 255, .2);
+    --nav-btn-shadow-hover: rgba(101, 230, 206, .22);
+
+    /* Hamburger */
+    --hamburger-gradient-start: #65e6ce;
+    --hamburger-gradient-end: #a7c8fd;
+    --hamburger-glow: rgba(101, 230, 206, .65);
+
+    /* =========================
+   MOBILE DRAWER TOKENS
+   ========================= */
+
+    /* Drawer background */
+    --drawer-bg-main: #221c50;
+    --drawer-bg-top: #161338;
+    --drawer-bg-bottom: #1a1642;
+
+    /* Drawer glows */
+    --drawer-glow-primary: rgba(101, 230, 206, .26);
+    --drawer-glow-secondary: rgba(124, 65, 238, .32);
+    --drawer-glow-tertiary: rgba(167, 200, 253, .22);
+
+    /* Drawer overlays */
+    --drawer-shadow-main: rgba(0, 0, 0, .65);
+    --drawer-border: rgba(255, 255, 255, .06);
+
+    /* Drawer title */
+    --drawer-title: rgba(255, 255, 255, .45);
+
+    /* Close button */
+    --drawer-close-bg: rgba(255, 255, 255, .08);
+    --drawer-close-hover-bg: rgba(101, 230, 206, .22);
+    --drawer-close-icon: #ffffff;
+    --drawer-close-glow: rgba(101, 230, 206, .6);
+
+    /* Mobile nav links */
+    --drawer-link: #eafcff;
+    --drawer-link-hover-bg: rgba(255, 255, 255, .06);
+    --drawer-link-active: #65e6ce;
+
+    --drawer-link-accent-soft: rgba(101, 230, 206, .16);
+    --drawer-link-border: rgba(101, 230, 206, .35);
+    --drawer-link-glow: rgba(101, 230, 206, .45);
+
+    /* Drawer CTA */
+    --drawer-cta-bg-start: #65e6ce;
+    --drawer-cta-bg-end: #a7c8fd;
+    --drawer-cta-text: #223254;
+    --drawer-cta-glow: rgba(101, 230, 206, .55);
+
+    /* Overlay */
+    --drawer-overlay-bg: rgba(6, 4, 24, .7);
+    --drawer-glow-quaternary: rgba(124, 65, 238, .30);
+
 }
 
 
@@ -700,37 +773,34 @@ body.nav-open .lang-switch * {
     fill: #1a2333;
 }
 
-
-
 .astra-logo {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     margin-right: 32px;
-    /* <--- DAS hinzufügen */
 }
 
 .astra-logo img {
     height: 45px;
     width: 45px;
     border-radius: 12px;
-    background: #18103d;
-    box-shadow: 0 1px 12px #65e6ce33;
+    background: var(--logo-bg);
+    box-shadow: 0 1px 12px var(--logo-shadow);
 }
 
 .astra-logo-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.57em;
     font-weight: 800;
-    color: #fff;
+    color: var(--logo-text);
     letter-spacing: 1px;
     white-space: nowrap;
     line-height: 1;
 }
 
 .astra-logo-text span {
-    color: #65e6ce;
+    color: var(--logo-accent);
     font-weight: 900;
 }
 
@@ -738,7 +808,6 @@ body.nav-open .lang-switch * {
 .astra-navbar ul {
     display: flex;
     gap: 32px;
-    /* Passe auf 24px an, wenn du enger willst */
     align-items: center;
     margin: 0;
     padding: 0;
@@ -759,7 +828,7 @@ body.nav-open .lang-switch * {
 }
 
 .nav-link {
-    color: #e4eaff;
+    color: var(--nav-link);
     text-decoration: none;
     font-weight: 800;
     font-size: 1.13em;
@@ -774,19 +843,23 @@ body.nav-open .lang-switch * {
 .nav-link.active,
 .nav-link:focus,
 .nav-link:hover {
-    color: #65e6ce;
+    color: var(--nav-link-active);
 }
 
 .nav-btn {
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd 80%);
-    color: #223254;
+    background: linear-gradient(
+            90deg,
+            var(--nav-btn-gradient-start),
+            var(--nav-btn-gradient-end) 80%
+    );
+    color: var(--nav-btn-text);
     font-weight: 900;
     font-size: 1.13em;
     padding: 10px 26px;
     border-radius: 15px;
     margin-left: 13px;
     text-decoration: none;
-    box-shadow: 0 2px 14px #5de8ff33;
+    box-shadow: 0 2px 14px var(--nav-btn-shadow);
     transition: filter 0.14s, box-shadow 0.14s;
     border: none;
     outline: none;
@@ -795,7 +868,7 @@ body.nav-open .lang-switch * {
 
 .nav-btn:hover {
     filter: brightness(0.97);
-    box-shadow: 0 6px 24px #65e6ce38;
+    box-shadow: 0 6px 24px var(--nav-btn-shadow-hover);
 }
 
 /* =========================
@@ -827,7 +900,6 @@ body.nav-open .lang-switch * {
 
 .astra-nav-toggle {
     transform: translateY(-50%);
-    /* erlaubt */
 }
 
 body.nav-open .astra-nav-toggle {
@@ -837,9 +909,13 @@ body.nav-open .astra-nav-toggle {
 .astra-nav-toggle span {
     width: 26px;
     height: 3px;
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    background: linear-gradient(
+            90deg,
+            var(--hamburger-gradient-start),
+            var(--hamburger-gradient-end)
+    );
     border-radius: 999px;
-    box-shadow: 0 0 14px rgba(101, 230, 206, .65);
+    box-shadow: 0 0 14px var(--hamburger-glow);
     transition:
             transform .35s cubic-bezier(.4, 0, .2, 1),
             opacity .25s ease;
@@ -859,8 +935,6 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-
-
 /* =========================
    ASTRA MOBILE APP DRAWER
    ========================= */
@@ -879,21 +953,21 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     padding-bottom: 0;
 
     background:
-            radial-gradient(520px 520px at 85% 10%, rgba(124, 65, 238, .32), transparent 72%),
-            radial-gradient(420px 420px at 15% 35%, rgba(101, 230, 206, .26), transparent 70%),
-            radial-gradient(360px 360px at 90% 65%, rgba(167, 200, 253, .22), transparent 72%),
-            radial-gradient(520px 520px at 20% 85%, rgba(124, 65, 238, .30), transparent 75%),
-            linear-gradient(180deg,
-            #161338 0%,
-            #221c50 50%,
-            #1a1642 100%),
+            radial-gradient(520px 520px at 85% 10%, var(--drawer-glow-secondary), transparent 72%),
+            radial-gradient(420px 420px at 15% 35%, var(--drawer-glow-primary), transparent 70%),
+            radial-gradient(360px 360px at 90% 65%, var(--drawer-glow-tertiary), transparent 72%),
+            radial-gradient(520px 520px at 20% 85%, var(--drawer-glow-quaternary), transparent 75%),
+            linear-gradient(
+                    180deg,
+                    var(--drawer-bg-top) 0%,
+                    var(--drawer-bg-main) 50%,
+                    var(--drawer-bg-bottom) 100%
+            ),
             local;
-
 
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
 
-    /* MENU SCROLL */
     overflow: hidden;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -901,8 +975,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     border-radius: 32px 0 0 32px;
 
     box-shadow:
-            -28px 0 90px rgba(0, 0, 0, .65),
-            inset 0 0 0 1px rgba(255, 255, 255, .06);
+            -28px 0 90px var(--drawer-shadow-main),
+            inset 0 0 0 1px var(--drawer-border);
 
     display: flex;
     flex-direction: column;
@@ -940,15 +1014,12 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 
 .astra-nav-mobile-scroll::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, iOS */
 }
-
 
 body.nav-open {
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
 
 /* zusätzliche Tiefe / Glow – volle Höhe */
 .astra-nav-mobile::before {
@@ -957,8 +1028,8 @@ body.nav-open {
     inset: 0;
     background:
             radial-gradient(420px 320px at 50% 0%, rgba(101, 230, 206, .18), transparent 72%),
-            radial-gradient(520px 420px at 100% 100%, rgba(124, 65, 238, .26), transparent 78%),
-            radial-gradient(420px 420px at 0% 100%, rgba(101, 230, 206, .22), transparent 78%);
+            radial-gradient(520px 420px at 100% 100%, var(--drawer-glow-secondary), transparent 78%),
+            radial-gradient(420px 420px at 0% 100%, var(--drawer-glow-primary), transparent 78%);
     pointer-events: none;
     z-index: 0;
 }
@@ -967,49 +1038,28 @@ body.nav-open {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg,
-    rgba(0, 0, 0, .05) 0%,
-    rgba(0, 0, 0, .18) 65%,
-    rgba(0, 0, 0, .38) 100%);
+    background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, .05) 0%,
+            rgba(0, 0, 0, .18) 65%,
+            rgba(0, 0, 0, .38) 100%
+    );
     pointer-events: none;
     z-index: 0;
 }
 
-/* Inhalt über Bubbles */
-.astra-nav-mobile>* {
+.astra-nav-mobile > * {
     position: relative;
     z-index: 1;
 }
 
 /* =========================
-   MOBILE MENU – HERO BUBBLES
-   ========================= */
-
-.astra-nav-bubbles {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-    z-index: 0;
-}
-
-.astra-nav-bubbles svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* =========================
-   DRAWER HEADER (TITLE + X)
+   DRAWER HEADER
    ========================= */
 
 .astra-nav-mobile-header {
     position: sticky;
     top: calc(18px + env(safe-area-inset-top));
-    /* EXAKT wie Nav-Links */
     padding: 0 28px 16px;
     z-index: 20;
 
@@ -1023,10 +1073,10 @@ body.nav-open {
     font-weight: 900;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .45);
+    color: var(--drawer-title);
 }
 
-/* CLOSE X */
+/* CLOSE BUTTON */
 .astra-nav-close {
     width: 36px;
     height: 36px;
@@ -1034,7 +1084,7 @@ body.nav-open {
     border: none;
     cursor: pointer;
 
-    background: rgba(255, 255, 255, .08);
+    background: var(--drawer-close-bg);
     backdrop-filter: blur(8px);
 
     position: relative;
@@ -1052,7 +1102,7 @@ body.nav-open {
     inset: 50%;
     width: 18px;
     height: 2px;
-    background: #fff;
+    background: var(--drawer-close-icon);
     border-radius: 2px;
 }
 
@@ -1065,18 +1115,17 @@ body.nav-open {
 }
 
 .astra-nav-close:hover {
-    background: rgba(101, 230, 206, .22);
+    background: var(--drawer-close-hover-bg);
     transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 0 26px rgba(101, 230, 206, .6);
+    box-shadow: 0 0 26px var(--drawer-close-glow);
 }
 
 .astra-nav-close:active {
     transform: scale(.92);
 }
 
-
 /* =========================
-   NAV ITEMS – ASTRA CLEAN
+   NAV ITEMS
    ========================= */
 
 .astra-nav-mobile .nav-link {
@@ -1090,7 +1139,7 @@ body.nav-open {
     font-weight: 800;
     letter-spacing: .4px;
 
-    color: #eafcff;
+    color: var(--drawer-link);
     text-decoration: none;
 
     background: transparent;
@@ -1115,26 +1164,30 @@ body.nav-open {
     right: 28px;
     bottom: 0;
     height: 1px;
-    background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 255, 255, .12),
-    transparent);
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, .12),
+            transparent
+    );
 }
 
 .astra-nav-mobile .nav-link:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--drawer-link-hover-bg);
 }
 
 .astra-nav-mobile .nav-link.active {
-    background: linear-gradient(90deg,
-    rgba(101, 230, 206, 0.16),
-    transparent 70%);
+    background: linear-gradient(
+            90deg,
+            var(--drawer-link-accent-soft),
+            transparent 70%
+    );
 
-    color: #65e6ce;
+    color: var(--drawer-link-active);
 
     box-shadow:
-            inset 0 0 0 1px rgba(101, 230, 206, .35),
-            0 10px 34px rgba(101, 230, 206, .35);
+            inset 0 0 0 1px var(--drawer-link-border),
+            0 10px 34px var(--drawer-link-glow);
 
     transform: translateX(6px);
 }
@@ -1148,15 +1201,18 @@ body.nav-open {
     width: 4px;
     height: 56%;
     border-radius: 0 4px 4px 0;
-    background: linear-gradient(#65e6ce, #a7c8fd);
-    box-shadow: 0 0 18px rgba(101, 230, 206, .6);
+    background: linear-gradient(
+            var(--nav-btn-gradient-start),
+            var(--nav-btn-gradient-end)
+    );
+    box-shadow: 0 0 18px var(--drawer-link-glow);
 }
 
 .astra-nav-mobile .nav-link.active::after {
     content: "";
     position: absolute;
     inset: 0;
-    box-shadow: 0 0 26px rgba(101, 230, 206, .45);
+    box-shadow: 0 0 26px var(--drawer-link-glow);
     opacity: .6;
     pointer-events: none;
 }
@@ -1164,7 +1220,6 @@ body.nav-open {
 .astra-nav-mobile .nav-link:active {
     transform: scale(.96);
 }
-
 
 /* =========================
    CTA BUTTON
@@ -1179,17 +1234,20 @@ body.nav-open {
     font-size: 1.05em;
     font-weight: 900;
 
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
-    color: #223254;
+    background: linear-gradient(
+            90deg,
+            var(--drawer-cta-bg-start),
+            var(--drawer-cta-bg-end)
+    );
+    color: var(--drawer-cta-text);
 
-    box-shadow: 0 12px 36px rgba(101, 230, 206, 0.55);
+    box-shadow: 0 12px 36px var(--drawer-cta-glow);
     margin-bottom: 0;
 }
 
 .astra-nav-mobile .nav-btn:active {
     transform: scale(.96);
 }
-
 
 /* =========================
    OVERLAY
@@ -1198,7 +1256,7 @@ body.nav-open {
 .astra-nav-mobile-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(6, 4, 24, .7);
+    background: var(--drawer-overlay-bg);
     backdrop-filter: blur(14px);
 
     opacity: 0;
@@ -1208,9 +1266,8 @@ body.nav-open {
     transition: opacity .3s ease;
 }
 
-
 /* =========================
-   ACTIVE STATE (OPEN)
+   ACTIVE STATE
    ========================= */
 
 body.nav-open .astra-nav-mobile {
@@ -1224,44 +1281,19 @@ body.nav-open .astra-nav-mobile .nav-link {
 }
 
 /* STAGGER */
-body.nav-open .astra-nav-mobile .nav-link:nth-child(1) {
-    transition-delay: .05s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(2) {
-    transition-delay: .08s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(3) {
-    transition-delay: .11s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(4) {
-    transition-delay: .14s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(5) {
-    transition-delay: .17s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(6) {
-    transition-delay: .20s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(7) {
-    transition-delay: .23s
-}
-
-body.nav-open .astra-nav-mobile .nav-link:nth-child(8) {
-    transition-delay: .26s
-}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(1) { transition-delay: .05s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(2) { transition-delay: .08s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(3) { transition-delay: .11s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(4) { transition-delay: .14s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(5) { transition-delay: .17s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(6) { transition-delay: .20s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(7) { transition-delay: .23s }
+body.nav-open .astra-nav-mobile .nav-link:nth-child(8) { transition-delay: .26s }
 
 body.nav-open .astra-nav-mobile-overlay {
     opacity: 1;
     pointer-events: all;
 }
-
-
 
 /* ===================
       HERO SECTION
@@ -3422,73 +3454,5 @@ main.legal-main {
         display: none;
     }
 
-}
-
-
-/* =========================
-   TEST THEME – SUNSET
-   ========================= */
-
-:root[data-theme="sunset"] {
-    /* =========================
-       Base / Background
-       ========================= */
-    --bg-main: #2a0f1f;
-
-    /* =========================
-       Text
-       ========================= */
-    --text-main: #fff3f7;
-    --text-heading: #ffe0ea;
-    --text-link: #ff9fcf;
-    --text-link-hover: #ffd1e6;
-
-    /* =========================
-       Scrollbar
-       ========================= */
-    --scrollbar-bg: #3b132a;
-    --scrollbar-thumb: #ff5fa2;
-
-    /* =========================
-       Selection
-       ========================= */
-    --selection-bg: #ff5fa2;
-    --selection-text: #2a0f1f;
-
-    /* =========================
-       HEADER / NAV
-       ========================= */
-    --header-bg: #3b132a;
-    --header-shadow: rgba(255, 95, 162, .35);
-
-    /* =========================
-       Language Button
-       ========================= */
-    --lang-btn-bg: rgba(255, 255, 255, .10);
-    --lang-btn-border: rgba(255, 255, 255, .22);
-    --lang-btn-shadow: rgba(0, 0, 0, .45);
-
-    /* =========================
-       Accents
-       ========================= */
-    --lang-accent: #ff5fa2;
-    --lang-accent-soft: rgba(255, 95, 162, .35);
-    --lang-accent-strong: rgba(255, 95, 162, .9);
-    --lang-accent-max: rgba(255, 95, 162, 1);
-
-    /* =========================
-       Icons
-       ========================= */
-    --icon-main: #ffffff;
-    --icon-secondary: #ffd1e6;
-
-    /* =========================
-       Dropdown
-       ========================= */
-    --lang-dropdown-bg-top: rgba(64, 18, 45, .98);
-    --lang-dropdown-bg-bottom: rgba(42, 15, 31, .98);
-    --lang-dropdown-text: #ffe0ea;
-    --lang-dropdown-text-hover: #ffffff;
-    --lang-dropdown-text-active: #2a0f1f;
 }
 
