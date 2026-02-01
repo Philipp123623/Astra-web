@@ -387,6 +387,43 @@
     --msg-error-bg: rgba(255, 114, 114, 0.18);
     --msg-error-text: #ff7272;
 
+
+    /* =========================
+   ERROR / FOOTER / LEGAL TOKENS
+   ========================= */
+
+    --hero-shadow-soft: rgba(91, 101, 255, 0.26);
+    --hero-shadow-strong: rgba(91, 101, 255, 0.35);
+    --hero-glow-mint: rgba(96, 233, 203, 0.25);
+    --hero-border-soft: rgba(255, 255, 255, 0.05);
+
+    --text-muted: #d7f3ff;
+    --text-soft: #cfe7ff;
+
+    --accent-primary: #65e6ce;
+    --accent-secondary: #a7c8fd;
+    --accent-green-soft: #7dfad7;
+
+    --error-glow-primary: rgba(101, 230, 206, 0.55);
+    --error-glow-secondary: rgba(124, 65, 238, 0.35);
+
+    --footer-bg-top: #1e1b4f;
+    --footer-bg-bottom: #251f5b;
+    --footer-text-main: #eafcff;
+    --footer-text-muted: #cfe7ff;
+    --footer-text-soft: #9fb3d9;
+    --footer-link: #bcdcff;
+    --footer-link-hover: #7dfad7;
+
+    --legal-card-bg-top: rgba(42, 50, 111, 0.65);
+    --legal-card-bg-bottom: rgba(32, 38, 90, 0.55);
+    --legal-shadow-dark: rgba(0, 0, 0, 0.45);
+    --legal-glow-soft: rgba(101, 230, 206, 0.18);
+
+    --chip-bg: rgba(101, 230, 206, 0.2);
+    --chip-border: rgba(101, 230, 206, 0.45);
+    --chip-text: #bffcff;
+
 }
 
 
@@ -2840,15 +2877,17 @@ main.report-main {
     border-radius: 38px;
     overflow: hidden;
 
-    background: linear-gradient(115deg,
-    #251f5b 0%,
-    #362897 65%,
-    #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--hero-bg-start) 0%,
+            var(--hero-bg-mid) 65%,
+            var(--hero-bg-end) 160%
+    );
 
     box-shadow:
-            0 12px 48px #5b65ff2a,
-            0 0 90px rgba(96, 233, 203, 0.25),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            0 12px 48px var(--hero-shadow-soft),
+            0 0 90px var(--hero-glow-mint),
+            inset 0 0 0 1px var(--hero-border-soft);
 }
 
 /* BUBBLES */
@@ -2869,7 +2908,7 @@ main.report-main {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #eafcff;
+    color: var(--text-main);
 }
 
 /* 404 TEXT */
@@ -2879,13 +2918,17 @@ main.report-main {
     letter-spacing: 0.08em;
     margin-bottom: 12px;
 
-    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
+    background: linear-gradient(
+            90deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     text-shadow:
-            0 0 18px rgba(101, 230, 206, 0.55),
-            0 0 38px rgba(124, 65, 238, 0.35);
+            0 0 18px var(--error-glow-primary),
+            0 0 38px var(--error-glow-secondary);
 }
 
 .error-hero-content h1 {
@@ -2895,7 +2938,7 @@ main.report-main {
 
 .error-hero-content p {
     font-size: 1.1rem;
-    color: #cfe7ff;
+    color: var(--text-soft);
     line-height: 1.6;
     margin-bottom: 36px;
 }
@@ -2914,7 +2957,6 @@ main.report-main {
 
 body.error-layout .error-page {
     padding-top: 68px;
-    /* exakt Header-Höhe */
 }
 
 body.error-layout .astra-header {
@@ -2923,15 +2965,18 @@ body.error-layout .astra-header {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
-
 /* =========================
    ASTRA FOOTER – FORCE FIX
    ========================= */
 
 footer.astra-footer {
     width: 100%;
-    background: linear-gradient(180deg, #1e1b4f, #251f5b);
-    color: #eafcff;
+    background: linear-gradient(
+            180deg,
+            var(--footer-bg-top),
+            var(--footer-bg-bottom)
+    );
+    color: var(--footer-text-main);
     margin-top: 0;
     padding: 0;
 }
@@ -2969,18 +3014,18 @@ footer.astra-footer {
 }
 
 .astra-footer-logo strong {
-    color: #65e6ce;
+    color: var(--accent-primary);
 }
 
 .astra-footer-text {
-    color: #cfe7ff;
+    color: var(--footer-text-muted);
     line-height: 1.5;
     max-width: 360px;
 }
 
 .astra-footer-copy {
     font-size: 0.9em;
-    color: #9fb3d9;
+    color: var(--footer-text-soft);
 }
 
 /* Links */
@@ -2994,13 +3039,13 @@ footer.astra-footer {
 .astra-footer-links a {
     display: block;
     margin-bottom: 10px;
-    color: #bcdcff;
+    color: var(--footer-link);
     text-decoration: none;
     font-weight: 500;
 }
 
 .astra-footer-links a:hover {
-    color: #7dfad7;
+    color: var(--footer-link-hover);
     transform: translateX(4px);
 }
 
@@ -3009,10 +3054,12 @@ footer.astra-footer::before {
     display: block;
     height: 1px;
     width: 100%;
-    background: linear-gradient(90deg,
-    transparent,
-    rgba(125, 250, 215, 0.55),
-    transparent);
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(125, 250, 215, 0.55),
+            transparent
+    );
     box-shadow: 0 0 14px rgba(125, 250, 215, 0.35);
 }
 
@@ -3030,17 +3077,19 @@ main.legal-main {
 
 .legal-hero-card {
     position: relative;
-    background: linear-gradient(115deg,
-    #251f5b 0%,
-    #362897 65%,
-    #3fd6dd 160%);
+    background: linear-gradient(
+            115deg,
+            var(--hero-bg-start) 0%,
+            var(--hero-bg-mid) 65%,
+            var(--hero-bg-end) 160%
+    );
     border-radius: 40px;
     padding: 0;
     overflow: hidden;
     margin-bottom: 64px;
 
     box-shadow:
-            0 20px 70px rgba(91, 101, 255, 0.35),
+            0 20px 70px var(--hero-shadow-strong),
             0 0 120px rgba(101, 230, 206, 0.25),
             inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
@@ -3054,15 +3103,15 @@ main.legal-main {
 .legal-hero-content h1 {
     font-size: 2.7em;
     font-weight: 900;
-    color: #65e6ce;
+    color: var(--accent-primary);
     margin-bottom: 12px;
     letter-spacing: .05em;
-    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
+    text-shadow: 0 0 22px var(--error-glow-primary);
 }
 
 .legal-hero-desc {
     font-size: 1.15em;
-    color: #d7f3ff;
+    color: var(--text-muted);
     max-width: 760px;
     line-height: 1.55;
 }
@@ -3080,7 +3129,7 @@ main.legal-main {
     font-size: 0.95em;
     font-weight: 800;
     background: rgba(255, 255, 255, 0.12);
-    color: #cfefff;
+    color: var(--text-soft);
     box-shadow:
             inset 0 0 0 1px rgba(255, 255, 255, 0.12),
             0 0 18px rgba(101, 230, 206, 0.25);
@@ -3091,15 +3140,17 @@ main.legal-main {
    ========================================================= */
 
 .legal-main-card {
-    background: linear-gradient(180deg,
-    rgba(42, 50, 111, 0.65),
-    rgba(32, 38, 90, 0.55));
+    background: linear-gradient(
+            180deg,
+            var(--legal-card-bg-top),
+            var(--legal-card-bg-bottom)
+    );
     border-radius: 36px;
     padding: 58px 62px;
 
     box-shadow:
-            0 24px 80px rgba(0, 0, 0, 0.45),
-            0 0 120px rgba(101, 230, 206, 0.18),
+            0 24px 80px var(--legal-shadow-dark),
+            0 0 120px var(--legal-glow-soft),
             inset 0 0 0 1px rgba(255, 255, 255, 0.06);
     box-sizing: border-box;
 }
@@ -3119,7 +3170,7 @@ main.legal-main {
 .legal-section h2 {
     font-size: 1.55em;
     font-weight: 900;
-    color: #7dfad7;
+    color: var(--accent-green-soft);
     margin-bottom: 18px;
     display: flex;
     align-items: center;
@@ -3128,7 +3179,7 @@ main.legal-main {
 }
 
 .legal-text {
-    color: #eafcff;
+    color: var(--text-main);
     line-height: 1.6;
     max-width: 900px;
 }
@@ -3151,13 +3202,13 @@ main.legal-main {
 }
 
 .legal-label {
-    color: #a7c8fd;
+    color: var(--accent-secondary);
     font-weight: 800;
     letter-spacing: .4px;
 }
 
 .legal-value {
-    color: #eafcff;
+    color: var(--text-main);
     line-height: 1.55;
 }
 
@@ -3168,7 +3219,7 @@ main.legal-main {
 .legal-list {
     margin: 14px 0 0 22px;
     line-height: 1.6;
-    color: #eafcff;
+    color: var(--text-main);
 }
 
 /* =========================================================
@@ -3178,10 +3229,12 @@ main.legal-main {
 .legal-divider {
     height: 1px;
     margin: 42px 0;
-    background: linear-gradient(90deg,
-    transparent,
-    rgba(125, 250, 215, 0.55),
-    transparent);
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(125, 250, 215, 0.55),
+            transparent
+    );
     box-shadow: 0 0 22px rgba(125, 250, 215, 0.45);
 }
 
@@ -3230,13 +3283,13 @@ main.legal-main {
 .legal-mini-card h3 {
     font-size: 1.25em;
     font-weight: 900;
-    color: #7dfad7;
+    color: var(--accent-green-soft);
     margin-bottom: 16px;
 }
 
 .legal-mini-card ul {
     margin: 0 0 18px 20px;
-    color: #eafcff;
+    color: var(--text-main);
     line-height: 1.55;
 }
 
@@ -3247,10 +3300,10 @@ main.legal-main {
     border-radius: 999px;
     font-size: .9em;
     font-weight: 800;
-    background: rgba(101, 230, 206, 0.2);
-    color: #bffcff;
+    background: var(--chip-bg);
+    color: var(--chip-text);
     box-shadow:
-            inset 0 0 0 1px rgba(101, 230, 206, 0.45),
+            inset 0 0 0 1px var(--chip-border),
             0 0 16px rgba(101, 230, 206, 0.35);
 }
 
@@ -3290,7 +3343,7 @@ main.legal-main {
 .legal-side-card h3 {
     font-size: 1.3em;
     font-weight: 900;
-    color: #7dfad7;
+    color: var(--accent-green-soft);
     margin-bottom: 14px;
     text-shadow: 0 0 14px rgba(125, 250, 215, 0.35);
 }
@@ -3300,6 +3353,7 @@ main.legal-main {
     display: inline-flex;
     align-items: center;
 }
+
 
 /* =========================================================
    MOBILE + TABLET – FINAL CLEAN OVERRIDE
