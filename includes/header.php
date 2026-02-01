@@ -51,6 +51,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </button>
 
             <div class="lang-dropdown">
+
                 <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">
                     <svg class="lang-text-icon" viewBox="0 0 32 20" aria-hidden="true">
                         <rect x="1" y="1" width="30" height="18" rx="6" />
@@ -66,7 +67,25 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                     </svg>
                     English
                 </a>
+
+                <a href="?lang=fr" class="<?= $lang === 'fr' ? 'active' : '' ?>">
+                    <svg class="lang-text-icon" viewBox="0 0 32 20" aria-hidden="true">
+                        <rect x="1" y="1" width="30" height="18" rx="6" />
+                        <text x="16" y="14">FR</text>
+                    </svg>
+                    Français
+                </a>
+
+                <a href="?lang=es" class="<?= $lang === 'es' ? 'active' : '' ?>">
+                    <svg class="lang-text-icon" viewBox="0 0 32 20" aria-hidden="true">
+                        <rect x="1" y="1" width="30" height="18" rx="6" />
+                        <text x="16" y="14">ES</text>
+                    </svg>
+                    Español
+                </a>
+
             </div>
+
         </div>
 
     </div>
