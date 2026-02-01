@@ -133,12 +133,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
         const accordion = document.getElementById('commandsAccordion');
         accordion.innerHTML = '';
 
-        Object.entries(data).forEach(([category, catData]) => {
+        Object.entries(data).forEach(([key, catData]) => {
             const count = catData.commands.length;
 
             const categoryEl = document.createElement('div');
             categoryEl.className = 'command-category';
-            categoryEl.dataset.filterKey = catData.key;
+            categoryEl.dataset.filterKey = key;
+
+            // ✅ HEADER (nur einmal!)
+            categoryEl.innerHTML = `
+            <button class="command-category-header">
+                ${getIcon(key)} ${catData.title}
+                <span>${count} Commands</span>
+            </button>
+        `;
 
             const body = document.createElement('div');
             body.className = 'command-category-body';
@@ -147,30 +155,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 const item = document.createElement('div');
                 item.className = 'command-item';
 
-                const name = document.createElement('div');
-                name.className = 'cmd-name';
-                name.textContent = cmd.name;
+                item.innerHTML = `
+                <div class="cmd-name">${cmd.name}</div>
+                <div class="cmd-desc">${cmd.description}</div>
+                <div class="cmd-usage">${cmd.usage}</div>
+            `;
 
-                const desc = document.createElement('div');
-                desc.className = 'cmd-desc';
-                desc.textContent = cmd.description;
-
-                const usage = document.createElement('div');
-                usage.className = 'cmd-usage';
-                usage.textContent = cmd.usage;
-
-                item.appendChild(name);
-                item.appendChild(desc);
-                item.appendChild(usage);
                 body.appendChild(item);
             });
-
-            categoryEl.innerHTML = `
-                <button class="command-category-header">
-                    ${getIcon(catData.key)} ${category}
-                    <span>${count} Commands</span>
-                </button>
-            `;
 
             categoryEl.appendChild(body);
             accordion.appendChild(categoryEl);
@@ -178,6 +170,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         initAccordion();
     }
+
 
     /* ============================
        ICONS

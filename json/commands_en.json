@@ -1,5 +1,6 @@
 {
-  "Moderation": {
+  "moderation": {
+    "title": "Moderation",
     "description": "Classic moderation commands",
     "commands": [
       { "name": "/kick", "description": "Kick a user from the server.", "usage": "/kick <user> <reason>" },
@@ -10,7 +11,8 @@
     ]
   },
 
-  "Levelsystem": {
+  "level": {
+    "title": "Level System",
     "description": "Level system & XP",
     "commands": [
       { "name": "/levelsystem", "description": "Everything about the level system.", "usage": "/levelsystem" },
@@ -28,7 +30,8 @@
     ]
   },
 
-  "Giveaways": {
+  "giveaways": {
+    "title": "Giveaways",
     "description": "Giveaways & community events",
     "commands": [
       { "name": "/giveaway", "description": "Everything about giveaways.", "usage": "/giveaway" },
@@ -37,7 +40,8 @@
     ]
   },
 
-  "Settings": {
+  "settings": {
+    "title": "Settings",
     "description": "Server settings & tools",
     "commands": [
       { "name": "/afk", "description": "Set yourself as AFK.", "usage": "/afk [reason]" },
@@ -53,7 +57,8 @@
     ]
   },
 
-  "Ticket": {
+  "ticket": {
+    "title": "Ticket",
     "description": "Ticket system & support",
     "commands": [
       { "name": "/ticket", "description": "Everything about the ticket system.", "usage": "/ticket" },
@@ -65,7 +70,8 @@
     ]
   },
 
-  "Automoderation": {
+  "automoderation": {
+    "title": "Automoderation",
     "description": "Automated moderation",
     "commands": [
       { "name": "/warn", "description": "Warn a user.", "usage": "/warn <member> <reason>" },
@@ -80,7 +86,8 @@
     ]
   },
 
-  "Information": {
+  "information": {
+    "title": "Information",
     "description": "Information & bot data",
     "commands": [
       { "name": "/help", "description": "Show all commands.", "usage": "/help" },
@@ -99,7 +106,8 @@
     ]
   },
 
-  "Fun": {
+  "fun": {
+    "title": "Fun",
     "description": "Fun & entertainment",
     "commands": [
       { "name": "/wanted", "description": "Wanted poster.", "usage": "/wanted [member]" },
@@ -120,7 +128,8 @@
     ]
   },
 
-  "Economy": {
+  "economy": {
+    "title": "Economy",
     "description": "Economy & jobs",
     "commands": [
       { "name": "/eco", "description": "Economy system.", "usage": "/eco" },
@@ -142,7 +151,8 @@
     ]
   },
 
-  "Messages": {
+  "messages": {
+    "title": "Messages",
     "description": "Messages & notifications",
     "commands": [
       { "name": "/joinmsg", "description": "Join message.", "usage": "/joinmsg <argument> [channel]" },
@@ -156,7 +166,8 @@
     ]
   },
 
-  "Minigames": {
+  "minigames": {
+    "title": "Minigames",
     "description": "Games & minigames",
     "commands": [
       { "name": "/hangman", "description": "Hangman game.", "usage": "/hangman" },
@@ -169,7 +180,8 @@
     ]
   },
 
-  "Backups": {
+  "backups": {
+    "title": "Backups",
     "description": "Server backups",
     "commands": [
       { "name": "/backup", "description": "Backup system.", "usage": "/backup" },
@@ -184,7 +196,8 @@
     ]
   },
 
-  "Birthdays": {
+  "birthdays": {
+    "title": "Birthdays",
     "description": "Birthdays",
     "commands": [
       { "name": "/birthday", "description": "Birthday system.", "usage": "/birthday" },
