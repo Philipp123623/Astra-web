@@ -191,6 +191,19 @@ if (file_exists($historyFile)) {
         <div class="uptime-chart" role="tabpanel" id="uptime-detail" aria-labelledby="tab-btn-detail">
             <h2 class="uptime-chart-title"><?= $t['uptime_12h_title'] ?></h2>
             <div class="uptime-bar-row" id="uptimeBarRowDetail">
+                <?php foreach ($history_12h as $idx => $entry):
+                    $class = $entry['status'] ? 'online' : 'offline';
+                    $ts = $entry['timestamp'];
+                    $statusStr = $entry['status'] ? $t['online'] : $t['offline'];
+                    $dateStr = date("d.m. H:i", $ts);
+                    echo '<div class="uptime-bar '.$class.'" data-idx="'.$idx.'" data-status="'.$statusStr.'" data-time="'.$dateStr.'" tabindex="0"></div>';
+                endforeach; ?>
+            </div>
+        </div>
+
+        <div class="uptime-chart" role="tabpanel" id="uptime-tage" aria-labelledby="tab-btn-tage" style="display:none;">
+            <h2 class="uptime-chart-title"><?= $t['uptime_30d_title'] ?></h2>
+            <div class="uptime-bar-row-day" id="uptimeBarRowTage">
                 <?php foreach ($history_30d as $entry):
                     $p = $entry['percent'];
                     $dateStr = date("d.m.", strtotime($entry['date']));
@@ -220,26 +233,6 @@ if (file_exists($historyFile)) {
         ({$entry['online']}/{$entry['total']})
     ";
 
-                    echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
-                endforeach; ?>
-            </div>
-        </div>
-
-        <div class="uptime-chart" role="tabpanel" id="uptime-tage" aria-labelledby="tab-btn-tage" style="display:none;">
-            <h2 class="uptime-chart-title"><?= $t['uptime_30d_title'] ?></h2>
-            <div class="uptime-bar-row-day" id="uptimeBarRowTage">
-                <?php foreach ($history_30d as $entry):
-                    $p = $entry['percent'];
-                    $dateStr = date("d.m.", strtotime($entry['date']));
-                    if ($p >= 99.95) $class = 'perfect';
-                    elseif ($p >= 98.0) $class = 'good';
-                    elseif ($p >= 90.0) $class = 'warn';
-                    else $class = 'bad';
-                    $tooltip =
-                        "<b>{$dateStr}</b><br>" .
-                        "{$t['status']}: {$t['online']}<br>" .
-                        "{$t['uptime_popup_title']} " . round($p, 2) . "%<br>" .
-                        "({$entry['online']}/{$entry['total']})";
                     echo '<div class="uptime-bar-day '.$class.'" title="'.$tooltip.'" tabindex="0"></div>';
                 endforeach; ?>
             </div>
