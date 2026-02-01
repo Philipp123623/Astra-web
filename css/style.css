@@ -416,7 +416,10 @@ a:hover { color: #ffd799; }
 }
 
 .lang-dropdown a.active {
-    background: linear-gradient(90deg,#65e6ce,#a7c
+    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    color: #223254;
+    box-shadow: 0 0 0 2px rgba(101,230,206,0.35);
+}
 
 
 .astra-logo {
