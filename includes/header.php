@@ -52,11 +52,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
             <div class="lang-dropdown">
                 <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">
-                    <span class="flag de"></span>
+                    <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 6h16M4 12h10M4 18h16" />
+                    </svg>
                     Deutsch
                 </a>
+
                 <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">
-                    <span class="flag en"></span>
+                    <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3v18M3 12h18" />
+                        <circle cx="12" cy="12" r="9" />
+                    </svg>
                     English
                 </a>
             </div>
