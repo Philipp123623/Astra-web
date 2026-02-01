@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <title>Astra Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Base / Theme -->
-    <link rel="stylesheet" href="/assets/css/themes.css">
-
-    <!-- Dashboard CSS -->
-    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=2.4"/>
 </head>
 
 <body>
