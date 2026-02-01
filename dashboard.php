@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<?php include "includes/header.php"; ?>
 
 <div class="dashboard">
 
@@ -94,6 +95,6 @@
     </main>
 
 </div>
-
+<?php include "includes/footer.php"; ?>
 </body>
 </html>
