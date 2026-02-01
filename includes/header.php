@@ -28,6 +28,10 @@
             <span></span>
             <span></span>
         </button>
+        <div class="lang-switch">
+            <a href="?lang=de">🇩🇪 DE</a>
+            <a href="?lang=en">🇬🇧 EN</a>
+        </div>
 
     </div>
 </header>
