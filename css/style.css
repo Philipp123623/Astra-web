@@ -2944,6 +2944,315 @@ main.report-main {
     color: var(--msg-error-text);
 }
 
+/* =========================================================
+   ASTRA DASHBOARD – THEME COMPATIBLE
+   ========================================================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+
+    background: var(--bg-main);
+    color: var(--text-main);
+
+    font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.dashboard-sidebar {
+    background: linear-gradient(
+            180deg,
+            var(--drawer-bg-top),
+            var(--drawer-bg-main),
+            var(--drawer-bg-bottom)
+    );
+
+    border-right: 1px solid var(--drawer-border);
+
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,.04),
+            12px 0 40px rgba(0,0,0,.45);
+
+    padding: 26px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Logo */
+.dashboard-logo {
+    font-size: 1.5em;
+    font-weight: 900;
+    letter-spacing: .08em;
+    color: var(--logo-text);
+}
+
+.dashboard-logo span {
+    color: var(--logo-accent);
+}
+
+/* =========================================================
+   SIDEBAR NAV
+   ========================================================= */
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 38px;
+}
+
+.dashboard-nav a {
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    font-weight: 800;
+    font-size: 1.05em;
+    text-decoration: none;
+
+    color: var(--drawer-link);
+
+    transition:
+            background .16s ease,
+            color .16s ease,
+            transform .14s ease,
+            box-shadow .16s ease;
+}
+
+.dashboard-nav a:hover {
+    background: var(--drawer-link-hover-bg);
+    transform: translateX(6px);
+}
+
+.dashboard-nav a.active {
+    background: linear-gradient(
+            90deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+    );
+
+    color: var(--nav-btn-text);
+
+    box-shadow:
+            0 10px 30px var(--drawer-link-glow),
+            inset 0 0 0 1px var(--drawer-link-border);
+}
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+
+.dashboard-sidebar-footer {
+    font-size: .9em;
+    color: var(--text-soft);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-status {
+    font-weight: 900;
+    color: var(--accent-primary);
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.dashboard-content {
+    padding: 34px 42px;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.1em;
+    font-weight: 900;
+    color: var(--text-heading);
+    margin: 0;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.dashboard-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.dashboard-btn {
+    padding: 12px 22px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: 900;
+    font-size: 1em;
+
+    transition:
+            transform .14s ease,
+            box-shadow .16s ease,
+            filter .14s ease;
+}
+
+.dashboard-btn.primary {
+    background: linear-gradient(
+            90deg,
+            var(--nav-btn-gradient-start),
+            var(--nav-btn-gradient-end)
+    );
+    color: var(--nav-btn-text);
+
+    box-shadow: 0 8px 30px var(--nav-btn-shadow);
+}
+
+.dashboard-btn.primary:hover {
+    box-shadow: 0 14px 42px var(--nav-btn-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.dashboard-btn.secondary {
+    background: var(--card-bg-soft);
+    color: var(--text-main);
+
+    box-shadow: 0 6px 22px var(--card-shadow-soft);
+}
+
+.dashboard-btn.secondary:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+    margin-bottom: 42px;
+}
+
+.dashboard-stat {
+    background: var(--stat-bg);
+    border-radius: 22px;
+    padding: 26px 24px;
+
+    box-shadow:
+            0 10px 36px var(--card-shadow-soft),
+            inset 0 0 0 1px rgba(255,255,255,.06);
+
+    transition:
+            transform .16s ease,
+            box-shadow .16s ease;
+}
+
+.dashboard-stat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 52px var(--card-shadow-strong);
+}
+
+.dashboard-stat span {
+    font-size: .9em;
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.dashboard-stat strong {
+    display: block;
+    margin-top: 8px;
+
+    font-size: 1.9em;
+    font-weight: 900;
+    color: var(--stat-number);
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.dashboard-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.dashboard-panel {
+    background: linear-gradient(
+            180deg,
+            var(--card-bg-soft),
+            var(--card-bg-strong)
+    );
+
+    border-radius: 26px;
+    padding: 28px 30px;
+
+    box-shadow:
+            0 14px 46px var(--card-shadow-strong),
+            inset 0 0 0 1px rgba(255,255,255,.06);
+}
+
+.dashboard-panel h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+
+    font-size: 1.25em;
+    font-weight: 900;
+    color: var(--accent-primary);
+}
+
+.dashboard-panel p,
+.dashboard-panel li {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-right: none;
+        border-bottom: 1px solid var(--drawer-border);
+    }
+
+    .dashboard-content {
+        padding: 28px 20px;
+    }
+
+    .dashboard-panels {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
 /* =========================
    404 ERROR PAGE – HERO STYLE
    ========================= */
