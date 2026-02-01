@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="sunset">>
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -75,7 +75,7 @@ if ($result->num_rows > 0) {
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
 </head>
-<body class="light">
+<body>
 
 <div id="astra-loader">
     <div class="astra-loader-bg"></div>

@@ -3423,3 +3423,72 @@ main.legal-main {
     }
 
 }
+
+
+/* =========================
+   TEST THEME – SUNSET
+   ========================= */
+
+:root[data-theme="sunset"] {
+    /* =========================
+       Base / Background
+       ========================= */
+    --bg-main: #2a0f1f;
+
+    /* =========================
+       Text
+       ========================= */
+    --text-main: #fff3f7;
+    --text-heading: #ffe0ea;
+    --text-link: #ff9fcf;
+    --text-link-hover: #ffd1e6;
+
+    /* =========================
+       Scrollbar
+       ========================= */
+    --scrollbar-bg: #3b132a;
+    --scrollbar-thumb: #ff5fa2;
+
+    /* =========================
+       Selection
+       ========================= */
+    --selection-bg: #ff5fa2;
+    --selection-text: #2a0f1f;
+
+    /* =========================
+       HEADER / NAV
+       ========================= */
+    --header-bg: #3b132a;
+    --header-shadow: rgba(255, 95, 162, .35);
+
+    /* =========================
+       Language Button
+       ========================= */
+    --lang-btn-bg: rgba(255, 255, 255, .10);
+    --lang-btn-border: rgba(255, 255, 255, .22);
+    --lang-btn-shadow: rgba(0, 0, 0, .45);
+
+    /* =========================
+       Accents
+       ========================= */
+    --lang-accent: #ff5fa2;
+    --lang-accent-soft: rgba(255, 95, 162, .35);
+    --lang-accent-strong: rgba(255, 95, 162, .9);
+    --lang-accent-max: rgba(255, 95, 162, 1);
+
+    /* =========================
+       Icons
+       ========================= */
+    --icon-main: #ffffff;
+    --icon-secondary: #ffd1e6;
+
+    /* =========================
+       Dropdown
+       ========================= */
+    --lang-dropdown-bg-top: rgba(64, 18, 45, .98);
+    --lang-dropdown-bg-bottom: rgba(42, 15, 31, .98);
+    --lang-dropdown-text: #ffe0ea;
+    --lang-dropdown-text-hover: #ffffff;
+    --lang-dropdown-text-active: #2a0f1f;
+}
+
