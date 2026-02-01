@@ -3,7 +3,8 @@
    ========================= */
 
 :root {
-    --header-height: 68px;   /* Desktop Header */
+    --header-height: 68px;
+    /* Desktop Header */
     --header-height-mobile: 56px;
 }
 
@@ -50,11 +51,11 @@ main {
 }
 
 /* === EINHEITLICHER STARTABSTAND FÜR ALLE SEITEN === */
-main > *:first-child {
+main>*:first-child {
     margin-top: 36px;
 }
 
-main > *:first-child > *:first-child {
+main>*:first-child>*:first-child {
     margin-top: 36px;
 }
 
@@ -70,15 +71,43 @@ h1, h2, h3, h4 {
     color: #f4faff;
     margin-bottom: 10px;
 }
-h1 { font-size: 2.9em; line-height: 1.13; }
-h2 { font-size: 2.1em; }
-ul { padding-left: 23px; }
-a { color: #7dfad7; transition: color 0.16s; }
-a:hover { color: #ffd799; }
 
-::-webkit-scrollbar { width: 10px; background: #2a2463; }
-::-webkit-scrollbar-thumb { background: #362897; border-radius: 6px; }
-::selection { background: #72ffe2; color: #2a2463; }
+h1 {
+    font-size: 2.9em;
+    line-height: 1.13;
+}
+
+h2 {
+    font-size: 2.1em;
+}
+
+ul {
+    padding-left: 23px;
+}
+
+a {
+    color: #7dfad7;
+    transition: color 0.16s;
+}
+
+a:hover {
+    color: #ffd799;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #2a2463;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #362897;
+    border-radius: 6px;
+}
+
+::selection {
+    background: #72ffe2;
+    color: #2a2463;
+}
 
 
 /* =========================
@@ -103,16 +132,24 @@ a:hover { color: #ffd799; }
     position: absolute;
     inset: -20%;
     background:
-            radial-gradient(600px 600px at 20% 20%, rgba(101,230,206,.35), transparent 70%),
-            radial-gradient(700px 700px at 80% 80%, rgba(124,65,238,.45), transparent 75%),
-            linear-gradient(180deg,#120f2f,#1e1a4f);
+            radial-gradient(600px 600px at 20% 20%, rgba(101, 230, 206, .35), transparent 70%),
+            radial-gradient(700px 700px at 80% 80%, rgba(124, 65, 238, .45), transparent 75%),
+            linear-gradient(180deg, #120f2f, #1e1a4f);
     animation: bgFloat 10s ease-in-out infinite;
 }
 
 @keyframes bgFloat {
-    0% { transform: scale(1) translateY(0); }
-    50% { transform: scale(1.08) translateY(-12px); }
-    100% { transform: scale(1) translateY(0); }
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.08) translateY(-12px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
 }
 
 /* Center core */
@@ -124,8 +161,13 @@ a:hover { color: #ffd799; }
 }
 
 @keyframes coreFloat {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Rotating glow ring */
@@ -134,20 +176,20 @@ a:hover { color: #ffd799; }
     inset: -42px;
     border-radius: 50%;
     background:
-            conic-gradient(
-                    from 0deg,
-                    #65e6ce,
-                    #a7c8fd,
-                    #7c41ee,
-                    #65e6ce
-            );
+            conic-gradient(from 0deg,
+            #65e6ce,
+            #a7c8fd,
+            #7c41ee,
+            #65e6ce);
     filter: blur(18px);
     opacity: .85;
     animation: spin 4.8s linear infinite;
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Logo */
@@ -159,36 +201,47 @@ a:hover { color: #ffd799; }
 
     background: #120f2f;
     box-shadow:
-            0 0 40px rgba(101,230,206,.6),
-            0 0 90px rgba(124,65,238,.4);
+            0 0 40px rgba(101, 230, 206, .6),
+            0 0 90px rgba(124, 65, 238, .4);
 
     animation: logoPulse 2.4s ease-in-out infinite;
 }
 
 @keyframes logoPulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.06); }
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
 }
 
 .astra-loader-text {
     display: block;
     margin-top: 28px;
 
-    font-size: 1.05em;              /* ⬅ größer */
+    font-size: 1.05em;
+    /* ⬅ größer */
     font-weight: 900;
     letter-spacing: .32em;
     text-transform: uppercase;
 
-    color: rgba(234,252,255,.9);
+    color: rgba(234, 252, 255, .9);
     text-shadow:
-            0 0 18px rgba(101,230,206,.35);
+            0 0 18px rgba(101, 230, 206, .35);
 
     animation: textPulse 2.2s ease-in-out infinite;
 }
 
 @keyframes textPulse {
-    0%,100% { opacity: .85; }
-    50%     { opacity: 1; }
+    0%, 100% {
+        opacity: .85;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 
@@ -218,12 +271,10 @@ a:hover { color: #ffd799; }
     height: 160px;
     border-radius: 50%;
 
-    background: radial-gradient(
-            circle at 30% 30%,
-            rgba(101,230,206,.45),
-            rgba(124,65,238,.25),
-            transparent 70%
-    );
+    background: radial-gradient(circle at 30% 30%,
+    rgba(101, 230, 206, .45),
+    rgba(124, 65, 238, .25),
+    transparent 70%);
 
     filter: blur(12px);
     opacity: .55;
@@ -237,24 +288,28 @@ a:hover { color: #ffd799; }
     height: 220px;
     animation-duration: 22s;
 }
+
 .astra-loader-bubbles span:nth-child(2) {
     left: 30%;
     width: 140px;
     height: 140px;
     animation-duration: 18s;
 }
+
 .astra-loader-bubbles span:nth-child(3) {
     left: 55%;
     width: 260px;
     height: 260px;
     animation-duration: 26s;
 }
+
 .astra-loader-bubbles span:nth-child(4) {
     left: 75%;
     width: 180px;
     height: 180px;
     animation-duration: 20s;
 }
+
 .astra-loader-bubbles span:nth-child(5) {
     left: 90%;
     width: 120px;
@@ -267,7 +322,11 @@ a:hover { color: #ffd799; }
         transform: translateY(0) scale(1);
         opacity: .0;
     }
-    10% { opacity: .6; }
+
+    10% {
+        opacity: .6;
+    }
+
     100% {
         transform: translateY(-140vh) scale(1.2);
         opacity: 0;
@@ -298,8 +357,10 @@ a:hover { color: #ffd799; }
     justify-content: space-between;
     height: 68px;
     padding: 0 38px;
-    flex-shrink: 0;          /* ⛔ darf nicht schrumpfen */
-    white-space: nowrap;     /* ⛔ kein Zeilenumbruch */
+    flex-shrink: 0;
+    /* ⛔ darf nicht schrumpfen */
+    white-space: nowrap;
+    /* ⛔ kein Zeilenumbruch */
 }
 
 /* =========================
@@ -309,7 +370,8 @@ a:hover { color: #ffd799; }
 
 .lang-switch {
     position: relative;
-    isolation: isolate;        /* 🔥 trennt Render-Layer */
+    isolation: isolate;
+    /* 🔥 trennt Render-Layer */
     transform: none !important;
     width: 44px;
     height: 44px;
@@ -317,7 +379,8 @@ a:hover { color: #ffd799; }
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10030;     /* über Hamburger */
+    z-index: 10030;
+    /* über Hamburger */
     pointer-events: auto;
 }
 
@@ -339,15 +402,15 @@ body.nav-open .lang-switch * {
     border: none;
     cursor: pointer;
 
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,.14),
-            0 4px 18px rgba(0,0,0,.35);
+            inset 0 0 0 1px rgba(255, 255, 255, .14),
+            0 4px 18px rgba(0, 0, 0, .35);
 
     transition:
             background .2s ease,
@@ -389,16 +452,16 @@ body.nav-open .lang-switch * {
    ========================= */
 
 .lang-btn:hover {
-    background: rgba(101,230,206,.18);
+    background: rgba(101, 230, 206, .18);
     box-shadow:
-            inset 0 0 0 1px rgba(101,230,206,.35),
-            0 6px 24px rgba(101,230,206,.45);
+            inset 0 0 0 1px rgba(101, 230, 206, .35),
+            0 6px 24px rgba(101, 230, 206, .45);
     transform: translateY(-1px);
 }
 
 .lang-btn:hover .lang-core {
     transform: rotate(180deg) scale(1.08);
-    filter: drop-shadow(0 0 8px rgba(101,230,206,.9));
+    filter: drop-shadow(0 0 8px rgba(101, 230, 206, .9));
 }
 
 /* =========================
@@ -407,7 +470,7 @@ body.nav-open .lang-switch * {
 
 .lang-switch.open .lang-core {
     transform: rotate(360deg) scale(1.12);
-    filter: drop-shadow(0 0 12px rgba(101,230,206,1));
+    filter: drop-shadow(0 0 12px rgba(101, 230, 206, 1));
 }
 
 /* =========================
@@ -422,11 +485,9 @@ body.nav-open .lang-switch * {
     min-width: 180px;
     padding: 8px;
 
-    background: linear-gradient(
-            180deg,
-            rgba(28,28,54,.98),
-            rgba(18,18,38,.98)
-    );
+    background: linear-gradient(180deg,
+    rgba(28, 28, 54, .98),
+    rgba(18, 18, 38, .98));
     backdrop-filter: blur(16px);
 
     border-radius: 14px;
@@ -440,8 +501,8 @@ body.nav-open .lang-switch * {
     transform: translateY(-6px) scale(.97);
 
     box-shadow:
-            0 22px 48px rgba(0,0,0,.65),
-            inset 0 0 0 1px rgba(255,255,255,.08);
+            0 22px 48px rgba(0, 0, 0, .65),
+            inset 0 0 0 1px rgba(255, 255, 255, .08);
 
     transition:
             opacity .18s ease,
@@ -479,13 +540,13 @@ body.nav-open .lang-switch * {
 }
 
 .lang-dropdown a:hover {
-    background: rgba(101,230,206,.22);
+    background: rgba(101, 230, 206, .22);
     color: #ffffff;
     transform: translateX(4px);
 }
 
 .lang-dropdown a.active {
-    background: linear-gradient(90deg,#65e6ce,#7bdcff);
+    background: linear-gradient(90deg, #65e6ce, #7bdcff);
     color: #1a2333;
 }
 
@@ -513,7 +574,7 @@ body.nav-open .lang-switch * {
     font-weight: 800;
     letter-spacing: .14em;
 
-    fill: rgba(255,255,255,.85);
+    fill: rgba(255, 255, 255, .85);
 
     text-anchor: middle;
     dominant-baseline: middle;
@@ -547,7 +608,8 @@ body.nav-open .lang-switch * {
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    margin-right: 32px;   /* <--- DAS hinzufügen */
+    margin-right: 32px;
+    /* <--- DAS hinzufügen */
 }
 
 .astra-logo img {
@@ -576,7 +638,8 @@ body.nav-open .lang-switch * {
 /* --- Navbar Desktop --- */
 .astra-navbar ul {
     display: flex;
-    gap: 32px; /* Passe auf 24px an, wenn du enger willst */
+    gap: 32px;
+    /* Passe auf 24px an, wenn du enger willst */
     align-items: center;
     margin: 0;
     padding: 0;
@@ -664,7 +727,8 @@ body.nav-open .lang-switch * {
 }
 
 .astra-nav-toggle {
-    transform: translateY(-50%); /* erlaubt */
+    transform: translateY(-50%);
+    /* erlaubt */
 }
 
 body.nav-open .astra-nav-toggle {
@@ -674,11 +738,11 @@ body.nav-open .astra-nav-toggle {
 .astra-nav-toggle span {
     width: 26px;
     height: 3px;
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     border-radius: 999px;
-    box-shadow: 0 0 14px rgba(101,230,206,.65);
+    box-shadow: 0 0 14px rgba(101, 230, 206, .65);
     transition:
-            transform .35s cubic-bezier(.4,0,.2,1),
+            transform .35s cubic-bezier(.4, 0, .2, 1),
             opacity .25s ease;
     transform-origin: center;
     will-change: transform, opacity;
@@ -716,16 +780,14 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     padding-bottom: 0;
 
     background:
-            radial-gradient(520px 520px at 85% 10%, rgba(124,65,238,.32), transparent 72%),
-            radial-gradient(420px 420px at 15% 35%, rgba(101,230,206,.26), transparent 70%),
-            radial-gradient(360px 360px at 90% 65%, rgba(167,200,253,.22), transparent 72%),
-            radial-gradient(520px 520px at 20% 85%, rgba(124,65,238,.30), transparent 75%),
-            linear-gradient(
-                    180deg,
-                    #161338 0%,
-                    #221c50 50%,
-                    #1a1642 100%
-            ),
+            radial-gradient(520px 520px at 85% 10%, rgba(124, 65, 238, .32), transparent 72%),
+            radial-gradient(420px 420px at 15% 35%, rgba(101, 230, 206, .26), transparent 70%),
+            radial-gradient(360px 360px at 90% 65%, rgba(167, 200, 253, .22), transparent 72%),
+            radial-gradient(520px 520px at 20% 85%, rgba(124, 65, 238, .30), transparent 75%),
+            linear-gradient(180deg,
+            #161338 0%,
+            #221c50 50%,
+            #1a1642 100%),
             local;
 
 
@@ -740,8 +802,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     border-radius: 32px 0 0 32px;
 
     box-shadow:
-            -28px 0 90px rgba(0,0,0,.65),
-            inset 0 0 0 1px rgba(255,255,255,.06);
+            -28px 0 90px rgba(0, 0, 0, .65),
+            inset 0 0 0 1px rgba(255, 255, 255, .06);
 
     display: flex;
     flex-direction: column;
@@ -753,7 +815,7 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
     opacity: 0;
 
     transition:
-            transform .52s cubic-bezier(.4,0,.2,1),
+            transform .52s cubic-bezier(.4, 0, .2, 1),
             opacity .32s ease;
 
     padding-left: 0;
@@ -778,7 +840,8 @@ body.nav-open .astra-nav-toggle span:nth-child(3) {
 }
 
 .astra-nav-mobile-scroll::-webkit-scrollbar {
-    display: none;                  /* Chrome, Safari, iOS */
+    display: none;
+    /* Chrome, Safari, iOS */
 }
 
 
@@ -794,9 +857,9 @@ body.nav-open {
     position: absolute;
     inset: 0;
     background:
-            radial-gradient(420px 320px at 50% 0%, rgba(101,230,206,.18), transparent 72%),
-            radial-gradient(520px 420px at 100% 100%, rgba(124,65,238,.26), transparent 78%),
-            radial-gradient(420px 420px at 0% 100%, rgba(101,230,206,.22), transparent 78%);
+            radial-gradient(420px 320px at 50% 0%, rgba(101, 230, 206, .18), transparent 72%),
+            radial-gradient(520px 420px at 100% 100%, rgba(124, 65, 238, .26), transparent 78%),
+            radial-gradient(420px 420px at 0% 100%, rgba(101, 230, 206, .22), transparent 78%);
     pointer-events: none;
     z-index: 0;
 }
@@ -805,18 +868,16 @@ body.nav-open {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-            180deg,
-            rgba(0,0,0,.05) 0%,
-            rgba(0,0,0,.18) 65%,
-            rgba(0,0,0,.38) 100%
-    );
+    background: linear-gradient(180deg,
+    rgba(0, 0, 0, .05) 0%,
+    rgba(0, 0, 0, .18) 65%,
+    rgba(0, 0, 0, .38) 100%);
     pointer-events: none;
     z-index: 0;
 }
 
 /* Inhalt über Bubbles */
-.astra-nav-mobile > * {
+.astra-nav-mobile>* {
     position: relative;
     z-index: 1;
 }
@@ -863,7 +924,7 @@ body.nav-open {
     font-weight: 900;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.45);
+    color: rgba(255, 255, 255, .45);
 }
 
 /* CLOSE X */
@@ -874,13 +935,13 @@ body.nav-open {
     border: none;
     cursor: pointer;
 
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
     backdrop-filter: blur(8px);
 
     position: relative;
 
     transition:
-            transform .25s cubic-bezier(.4,0,.2,1),
+            transform .25s cubic-bezier(.4, 0, .2, 1),
             background .2s ease,
             box-shadow .25s ease;
 }
@@ -897,16 +958,17 @@ body.nav-open {
 }
 
 .astra-nav-close::before {
-    transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
+
 .astra-nav-close::after {
-    transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .astra-nav-close:hover {
-    background: rgba(101,230,206,.22);
+    background: rgba(101, 230, 206, .22);
     transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 0 26px rgba(101,230,206,.6);
+    box-shadow: 0 0 26px rgba(101, 230, 206, .6);
 }
 
 .astra-nav-close:active {
@@ -942,7 +1004,7 @@ body.nav-open {
 
     transition:
             opacity .35s ease,
-            transform .35s cubic-bezier(.4,0,.2,1),
+            transform .35s cubic-bezier(.4, 0, .2, 1),
             background .2s ease,
             color .2s ease;
 }
@@ -954,30 +1016,26 @@ body.nav-open {
     right: 28px;
     bottom: 0;
     height: 1px;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.12),
-            transparent
-    );
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, .12),
+    transparent);
 }
 
 .astra-nav-mobile .nav-link:hover {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .astra-nav-mobile .nav-link.active {
-    background: linear-gradient(
-            90deg,
-            rgba(101,230,206,0.16),
-            transparent 70%
-    );
+    background: linear-gradient(90deg,
+    rgba(101, 230, 206, 0.16),
+    transparent 70%);
 
     color: #65e6ce;
 
     box-shadow:
-            inset 0 0 0 1px rgba(101,230,206,.35),
-            0 10px 34px rgba(101,230,206,.35);
+            inset 0 0 0 1px rgba(101, 230, 206, .35),
+            0 10px 34px rgba(101, 230, 206, .35);
 
     transform: translateX(6px);
 }
@@ -992,14 +1050,14 @@ body.nav-open {
     height: 56%;
     border-radius: 0 4px 4px 0;
     background: linear-gradient(#65e6ce, #a7c8fd);
-    box-shadow: 0 0 18px rgba(101,230,206,.6);
+    box-shadow: 0 0 18px rgba(101, 230, 206, .6);
 }
 
 .astra-nav-mobile .nav-link.active::after {
     content: "";
     position: absolute;
     inset: 0;
-    box-shadow: 0 0 26px rgba(101,230,206,.45);
+    box-shadow: 0 0 26px rgba(101, 230, 206, .45);
     opacity: .6;
     pointer-events: none;
 }
@@ -1022,10 +1080,10 @@ body.nav-open {
     font-size: 1.05em;
     font-weight: 900;
 
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
 
-    box-shadow: 0 12px 36px rgba(101,230,206,0.55);
+    box-shadow: 0 12px 36px rgba(101, 230, 206, 0.55);
     margin-bottom: 0;
 }
 
@@ -1041,7 +1099,7 @@ body.nav-open {
 .astra-nav-mobile-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(6,4,24,.7);
+    background: rgba(6, 4, 24, .7);
     backdrop-filter: blur(14px);
 
     opacity: 0;
@@ -1067,14 +1125,37 @@ body.nav-open .astra-nav-mobile .nav-link {
 }
 
 /* STAGGER */
-body.nav-open .astra-nav-mobile .nav-link:nth-child(1){transition-delay:.05s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(2){transition-delay:.08s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(3){transition-delay:.11s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(4){transition-delay:.14s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(5){transition-delay:.17s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(6){transition-delay:.20s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(7){transition-delay:.23s}
-body.nav-open .astra-nav-mobile .nav-link:nth-child(8){transition-delay:.26s}
+body.nav-open .astra-nav-mobile .nav-link:nth-child(1) {
+    transition-delay: .05s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(2) {
+    transition-delay: .08s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(3) {
+    transition-delay: .11s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(4) {
+    transition-delay: .14s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(5) {
+    transition-delay: .17s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(6) {
+    transition-delay: .20s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(7) {
+    transition-delay: .23s
+}
+
+body.nav-open .astra-nav-mobile .nav-link:nth-child(8) {
+    transition-delay: .26s
+}
 
 body.nav-open .astra-nav-mobile-overlay {
     opacity: 1;
@@ -1114,7 +1195,9 @@ body.nav-open .astra-nav-mobile-overlay {
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 
@@ -1126,43 +1209,75 @@ body.nav-open .astra-nav-mobile-overlay {
     overflow: hidden;
     min-height: 370px;
 }
+
 .bubbles-bg {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 }
+
 .astra-hero-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 46px;
     padding: 66px 7vw 36px 7vw;
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
 }
-.astra-hero-content > div:first-child {
-    flex: 2 1 340px; min-width: 260px;
+
+.astra-hero-content>div:first-child {
+    flex: 2 1 340px;
+    min-width: 260px;
 }
-.astra-hero-content > div:last-child {
-    flex: 1 1 220px; min-width: 150px; text-align: center;
+
+.astra-hero-content>div:last-child {
+    flex: 1 1 220px;
+    min-width: 150px;
+    text-align: center;
 }
+
 .astra-hero-logo {
-    width: 186px; max-width: 99%;
+    width: 186px;
+    max-width: 99%;
     border-radius: 26px;
     box-shadow: 0 8px 52px #60e9cb77, 0 0 64px 2px #7c41ee35;
     margin: 0 auto 0 auto;
 }
 
 /* Labels, Buttons, Badges */
-.astra-label-row { display: flex; gap: 10px; margin-bottom: 13px; }
+.astra-label-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
 .astra-label {
-    font-weight: 800; font-size: 1em;
-    border-radius: 13px; padding: 7px 19px;
+    font-weight: 800;
+    font-size: 1em;
+    border-radius: 13px;
+    padding: 7px 19px;
     box-shadow: 0 2px 8px #5de8ff18;
     background: #313a70;
     color: #b7faf8;
     letter-spacing: .2px;
 }
-.astra-label.green  { background: linear-gradient(90deg,#65e6ce,#91f4e3); color:#262; }
-.astra-label.blue   { background: linear-gradient(90deg,#8fd6fc,#8b6efd 80%); color:#fff; }
-.astra-label.yellow { background: linear-gradient(90deg,#ffd799,#ffb2d6 80%); color:#874d01; }
+
+.astra-label.green {
+    background: linear-gradient(90deg, #65e6ce, #91f4e3);
+    color: #262;
+}
+
+.astra-label.blue {
+    background: linear-gradient(90deg, #8fd6fc, #8b6efd 80%);
+    color: #fff;
+}
+
+.astra-label.yellow {
+    background: linear-gradient(90deg, #ffd799, #ffb2d6 80%);
+    color: #874d01;
+}
 
 .astra-label,
 .commands-filters button {
@@ -1170,35 +1285,84 @@ body.nav-open .astra-nav-mobile-overlay {
     word-break: normal;
 }
 
-.astra-btn-row { display: flex; gap: 16px; margin: 18px 0 22px 0; flex-wrap: wrap; }
+.astra-btn-row {
+    display: flex;
+    gap: 16px;
+    margin: 18px 0 22px 0;
+    flex-wrap: wrap;
+}
+
 .astra-btn {
     display: inline-block;
-    font-weight: 900; font-size: 1.11em;
+    font-weight: 900;
+    font-size: 1.11em;
     border-radius: 18px;
     padding: 14px 38px;
     text-decoration: none;
     transition: filter .14s, background .18s, color .18s;
     box-shadow: 0 2px 18px #5de8ff28;
-    border: none; cursor: pointer; letter-spacing: .5px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .5px;
 }
-.astra-btn.main { background: linear-gradient(90deg,#60e9cb,#a7c8fd); color: #223254; }
-.astra-btn.main:hover { filter: brightness(1.09) drop-shadow(0 2px 8px #80ffd422); }
+
+.astra-btn.main {
+    background: linear-gradient(90deg, #60e9cb, #a7c8fd);
+    color: #223254;
+}
+
+.astra-btn.main:hover {
+    filter: brightness(1.09) drop-shadow(0 2px 8px #80ffd422);
+}
+
 .astra-btn.outline {
-    background: transparent; border: 2px solid #a7c8fd;
+    background: transparent;
+    border: 2px solid #a7c8fd;
     color: #a7c8fd;
 }
-.astra-btn.outline:hover { background: #3fd6dd12; color: #fff; }
 
-.astra-badges-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 13px; }
-.astra-badge {
-    font-weight: 700; font-size: 1em; border-radius: 12px;
-    padding: 7px 16px; display: inline-flex; align-items: center;
-    background: rgba(255,255,255,0.09); color: #bbf7ff;
+.astra-btn.outline:hover {
+    background: #3fd6dd12;
+    color: #fff;
 }
-.astra-badge.mint   { background: rgba(80,255,255,0.13); color: #70ffeb; }
-.astra-badge.violet { background: rgba(140,110,255,0.16); color: #eedaff; }
-.astra-badge.yellow { background: rgba(255,240,200,0.15); color: #ffd799; }
-.astra-badge.blue   { background: rgba(130,170,255,0.14); color: #a7c8fd; }
+
+.astra-badges-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 13px;
+}
+
+.astra-badge {
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 12px;
+    padding: 7px 16px;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.09);
+    color: #bbf7ff;
+}
+
+.astra-badge.mint {
+    background: rgba(80, 255, 255, 0.13);
+    color: #70ffeb;
+}
+
+.astra-badge.violet {
+    background: rgba(140, 110, 255, 0.16);
+    color: #eedaff;
+}
+
+.astra-badge.yellow {
+    background: rgba(255, 240, 200, 0.15);
+    color: #ffd799;
+}
+
+.astra-badge.blue {
+    background: rgba(130, 170, 255, 0.14);
+    color: #a7c8fd;
+}
 
 .cta-absatz {
     margin-top: 15px;
@@ -1207,31 +1371,42 @@ body.nav-open .astra-nav-mobile-overlay {
     font-weight: 700;
     text-shadow: 0 2px 9px #251f5b22;
 }
+
 .highlight {
-    color: #65e6ce; font-weight: 800;
+    color: #65e6ce;
+    font-weight: 800;
     text-shadow: 0 2px 9px #60e9cb66;
 }
+
 .astra-desc {
-    font-size: 1.14em; color: #d7f3ff;
-    font-weight: 500; margin-bottom: 4px;
-    line-height: 1.38; margin-top: 2px;
+    font-size: 1.14em;
+    color: #d7f3ff;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.38;
+    margin-top: 2px;
 }
 
 /* STATS */
 .astra-stats {
-    display: flex; gap: 32px; justify-content: center;
-    margin: 44px 0 52px 0; flex-wrap: wrap;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin: 44px 0 52px 0;
+    flex-wrap: wrap;
 }
+
 .stat-card {
-    background: rgba(56,65,139,0.36);
+    background: rgba(56, 65, 139, 0.36);
     border-radius: 23px;
     min-width: 180px;
     text-align: center;
     padding: 32px 0 21px 0;
     box-shadow: 0 4px 30px #5b65ff15;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 16px;
 }
+
 .stat-num {
     font-size: 2.3em;
     font-weight: 900;
@@ -1241,46 +1416,85 @@ body.nav-open .astra-nav-mobile-overlay {
     margin-bottom: 7px;
     text-shadow: 0 2px 8px #65e6ce26;
 }
+
 .stat-title {
-    color: #e0e7ff; font-size: 1.15em; font-weight: 700;
-    letter-spacing: 0.6px; margin-top: 2px;
+    color: #e0e7ff;
+    font-size: 1.15em;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    margin-top: 2px;
 }
 
 /* ABOUT CARD */
 .astra-about-card {
-    background: rgba(42,50,111,0.45);
+    background: rgba(42, 50, 111, 0.45);
     border-radius: 25px;
     margin: 40px auto 30px auto;
     padding: 42px 46px 38px 38px;
-    display: flex; gap: 38px; align-items: center;
+    display: flex;
+    gap: 38px;
+    align-items: center;
     box-shadow: 0 8px 40px #5b65ff12;
     max-width: 950px;
 }
-.astra-about-card h2 { font-size: 2.1em; font-weight: 800; color: #7dfad7; margin-bottom: 14px; }
-.astra-about-card ul {
-    margin: 0 0 12px 22px; color: #cdf5f6; font-size: 1.14em; line-height: 1.58;
+
+.astra-about-card h2 {
+    font-size: 2.1em;
+    font-weight: 800;
+    color: #7dfad7;
+    margin-bottom: 14px;
 }
-.about-link { color: #66e6d3; font-weight: 700; text-decoration: underline; transition: color 0.16s; }
-.about-link:hover { color: #2df4c7; }
-.about-img-wrap { flex: 0 1 150px; min-width: 110px; }
+
+.astra-about-card ul {
+    margin: 0 0 12px 22px;
+    color: #cdf5f6;
+    font-size: 1.14em;
+    line-height: 1.58;
+}
+
+.about-link {
+    color: #66e6d3;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.16s;
+}
+
+.about-link:hover {
+    color: #2df4c7;
+}
+
+.about-img-wrap {
+    flex: 0 1 150px;
+    min-width: 110px;
+}
+
 .about-img {
-    width: 120px; height: 120px; border-radius: 22px;
-    object-fit: cover; background: #2d2473;
+    width: 120px;
+    height: 120px;
+    border-radius: 22px;
+    object-fit: cover;
+    background: #2d2473;
     box-shadow: 0 4px 24px #70ffeb22;
 }
-.astra-about-card > div:last-child { flex: 3 1 270px; min-width: 200px; }
+
+.astra-about-card>div:last-child {
+    flex: 3 1 270px;
+    min-width: 200px;
+}
 
 /* FEATURES GRID */
 .astra-features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 27px;
     margin: 44px 0 54px 0;
     max-width: 980px;
-    margin-left: auto; margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .feature-card {
-    background: rgba(41,49,101,0.31);
+    background: rgba(41, 49, 101, 0.31);
     border-radius: 17px;
     padding: 26px 20px 18px 20px;
     color: #eefaff;
@@ -1288,44 +1502,81 @@ body.nav-open .astra-nav-mobile-overlay {
     font-size: 1.13em;
     transition: transform 0.15s, box-shadow 0.15s;
 }
+
 .feature-card:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 10px 40px #65e6ce23;
 }
-.feature-title { font-weight: 900; font-size: 1.19em; margin-bottom: 8px; }
-.feature-title.green  { color:#7dfad7; }
-.feature-title.yellow { color:#ffd299; }
-.feature-title.blue   { color:#8bb7ff; }
-.feature-title.violet { color:#f7bfff; }
+
+.feature-title {
+    font-weight: 900;
+    font-size: 1.19em;
+    margin-bottom: 8px;
+}
+
+.feature-title.green {
+    color: #7dfad7;
+}
+
+.feature-title.yellow {
+    color: #ffd299;
+}
+
+.feature-title.blue {
+    color: #8bb7ff;
+}
+
+.feature-title.violet {
+    color: #f7bfff;
+}
 
 /* FAQ */
 .astra-faq-section {
-    max-width: 860px; margin: 40px auto 60px auto;
+    max-width: 860px;
+    margin: 40px auto 60px auto;
     padding: 18px 7px 25px 7px;
 }
+
 .astra-faq-section h2 {
-    font-size: 1.58em; font-weight: 900;
-    color: #7dfad7; margin-bottom: 18px;
+    font-size: 1.58em;
+    font-weight: 900;
+    color: #7dfad7;
+    margin-bottom: 18px;
 }
-.faq-list { display: flex; flex-direction: column; gap: 18px; }
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
 .faq-item {
-    background: rgba(46,53,110,0.33);
+    background: rgba(46, 53, 110, 0.33);
     border-radius: 15px;
     box-shadow: 0 2px 13px #5b65ff13;
     transition: box-shadow .16s;
 }
+
 .faq-item.open, .faq-item:hover {
-    background: rgba(101,230,206,0.16);
+    background: rgba(101, 230, 206, 0.16);
     box-shadow: 0 8px 35px #61f5c520;
 }
+
 .faq-question {
-    background: none; border: none;
-    font-size: 1.13em; color: #66e6d3;
-    font-weight: 800; padding: 18px 25px 16px 25px;
-    width: 100%; text-align: left; cursor: pointer;
-    border-radius: 15px; outline: none;
+    background: none;
+    border: none;
+    font-size: 1.13em;
+    color: #66e6d3;
+    font-weight: 800;
+    padding: 18px 25px 16px 25px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 15px;
+    outline: none;
     transition: color 0.12s;
 }
+
 .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -1356,14 +1607,12 @@ main.commands-main {
 
 .commands-hero-card {
     position: relative;
-    background: linear-gradient(
-            115deg,
-            #251f5b 0%,
-            #362897 65%,
-            #3fd6dd 160%
-    );
+    background: linear-gradient(115deg,
+    #251f5b 0%,
+    #362897 65%,
+    #3fd6dd 160%);
     border-radius: 38px;
-    box-shadow: 0 14px 54px rgba(91,101,255,.28);
+    box-shadow: 0 14px 54px rgba(91, 101, 255, .28);
     overflow: hidden;
     margin-bottom: 42px;
 }
@@ -1392,16 +1641,14 @@ main.commands-main {
    ========================= */
 
 .commands-panel-card {
-    background: linear-gradient(
-            180deg,
-            rgba(42,50,111,.55),
-            rgba(32,38,90,.45)
-    );
+    background: linear-gradient(180deg,
+    rgba(42, 50, 111, .55),
+    rgba(32, 38, 90, .45));
     border-radius: 30px;
     padding: 46px 46px 54px;
     box-shadow:
-            0 10px 40px rgba(91,101,255,.14),
-            inset 0 1px 0 rgba(255,255,255,.04);
+            0 10px 40px rgba(91, 101, 255, .14),
+            inset 0 1px 0 rgba(255, 255, 255, .04);
 }
 
 /* =========================
@@ -1419,12 +1666,10 @@ main.commands-main {
     border-radius: 999px;
 
     background:
-            linear-gradient(
-                    120deg,
-                    rgba(40,45,110,0.95),
-                    rgba(55,65,140,0.95),
-                    rgba(40,45,110,0.95)
-            );
+            linear-gradient(120deg,
+            rgba(40, 45, 110, 0.95),
+            rgba(55, 65, 140, 0.95),
+            rgba(40, 45, 110, 0.95));
     background-size: 200% 200%;
 
     color: #ffffff;
@@ -1432,14 +1677,14 @@ main.commands-main {
     font-weight: 600;
     letter-spacing: .2px;
 
-    border: 2px solid rgba(101,230,206,0.35);
+    border: 2px solid rgba(101, 230, 206, 0.35);
     outline: none;
 
     box-shadow:
-            0 0 0 1px rgba(101,230,206,0.25),
-            0 0 18px rgba(101,230,206,0.35),
-            inset 0 0 14px rgba(101,230,206,0.12),
-            0 18px 50px rgba(0,0,0,0.55);
+            0 0 0 1px rgba(101, 230, 206, 0.25),
+            0 0 18px rgba(101, 230, 206, 0.35),
+            inset 0 0 14px rgba(101, 230, 206, 0.12),
+            0 18px 50px rgba(0, 0, 0, 0.55);
 
     animation: idleGlow 6s ease-in-out infinite;
 
@@ -1453,29 +1698,38 @@ main.commands-main {
    ========================= */
 
 .commands-search.is-preview {
-    color: rgba(255,255,255,0.55);
-    font-weight: 600;            /* GLEICH wie Original */
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    /* GLEICH wie Original */
     text-shadow: none;
 }
 
 
 .commands-search.is-preview:focus {
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     font-weight: 600;
     box-shadow:
-            0 0 0 1px rgba(101,230,206,0.25),
-            0 0 18px rgba(101,230,206,0.35),
-            inset 0 0 14px rgba(101,230,206,0.12),
-            0 18px 50px rgba(0,0,0,0.55);
+            0 0 0 1px rgba(101, 230, 206, 0.25),
+            0 0 18px rgba(101, 230, 206, 0.35),
+            inset 0 0 14px rgba(101, 230, 206, 0.12),
+            0 18px 50px rgba(0, 0, 0, 0.55);
 }
 
 
 
 /* ===== Idle animation ===== */
 @keyframes idleGlow {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* =========================
@@ -1486,11 +1740,11 @@ main.commands-main {
     border-color: #65e6ce;
 
     box-shadow:
-            0 0 0 2px rgba(101,230,206,0.9),
-            0 0 40px rgba(101,230,206,0.85),
-            0 0 80px rgba(101,230,206,0.55),
-            inset 0 0 24px rgba(101,230,206,0.35),
-            0 30px 80px rgba(0,0,0,0.75);
+            0 0 0 2px rgba(101, 230, 206, 0.9),
+            0 0 40px rgba(101, 230, 206, 0.85),
+            0 0 80px rgba(101, 230, 206, 0.55),
+            inset 0 0 24px rgba(101, 230, 206, 0.35),
+            0 30px 80px rgba(0, 0, 0, 0.75);
 
     animation:
             focusPulse 1.2s ease-out,
@@ -1501,18 +1755,20 @@ main.commands-main {
 @keyframes focusPulse {
     0% {
         box-shadow:
-                0 0 0 0 rgba(101,230,206,0.0),
-                0 0 0 rgba(101,230,206,0.0);
+                0 0 0 0 rgba(101, 230, 206, 0.0),
+                0 0 0 rgba(101, 230, 206, 0.0);
     }
+
     60% {
         box-shadow:
-                0 0 0 6px rgba(101,230,206,0.8),
-                0 0 60px rgba(101,230,206,1);
+                0 0 0 6px rgba(101, 230, 206, 0.8),
+                0 0 60px rgba(101, 230, 206, 1);
     }
+
     100% {
         box-shadow:
-                0 0 0 2px rgba(101,230,206,0.9),
-                0 0 40px rgba(101,230,206,0.85);
+                0 0 0 2px rgba(101, 230, 206, 0.9),
+                0 0 40px rgba(101, 230, 206, 0.85);
     }
 }
 
@@ -1539,11 +1795,11 @@ main.commands-main {
 
 @media (hover: hover) {
     .commands-search:hover {
-        border-color: rgba(101,230,206,0.6);
+        border-color: rgba(101, 230, 206, 0.6);
         box-shadow:
-                0 0 0 2px rgba(101,230,206,0.4),
-                0 0 30px rgba(101,230,206,0.6),
-                inset 0 0 18px rgba(101,230,206,0.2);
+                0 0 0 2px rgba(101, 230, 206, 0.4),
+                0 0 30px rgba(101, 230, 206, 0.6),
+                inset 0 0 18px rgba(101, 230, 206, 0.2);
     }
 }
 
@@ -1565,7 +1821,7 @@ main.commands-main {
     border-radius: 18px;
     border: none;
 
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
     color: #cfefff;
 
     font-weight: 800;
@@ -1578,13 +1834,13 @@ main.commands-main {
 }
 
 .commands-filters button:hover {
-    background: rgba(255,255,255,.12);
+    background: rgba(255, 255, 255, .12);
 }
 
 .commands-filters button.active {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
-    box-shadow: 0 6px 22px rgba(101,230,206,.35);
+    box-shadow: 0 6px 22px rgba(101, 230, 206, .35);
 }
 
 /* =========================
@@ -1596,18 +1852,16 @@ main.commands-main {
    ========================= */
 
 .command-category {
-    background: linear-gradient(
-            180deg,
-            rgba(46,53,110,.35),
-            rgba(40,45,95,.30)
-    );
+    background: linear-gradient(180deg,
+    rgba(46, 53, 110, .35),
+    rgba(40, 45, 95, .30));
     border-radius: 22px;
     margin-bottom: 22px;
     overflow: hidden;
 
     border: none;
     box-shadow:
-            0 10px 36px rgba(0,0,0,0.25);
+            0 10px 36px rgba(0, 0, 0, 0.25);
 }
 
 /* Header */
@@ -1673,15 +1927,13 @@ main.commands-main {
     bottom: 0;
 
     height: 1px;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(101,230,206,0.35),
-            transparent
-    );
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(101, 230, 206, 0.35),
+    transparent);
 
     opacity: 0.6;
-    box-shadow: 0 0 12px rgba(101,230,206,0.35);
+    box-shadow: 0 0 12px rgba(101, 230, 206, 0.35);
 }
 
 
@@ -1717,7 +1969,7 @@ main.commands-main {
 /* USAGE CHIP */
 .cmd-usage {
     justify-self: end;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
     color: #65e6ce;
     padding: 6px 14px;
     border-radius: 999px;
@@ -1742,7 +1994,7 @@ main.commands-main {
 }
 
 .command-item code {
-    background: rgba(0,0,0,.35);
+    background: rgba(0, 0, 0, .35);
     padding: 6px 14px;
     border-radius: 12px;
     color: #65e6ce;
@@ -1781,23 +2033,21 @@ main.astra-status-main {
     padding: 44px 40px 36px;
     border-radius: 34px;
 
-    background: linear-gradient(
-            115deg,
-            #251f5b 0%,
-            #362897 65%,
-            #3fd6dd 160%
-    );
+    background: linear-gradient(115deg,
+    #251f5b 0%,
+    #362897 65%,
+    #3fd6dd 160%);
 
     box-shadow:
-            0 14px 54px rgba(91,101,255,0.28),
-            0 0 90px rgba(96,233,203,0.22),
-            inset 0 0 0 1px rgba(255,255,255,0.05);
+            0 14px 54px rgba(91, 101, 255, 0.28),
+            0 0 90px rgba(96, 233, 203, 0.22),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
     display: flex;
     flex-direction: column;
 }
 
-.astra-status-card > *:not(.status-bubbles-bg) {
+.astra-status-card>*:not(.status-bubbles-bg) {
     position: relative;
     z-index: 2;
 }
@@ -1809,7 +2059,7 @@ main.astra-status-main {
     color: #65e6ce;
     margin-bottom: 18px;
     letter-spacing: .04em;
-    text-shadow: 0 0 22px rgba(101,230,206,0.45);
+    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
 }
 
 /* ==== Status Rows ==== */
@@ -1822,7 +2072,7 @@ main.astra-status-main {
     align-items: center;
     justify-content: space-between;
     padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 1.08rem;
     font-weight: 700;
 }
@@ -1853,25 +2103,25 @@ main.astra-status-main {
     font-size: .95rem;
     font-weight: 900;
     letter-spacing: .04em;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     color: #eafcff;
-    border: 1px solid rgba(255,255,255,0.18);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .status-badge.ok {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
-    box-shadow: 0 0 0 4px rgba(101,230,206,0.22);
+    box-shadow: 0 0 0 4px rgba(101, 230, 206, 0.22);
 }
 
 .status-badge.err {
-    background: linear-gradient(90deg,#ff7272,#ffb3b3);
+    background: linear-gradient(90deg, #ff7272, #ffb3b3);
     color: #4a1515;
 }
 
 .status-badge.warn {
-    background: linear-gradient(90deg,#ffe479,#ffbd34);
+    background: linear-gradient(90deg, #ffe479, #ffbd34);
     color: #4a320c;
 }
 
@@ -1889,7 +2139,7 @@ main.astra-status-main {
     border-radius: 18px;
     font-weight: 800;
     font-size: 1.05em;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     color: #cfefff;
     border: none;
     cursor: pointer;
@@ -1898,9 +2148,9 @@ main.astra-status-main {
 
 .status-tab-btn.active,
 .status-tab-btn:focus {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
-    box-shadow: 0 6px 22px rgba(101,230,206,0.35);
+    box-shadow: 0 6px 22px rgba(101, 230, 206, 0.35);
 }
 
 /* ==== Uptime (12h) ==== */
@@ -1925,13 +2175,13 @@ main.astra-status-main {
     width: 8px;
     height: 18px;
     border-radius: 5px;
-    background: rgba(255,255,255,0.22);
+    background: rgba(255, 255, 255, 0.22);
     transition: opacity .15s;
 }
 
 .uptime-bar.online {
     background: #65e6ce;
-    box-shadow: 0 0 12px rgba(101,230,206,0.55);
+    box-shadow: 0 0 12px rgba(101, 230, 206, 0.55);
 }
 
 .uptime-bar.offline {
@@ -1957,15 +2207,26 @@ main.astra-status-main {
     width: 18px;
     height: 22px;
     border-radius: 6px;
-    background: rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.18);
     position: relative;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.uptime-bar-day.perfect { background: #65e6ce; }
-.uptime-bar-day.good    { background: #b5f7de; }
-.uptime-bar-day.warn    { background: #ffe479; }
-.uptime-bar-day.bad     { background: #ff7272; }
+.uptime-bar-day.perfect {
+    background: #65e6ce;
+}
+
+.uptime-bar-day.good {
+    background: #b5f7de;
+}
+
+.uptime-bar-day.warn {
+    background: #ffe479;
+}
+
+.uptime-bar-day.bad {
+    background: #ff7272;
+}
 
 /* Tooltip Label */
 .uptime-bar-day .uptime-day-label {
@@ -1974,13 +2235,13 @@ main.astra-status-main {
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
-    background: rgba(28,18,80,0.95);
+    background: rgba(28, 18, 80, 0.95);
     color: #a7c8fd;
     padding: 6px 14px;
     border-radius: 10px;
     font-size: .95em;
     white-space: nowrap;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
     z-index: 10;
 }
 
@@ -2005,7 +2266,7 @@ main.astra-status-main {
 
 .stat-box {
     flex: 1;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
     border-radius: 18px;
     padding: 18px 0 14px;
     display: flex;
@@ -2045,17 +2306,15 @@ main.report-main {
     border-radius: 38px;
     overflow: hidden;
 
-    background: linear-gradient(
-            115deg,
-            #251f5b 0%,
-            #362897 65%,
-            #3fd6dd 160%
-    );
+    background: linear-gradient(115deg,
+    #251f5b 0%,
+    #362897 65%,
+    #3fd6dd 160%);
 
     box-shadow:
-            0 14px 54px rgba(91,101,255,0.28),
-            0 0 90px rgba(96,233,203,0.22),
-            inset 0 0 0 1px rgba(255,255,255,0.05);
+            0 14px 54px rgba(91, 101, 255, 0.28),
+            0 0 90px rgba(96, 233, 203, 0.22),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* BUBBLES */
@@ -2081,7 +2340,7 @@ main.report-main {
     color: #65e6ce;
     margin-bottom: 10px;
     letter-spacing: .04em;
-    text-shadow: 0 0 22px rgba(101,230,206,0.45);
+    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
 }
 
 .report-desc {
@@ -2111,21 +2370,23 @@ main.report-main {
 
 /* COLORS */
 .astra-problem-chip[data-type="Nutzer"] {
-    background: linear-gradient(90deg,#ff7aa2,#ffb3c6);
+    background: linear-gradient(90deg, #ff7aa2, #ffb3c6);
     color: #3d0b21;
 }
+
 .astra-problem-chip[data-type="Webseite"] {
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #0b2a26;
 }
+
 .astra-problem-chip[data-type="Discord"] {
-    background: linear-gradient(90deg,#a77bff,#c29cff);
+    background: linear-gradient(90deg, #a77bff, #c29cff);
     color: #250b3d;
 }
 
 .astra-problem-chip.selected {
     transform: scale(1.06);
-    box-shadow: 0 0 26px rgba(255,255,255,0.35);
+    box-shadow: 0 0 26px rgba(255, 255, 255, 0.35);
 }
 
 /* FORM */
@@ -2142,12 +2403,12 @@ main.report-main {
     padding: 14px 16px;
     border-radius: 14px;
     border: none;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     color: #fff;
     margin-bottom: 18px;
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.06),
-            0 2px 12px rgba(93,232,255,0.12);
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+            0 2px 12px rgba(93, 232, 255, 0.12);
 }
 
 /* =====================================================
@@ -2175,9 +2436,9 @@ main.report-main {
     border: none;
     font-size: 1.05em;
     cursor: pointer;
-    background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+    background: linear-gradient(90deg, #65e6ce, #a7c8fd);
     color: #223254;
-    box-shadow: 0 6px 26px rgba(101,230,206,0.45);
+    box-shadow: 0 6px 26px rgba(101, 230, 206, 0.45);
 }
 
 /* MESSAGES */
@@ -2191,12 +2452,12 @@ main.report-main {
 }
 
 .astra-msg-success {
-    background: rgba(101,230,206,0.18);
+    background: rgba(101, 230, 206, 0.18);
     color: #65e6ce;
 }
 
 .astra-msg-error {
-    background: rgba(255,114,114,0.18);
+    background: rgba(255, 114, 114, 0.18);
     color: #ff7272;
 }
 
@@ -2224,17 +2485,15 @@ main.report-main {
     border-radius: 38px;
     overflow: hidden;
 
-    background: linear-gradient(
-            115deg,
-            #251f5b 0%,
-            #362897 65%,
-            #3fd6dd 160%
-    );
+    background: linear-gradient(115deg,
+    #251f5b 0%,
+    #362897 65%,
+    #3fd6dd 160%);
 
     box-shadow:
             0 12px 48px #5b65ff2a,
-            0 0 90px rgba(96,233,203,0.25),
-            inset 0 0 0 1px rgba(255,255,255,0.05);
+            0 0 90px rgba(96, 233, 203, 0.25),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* BUBBLES */
@@ -2270,8 +2529,8 @@ main.report-main {
     -webkit-text-fill-color: transparent;
 
     text-shadow:
-            0 0 18px rgba(101,230,206,0.55),
-            0 0 38px rgba(124,65,238,0.35);
+            0 0 18px rgba(101, 230, 206, 0.55),
+            0 0 38px rgba(124, 65, 238, 0.35);
 }
 
 .error-hero-content h1 {
@@ -2299,13 +2558,14 @@ main.report-main {
    ========================= */
 
 body.error-layout .error-page {
-    padding-top: 68px; /* exakt Header-Höhe */
+    padding-top: 68px;
+    /* exakt Header-Höhe */
 }
 
 body.error-layout .astra-header {
     background: rgba(28, 18, 80, 0.85);
     backdrop-filter: blur(14px);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -2394,14 +2654,13 @@ footer.astra-footer::before {
     display: block;
     height: 1px;
     width: 100%;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(125,250,215,0.55),
-            transparent
-    );
-    box-shadow: 0 0 14px rgba(125,250,215,0.35);
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(125, 250, 215, 0.55),
+    transparent);
+    box-shadow: 0 0 14px rgba(125, 250, 215, 0.35);
 }
+
 /* =========================================================
    LEGAL PAGE – ASTRA MODERN (FULL REWRITE)
    ========================================================= */
@@ -2416,21 +2675,19 @@ main.legal-main {
 
 .legal-hero-card {
     position: relative;
-    background: linear-gradient(
-            115deg,
-            #251f5b 0%,
-            #362897 65%,
-            #3fd6dd 160%
-    );
+    background: linear-gradient(115deg,
+    #251f5b 0%,
+    #362897 65%,
+    #3fd6dd 160%);
     border-radius: 40px;
     padding: 0;
     overflow: hidden;
     margin-bottom: 64px;
 
     box-shadow:
-            0 20px 70px rgba(91,101,255,0.35),
-            0 0 120px rgba(101,230,206,0.25),
-            inset 0 0 0 1px rgba(255,255,255,0.06);
+            0 20px 70px rgba(91, 101, 255, 0.35),
+            0 0 120px rgba(101, 230, 206, 0.25),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .legal-hero-content {
@@ -2445,7 +2702,7 @@ main.legal-main {
     color: #65e6ce;
     margin-bottom: 12px;
     letter-spacing: .05em;
-    text-shadow: 0 0 22px rgba(101,230,206,0.45);
+    text-shadow: 0 0 22px rgba(101, 230, 206, 0.45);
 }
 
 .legal-hero-desc {
@@ -2467,11 +2724,11 @@ main.legal-main {
     border-radius: 999px;
     font-size: 0.95em;
     font-weight: 800;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     color: #cfefff;
     box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.12),
-            0 0 18px rgba(101,230,206,0.25);
+            inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+            0 0 18px rgba(101, 230, 206, 0.25);
 }
 
 /* =========================================================
@@ -2479,18 +2736,16 @@ main.legal-main {
    ========================================================= */
 
 .legal-main-card {
-    background: linear-gradient(
-            180deg,
-            rgba(42,50,111,0.65),
-            rgba(32,38,90,0.55)
-    );
+    background: linear-gradient(180deg,
+    rgba(42, 50, 111, 0.65),
+    rgba(32, 38, 90, 0.55));
     border-radius: 36px;
     padding: 58px 62px;
 
     box-shadow:
-            0 24px 80px rgba(0,0,0,0.45),
-            0 0 120px rgba(101,230,206,0.18),
-            inset 0 0 0 1px rgba(255,255,255,0.06);
+            0 24px 80px rgba(0, 0, 0, 0.45),
+            0 0 120px rgba(101, 230, 206, 0.18),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06);
     box-sizing: border-box;
 }
 
@@ -2514,7 +2769,7 @@ main.legal-main {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-shadow: 0 0 16px rgba(125,250,215,0.35);
+    text-shadow: 0 0 16px rgba(125, 250, 215, 0.35);
 }
 
 .legal-text {
@@ -2568,13 +2823,11 @@ main.legal-main {
 .legal-divider {
     height: 1px;
     margin: 42px 0;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(125,250,215,0.55),
-            transparent
-    );
-    box-shadow: 0 0 22px rgba(125,250,215,0.45);
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(125, 250, 215, 0.55),
+    transparent);
+    box-shadow: 0 0 22px rgba(125, 250, 215, 0.45);
 }
 
 /* =========================================================
@@ -2599,13 +2852,13 @@ main.legal-main {
 }
 
 .legal-mini-card {
-    background: rgba(0,0,0,0.32);
+    background: rgba(0, 0, 0, 0.32);
     border-radius: 28px;
     padding: 32px 30px;
 
     box-shadow:
-            0 16px 50px rgba(0,0,0,0.45),
-            inset 0 0 0 1px rgba(255,255,255,0.08);
+            0 16px 50px rgba(0, 0, 0, 0.45),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 
     transition:
             transform .18s ease,
@@ -2615,8 +2868,8 @@ main.legal-main {
 .legal-mini-card:hover {
     transform: translateY(-6px);
     box-shadow:
-            0 26px 80px rgba(101,230,206,0.45),
-            inset 0 0 0 1px rgba(101,230,206,0.45);
+            0 26px 80px rgba(101, 230, 206, 0.45),
+            inset 0 0 0 1px rgba(101, 230, 206, 0.45);
 }
 
 .legal-mini-card h3 {
@@ -2639,11 +2892,11 @@ main.legal-main {
     border-radius: 999px;
     font-size: .9em;
     font-weight: 800;
-    background: rgba(101,230,206,0.2);
+    background: rgba(101, 230, 206, 0.2);
     color: #bffcff;
     box-shadow:
-            inset 0 0 0 1px rgba(101,230,206,0.45),
-            0 0 16px rgba(101,230,206,0.35);
+            inset 0 0 0 1px rgba(101, 230, 206, 0.45),
+            0 0 16px rgba(101, 230, 206, 0.35);
 }
 
 /* =========================================================
@@ -2659,13 +2912,13 @@ main.legal-main {
 
 /* Right side box (like mini card) */
 .legal-side-card {
-    background: rgba(0,0,0,0.32);
+    background: rgba(0, 0, 0, 0.32);
     border-radius: 28px;
     padding: 32px 30px;
 
     box-shadow:
-            0 16px 50px rgba(0,0,0,0.45),
-            inset 0 0 0 1px rgba(255,255,255,0.08);
+            0 16px 50px rgba(0, 0, 0, 0.45),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 
     transition:
             transform .18s ease,
@@ -2675,8 +2928,8 @@ main.legal-main {
 .legal-side-card:hover {
     transform: translateY(-4px);
     box-shadow:
-            0 26px 80px rgba(101,230,206,0.45),
-            inset 0 0 0 1px rgba(101,230,206,0.45);
+            0 26px 80px rgba(101, 230, 206, 0.45),
+            inset 0 0 0 1px rgba(101, 230, 206, 0.45);
 }
 
 .legal-side-card h3 {
@@ -2684,7 +2937,7 @@ main.legal-main {
     font-weight: 900;
     color: #7dfad7;
     margin-bottom: 14px;
-    text-shadow: 0 0 14px rgba(125,250,215,0.35);
+    text-shadow: 0 0 14px rgba(125, 250, 215, 0.35);
 }
 
 .legal-side-card .legal-chip {
@@ -2725,8 +2978,8 @@ main.legal-main {
         overflow-x: visible;
     }
 
-    main > *:first-child,
-    main > *:first-child > *:first-child {
+    main>*:first-child,
+    main>*:first-child>*:first-child {
         margin-top: 0 !important;
     }
 
@@ -2742,19 +2995,17 @@ main.legal-main {
         height: var(--header-height-mobile);
         z-index: 9999;
 
-        background: linear-gradient(
-                115deg,
-                rgba(37,31,91,0.98),
-                rgba(54,40,151,0.96),
-                rgba(63,214,221,0.35)
-        );
+        background: linear-gradient(115deg,
+        rgba(37, 31, 91, 0.98),
+        rgba(54, 40, 151, 0.96),
+        rgba(63, 214, 221, 0.35));
 
         backdrop-filter: blur(26px);
         -webkit-backdrop-filter: blur(26px);
 
         box-shadow:
-                0 12px 40px rgba(0,0,0,0.55),
-                0 0 48px rgba(101,230,206,0.25);
+                0 12px 40px rgba(0, 0, 0, 0.55),
+                0 0 48px rgba(101, 230, 206, 0.25);
     }
 
     .astra-header-inner {
@@ -2813,7 +3064,8 @@ main.legal-main {
     .report-hero-card,
     .error-hero-card {
         border-radius: 26px;
-        overflow: hidden; /* verhindert rechten Crop bei langen Headlines */
+        overflow: hidden;
+        /* verhindert rechten Crop bei langen Headlines */
     }
 
     .astra-hero-content,
@@ -3011,7 +3263,7 @@ main.legal-main {
         font-weight: 900;
         letter-spacing: .25em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.45);
+        color: rgba(255, 255, 255, .45);
         margin-bottom: 14px;
     }
 
@@ -3029,7 +3281,7 @@ main.legal-main {
         font-weight: 800;
         text-decoration: none;
 
-        background: rgba(255,255,255,.08);
+        background: rgba(255, 255, 255, .08);
         color: #eafcff;
 
         transition:
@@ -3040,16 +3292,16 @@ main.legal-main {
     }
 
     .astra-nav-lang-list a:hover {
-        background: rgba(255,255,255,.14);
+        background: rgba(255, 255, 255, .14);
     }
 
     .astra-nav-lang-list a.active {
-        background: linear-gradient(90deg,#65e6ce,#a7c8fd);
+        background: linear-gradient(90deg, #65e6ce, #a7c8fd);
         color: #223254;
 
         box-shadow:
-                0 0 0 2px rgba(101,230,206,.45),
-                0 8px 28px rgba(101,230,206,.45);
+                0 0 0 2px rgba(101, 230, 206, .45),
+                0 8px 28px rgba(101, 230, 206, .45);
 
         transform: scale(1.05);
     }
