@@ -2747,13 +2747,17 @@ main.legal-main {
         display: flex;
     }
 
-    /* Language Icon IM Header verstecken */
     .astra-header .lang-switch {
-        display: none;
+        display: flex;              /* BLEIBT IM LAYOUT */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     body.nav-open .astra-header .lang-switch {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
 
