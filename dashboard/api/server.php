@@ -18,14 +18,14 @@ if (!isset($_GET['id']) || !preg_match('/^\d+$/', $_GET['id'])) {
 $serverId = $_GET['id'];
 
 /* =========================
-   CALL BOT API (CURL!)
+   CALL BOT API (CURL)
 ========================= */
 $ch = curl_init();
 
 curl_setopt_array($ch, [
     CURLOPT_URL => "http://127.0.0.1:5000/servers/$serverId",
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_TIMEOUT => 3,
+    CURLOPT_TIMEOUT => 5,
     CURLOPT_CONNECTTIMEOUT => 2,
 ]);
 
