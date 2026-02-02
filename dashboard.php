@@ -1,3 +1,47 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+
+// ENV laden
+$env = loadEnv($_SERVER['DOCUMENT_ROOT'] . '/.env');
+
+// DB Connect
+$conn = @new mysqli(
+    $env['DB_SERVER'] ?? '',
+    $env['DB_USER'] ?? '',
+    $env['DB_PASS'] ?? '',
+    $env['DB_NAME'] ?? ''
+);
+
+$stats = [
+    'servercount' => 0,
+    'usercount' => 0,
+    'commandCount' => 0,
+    'channelCount' => 0
+];
+
+if ($conn && !$conn->connect_error) {
+    $res = $conn->query("SELECT servercount, usercount, commandCount, channelCount FROM website_stats LIMIT 1");
+    if ($res && $res->num_rows) {
+        $stats = $res->fetch_assoc();
+    }
+    $conn->close();
+}
+
+// Bot Status prüfen
+$bot_online = false;
+try {
+    $json = @file_get_contents('http://localhost:5000/status');
+    if ($json) {
+        $data = json_decode($json, true);
+        $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
+    }
+} catch (Exception $e) {
+    // Fehler ignorieren, $bot_online bleibt false
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -40,8 +84,11 @@
 
                 <div class="dashboard-sidebar-footer">
                     <span>Status</span>
-                    <span class="dashboard-status">● Online</span>
+                    <span class="dashboard-status <?= $bot_online ? 'online' : 'offline' ?>">
+        ● <?= $bot_online ? 'Online' : 'Offline' ?>
+    </span>
                 </div>
+
 
             </aside>
 
@@ -70,27 +117,28 @@
                 ====================== -->
                 <section class="dashboard-stats">
 
-                    <div class="dashboard-stat">
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['servercount'] ?>">
                         <span>Servers</span>
-                        <strong>12</strong>
+                        <strong>0</strong>
                     </div>
 
-                    <div class="dashboard-stat">
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['usercount'] ?>">
                         <span>Users</span>
-                        <strong>8.420</strong>
+                        <strong>0</strong>
                     </div>
 
-                    <div class="dashboard-stat">
-                        <span>Uptime</span>
-                        <strong>99.9%</strong>
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['commandCount'] ?>">
+                        <span>Commands</span>
+                        <strong>0</strong>
                     </div>
 
-                    <div class="dashboard-stat">
-                        <span>Latency</span>
-                        <strong>42ms</strong>
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['channelCount'] ?>">
+                        <span>Channels</span>
+                        <strong>0</strong>
                     </div>
 
                 </section>
+
 
                 <!-- =====================
                      PANELS
