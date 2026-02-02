@@ -803,6 +803,19 @@ a:hover {
     /* ⛔ kein Zeilenumbruch */
 }
 
+/* =========================
+   HEADER ACTIONS (LOGIN + LANG + THEME)
+========================= */
+
+.astra-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 24px;
+    flex-shrink: 0;
+}
+
+
 /* =========================================================
    ASTRA ACTION BUTTON BASE (LANG + THEME)
 ========================================================= */
@@ -820,12 +833,12 @@ a:hover {
 }
 
 .lang-switch {
-    margin-left: 18px;
+    margin-left: 0;
     z-index: 10030;
 }
 
 .theme-switch {
-    margin-left: 14px;
+    margin-left: 0;
     z-index: 10020;
 }
 
@@ -3625,7 +3638,7 @@ main.report-main {
 
 .user-menu {
     position: relative;
-    margin-left: 18px;
+    margin-left: 0;
 }
 
 /* =========================
