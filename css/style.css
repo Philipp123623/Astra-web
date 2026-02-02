@@ -2949,7 +2949,6 @@ main.report-main {
 ========================================================= */
 
 .dashboard-wrapper {
-    padding: 32px 32px 80px;
     background: var(--bg-main);
 }
 
@@ -2962,7 +2961,7 @@ main.report-main {
     grid-template-columns: 240px 1fr;
     gap: 32px;
     align-items: start;
-    padding-bottom: 120px;
+    padding-bottom: 0;
 }
 
 /* =========================================================
