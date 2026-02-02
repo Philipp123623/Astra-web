@@ -87,7 +87,7 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
 
 <body>
 
-<?php include "includes/header.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 
 <!-- PAGE MAIN -->
 <main class="dashboard-page">
@@ -215,7 +215,7 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
 
 </main>
 
-<?php include "includes/footer.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 
 </body>
 </html>
