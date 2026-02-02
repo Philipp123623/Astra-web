@@ -244,4 +244,38 @@ try {
 
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* =========================
+           REFRESH BUTTON
+        ========================= */
+        const refreshBtn = document.getElementById('btn-refresh');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                refreshBtn.classList.add('loading');
+
+                // kleine UX-Verzögerung (fühlt sich hochwertig an)
+                setTimeout(() => {
+                    window.location.reload();
+                }, 300);
+            });
+        }
+
+        /* =========================
+           INVITE BOT BUTTON
+        ========================= */
+        const inviteBtn = document.getElementById('btn-invite');
+        if (inviteBtn) {
+            inviteBtn.addEventListener('click', () => {
+
+                // 🔗 DEIN Discord OAuth Invite
+                const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1113403511045107773&permissions=1899359446&scope=bot%20applications.commands";
+
+                window.open(inviteUrl, "_blank", "noopener");
+            });
+        }
+
+    });
+</script>
 
