@@ -1,6 +1,21 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
+function loadEnv(string $path): array {
+    if (!file_exists($path)) {
+        die(".env Datei nicht gefunden!");
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $env = [];
+    foreach ($lines as $line) {
+        $trim = trim($line);
+        if ($trim === '' || $trim[0] === '#' || strpos($trim, '=') === false) continue;
+        list($key, $value) = explode('=', $trim, 2);
+        $env[trim($key)] = trim($value);
+    }
+    return $env;
+}
+
 // ENV laden
 $env = loadEnv($_SERVER['DOCUMENT_ROOT'] . '/.env');
 
