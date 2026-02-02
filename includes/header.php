@@ -199,6 +199,9 @@ if ($loggedIn) {
 <!-- ======================
      DROPDOWNS (LANG + THEME)
 ====================== -->
+<!-- ======================
+     DROPDOWNS (LANG + THEME)
+====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const langSwitch  = document.getElementById('langSwitch');
@@ -209,20 +212,33 @@ if ($loggedIn) {
             themeSwitch?.classList.remove('open');
         }
 
-        // LANGUAGE
+        // LANGUAGE (OPEN / CLOSE ONLY)
         if (langSwitch) {
             const btn = langSwitch.querySelector('.lang-btn');
+
             btn.addEventListener('click', e => {
                 e.stopPropagation();
                 const wasOpen = langSwitch.classList.contains('open');
                 closeAll();
                 if (!wasOpen) langSwitch.classList.add('open');
             });
+
+            // ✅ ANIMATION NUR BEIM LOSLASSEN
+            btn.addEventListener('pointerup', () => {
+                langSwitch.classList.remove('clicked');
+                void langSwitch.offsetWidth; // reflow
+                langSwitch.classList.add('clicked');
+
+                setTimeout(() => {
+                    langSwitch.classList.remove('clicked');
+                }, 450);
+            });
         }
 
-        // THEME
+        // THEME (OPEN / CLOSE ONLY)
         if (themeSwitch) {
             const btn = themeSwitch.querySelector('.theme-btn');
+
             btn.addEventListener('click', e => {
                 e.stopPropagation();
                 const wasOpen = themeSwitch.classList.contains('open');
@@ -235,6 +251,7 @@ if ($loggedIn) {
         document.addEventListener('click', closeAll);
     });
 </script>
+
 
 <!-- ======================
      THEME SELECTION + ANIMATION
@@ -269,11 +286,11 @@ if ($loggedIn) {
         updateActive(savedTheme || 'default');
 
         /* =========================
-           BUTTON RELEASE FEEDBACK
-           (ONLY ON RELEASE)
+           BUTTON CLICK FEEDBACK
+           (EVERY CLICK)
         ========================= */
 
-        btn.addEventListener('pointerup', () => {
+        btn.addEventListener('click', () => {
             themeSwitch.classList.remove('clicked');
             void themeSwitch.offsetWidth; // force reflow
             themeSwitch.classList.add('clicked');
