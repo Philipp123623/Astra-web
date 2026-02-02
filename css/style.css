@@ -2949,7 +2949,7 @@ main.report-main {
 ========================================================= */
 
 .dashboard-wrapper {
-    padding: 32px 32px 80px; /* ✅ Footer-Luft wie main */
+    padding: 32px 32px 80px;
     background: var(--bg-main);
 }
 
@@ -2973,9 +2973,8 @@ main.report-main {
     position: sticky;
     top: calc(var(--header-height) + 32px);
 
-    height: fit-content;
-
     padding: 26px 18px 22px;
+    height: fit-content;
 
     border-radius: 22px;
     background: linear-gradient(
@@ -2994,7 +2993,6 @@ main.report-main {
     display: flex;
     flex-direction: column;
 }
-
 
 /* =========================================================
    LOGO
@@ -3045,9 +3043,11 @@ main.report-main {
             box-shadow .18s ease;
 }
 
+/* ICON */
 .dashboard-nav a::before {
     content: attr(data-icon);
     font-size: 1.1em;
+    opacity: .9;
 }
 
 /* HOVER */
@@ -3097,6 +3097,7 @@ main.report-main {
 .dashboard-sidebar-footer {
     margin-top: 18px;
     padding-top: 18px;
+
     border-top: 1px solid var(--drawer-border);
 
     font-size: .9em;
@@ -3104,6 +3105,7 @@ main.report-main {
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .dashboard-status {
@@ -3112,13 +3114,171 @@ main.report-main {
 }
 
 /* =========================================================
-   CONTENT
+   CONTENT AREA
 ========================================================= */
 
 .dashboard-content {
     padding: 48px;
     border-radius: 26px;
-    background: rgba(0,0,0,.08);
+
+    background: linear-gradient(
+            180deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.02)
+    );
+
+    box-shadow:
+            0 20px 60px rgba(0,0,0,.35),
+            inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.2em;
+    font-weight: 900;
+    margin: 0;
+    color: var(--text-heading);
+}
+
+.dashboard-subtitle {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: .95em;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.dashboard-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.dashboard-btn {
+    padding: 12px 22px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: 900;
+    font-size: 1em;
+
+    transition:
+            transform .14s ease,
+            box-shadow .16s ease;
+}
+
+.dashboard-btn.primary {
+    background: linear-gradient(
+            90deg,
+            var(--nav-btn-gradient-start),
+            var(--nav-btn-gradient-end)
+    );
+    color: var(--nav-btn-text);
+
+    box-shadow: 0 8px 30px var(--nav-btn-shadow);
+}
+
+.dashboard-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 42px var(--nav-btn-shadow-hover);
+}
+
+.dashboard-btn.secondary {
+    background: var(--card-bg-soft);
+    color: var(--text-main);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+    margin-bottom: 42px;
+}
+
+.dashboard-stat {
+    padding: 26px 24px;
+    border-radius: 22px;
+
+    background: var(--stat-bg);
+
+    box-shadow:
+            0 10px 36px var(--card-shadow-soft),
+            inset 0 0 0 1px rgba(255,255,255,.06);
+
+    transition: transform .16s ease;
+}
+
+.dashboard-stat:hover {
+    transform: translateY(-4px);
+}
+
+.dashboard-stat span {
+    font-size: .9em;
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.dashboard-stat strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.9em;
+    font-weight: 900;
+    color: var(--stat-number);
+}
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.dashboard-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.dashboard-panel {
+    padding: 30px;
+    border-radius: 26px;
+
+    background: linear-gradient(
+            180deg,
+            var(--card-bg-soft),
+            var(--card-bg-strong)
+    );
+
+    box-shadow:
+            0 14px 46px var(--card-shadow-strong),
+            inset 0 0 0 1px rgba(255,255,255,.06);
+}
+
+.dashboard-panel h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.25em;
+    font-weight: 900;
+    color: var(--accent-primary);
+}
+
+.dashboard-panel p,
+.dashboard-panel li {
+    color: var(--text-muted);
+    line-height: 1.55;
 }
 
 /* =========================================================
@@ -3134,11 +3294,16 @@ main.report-main {
     .dashboard-sidebar {
         position: relative;
         top: 0;
-        height: auto;
-        max-height: none;
+    }
+
+    .dashboard-content {
+        padding: 28px;
+    }
+
+    .dashboard-panels {
+        grid-template-columns: 1fr;
     }
 }
-
 
 
 /* =========================
