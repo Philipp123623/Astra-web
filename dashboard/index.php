@@ -73,7 +73,11 @@ if ($stats['usercount'] > 0) {
 $recent_activity[] = "Dashboard erfolgreich geladen";
 ?>
 
-
+<?php
+$active = 'overview';
+require_once $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-init.php';
+?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -97,33 +101,6 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
     <div class="dashboard-wrapper">
 
         <div class="dashboard">
-
-            <!-- =====================
-                 SIDEBAR
-            ====================== -->
-            <aside class="dashboard-sidebar">
-
-                <div class="dashboard-logo">
-                    Astra<span>Bot</span>
-                </div>
-
-                <nav class="dashboard-nav">
-                    <a class="active" data-icon="📊">Overview</a>
-                    <a data-icon="🖥️">Servers</a>
-                    <a data-icon="⚙️">Commands</a>
-                    <a data-icon="👥">Users</a>
-                    <a data-icon="🛠️">Settings</a>
-                </nav>
-
-                <div class="dashboard-sidebar-footer">
-                    <span>Status</span>
-                    <span class="dashboard-status <?= $bot_online ? 'online' : 'offline' ?>">
-        ● <?= $bot_online ? 'Online' : 'Offline' ?>
-    </span>
-                </div>
-
-
-            </aside>
 
             <!-- =====================
                  CONTENT
