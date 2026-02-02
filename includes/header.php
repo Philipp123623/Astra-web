@@ -39,71 +39,84 @@ if ($loggedIn) {
                 <li><a href="https://astra-bot.de/commands" class="nav-link"><?= $t['nav_commands'] ?></a></li>
                 <li><a href="https://astra-bot.de/status" class="nav-link"><?= $t['nav_status'] ?></a></li>
                 <li><a href="https://astra-bot.de/report" class="nav-link"><?= $t['nav_report'] ?></a></li>
-
-                <!-- INVITE → LOGIN / LOGOUT -->
-                <li>
-                    <?php if (!$loggedIn): ?>
-                        <a href="/login/discord.php" class="nav-btn">Login</a>
-                    <?php else: ?>
-                        <a href="/login/logout.php" class="nav-btn">Logout</a>
-                    <?php endif; ?>
-                </li>
             </ul>
         </nav>
+
+        <!-- HEADER ACTIONS (RIGHT SIDE) -->
+        <div class="astra-header-actions">
+
+            <!-- LOGIN / USER -->
+            <?php if (!$loggedIn): ?>
+                <a href="/login/discord.php" class="nav-btn login-btn">
+                    Login
+                </a>
+            <?php else: ?>
+                <div class="user-menu" id="userMenu">
+                    <button class="user-trigger">
+                        <img
+                                src="https://cdn.discordapp.com/avatars/<?= htmlspecialchars($discordUser['id']) ?>/<?= htmlspecialchars($discordUser['avatar']) ?>.png"
+                                class="user-avatar"
+                                alt="Avatar">
+                        <span class="user-name"><?= htmlspecialchars($discordUser['username']) ?></span>
+                    </button>
+
+                    <div class="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <strong><?= htmlspecialchars($discordUser['username']) ?></strong>
+                            <span>#<?= htmlspecialchars($discordUser['discriminator']) ?></span>
+                        </div>
+                        <a href="/dashboard" class="user-dropdown-item">Dashboard</a>
+                        <a href="/login/logout.php" class="user-dropdown-item logout">Logout</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <!-- Language Switch -->
+            <div class="lang-switch" id="langSwitch">
+                <button class="lang-btn" aria-label="Switch language">
+                    <svg class="lang-core" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M3 12h18"/>
+                        <path d="M12 3c3.5 4 3.5 14 0 18"/>
+                        <path d="M12 3c-3.5 4-3.5 14 0 18"/>
+                    </svg>
+                </button>
+
+                <div class="lang-dropdown">
+                    <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">Deutsch</a>
+                    <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">English</a>
+                    <a href="?lang=fr" class="<?= $lang === 'fr' ? 'active' : '' ?>">Français</a>
+                    <a href="?lang=es" class="<?= $lang === 'es' ? 'active' : '' ?>">Español</a>
+                </div>
+            </div>
+
+            <!-- Theme Switch -->
+            <div class="theme-switch" id="themeSwitch">
+                <button class="theme-btn" aria-label="Choose theme">
+                    <svg class="theme-core" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"/>
+                        <circle cx="12" cy="12" r="4"/>
+                    </svg>
+                </button>
+
+                <div class="theme-dropdown">
+                    <button data-theme="default">Default</button>
+                    <button data-theme="aurora-mint">Aurora Mint</button>
+                    <button data-theme="aurora-deep-purple">Aurora Purple</button>
+                    <button data-theme="midnight">Midnight</button>
+                </div>
+            </div>
+
+        </div>
 
         <!-- Hamburger -->
         <button class="astra-nav-toggle" aria-label="<?= $t['nav_menu'] ?>">
             <span></span><span></span><span></span>
         </button>
 
-        <!-- Language Switch -->
-        <div class="lang-switch" id="langSwitch">
-            <button class="lang-btn" aria-label="Switch language">
-                <svg class="lang-core" viewBox="0 0 24 24" aria-hidden="true">
-                    <defs>
-                        <linearGradient id="globeGradient" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="100%" stop-color="#65e6ce"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="12" cy="12" r="9" class="globe"/>
-                    <path d="M3 12h18" class="line"/>
-                    <path d="M12 3c3.5 4 3.5 14 0 18" class="line"/>
-                    <path d="M12 3c-3.5 4-3.5 14 0 18" class="line"/>
-                </svg>
-            </button>
-
-            <div class="lang-dropdown">
-                <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">Deutsch</a>
-                <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">English</a>
-                <a href="?lang=fr" class="<?= $lang === 'fr' ? 'active' : '' ?>">Français</a>
-                <a href="?lang=es" class="<?= $lang === 'es' ? 'active' : '' ?>">Español</a>
-            </div>
-
-            <!-- USER MENU (UNVERÄNDERT) -->
-            <div class="astra-user">
-                <?php if (!$loggedIn): ?>
-                    <a href="/login/discord.php" class="nav-btn">Login</a>
-                <?php else: ?>
-                    <div class="user-menu" id="userMenu">
-                        <button class="user-trigger">
-                            <img src="https://cdn.discordapp.com/avatars/<?= htmlspecialchars($discordUser['id']) ?>/<?= htmlspecialchars($discordUser['avatar']) ?>.png" class="user-avatar">
-                            <span class="user-name"><?= htmlspecialchars($discordUser['username']) ?></span>
-                        </button>
-                        <div class="user-dropdown">
-                            <a href="/dashboard">Dashboard</a>
-                            <a href="/login/logout.php">Logout</a>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <!-- Theme Switch (UNVERÄNDERT) -->
-        <div class="theme-switch" id="themeSwitch">…</div>
-
     </div>
 </header>
+
 
 <!-- Mobile Overlay -->
 <div class="astra-nav-mobile-overlay"></div>
