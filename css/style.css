@@ -3308,6 +3308,310 @@ main.report-main {
 }
 
 
+/* =========================================================
+   SERVERS PAGE – DASHBOARD
+   ========================================================= */
+
+.servers-page {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* =========================================================
+   SERVERS HEADER
+   ========================================================= */
+
+.servers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.servers-header h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-heading);
+}
+
+.servers-header p {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* SEARCH */
+.servers-search {
+    position: relative;
+}
+
+.servers-search input {
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: linear-gradient(
+            180deg,
+            var(--search-bg-start),
+            var(--search-bg-mid),
+            var(--search-bg-end)
+    );
+    border: 1px solid var(--search-border);
+    color: var(--search-text);
+    min-width: 260px;
+    font-weight: 600;
+    outline: none;
+
+    box-shadow:
+            0 12px 32px var(--search-shadow-dark),
+            inset 0 0 0 1px var(--drawer-border);
+}
+
+.servers-search input::placeholder {
+    color: var(--search-text-preview);
+}
+
+.servers-search input:focus {
+    box-shadow:
+            0 0 0 2px var(--search-accent),
+            0 0 28px var(--search-glow-soft);
+}
+
+/* =========================================================
+   SERVERS GRID
+   ========================================================= */
+
+.servers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+/* =========================================================
+   SERVER CARD
+   ========================================================= */
+
+.server-card {
+    position: relative;
+    padding: 24px 22px 22px;
+    border-radius: 26px;
+
+    background: linear-gradient(
+            180deg,
+            var(--card-bg-soft),
+            var(--card-bg-strong)
+    );
+
+    box-shadow:
+            0 20px 48px var(--card-shadow-soft),
+            inset 0 0 0 1px var(--drawer-border);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+}
+
+.server-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+            0 28px 70px var(--feature-hover-shadow),
+            inset 0 0 0 1px var(--drawer-link-border);
+}
+
+/* =========================================================
+   SERVER HEADER
+   ========================================================= */
+
+.server-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.server-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+
+    background: var(--badge-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+    color: var(--badge-text);
+
+    box-shadow:
+            0 0 0 1px var(--drawer-border),
+            0 8px 20px var(--card-shadow-strong);
+}
+
+.server-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.server-id {
+    font-size: .85rem;
+    color: var(--text-soft);
+}
+
+/* =========================================================
+   SERVER STATS
+   ========================================================= */
+
+.server-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.server-stat {
+    padding: 12px 14px;
+    border-radius: 14px;
+
+    background: var(--stat-bg);
+    box-shadow:
+            inset 0 0 0 1px var(--drawer-border);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.server-stat span {
+    font-size: .85rem;
+    color: var(--stat-title);
+    font-weight: 600;
+}
+
+.server-stat strong {
+    font-size: 1rem;
+    color: var(--stat-number);
+    font-weight: 900;
+}
+
+/* =========================================================
+   SERVER STATUS
+   ========================================================= */
+
+.server-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+    border-radius: 999px;
+
+    font-size: .8rem;
+    font-weight: 800;
+
+    background: var(--status-badge-bg);
+    color: var(--status-badge-text);
+
+    box-shadow:
+            inset 0 0 0 1px var(--status-badge-border);
+}
+
+.server-status.online {
+    background: linear-gradient(
+            90deg,
+            var(--status-ok-start),
+            var(--status-ok-end)
+    );
+    color: var(--status-ok-text);
+    box-shadow: 0 0 18px var(--status-ok-glow);
+}
+
+.server-status.offline {
+    background: linear-gradient(
+            90deg,
+            var(--status-err-start),
+            var(--status-err-end)
+    );
+    color: var(--status-err-text);
+}
+
+/* =========================================================
+   SERVER ACTIONS
+   ========================================================= */
+
+.server-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+}
+
+.server-actions button {
+    flex: 1;
+    padding: 12px 0;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: 800;
+    font-size: .9rem;
+
+    background: linear-gradient(
+            90deg,
+            var(--nav-btn-gradient-start),
+            var(--nav-btn-gradient-end)
+    );
+
+    color: var(--nav-btn-text);
+
+    box-shadow:
+            0 12px 28px var(--nav-btn-shadow);
+
+    transition:
+            transform .18s ease,
+            box-shadow .18s ease;
+}
+
+.server-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+            0 16px 36px var(--nav-btn-shadow-hover);
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.servers-empty {
+    padding: 64px 24px;
+    text-align: center;
+
+    color: var(--text-muted);
+}
+
+.servers-empty h3 {
+    color: var(--text-heading);
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .servers-page {
+        padding: 28px 18px;
+    }
+
+    .servers-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
 
 /* =========================
    404 ERROR PAGE – HERO STYLE
