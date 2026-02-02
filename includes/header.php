@@ -362,6 +362,46 @@ if ($loggedIn) {
 
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const userMenu = document.getElementById('userMenu');
+        if (!userMenu) return;
+
+        const trigger = userMenu.querySelector('.user-trigger');
+
+        function openMenu() {
+            userMenu.classList.add('open');
+        }
+
+        function closeMenu() {
+            userMenu.classList.remove('open');
+        }
+
+        function toggleMenu(e) {
+            e.stopPropagation();
+            userMenu.classList.toggle('open');
+        }
+
+        // Toggle on click
+        trigger.addEventListener('click', toggleMenu);
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (!userMenu.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+    });
+</script>
 
 
 
