@@ -178,27 +178,6 @@ if (is_array($discord_guilds)) {
 
                 </section>
 
-                <!-- 🔥 NEU: SERVER LISTE -->
-                <section class="dashboard-panel" style="margin-top:32px;">
-                    <h3>Deine Server</h3>
-
-                    <?php if (empty($managed_servers)): ?>
-                        <p>Du bist auf keinem Server Admin, auf dem Astra installiert ist.</p>
-                    <?php else: ?>
-                        <div class="server-grid">
-                            <?php foreach ($managed_servers as $server): ?>
-                                <div class="server-card">
-                                    <h4><?= htmlspecialchars($server['name']) ?></h4>
-                                    <p>👥 <?= (int)$server['memberCount'] ?> Mitglieder</p>
-                                    <a href="/dashboard/server.php?id=<?= $server['id'] ?>" class="dashboard-btn primary">
-                                        Server verwalten
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                </section>
-
                 <!-- 🔒 DEIN ORIGINALER COMING SOON BLOCK -->
                 <section class="dashboard-panel" style="margin-top:32px;">
                     <h3>Coming Soon</h3>
