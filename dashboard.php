@@ -122,9 +122,15 @@ try {
                     </div>
 
                     <div class="dashboard-actions">
-                        <button class="dashboard-btn secondary">Refresh</button>
-                        <button class="dashboard-btn primary">Invite Bot</button>
+                        <button id="btn-refresh" class="dashboard-btn secondary">
+                            Refresh
+                        </button>
+
+                        <button id="btn-invite" class="dashboard-btn primary">
+                            Invite Bot
+                        </button>
                     </div>
+
                 </header>
 
                 <!-- =====================
