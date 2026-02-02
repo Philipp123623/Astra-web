@@ -1,5 +1,22 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
+
+session_start();
+$loggedIn = isset($_SESSION['access_token']);
+$discordUser = null;
+
+if ($loggedIn) {
+    $ctx = stream_context_create([
+        "http" => [
+            "header" => "Authorization: Bearer {$_SESSION['access_token']}"
+        ]
+    ]);
+
+    $json = @file_get_contents("https://discord.com/api/users/@me", false, $ctx);
+    if ($json) {
+        $discordUser = json_decode($json, true);
+    }
+}
 ?>
 
 
@@ -85,7 +102,36 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 </a>
 
             </div>
+            <!-- USER / LOGIN -->
+            <div class="astra-user">
 
+                <?php if (!$loggedIn): ?>
+                    <a href="/login/discord.php" class="nav-btn">
+                        Login
+                    </a>
+                <?php else: ?>
+                    <div class="user-menu" id="userMenu">
+                        <button class="user-trigger" onclick="toggleUserMenu()">
+                            <img
+                                    src="https://cdn.discordapp.com/avatars/<?= htmlspecialchars($discordUser['id']) ?>/<?= htmlspecialchars($discordUser['avatar']) ?>.png"
+                                    class="user-avatar"
+                                    alt="Avatar">
+                            <span class="user-name"><?= htmlspecialchars($discordUser['username']) ?></span>
+                        </button>
+
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-dropdown-header">
+                                <strong><?= htmlspecialchars($discordUser['username']) ?></strong>
+                                <span>#<?= htmlspecialchars($discordUser['discriminator']) ?></span>
+                            </div>
+                            <a href="/dashboard" class="user-dropdown-item">Dashboard</a>
+                            <a href="/login/logout.php" class="user-dropdown-item logout">Logout</a>
+
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+            </div>
         </div>
         <!-- Theme Switch (Desktop) -->
         <div class="theme-switch" id="themeSwitch">
