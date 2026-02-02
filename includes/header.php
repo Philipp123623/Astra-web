@@ -1,6 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
+$loggedIn = isset($_SESSION['access_token']);
+$discordUser = null;
+
+
 session_start();
 $loggedIn = isset($_SESSION['access_token']);
 $discordUser = null;
