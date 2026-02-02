@@ -147,11 +147,6 @@ try {
                         <strong>0</strong>
                     </div>
 
-                    <div class="dashboard-stat" data-count="<?= (int)$stats['channelCount'] ?>">
-                        <span>Channels</span>
-                        <strong>0</strong>
-                    </div>
-
                 </section>
 
 
