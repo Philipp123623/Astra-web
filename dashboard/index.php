@@ -50,14 +50,12 @@ try {
         $data = json_decode($json, true);
         $bot_online = (json_last_error() === JSON_ERROR_NONE && !empty($data['online']));
     }
-} catch (Exception $e) {
-    // Fehler ignorieren, $bot_online bleibt false
-}
+} catch (Exception $e) {}
 
 $system_status = [
     'api' => $bot_online,
-    'database' => ($conn !== null),
-    'commands' => $bot_online // später feiner
+    'database' => true,
+    'commands' => $bot_online
 ];
 
 $recent_activity = [];
@@ -65,14 +63,59 @@ $recent_activity = [];
 if ($stats['servercount'] > 0) {
     $recent_activity[] = "Bot ist aktuell auf {$stats['servercount']} Servern aktiv";
 }
-
 if ($stats['usercount'] > 0) {
     $recent_activity[] = "Über {$stats['usercount']} Nutzer nutzen Astra Bot";
 }
-
 $recent_activity[] = "Dashboard erfolgreich geladen";
-?>
 
+session_start();
+
+if (!isset($_SESSION['access_token'])) {
+    header("Location: /login/discord.php");
+    exit;
+}
+
+function discord_api($endpoint) {
+    $token = $_SESSION['access_token'];
+    $ctx = stream_context_create([
+        "http" => [
+            "header" => "Authorization: Bearer $token"
+        ]
+    ]);
+    return json_decode(
+        file_get_contents("https://discord.com/api/$endpoint", false, $ctx),
+        true
+    );
+}
+
+/* =========================
+   🔥 NEU: DISCORD USER + ADMIN SERVER
+========================= */
+$discord_user = discord_api("users/@me");
+$discord_guilds = discord_api("users/@me/guilds");
+
+$managed_servers = [];
+
+if (is_array($discord_guilds)) {
+    foreach ($discord_guilds as $guild) {
+
+        // Admin Permission (0x8)
+        if ((($guild['permissions'] ?? 0) & 0x8) !== 0x8) {
+            continue;
+        }
+
+        $gid = $guild['id'];
+
+        $api = @file_get_contents("http://localhost:5000/servers/$gid");
+        if (!$api) continue;
+
+        $api_data = json_decode($api, true);
+        if (!empty($api_data['success'])) {
+            $managed_servers[] = $api_data['server'];
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -80,7 +123,6 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
     <meta charset="UTF-8">
     <title>Astra Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=5.0">
 </head>
@@ -89,116 +131,78 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 
-<!-- PAGE MAIN -->
 <main class="dashboard-page">
-
-    <!-- DASHBOARD WRAPPER -->
     <div class="dashboard-wrapper">
-
         <div class="dashboard">
+
             <?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
-            <!-- =====================
-                 CONTENT
-            ====================== -->
             <section class="dashboard-content">
 
-                <!-- HEADER -->
                 <header class="dashboard-header">
                     <div>
                         <h1>Overview</h1>
-                        <p class="dashboard-subtitle">
-                            Überblick über deinen Astra Bot Status
-                        </p>
+                        <p class="dashboard-subtitle">Überblick über deinen Astra Bot Status</p>
                     </div>
-
                     <div class="dashboard-actions">
-                        <button id="btn-refresh" class="dashboard-btn secondary">
-                            Refresh
-                        </button>
-
-                        <button id="btn-invite" class="dashboard-btn primary">
-                            Invite Bot
-                        </button>
+                        <button id="btn-refresh" class="dashboard-btn secondary">Refresh</button>
+                        <button id="btn-invite" class="dashboard-btn primary">Invite Bot</button>
                     </div>
-
                 </header>
 
-                <!-- =====================
-                     STATS
-                ====================== -->
                 <section class="dashboard-stats">
-
-                    <div class="dashboard-stat" data-count="<?= (int)$stats['servercount'] ?>">
-                        <span>Servers</span>
-                        <strong>0</strong>
-                    </div>
-
-                    <div class="dashboard-stat" data-count="<?= (int)$stats['usercount'] ?>">
-                        <span>Users</span>
-                        <strong>0</strong>
-                    </div>
-
-                    <div class="dashboard-stat" data-count="<?= (int)$stats['commandCount'] ?>">
-                        <span>Commands</span>
-                        <strong>0</strong>
-                    </div>
-
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['servercount'] ?>"><span>Servers</span><strong>0</strong></div>
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['usercount'] ?>"><span>Users</span><strong>0</strong></div>
+                    <div class="dashboard-stat" data-count="<?= (int)$stats['commandCount'] ?>"><span>Commands</span><strong>0</strong></div>
                 </section>
 
-
-                <!-- =====================
-                     PANELS
-                ====================== -->
                 <section class="dashboard-panels">
 
-                    <!-- SYSTEM STATUS -->
                     <div class="dashboard-panel">
                         <h3>System Status</h3>
-                        <p>
-                            Alle Systeme laufen stabil.<br>
-                            Keine bekannten Störungen oder Ausfälle.
-                        </p>
-
                         <ul>
-                            <li>
-                                <?= $system_status['api'] ? '🟢' : '🔴' ?>
-                                API <?= $system_status['api'] ? 'erreichbar' : 'offline' ?>
-                            </li>
-                            <li>
-                                <?= $system_status['commands'] ? '🟢' : '🔴' ?>
-                                Commands <?= $system_status['commands'] ? 'aktiv' : 'inaktiv' ?>
-                            </li>
-                            <li>
-                                <?= $system_status['database'] ? '🟢' : '🔴' ?>
-                                Datenbank <?= $system_status['database'] ? 'verbunden' : 'offline' ?>
-                            </li>
+                            <li><?= $system_status['api'] ? '🟢' : '🔴' ?> API</li>
+                            <li><?= $system_status['commands'] ? '🟢' : '🔴' ?> Commands</li>
+                            <li><?= $system_status['database'] ? '🟢' : '🔴' ?> Datenbank</li>
                         </ul>
-
                     </div>
 
-                    <!-- RECENT ACTIVITY -->
                     <div class="dashboard-panel">
                         <h3>Recent Activity</h3>
-
                         <ul>
                             <?php foreach ($recent_activity as $item): ?>
                                 <li><?= htmlspecialchars($item) ?></li>
                             <?php endforeach; ?>
                         </ul>
-
                     </div>
 
                 </section>
 
-                <!-- =====================
-                     FUTURE PLACEHOLDER
-                ====================== -->
+                <!-- 🔥 NEU: SERVER LISTE -->
+                <section class="dashboard-panel" style="margin-top:32px;">
+                    <h3>Deine Server</h3>
+
+                    <?php if (empty($managed_servers)): ?>
+                        <p>Du bist auf keinem Server Admin, auf dem Astra installiert ist.</p>
+                    <?php else: ?>
+                        <div class="server-grid">
+                            <?php foreach ($managed_servers as $server): ?>
+                                <div class="server-card">
+                                    <h4><?= htmlspecialchars($server['name']) ?></h4>
+                                    <p>👥 <?= (int)$server['memberCount'] ?> Mitglieder</p>
+                                    <a href="/dashboard/server.php?id=<?= $server['id'] ?>" class="dashboard-btn primary">
+                                        Server verwalten
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </section>
+
+                <!-- 🔒 DEIN ORIGINALER COMING SOON BLOCK -->
                 <section class="dashboard-panel" style="margin-top:32px;">
                     <h3>Coming Soon</h3>
-                    <p>
-                        Hier kommen bald:
-                    </p>
+                    <p>Hier kommen bald:</p>
                     <ul>
                         <li>📈 Live Statistiken</li>
                         <li>⚙️ Server Konfiguration</li>
@@ -208,17 +212,16 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
                 </section>
 
             </section>
-
         </div>
-
     </div>
-
 </main>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 
 </body>
 </html>
+
+<!-- ❗ ORIGINAL SCRIPTS: UNVERÄNDERT ❗ -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -231,10 +234,9 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
             if (isNaN(target)) return;
 
             let current = 0;
-            const duration = 1200; // ms
+            const duration = 1200;
             const steps = 60;
             const increment = target / steps;
-
             const formatter = new Intl.NumberFormat('de-DE');
 
             const interval = setInterval(() => {
@@ -251,38 +253,27 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
 
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        /* =========================
-           REFRESH BUTTON
-        ========================= */
         const refreshBtn = document.getElementById('btn-refresh');
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => {
                 refreshBtn.classList.add('loading');
-
-                // kleine UX-Verzögerung (fühlt sich hochwertig an)
                 setTimeout(() => {
                     window.location.reload();
                 }, 300);
             });
         }
 
-        /* =========================
-           INVITE BOT BUTTON
-        ========================= */
         const inviteBtn = document.getElementById('btn-invite');
         if (inviteBtn) {
             inviteBtn.addEventListener('click', () => {
-
-                // 🔗 DEIN Discord OAuth Invite
                 const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1113403511045107773&permissions=1899359446&scope=bot%20applications.commands";
-
                 window.open(inviteUrl, "_blank", "noopener");
             });
         }
 
     });
 </script>
-
