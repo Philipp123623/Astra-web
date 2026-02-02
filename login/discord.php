@@ -2,18 +2,29 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 session_start();
 
-$client_id = "DEINE_CLIENT_ID";
-$redirect_uri = urlencode("https://astra-bot.de/login/callback.php");
+/* =========================
+   CONFIG
+========================= */
+$client_id = '1113403511045107773';
+$redirect_uri = 'https://astra-bot.de/login/callback.php';
 
-$scope = "identify guilds";
+/* =========================
+   DISCORD OAUTH PARAMS
+========================= */
+$params = [
+    'response_type' => 'code',
+    'client_id'     => $client_id,
+    'redirect_uri'  => $redirect_uri,
+    'scope'         => 'identify guilds'
+];
 
-$url = "https://discord.com/oauth2/authorize"
-    . "?response_type=code"
-    . "&client_id=$client_id"
-    . "&scope=$scope"
-    . "&redirect_uri=$redirect_uri";
+/* =========================
+   REDIRECT TO DISCORD
+========================= */
+$auth_url = 'https://discord.com/api/oauth2/authorize?' . http_build_query($params);
 
-header("Location: $url");
+header('Location: ' . $auth_url);
 exit;
