@@ -75,10 +75,10 @@ if ($loggedIn) {
             <div class="lang-switch" id="langSwitch">
                 <button class="lang-btn" aria-label="Switch language">
                     <svg class="lang-core" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"/>
-                        <path d="M3 12h18"/>
-                        <path d="M12 3c3.5 4 3.5 14 0 18"/>
-                        <path d="M12 3c-3.5 4-3.5 14 0 18"/>
+                        <circle class="globe" cx="12" cy="12" r="9"/>
+                        <path class="line" d="M3 12h18"/>
+                        <path class="line" d="M12 3c3.5 4 3.5 14 0 18"/>
+                        <path class="line" d="M12 3c-3.5 4-3.5 14 0 18"/>
                     </svg>
                 </button>
 
@@ -94,9 +94,17 @@ if ($loggedIn) {
             <div class="theme-switch" id="themeSwitch">
                 <button class="theme-btn" aria-label="Choose theme">
                     <svg class="theme-core" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"/>
-                        <circle cx="12" cy="12" r="4"/>
+                        <defs>
+                            <linearGradient id="themeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6affea"/>
+                                <stop offset="100%" stop-color="#9cbcff"/>
+                            </linearGradient>
+                        </defs>
+
+                        <circle class="theme-ring" cx="12" cy="12" r="9"/>
+                        <circle class="theme-core-dot" cx="12" cy="12" r="4"/>
                     </svg>
+
                 </button>
 
                 <div class="theme-dropdown">
