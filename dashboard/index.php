@@ -73,10 +73,6 @@ if ($stats['usercount'] > 0) {
 $recent_activity[] = "Dashboard erfolgreich geladen";
 ?>
 
-<?php
-$active = 'overview';
-require_once $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-init.php';
-?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
 <!DOCTYPE html>
