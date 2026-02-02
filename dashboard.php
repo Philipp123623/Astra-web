@@ -53,6 +53,24 @@ try {
 } catch (Exception $e) {
     // Fehler ignorieren, $bot_online bleibt false
 }
+
+$system_status = [
+    'api' => $bot_online,
+    'database' => ($conn !== null),
+    'commands' => $bot_online // später feiner
+];
+
+$recent_activity = [];
+
+if ($stats['servercount'] > 0) {
+    $recent_activity[] = "Bot ist aktuell auf {$stats['servercount']} Servern aktiv";
+}
+
+if ($stats['usercount'] > 0) {
+    $recent_activity[] = "Über {$stats['usercount']} Nutzer nutzen Astra Bot";
+}
+
+$recent_activity[] = "Dashboard erfolgreich geladen";
 ?>
 
 
@@ -170,10 +188,20 @@ try {
                         </p>
 
                         <ul>
-                            <li>🟢 API erreichbar</li>
-                            <li>🟢 Commands aktiv</li>
-                            <li>🟢 Datenbank verbunden</li>
+                            <li>
+                                <?= $system_status['api'] ? '🟢' : '🔴' ?>
+                                API <?= $system_status['api'] ? 'erreichbar' : 'offline' ?>
+                            </li>
+                            <li>
+                                <?= $system_status['commands'] ? '🟢' : '🔴' ?>
+                                Commands <?= $system_status['commands'] ? 'aktiv' : 'inaktiv' ?>
+                            </li>
+                            <li>
+                                <?= $system_status['database'] ? '🟢' : '🔴' ?>
+                                Datenbank <?= $system_status['database'] ? 'verbunden' : 'offline' ?>
+                            </li>
                         </ul>
+
                     </div>
 
                     <!-- RECENT ACTIVITY -->
@@ -181,11 +209,11 @@ try {
                         <h3>Recent Activity</h3>
 
                         <ul>
-                            <li>Bot wurde zu neuem Server hinzugefügt</li>
-                            <li>Slash Commands aktualisiert</li>
-                            <li>Antwortzeiten optimiert</li>
-                            <li>Neue Nutzer beigetreten</li>
+                            <?php foreach ($recent_activity as $item): ?>
+                                <li><?= htmlspecialchars($item) ?></li>
+                            <?php endforeach; ?>
                         </ul>
+
                     </div>
 
                 </section>
