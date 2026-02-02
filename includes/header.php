@@ -196,79 +196,44 @@ if ($loggedIn) {
         });
     });
 </script>
-<!-- ======================
-     DROPDOWNS (LANG + THEME)
-====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const langSwitch  = document.getElementById('langSwitch');
         const themeSwitch = document.getElementById('themeSwitch');
 
-        function closeAll(triggerLangAnimation = false) {
-
-            // LANG
-            if (langSwitch?.classList.contains('open')) {
-                langSwitch.classList.remove('open');
-
-                // ✅ Animation NUR BEIM SCHLIESSEN
-                if (triggerLangAnimation) {
-                    langSwitch.classList.remove('clicked');
-                    void langSwitch.offsetWidth;
-                    langSwitch.classList.add('clicked');
-
-                    setTimeout(() => {
-                        langSwitch.classList.remove('clicked');
-                    }, 450);
-                }
-            }
-
-            // THEME
+        function closeAll() {
+            langSwitch?.classList.remove('open');
             themeSwitch?.classList.remove('open');
         }
 
-        /* ======================
-           LANGUAGE
-        ====================== */
+        // LANGUAGE
         if (langSwitch) {
             const btn = langSwitch.querySelector('.lang-btn');
 
-            // ❗ NUR öffnen / schließen – KEINE Animation
             btn.addEventListener('click', e => {
                 e.stopPropagation();
-
-                const wasOpen = langSwitch.classList.contains('open');
-                closeAll(false);
-
-                if (!wasOpen) {
-                    langSwitch.classList.add('open');
-                }
+                const isOpen = langSwitch.classList.contains('open');
+                closeAll();
+                if (!isOpen) langSwitch.classList.add('open');
             });
         }
 
-        /* ======================
-           THEME
-        ====================== */
+        // THEME
         if (themeSwitch) {
             const btn = themeSwitch.querySelector('.theme-btn');
 
             btn.addEventListener('click', e => {
                 e.stopPropagation();
-                const wasOpen = themeSwitch.classList.contains('open');
-                closeAll(false);
-                if (!wasOpen) themeSwitch.classList.add('open');
+                const isOpen = themeSwitch.classList.contains('open');
+                closeAll();
+                if (!isOpen) themeSwitch.classList.add('open');
             });
         }
 
-        /* ======================
-           CLICK OUTSIDE
-        ====================== */
-        document.addEventListener('click', () => {
-            closeAll(true); // ✅ HIER feuert die Lang-Animation
-        });
+        // CLICK OUTSIDE
+        document.addEventListener('click', closeAll);
     });
 </script>
-
-
 
 <!-- ======================
      THEME SELECTION + ANIMATION
