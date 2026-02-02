@@ -1,6 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
+session_start();
+if (!isset($_SESSION['access_token'])) {
+    header("Location: /login/discord.php");
+    exit;
+}
+
 /* =========================
    MODE DETECTION
 ========================= */
@@ -47,7 +53,7 @@ if (isset($_GET['id'])) {
                     <header class="servers-header">
                         <div>
                             <h1>Servers</h1>
-                            <p>Alle Discord Server, auf denen Astra aktiv ist</p>
+                            <p>Deine Discord-Server, auf denen du Admin bist</p>
                         </div>
                     </header>
 
@@ -94,9 +100,6 @@ if (isset($_GET['id'])) {
 
         <?php if (!$hasServerId): ?>
 
-        /* =========================
-           SERVER LIST SCRIPT
-        ========================= */
         const grid = document.getElementById('serverGrid');
 
         fetch('/dashboard/api/servers.php')
@@ -114,10 +117,10 @@ if (isset($_GET['id'])) {
 
                 if (data.count === 0) {
                     grid.innerHTML = `
-            <div class="servers-empty">
-                <h3>Keine Server</h3>
-                <p>Astra ist aktuell auf keinem Server aktiv.</p>
-            </div>`;
+                <div class="servers-empty">
+                    <h3>Keine Server</h3>
+                    <p>Du bist auf keinem Server Admin, auf dem Astra aktiv ist.</p>
+                </div>`;
                     return;
                 }
 
@@ -131,48 +134,45 @@ if (isset($_GET['id'])) {
                     card.className = 'server-card';
 
                     card.innerHTML = `
-            <div class="server-header">
-                <div class="server-icon">
-                    <img src="${iconUrl}" alt="${server.name}">
+                <div class="server-header">
+                    <div class="server-icon">
+                        <img src="${iconUrl}" alt="${server.name}">
+                    </div>
+                    <div>
+                        <div class="server-name">${server.name}</div>
+                        <div class="server-id">ID: ${server.id}</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="server-name">${server.name}</div>
-                    <div class="server-id">ID: ${server.id}</div>
-                </div>
-            </div>
 
-            <div class="server-stats">
-                <div class="server-stat">
-                    <span>Mitglieder</span>
-                    <strong>${server.memberCount}</strong>
+                <div class="server-stats">
+                    <div class="server-stat">
+                        <span>Mitglieder</span>
+                        <strong>${server.memberCount}</strong>
+                    </div>
+                    <div class="server-stat">
+                        <span>Status</span>
+                        <strong style="color:var(--accent-primary)">Online</strong>
+                    </div>
                 </div>
-                <div class="server-stat">
-                    <span>Status</span>
-                    <strong style="color:var(--accent-primary)">Online</strong>
-                </div>
-            </div>
 
-            <div class="server-actions">
-                <button onclick="openServer('${server.id}')">Öffnen</button>
-            </div>
-            `;
+                <div class="server-actions">
+                    <button onclick="openServer('${server.id}')">Öffnen</button>
+                </div>
+                `;
 
                     grid.appendChild(card);
                 });
             })
             .catch(err => {
                 grid.innerHTML = `
-        <div class="servers-empty">
-            <h3>Fehler</h3>
-            <p>${err.message}</p>
-        </div>`;
+            <div class="servers-empty">
+                <h3>Fehler</h3>
+                <p>${err.message}</p>
+            </div>`;
             });
 
         <?php else: ?>
 
-        /* =========================
-           SERVER DETAIL SCRIPT
-        ========================= */
         const header = document.getElementById('serverHeader');
         const stats  = document.getElementById('serverStats');
         const serverId = "<?= htmlspecialchars($serverId) ?>";
@@ -194,61 +194,32 @@ if (isset($_GET['id'])) {
                     : '/public/server_fallback.png';
 
                 header.innerHTML = `
-        <div style="display:flex;align-items:center;gap:18px;">
-            <div class="server-icon" style="width:64px;height:64px;">
-                <img src="${iconUrl}" alt="${s.name}">
+            <div style="display:flex;align-items:center;gap:18px;">
+                <div class="server-icon" style="width:64px;height:64px;">
+                    <img src="${iconUrl}" alt="${s.name}">
+                </div>
+                <div>
+                    <h1>${s.name}</h1>
+                    <p>ID: ${s.id}</p>
+                </div>
             </div>
-            <div>
-                <h1>${s.name}</h1>
-                <p>ID: ${s.id}</p>
-            </div>
-        </div>
-        `;
+            `;
 
                 stats.innerHTML = `
-        <div class="server-card">
-            <div class="server-stat">
-                <span>Mitglieder</span>
-                <strong>${s.memberCount}</strong>
-            </div>
-        </div>
-
-        <div class="server-card">
-            <div class="server-stat">
-                <span>Channels</span>
-                <strong>${s.channelCount}</strong>
-            </div>
-        </div>
-
-        <div class="server-card">
-            <div class="server-stat">
-                <span>Rollen</span>
-                <strong>${s.roleCount}</strong>
-            </div>
-        </div>
-
-        <div class="server-card">
-            <div class="server-stat">
-                <span>Status</span>
-                <strong style="color:var(--accent-primary)">Online</strong>
-            </div>
-        </div>
-        `;
+            <div class="server-card"><span>Mitglieder</span><strong>${s.memberCount}</strong></div>
+            <div class="server-card"><span>Channels</span><strong>${s.channelCount}</strong></div>
+            <div class="server-card"><span>Rollen</span><strong>${s.roleCount}</strong></div>
+            <div class="server-card"><span>Status</span><strong style="color:var(--accent-primary)">Online</strong></div>
+            `;
             })
             .catch(err => {
-                header.innerHTML = `
-        <h1>Fehler</h1>
-        <p>${err.message}</p>
-        `;
+                header.innerHTML = `<h1>Fehler</h1><p>${err.message}</p>`;
                 stats.innerHTML = '';
             });
 
         <?php endif; ?>
     });
 
-    /* =========================
-       NAV
-    ========================= */
     function openServer(id) {
         window.location.href = `/dashboard/servers.php?id=${id}`;
     }
