@@ -217,3 +217,36 @@ try {
 
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const stats = document.querySelectorAll('.dashboard-stat');
+
+        stats.forEach(stat => {
+            const target = parseInt(stat.dataset.count, 10);
+            const output = stat.querySelector('strong');
+
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const duration = 1200; // ms
+            const steps = 60;
+            const increment = target / steps;
+
+            const formatter = new Intl.NumberFormat('de-DE');
+
+            const interval = setInterval(() => {
+                current += increment;
+
+                if (current >= target) {
+                    output.textContent = formatter.format(target);
+                    clearInterval(interval);
+                } else {
+                    output.textContent = formatter.format(Math.floor(current));
+                }
+            }, duration / steps);
+        });
+
+    });
+</script>
+
