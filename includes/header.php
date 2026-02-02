@@ -235,6 +235,7 @@ if ($loggedIn) {
         document.addEventListener('click', closeAll);
     });
 </script>
+
 <!-- ======================
      THEME SELECTION + ANIMATION
 ====================== -->
@@ -268,11 +269,11 @@ if ($loggedIn) {
         updateActive(savedTheme || 'default');
 
         /* =========================
-           BUTTON CLICK FEEDBACK
-           (EVERY CLICK)
+           BUTTON RELEASE FEEDBACK
+           (ONLY ON RELEASE)
         ========================= */
 
-        btn.addEventListener('click', () => {
+        btn.addEventListener('pointerup', () => {
             themeSwitch.classList.remove('clicked');
             void themeSwitch.offsetWidth; // force reflow
             themeSwitch.classList.add('clicked');
