@@ -2,8 +2,6 @@
 declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
-error_reporting(0);
-ini_set('display_errors', '0');
 
 /* =========================
    VALIDATE ID
@@ -20,19 +18,33 @@ if (!isset($_GET['id']) || !preg_match('/^\d+$/', $_GET['id'])) {
 $serverId = $_GET['id'];
 
 /* =========================
-   CALL BOT API
+   CALL BOT API (CURL!)
 ========================= */
-$json = file_get_contents("http://127.0.0.1:5000/servers/$serverId");
+$ch = curl_init();
 
-if ($json === false) {
+curl_setopt_array($ch, [
+    CURLOPT_URL => "http://127.0.0.1:5000/servers/$serverId",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 3,
+    CURLOPT_CONNECTTIMEOUT => 2,
+]);
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+if ($response === false) {
     echo json_encode([
         'success' => false,
-        'error' => 'API not reachable'
+        'error' => 'Curl error: ' . curl_error($ch)
     ]);
+    curl_close($ch);
     exit;
 }
 
+curl_close($ch);
+
 /* =========================
-   FORCE CLEAN OUTPUT
+   FORWARD RESPONSE
 ========================= */
-echo trim($json);
+http_response_code($httpCode);
+echo $response;
