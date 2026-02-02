@@ -1,5 +1,9 @@
 <?php
-header('Content-Type: application/json');
+declare(strict_types=1);
+
+header('Content-Type: application/json; charset=utf-8');
+error_reporting(0);
+ini_set('display_errors', '0');
 
 /* =========================
    VALIDATE ID
@@ -18,7 +22,7 @@ $serverId = $_GET['id'];
 /* =========================
    CALL BOT API
 ========================= */
-$json = @file_get_contents("http://127.0.0.1:5000/servers/$serverId");
+$json = file_get_contents("http://127.0.0.1:5000/servers/$serverId");
 
 if ($json === false) {
     echo json_encode([
@@ -28,4 +32,7 @@ if ($json === false) {
     exit;
 }
 
-echo $json;
+/* =========================
+   FORCE CLEAN OUTPUT
+========================= */
+echo trim($json);
