@@ -1,7 +1,11 @@
 <?php
-header('Content-Type: application/json');
+declare(strict_types=1);
 
-$json = @file_get_contents('http://127.0.0.1:5000/servers');
+header('Content-Type: application/json; charset=utf-8');
+error_reporting(0);
+ini_set('display_errors', '0');
+
+$json = file_get_contents('http://127.0.0.1:5000/servers');
 
 if ($json === false) {
     echo json_encode([
@@ -12,3 +16,4 @@ if ($json === false) {
 }
 
 echo $json;
+

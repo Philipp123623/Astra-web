@@ -129,35 +129,37 @@ if (isset($_GET['id'])) {
                         ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png`
                         : '/public/server_fallback.png';
 
-                    const cleanId = server.id.replace(/\D/g, '');
+                    const card = document.createElement('div');
+                    card.className = 'server-card';
 
                     card.innerHTML = `
-    <div class="server-header">
-        <div class="server-icon">
-            <img src="${iconUrl}" alt="${server.name}">
-        </div>
-        <div>
-            <div class="server-name">${server.name}</div>
-            <div class="server-id">ID: ${cleanId}</div>
-        </div>
-    </div>
+                    <div class="server-header">
+                        <div class="server-icon">
+                            <img src="${iconUrl}" alt="${server.name}">
+                        </div>
+                        <div>
+                            <div class="server-name">${server.name}</div>
+                            <div class="server-id">ID: ${server.id}</div>
+                        </div>
+                    </div>
 
-    <div class="server-stats">
-        <div class="server-stat">
-            <span>Mitglieder</span>
-            <strong>${server.memberCount}</strong>
-        </div>
-        <div class="server-stat">
-            <span>Status</span>
-            <strong style="color:var(--accent-primary)">Online</strong>
-        </div>
-    </div>
+                    <div class="server-stats">
+                        <div class="server-stat">
+                            <span>Mitglieder</span>
+                            <strong>${server.memberCount}</strong>
+                        </div>
+                        <div class="server-stat">
+                            <span>Status</span>
+                            <strong style="color:var(--accent-primary)">Online</strong>
+                        </div>
+                    </div>
 
-    <div class="server-actions">
-        <button onclick="openServer('${cleanId}')">Öffnen</button>
-    </div>
-`;
-
+                    <div class="server-actions">
+                        <button onclick="openServer('${encodeURIComponent(server.id)}')">
+                            Öffnen
+                        </button>
+                    </div>
+                `;
 
                     grid.appendChild(card);
                 });
