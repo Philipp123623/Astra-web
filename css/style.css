@@ -3278,6 +3278,12 @@ main.report-main {
     line-height: 1.55;
 }
 
+.dashboard-page main > *:first-child,
+.dashboard-page main > *:first-child > *:first-child {
+    margin-top: 0;
+}
+
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
