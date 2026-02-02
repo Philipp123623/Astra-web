@@ -196,6 +196,9 @@ if ($loggedIn) {
         });
     });
 </script>
+<!-- ======================
+     DROPDOWNS (LANG + THEME)
+====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const langSwitch  = document.getElementById('langSwitch');
@@ -209,24 +212,22 @@ if ($loggedIn) {
         // LANGUAGE
         if (langSwitch) {
             const btn = langSwitch.querySelector('.lang-btn');
-
             btn.addEventListener('click', e => {
                 e.stopPropagation();
-                const isOpen = langSwitch.classList.contains('open');
+                const wasOpen = langSwitch.classList.contains('open');
                 closeAll();
-                if (!isOpen) langSwitch.classList.add('open');
+                if (!wasOpen) langSwitch.classList.add('open');
             });
         }
 
         // THEME
         if (themeSwitch) {
             const btn = themeSwitch.querySelector('.theme-btn');
-
             btn.addEventListener('click', e => {
                 e.stopPropagation();
-                const isOpen = themeSwitch.classList.contains('open');
+                const wasOpen = themeSwitch.classList.contains('open');
                 closeAll();
-                if (!isOpen) themeSwitch.classList.add('open');
+                if (!wasOpen) themeSwitch.classList.add('open');
             });
         }
 
@@ -234,7 +235,6 @@ if ($loggedIn) {
         document.addEventListener('click', closeAll);
     });
 </script>
-
 <!-- ======================
      THEME SELECTION + ANIMATION
 ====================== -->
@@ -355,12 +355,3 @@ if ($loggedIn) {
 
     });
 </script>
-
-
-
-
-
-
-
-
-
