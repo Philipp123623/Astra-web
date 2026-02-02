@@ -3023,7 +3023,6 @@ main.report-main {
 
 .dashboard-nav a {
     position: relative;
-
     display: flex;
     align-items: center;
     gap: 14px;
@@ -3043,20 +3042,19 @@ main.report-main {
             box-shadow .18s ease;
 }
 
-/* ICON */
 .dashboard-nav a::before {
     content: attr(data-icon);
     font-size: 1.1em;
     opacity: .9;
 }
 
-/* HOVER */
 .dashboard-nav a:hover {
-    background: rgba(255,255,255,.06);
+    background: var(--drawer-link-hover-bg);
     transform: translateX(4px);
 }
 
 /* ACTIVE */
+
 .dashboard-nav a.active {
     background: linear-gradient(
             90deg,
@@ -3071,7 +3069,6 @@ main.report-main {
             inset 0 0 0 1px var(--drawer-link-border);
 }
 
-/* ACTIVE INDICATOR */
 .dashboard-nav a.active::after {
     content: '';
     position: absolute;
@@ -3304,6 +3301,7 @@ main.report-main {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 /* =========================
