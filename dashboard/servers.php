@@ -1,7 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -10,57 +9,43 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=5.0">
+    <link rel="stylesheet" href="/css/style.css?v=5.1">
 </head>
 
 <body>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
 
-<!-- PAGE MAIN -->
 <main class="dashboard-page">
-
     <div class="dashboard-wrapper">
         <div class="dashboard">
 
-            <!-- SIDEBAR -->
             <?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
-            <!-- CONTENT -->
-            <section class="dashboard-content">
+            <section class="dashboard-content servers-page">
 
                 <!-- HEADER -->
-                <header class="dashboard-header">
+                <header class="servers-header">
                     <div>
                         <h1>Servers</h1>
-                        <p class="dashboard-subtitle">
-                            Alle Discord Server, auf denen Astra aktiv ist
-                        </p>
+                        <p>Alle Discord Server, auf denen Astra aktiv ist</p>
                     </div>
                 </header>
 
-                <!-- SERVER GRID -->
-                <section id="serverGrid" class="dashboard-server-grid">
-
-                    <!-- Loading State -->
+                <!-- GRID -->
+                <section id="serverGrid" class="servers-grid">
                     <div class="dashboard-panel" id="servers-loading">
                         <h3>Lade Server…</h3>
                         <p>Verbinde mit Astra API…</p>
                     </div>
-
                 </section>
 
             </section>
-
         </div>
     </div>
-
 </main>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
-
-</body>
-</html>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -75,21 +60,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
                 if (!data.success) {
                     grid.innerHTML = `
-                    <div class="dashboard-panel">
+                    <div class="servers-empty">
                         <h3>Fehler</h3>
                         <p>Server konnten nicht geladen werden.</p>
-                    </div>
-                `;
+                    </div>`;
                     return;
                 }
 
                 if (data.count === 0) {
                     grid.innerHTML = `
-                    <div class="dashboard-panel">
+                    <div class="servers-empty">
                         <h3>Keine Server</h3>
                         <p>Astra ist aktuell auf keinem Server aktiv.</p>
-                    </div>
-                `;
+                    </div>`;
                     return;
                 }
 
@@ -100,21 +83,32 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                         : '/public/server_fallback.png';
 
                     const card = document.createElement('div');
-                    card.className = 'dashboard-server-card';
+                    card.className = 'server-card';
 
                     card.innerHTML = `
-                    <div class="server-icon">
-                        <img src="${iconUrl}" alt="${server.name}">
+                    <div class="server-header">
+                        <div class="server-icon">
+                            <img src="${iconUrl}" alt="${server.name}">
+                        </div>
+                        <div>
+                            <div class="server-name">${server.name}</div>
+                            <div class="server-id">ID: ${server.id}</div>
+                        </div>
                     </div>
 
-                    <div class="server-info">
-                        <strong>${server.name}</strong>
-                        <span>${server.memberCount} Mitglieder</span>
+                    <div class="server-stats">
+                        <div class="server-stat">
+                            <span>Mitglieder</span>
+                            <strong>${server.memberCount}</strong>
+                        </div>
+                        <div class="server-stat">
+                            <span>Status</span>
+                            <strong>Online</strong>
+                        </div>
                     </div>
 
                     <div class="server-actions">
-                        <button class="dashboard-btn secondary"
-                                onclick="openServer('${server.id}')">
+                        <button onclick="openServer('${encodeURIComponent(server.id)}')">
                             Öffnen
                         </button>
                     </div>
@@ -124,19 +118,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 });
 
             })
-            .catch(err => {
-                console.error(err);
+            .catch(() => {
                 grid.innerHTML = `
-                <div class="dashboard-panel">
+                <div class="servers-empty">
                     <h3>API nicht erreichbar</h3>
                     <p>Stelle sicher, dass Astra läuft.</p>
-                </div>
-            `;
+                </div>`;
             });
     });
 
     function openServer(id) {
-        window.location.href = `/dashboard/server.php?id=${encodeURIComponent(id)}`;
+        window.location.href = `/dashboard/server.php?id=${id}`;
     }
 </script>
 
+</body>
+</html>
