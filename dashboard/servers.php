@@ -67,7 +67,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
         const grid = document.getElementById('serverGrid');
 
-        fetch('http://localhost:5000/servers')
+        fetch('/dashboard/api/servers.php')
             .then(res => res.json())
             .then(data => {
 
@@ -133,10 +133,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 </div>
             `;
             });
-
     });
 
     function openServer(id) {
-        window.location.href = `/dashboard/server.php?id=${id}`;
+        window.location.href = `/dashboard/server.php?id=${encodeURIComponent(id)}`;
     }
 </script>
+
