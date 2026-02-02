@@ -73,7 +73,6 @@ if ($stats['usercount'] > 0) {
 $recent_activity[] = "Dashboard erfolgreich geladen";
 ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -97,6 +96,7 @@ $recent_activity[] = "Dashboard erfolgreich geladen";
     <div class="dashboard-wrapper">
 
         <div class="dashboard">
+            <?php include $_SERVER['DOCUMENT_ROOT'].'/dashboard/includes/dashboard-sidebar.php'; ?>
 
             <!-- =====================
                  CONTENT
