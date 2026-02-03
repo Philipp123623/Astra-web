@@ -1,6 +1,24 @@
 <?php
 declare(strict_types=1);
 
+/* ==========================================================
+   API: SERVER DETAILS
+   - liest .env selbst
+   - PHP 7+ kompatibel
+   - gibt IMMER JSON zurück
+========================================================== */
+
+/* =========================
+   ERROR HANDLING
+========================= */
+ini_set('display_errors', '0');
+error_reporting(0);
+
+header('Content-Type: application/json; charset=utf-8');
+
+/* =========================
+   LOAD .ENV (CUSTOM)
+========================= */
 function loadEnv(string $path): array
 {
     if (!file_exists($path)) {
@@ -11,7 +29,9 @@ function loadEnv(string $path): array
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
     foreach ($lines as $line) {
-        if (str_starts_with(trim($line), '#')) {
+        $line = trim($line);
+
+        if ($line === '' || $line[0] === '#') {
             continue;
         }
 
@@ -22,23 +42,15 @@ function loadEnv(string $path): array
     return $vars;
 }
 
-
-/* ==========================================================
-   API: SERVER DETAILS (NO ENV, NO DOTENV)
-========================================================== */
-
-ini_set('display_errors', '0');
-error_reporting(0);
-
-header('Content-Type: application/json; charset=utf-8');
-
 /* =========================
-   CONFIG (HARD CODED)
+   LOAD CONFIG FROM .ENV
 ========================= */
-$dbHost = 'localhost';
-$dbUser = 'DB_USER_HERE';
-$dbPass = 'DB_PASS_HERE';
-$dbName = 'DB_NAME_HERE';
+$env = loadEnv($_SERVER['DOCUMENT_ROOT'] . '/.env');
+
+$dbHost = $env['DB_SERVER'] ?? 'localhost';
+$dbUser = $env['DB_USER']   ?? '';
+$dbPass = $env['DB_PASS']   ?? '';
+$dbName = $env['DB_NAME']   ?? '';
 
 /* =========================
    VALIDATE INPUT
@@ -81,8 +93,9 @@ $data = json_decode($response, true);
 
 if (
     json_last_error() !== JSON_ERROR_NONE ||
-    empty($data['success']) ||
-    empty($data['server'])
+    !isset($data['success']) ||
+    $data['success'] !== true ||
+    !isset($data['server'])
 ) {
     http_response_code(502);
     echo json_encode([
@@ -93,7 +106,7 @@ if (
 }
 
 /* =========================
-   DB CONNECT
+   DATABASE CONNECT
 ========================= */
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
@@ -107,7 +120,7 @@ if ($conn->connect_error) {
 }
 
 /* =========================
-   JOIN ROLE
+   JOIN ROLE (DB)
 ========================= */
 $joinRole = [
     'enabled' => false,
@@ -123,11 +136,11 @@ $stmt = $conn->prepare("
 
 $stmt->bind_param('s', $serverId);
 $stmt->execute();
-$res = $stmt->get_result()->fetch_assoc();
+$row = $stmt->get_result()->fetch_assoc();
 
-if ($res) {
+if ($row) {
     $joinRole['enabled'] = true;
-    $joinRole['roleId']  = (string)$res['roleID'];
+    $joinRole['roleId']  = (string)$row['roleID'];
 }
 
 $stmt->close();
@@ -143,20 +156,22 @@ $rolesJson = @file_get_contents(
 
 if ($rolesJson !== false) {
     $rolesData = json_decode($rolesJson, true);
+
     if (
         json_last_error() === JSON_ERROR_NONE &&
-        !empty($rolesData['roles'])
+        isset($rolesData['roles']) &&
+        is_array($rolesData['roles'])
     ) {
         $roles = $rolesData['roles'];
     }
 }
 
 /* =========================
-   RESPONSE
+   FINAL RESPONSE
 ========================= */
 echo json_encode([
     'success' => true,
-    'server' => [
+    'server'  => [
         'id'           => $serverId,
         'name'         => $data['server']['name'],
         'icon'         => $data['server']['icon'],
@@ -167,4 +182,5 @@ echo json_encode([
         'joinRole'     => $joinRole
     ]
 ]);
+
 exit;
