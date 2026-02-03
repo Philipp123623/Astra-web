@@ -25,7 +25,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </ul>
         </nav>
 
-        <!-- HEADER ACTIONS -->
+        <!-- HEADER ACTIONS (RIGHT SIDE) -->
         <div class="astra-header-actions">
 
             <!-- Language Switch -->
@@ -47,7 +47,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 </div>
             </div>
 
-            <!-- Theme Switch -->
             <!-- Theme Switch -->
             <div class="theme-switch" id="themeSwitch">
                 <button class="theme-btn" aria-label="Choose theme">
@@ -73,7 +72,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                 </div>
             </div>
 
-
         </div>
 
         <!-- Hamburger -->
@@ -83,6 +81,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
     </div>
 </header>
+
 
 <!-- Mobile Overlay -->
 <div class="astra-nav-mobile-overlay"></div>
@@ -106,16 +105,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
     <div class="astra-nav-mobile-scroll">
         <a href="https://astra-bot.de/" class="nav-link"><?= $t['nav_home'] ?></a>
         <a href="https://astra-bot.de/#stats" class="nav-link"><?= $t['nav_stats'] ?></a>
-        <a href="https://astra-bot.de/#about" class="nav-link"><?= $t['nav_about'] ?></a>
-        <a href="https://astra-bot.de/#features" class="nav-link"><?= $t['nav_features'] ?></a>
-        <a href="https://astra-bot.de/#faq" class="nav-link"><?= $t['nav_faq'] ?></a>
+        <a href="https://astra-bot.de/#about" class="nav-link scrollto"><?= $t['nav_about'] ?></a>
+        <a href="https://astra-bot.de/#features" class="nav-link scrollto"><?= $t['nav_features'] ?></a>
+        <a href="https://astra-bot.de/#faq" class="nav-link scrollto"><?= $t['nav_faq'] ?></a>
         <a href="https://astra-bot.de/commands" class="nav-link"><?= $t['nav_commands'] ?></a>
         <a href="https://astra-bot.de/status" class="nav-link"><?= $t['nav_status'] ?></a>
         <a href="https://astra-bot.de/report" class="nav-link"><?= $t['nav_report'] ?></a>
+
+        <a href="https://astra-bot.de/invite" class="nav-btn"><?= $t['nav_invite'] ?></a>
     </div>
 
     <div class="astra-nav-lang">
         <span class="astra-nav-lang-title"><?= $t['nav_language'] ?? 'Language' ?></span>
+
         <div class="astra-nav-lang-list">
             <a href="?lang=de" class="<?= $lang === 'de' ? 'active' : '' ?>">Deutsch</a>
             <a href="?lang=en" class="<?= $lang === 'en' ? 'active' : '' ?>">English</a>
@@ -126,27 +128,37 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 </nav>
 
+
 <!-- ======================
      MOBILE MENU SCRIPT
 ====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const toggle = document.querySelector('.astra-nav-toggle');
+        const toggle   = document.querySelector('.astra-nav-toggle');
         const closeBtn = document.querySelector('.astra-nav-close');
-        const overlay = document.querySelector('.astra-nav-mobile-overlay');
+        const overlay  = document.querySelector('.astra-nav-mobile-overlay');
 
-        toggle?.addEventListener('click', () => document.body.classList.add('nav-open'));
-        closeBtn?.addEventListener('click', () => document.body.classList.remove('nav-open'));
-        overlay?.addEventListener('click', () => document.body.classList.remove('nav-open'));
+        if (!toggle) return;
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.add('nav-open');
+        });
+
+        closeBtn?.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
+
+        overlay?.addEventListener('click', () => {
+            document.body.classList.remove('nav-open');
+        });
     });
 </script>
-
 <!-- ======================
      DROPDOWNS (LANG + THEME)
 ====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const langSwitch = document.getElementById('langSwitch');
+        const langSwitch  = document.getElementById('langSwitch');
         const themeSwitch = document.getElementById('themeSwitch');
 
         function closeAll() {
@@ -154,39 +166,93 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             themeSwitch?.classList.remove('open');
         }
 
-        langSwitch?.querySelector('.lang-btn')?.addEventListener('click', e => {
-            e.stopPropagation();
-            langSwitch.classList.toggle('open');
-            themeSwitch?.classList.remove('open');
-        });
+        // LANGUAGE
+        if (langSwitch) {
+            const btn = langSwitch.querySelector('.lang-btn');
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                const wasOpen = langSwitch.classList.contains('open');
+                closeAll();
+                if (!wasOpen) langSwitch.classList.add('open');
+            });
+        }
 
-        themeSwitch?.querySelector('.theme-btn')?.addEventListener('click', e => {
-            e.stopPropagation();
-            themeSwitch.classList.toggle('open');
-            langSwitch?.classList.remove('open');
-        });
+        // THEME
+        if (themeSwitch) {
+            const btn = themeSwitch.querySelector('.theme-btn');
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                const wasOpen = themeSwitch.classList.contains('open');
+                closeAll();
+                if (!wasOpen) themeSwitch.classList.add('open');
+            });
+        }
 
+        // CLICK OUTSIDE
         document.addEventListener('click', closeAll);
     });
 </script>
-
 <!-- ======================
-     THEME SELECTION
+     THEME SELECTION + ANIMATION
 ====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (!themeSwitch) return;
+
         const root = document.documentElement;
         const STORAGE_KEY = 'astra-theme';
+
+        const btn   = themeSwitch.querySelector('.theme-btn');
+        const items = themeSwitch.querySelectorAll('[data-theme]');
+
+        /* =========================
+           INIT (NO ANIMATION)
+        ========================= */
 
         const savedTheme = localStorage.getItem(STORAGE_KEY);
         if (savedTheme && savedTheme !== 'default') {
             root.setAttribute('data-theme', savedTheme);
         }
 
-        document.querySelectorAll('[data-theme]').forEach(btn => {
-            btn.addEventListener('click', e => {
+        function updateActive(theme) {
+            items.forEach(el =>
+                el.classList.toggle('active', el.dataset.theme === theme)
+            );
+        }
+
+        updateActive(savedTheme || 'default');
+
+        /* =========================
+           BUTTON CLICK FEEDBACK
+           (EVERY CLICK)
+        ========================= */
+
+        btn.addEventListener('click', () => {
+            themeSwitch.classList.remove('clicked');
+            void themeSwitch.offsetWidth; // force reflow
+            themeSwitch.classList.add('clicked');
+
+            setTimeout(() => {
+                themeSwitch.classList.remove('clicked');
+            }, 450);
+        });
+
+        /* =========================
+           THEME CHANGE (BIG ANIMATION)
+        ========================= */
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
                 e.stopPropagation();
-                const theme = btn.dataset.theme;
+
+                const theme = item.dataset.theme;
+
+                // 🌈 BIG AURORA – nur hier
+                root.classList.remove('theme-animating');
+                void root.offsetWidth; // force reflow
+                root.classList.add('theme-animating');
 
                 if (theme === 'default') {
                     root.removeAttribute('data-theme');
@@ -195,7 +261,54 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                     root.setAttribute('data-theme', theme);
                     localStorage.setItem(STORAGE_KEY, theme);
                 }
+
+                updateActive(theme);
+
+                setTimeout(() => {
+                    root.classList.remove('theme-animating');
+                }, 1700);
             });
         });
+
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const userMenu = document.getElementById('userMenu');
+        if (!userMenu) return;
+
+        const trigger = userMenu.querySelector('.user-trigger');
+
+        function openMenu() {
+            userMenu.classList.add('open');
+        }
+
+        function closeMenu() {
+            userMenu.classList.remove('open');
+        }
+
+        function toggleMenu(e) {
+            e.stopPropagation();
+            userMenu.classList.toggle('open');
+        }
+
+        // Toggle on click
+        trigger.addEventListener('click', toggleMenu);
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (!userMenu.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
     });
 </script>
