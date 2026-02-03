@@ -1,6 +1,28 @@
 <?php
 declare(strict_types=1);
 
+function loadEnv(string $path): array
+{
+    if (!file_exists($path)) {
+        return [];
+    }
+
+    $vars = [];
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    foreach ($lines as $line) {
+        if (str_starts_with(trim($line), '#')) {
+            continue;
+        }
+
+        [$key, $value] = array_map('trim', explode('=', $line, 2));
+        $vars[$key] = trim($value, "\"'");
+    }
+
+    return $vars;
+}
+
+
 /* ==========================================================
    API: SERVER DETAILS (NO ENV, NO DOTENV)
 ========================================================== */
