@@ -48,12 +48,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
             </div>
 
             <!-- Theme Switch -->
+            <!-- Theme Switch -->
             <div class="theme-switch" id="themeSwitch">
                 <button class="theme-btn" aria-label="Choose theme">
                     <svg class="theme-core" viewBox="0 0 24 24">
+                        <defs>
+                            <linearGradient id="themeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6affea"/>
+                                <stop offset="100%" stop-color="#9cbcff"/>
+                            </linearGradient>
+                        </defs>
+
                         <circle class="theme-ring" cx="12" cy="12" r="9"/>
                         <circle class="theme-core-dot" cx="12" cy="12" r="4"/>
                     </svg>
+
                 </button>
 
                 <div class="theme-dropdown">
@@ -63,6 +72,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
                     <button data-theme="midnight">Midnight</button>
                 </div>
             </div>
+
 
         </div>
 
