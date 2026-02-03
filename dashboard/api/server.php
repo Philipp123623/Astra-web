@@ -2,27 +2,26 @@
 declare(strict_types=1);
 
 /* ==========================================================
-   API: SERVER DETAILS
-   - returns ONLY JSON
-   - never outputs HTML
+   API: SERVER DETAILS (NO ENV, NO DOTENV)
 ========================================================== */
 
-/* =========================
-   HARDEN API OUTPUT
-========================= */
 ini_set('display_errors', '0');
-ini_set('display_startup_errors', '0');
 error_reporting(0);
 
 header('Content-Type: application/json; charset=utf-8');
 
 /* =========================
+   CONFIG (HARD CODED)
+========================= */
+$dbHost = 'localhost';
+$dbUser = 'DB_USER_HERE';
+$dbPass = 'DB_PASS_HERE';
+$dbName = 'DB_NAME_HERE';
+
+/* =========================
    VALIDATE INPUT
 ========================= */
-if (
-    !isset($_GET['id']) ||
-    !preg_match('/^\d+$/', $_GET['id'])
-) {
+if (!isset($_GET['id']) || !preg_match('/^\d+$/', $_GET['id'])) {
     http_response_code(400);
     echo json_encode([
         'success' => false,
@@ -34,10 +33,9 @@ if (
 $serverId = (string)$_GET['id'];
 
 /* =========================
-   CALL BOT API (SERVER INFO)
+   BOT API: SERVER INFO
 ========================= */
 $ch = curl_init();
-
 curl_setopt_array($ch, [
     CURLOPT_URL            => "http://127.0.0.1:5000/servers/$serverId",
     CURLOPT_RETURNTRANSFER => true,
@@ -46,6 +44,7 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
+curl_close($ch);
 
 if ($response === false) {
     http_response_code(502);
@@ -53,19 +52,15 @@ if ($response === false) {
         'success' => false,
         'error'   => 'Bot API unreachable'
     ]);
-    curl_close($ch);
     exit;
 }
-
-curl_close($ch);
 
 $data = json_decode($response, true);
 
 if (
     json_last_error() !== JSON_ERROR_NONE ||
-    !isset($data['success']) ||
-    $data['success'] !== true ||
-    !isset($data['server'])
+    empty($data['success']) ||
+    empty($data['server'])
 ) {
     http_response_code(502);
     echo json_encode([
@@ -76,18 +71,9 @@ if (
 }
 
 /* =========================
-   LOAD ENV + DB CONNECT
+   DB CONNECT
 ========================= */
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/env.php';
-
-$env = loadEnv($_SERVER['DOCUMENT_ROOT'] . '/.env');
-
-$conn = new mysqli(
-    $env['DB_SERVER'] ?? '',
-    $env['DB_USER']   ?? '',
-    $env['DB_PASS']   ?? '',
-    $env['DB_NAME']   ?? ''
-);
+$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
 if ($conn->connect_error) {
     http_response_code(500);
@@ -99,7 +85,7 @@ if ($conn->connect_error) {
 }
 
 /* =========================
-   JOIN ROLE (DB = SOURCE OF TRUTH)
+   JOIN ROLE
 ========================= */
 $joinRole = [
     'enabled' => false,
@@ -115,63 +101,48 @@ $stmt = $conn->prepare("
 
 $stmt->bind_param('s', $serverId);
 $stmt->execute();
+$res = $stmt->get_result()->fetch_assoc();
 
-$result = $stmt->get_result();
-$row    = $result->fetch_assoc();
-
-if ($row) {
+if ($res) {
     $joinRole['enabled'] = true;
-    $joinRole['roleId']  = (string)$row['roleID'];
+    $joinRole['roleId']  = (string)$res['roleID'];
 }
 
 $stmt->close();
 
 /* =========================
-   ROLES (BOT API, FAIL-SAFE)
+   ROLES (BOT API)
 ========================= */
 $roles = [];
 
-$rolesCtx = stream_context_create([
-    'http' => [
-        'timeout' => 3
-    ]
-]);
-
 $rolesJson = @file_get_contents(
-    "http://127.0.0.1:5000/servers/$serverId/roles",
-    false,
-    $rolesCtx
+    "http://127.0.0.1:5000/servers/$serverId/roles"
 );
 
 if ($rolesJson !== false) {
     $rolesData = json_decode($rolesJson, true);
-
     if (
         json_last_error() === JSON_ERROR_NONE &&
-        isset($rolesData['success']) &&
-        $rolesData['success'] === true &&
-        isset($rolesData['roles']) &&
-        is_array($rolesData['roles'])
+        !empty($rolesData['roles'])
     ) {
         $roles = $rolesData['roles'];
     }
 }
 
 /* =========================
-   FINAL RESPONSE
+   RESPONSE
 ========================= */
 echo json_encode([
     'success' => true,
-    'server'  => [
-        'id'           => (string)($data['server']['id'] ?? $serverId),
-        'name'         => $data['server']['name'] ?? 'Unknown',
-        'icon'         => $data['server']['icon'] ?? null,
-        'memberCount'  => (int)($data['server']['memberCount'] ?? 0),
-        'channelCount' => (int)($data['server']['channelCount'] ?? 0),
-        'roleCount'    => (int)($data['server']['roleCount'] ?? 0),
+    'server' => [
+        'id'           => $serverId,
+        'name'         => $data['server']['name'],
+        'icon'         => $data['server']['icon'],
+        'memberCount'  => (int)$data['server']['memberCount'],
+        'channelCount' => (int)$data['server']['channelCount'],
+        'roleCount'    => (int)$data['server']['roleCount'],
         'roles'        => $roles,
         'joinRole'     => $joinRole
     ]
 ]);
-
 exit;
