@@ -46,5 +46,52 @@ curl_close($ch);
 /* =========================
    FORWARD RESPONSE
 ========================= */
-http_response_code($httpCode);
-echo $response;
+$data = json_decode($response, true);
+
+if (!$data || empty($data['success'])) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Invalid bot response'
+    ]);
+    exit;
+}
+
+// ENV laden
+$env = loadEnv($_SERVER['DOCUMENT_ROOT'] . '/.env');
+
+// DB Connect
+$conn = @new mysqli(
+    $env['DB_SERVER'] ?? '',
+    $env['DB_USER'] ?? '',
+    $env['DB_PASS'] ?? '',
+    $env['DB_NAME'] ?? ''
+);
+
+$stats = [
+    'servercount' => 0,
+    'usercount' => 0,
+    'commandCount' => 0,
+    'channelCount' => 0
+];
+
+$stmt = $conn->prepare("
+    SELECT roleID
+    FROM join_roles
+    WHERE guildID = ?
+    LIMIT 1
+");
+
+$stmt->bind_param('s', $serverId);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+$joinRole = [
+    'enabled' => $row !== null,
+    'roleId'  => $row['roleID'] ?? null
+];
+
+
+?>

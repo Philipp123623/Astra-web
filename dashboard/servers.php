@@ -137,11 +137,31 @@ if ($hasServerId) {
                     <section class="servers-grid" id="serverStats"></section>
 
                     <section class="dashboard-panel" style="margin-top:32px;">
+
                         <h3>Overview</h3>
                         <p>
                             Hier findest du alle Basisinformationen zu diesem Discord-Server.
                             Weitere Funktionen wie Moderation, Logs und Einstellungen folgen.
                         </p>
+                    </section>
+                    <section class="dashboard-panel" style="margin-top:32px;">
+                        <h3>Join Role</h3>
+                        <p>Neue Mitglieder erhalten automatisch eine Rolle beim Beitritt.</p>
+
+                        <div style="display:flex;gap:16px;align-items:center;margin-top:16px;">
+                            <label class="switch">
+                                <input type="checkbox" id="joinRoleToggle">
+                                <span class="slider"></span>
+                            </label>
+
+                            <select id="joinRoleSelect" disabled>
+                                <option>Lade Rollen…</option>
+                            </select>
+                        </div>
+
+                        <small style="opacity:.7;display:block;margin-top:8px;">
+                            Änderungen werden sofort gespeichert.
+                        </small>
                     </section>
 
                 <?php endif; ?>
@@ -175,10 +195,10 @@ if ($hasServerId) {
 
                 if (data.count === 0) {
                     grid.innerHTML = `
-            <div class="servers-empty">
-                <h3>Keine Server</h3>
-                <p>Du bist auf keinem Server Admin, auf dem Astra aktiv ist.</p>
-            </div>`;
+                    <div class="servers-empty">
+                        <h3>Keine Server</h3>
+                        <p>Du bist auf keinem Server Admin, auf dem Astra aktiv ist.</p>
+                    </div>`;
                     return;
                 }
 
@@ -192,47 +212,49 @@ if ($hasServerId) {
                     card.className = 'server-card';
 
                     card.innerHTML = `
-            <div class="server-header">
-                <div class="server-icon">
-                    <img src="${iconUrl}" alt="${server.name}">
-                </div>
-                <div>
-                    <div class="server-name">${server.name}</div>
-                    <div class="server-id">ID: ${server.id}</div>
-                </div>
-            </div>
+                    <div class="server-header">
+                        <div class="server-icon">
+                            <img src="${iconUrl}" alt="${server.name}">
+                        </div>
+                        <div>
+                            <div class="server-name">${server.name}</div>
+                            <div class="server-id">ID: ${server.id}</div>
+                        </div>
+                    </div>
 
-            <div class="server-stats">
-                <div class="server-stat">
-                    <span>Mitglieder</span>
-                    <strong>${server.memberCount}</strong>
-                </div>
-                <div class="server-stat">
-                    <span>Status</span>
-                    <strong style="color:var(--accent-primary)">Online</strong>
-                </div>
-            </div>
+                    <div class="server-stats">
+                        <div class="server-stat">
+                            <span>Mitglieder</span>
+                            <strong>${server.memberCount}</strong>
+                        </div>
+                        <div class="server-stat">
+                            <span>Status</span>
+                            <strong style="color:var(--accent-primary)">Online</strong>
+                        </div>
+                    </div>
 
-            <div class="server-actions">
-                <button onclick="openServer('${server.id}')">Öffnen</button>
-            </div>
-            `;
+                    <div class="server-actions">
+                        <button onclick="openServer('${server.id}')">Öffnen</button>
+                    </div>
+                `;
 
                     grid.appendChild(card);
                 });
             })
             .catch(err => {
                 grid.innerHTML = `
-        <div class="servers-empty">
-            <h3>Fehler</h3>
-            <p>${err.message}</p>
-        </div>`;
+                <div class="servers-empty">
+                    <h3>Fehler</h3>
+                    <p>${err.message}</p>
+                </div>`;
             });
 
         <?php else: ?>
 
         const header = document.getElementById('serverHeader');
         const stats  = document.getElementById('serverStats');
+        const joinToggle = document.getElementById('joinRoleToggle');
+        const joinSelect = document.getElementById('joinRoleSelect');
         const serverId = "<?= htmlspecialchars($serverId) ?>";
 
         fetch(`/dashboard/api/server.php?id=${serverId}`)
@@ -247,41 +269,90 @@ if ($hasServerId) {
                 }
 
                 const s = data.server;
+
                 const iconUrl = s.icon
                     ? `https://cdn.discordapp.com/icons/${s.id}/${s.icon}.png`
                     : '/public/server_fallback.png';
 
                 header.innerHTML = `
-        <div style="display:flex;align-items:center;gap:18px;">
-            <div class="server-icon" style="width:64px;height:64px;">
-                <img src="${iconUrl}" alt="${s.name}">
-            </div>
-            <div>
-                <h1>${s.name}</h1>
-                <p>ID: ${s.id}</p>
-            </div>
-        </div>
-        `;
+                <div style="display:flex;align-items:center;gap:18px;">
+                    <div class="server-icon" style="width:64px;height:64px;">
+                        <img src="${iconUrl}" alt="${s.name}">
+                    </div>
+                    <div>
+                        <h1>${s.name}</h1>
+                        <p>ID: ${s.id}</p>
+                    </div>
+                </div>
+            `;
 
                 stats.innerHTML = `
-        <div class="server-card"><span>Mitglieder</span><strong>${s.memberCount}</strong></div>
-        <div class="server-card"><span>Channels</span><strong>${s.channelCount}</strong></div>
-        <div class="server-card"><span>Rollen</span><strong>${s.roleCount}</strong></div>
-        <div class="server-card"><span>Status</span><strong style="color:var(--accent-primary)">Online</strong></div>
-        `;
+                <div class="server-card"><span>Mitglieder</span><strong>${s.memberCount}</strong></div>
+                <div class="server-card"><span>Channels</span><strong>${s.channelCount}</strong></div>
+                <div class="server-card"><span>Rollen</span><strong>${s.roleCount}</strong></div>
+                <div class="server-card"><span>Status</span><strong style="color:var(--accent-primary)">Online</strong></div>
+            `;
+
+                /* ===== JOIN ROLE INIT ===== */
+                joinToggle.checked = s.joinRole.enabled;
+                joinSelect.disabled = !s.joinRole.enabled;
+
+                joinSelect.innerHTML = '<option value="">Rolle auswählen</option>';
+
+                s.roles.forEach(role => {
+                    if (role.name === '@everyone') return;
+
+                    const opt = document.createElement('option');
+                    opt.value = role.id;
+                    opt.textContent = role.name;
+
+                    if (role.id === s.joinRole.roleId) {
+                        opt.selected = true;
+                    }
+
+                    joinSelect.appendChild(opt);
+                });
             })
             .catch(err => {
                 header.innerHTML = `<h1>Fehler</h1><p>${err.message}</p>`;
                 stats.innerHTML = '';
             });
 
+        /* ===== EVENTS ===== */
+        joinToggle.addEventListener('change', () => {
+            joinSelect.disabled = !joinToggle.checked;
+
+            saveJoinRole(
+                joinToggle.checked,
+                joinToggle.checked ? joinSelect.value : null
+            );
+        });
+
+        joinSelect.addEventListener('change', () => {
+            if (!joinToggle.checked) return;
+            saveJoinRole(true, joinSelect.value);
+        });
+
         <?php endif; ?>
     });
+
+    function saveJoinRole(enabled, roleId) {
+        fetch('/dashboard/api/joinrole.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                serverId,
+                enabled,
+                roleId
+            })
+        });
+    }
 
     function openServer(id) {
         window.location.href = `/dashboard/servers.php?id=${id}`;
     }
 </script>
+
 
 </body>
 </html>

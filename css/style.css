@@ -3822,6 +3822,75 @@ main.report-main {
 
 
 /* =========================
+   JOIN ROLE PANEL
+========================= */
+
+#joinRoleSelect {
+    min-width: 220px;
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    background: var(--card-bg-soft);
+    border: 1px solid var(--drawer-border);
+
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    outline: none;
+    transition: background .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+/* Hover */
+#joinRoleSelect:hover {
+    background: var(--card-bg-strong);
+    border-color: var(--drawer-link-border);
+}
+
+/* Focus */
+#joinRoleSelect:focus {
+    border-color: var(--accent-primary);
+    box-shadow:
+            0 0 0 2px var(--drawer-link-accent-soft),
+            0 0 18px var(--drawer-glow-primary);
+}
+
+/* Disabled State */
+#joinRoleSelect:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: var(--drawer-bg-top);
+}
+
+/* =========================
+   JOIN ROLE ROW
+========================= */
+
+.join-role-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+/* =========================
+   SWITCH POLISH
+========================= */
+
+.switch {
+    transform: scale(1.05);
+}
+
+.switch input:checked + .slider {
+    box-shadow:
+            0 0 0 2px var(--drawer-link-accent-soft),
+            0 0 16px var(--drawer-glow-primary);
+}
+
+
+/* =========================
    404 ERROR PAGE – HERO STYLE
    ========================= */
 
