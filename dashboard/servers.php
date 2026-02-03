@@ -1,5 +1,4 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/lang.php';
 
 session_start();
 if (!isset($_SESSION['access_token'])) {
