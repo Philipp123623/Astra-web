@@ -98,5 +98,3 @@ $joinRole = [
     'roleId'  => $row['roleID'] ?? null
 ];
 
-
-?>
